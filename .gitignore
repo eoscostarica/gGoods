@@ -6,3 +6,4 @@ node_modules
 modules 
 tmp/
 node_modules
+build/
