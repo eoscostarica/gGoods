@@ -70,6 +70,7 @@ CONTRACT dgoods: public contract {
         ACTION listsalenft(const name& seller,
                            const vector<uint64_t>& dgood_ids,
                            const uint32_t sell_by_days,
+                           const bool is_donable,
                            const asset& net_sale_amount);
 
         ACTION closesalenft(const name& seller,
@@ -97,6 +98,7 @@ CONTRACT dgoods: public contract {
             name seller;
             asset amount;
             time_point_sec expiration;
+            bool is_donable;
 
             uint64_t primary_key() const { return batch_id; }
             uint64_t get_seller() const { return seller.value; }
