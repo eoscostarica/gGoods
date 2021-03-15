@@ -336,27 +336,33 @@ ACTION dgoods::confirmsale(const name& newowner,
 
     require_auth(has_auth(owner) ? owner : get_self());
     
-    ask_index ask_table( get_self(), get_self().value );
+    ask_index ask_table(get_self(), get_self().value);
 
-    const auto& ask = ask_table.get( batch_id, "cannot find listing" );
-    check ( ask.amount.amount <= quantity.amount, "Minimun acceptable amount is " + ask.amount.amount);
-    check ( ask.expiration == time_point_sec(0) || ask.expiration > time_point_sec(current_time_point()), "sale has expired");
+    check( quantity.symbol == symbol( symbol_code("USD"), 2), "Buy only with USD" );
+
+    const auto& ask = ask_table.get(batch_id, "cannot find listing");
+    if (ask.is_donable == true)
+        check (ask.amount.amount <= quantity.amount, "Minimun acceptable amount is " + std::to_string(ask.amount.amount));
+    else
+        check (ask.amount.amount == quantity.amount, "Please send the correct amount");
+
+    check (ask.expiration == time_point_sec(0) || ask.expiration > time_point_sec(current_time_point()), "sale has expired");
 
     // nft(s) bought, change owner to buyer regardless of transferable
-    _changeowner( ask.seller, owner, ask.dgood_ids, "bought by: " + owner.to_string(), false);
+    _changeowner(ask.seller, newowner, ask.dgood_ids, "bought by: " + newowner.to_string(), false);
 
     // remove locks, remove from ask table
-    lock_index lock_table( get_self(), get_self().value );
+    lock_index lock_table(get_self(), get_self().value);
 
-    for ( auto const& dgood_id: ask.dgood_ids ) {
-        const auto& locked_nft = lock_table.get( dgood_id, "dgood not found in lock table" );
-        lock_table.erase( locked_nft );
+    for (auto const& dgood_id: ask.dgood_ids) {
+        const auto& locked_nft = lock_table.get(dgood_id, "dgood not found in lock table");
+        lock_table.erase(locked_nft);
     }
 
-    SEND_INLINE_ACTION( *this, logsale, { { get_self(), "active"_n } }, { ask.dgood_ids, ask.seller, newowner, owner } );
+    SEND_INLINE_ACTION(*this, logsale, { { get_self(), "active"_n } }, { ask.dgood_ids, ask.seller, owner, newowner });
 
     // remove sale listing
-    ask_table.erase( ask );
+    ask_table.erase(ask);
 }
 
 void dgoods::buynft(const name& from,
@@ -605,7 +611,7 @@ extern "C" {
 
         if ( code == self ) {
             switch( action ) {
-                EOSIO_DISPATCH_HELPER( dgoods, (setconfig)(create)(issue)(burnnft)(burnft)(transfernft)(transferft)(listsalenft)(closesalenft)(logcall)(freezemaxsup) )
+                EOSIO_DISPATCH_HELPER( dgoods, (setconfig)(create)(issue)(burnnft)(burnft)(transfernft)(transferft)(listsalenft)(closesalenft)(confirmsale)(logcall)(freezemaxsup) )
             }
         }
 

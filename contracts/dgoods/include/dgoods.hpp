@@ -58,7 +58,7 @@ CONTRACT dgoods: public contract {
         ACTION confirmsale(const name& newowner, 
                            const name& owner, 
                            const asset& quantity, 
-                           const uint16_t& batch_id);
+                           const uint64_t& batch_id);
 
         ACTION transfernft(const name& from,
                            const name& to,
@@ -102,6 +102,7 @@ CONTRACT dgoods: public contract {
             name seller;
             asset amount;
             time_point_sec expiration;
+            bool is_donable;
 
             uint64_t primary_key() const { return batch_id; }
             uint64_t get_seller() const { return seller.value; }
