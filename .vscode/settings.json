@@ -1,5 +1,10 @@
 {
   "editor.tabSize": 2,
   "editor.renderWhitespace": "all",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "files.associations": {
+    ".env": "bat",
+    "bitset": "cpp",
+    "typeinfo": "cpp"
+  }
 }

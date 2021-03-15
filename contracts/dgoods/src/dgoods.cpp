@@ -329,6 +329,36 @@ ACTION dgoods::closesalenft(const name& seller,
     ask_table.erase( ask );
 }
 
+ACTION dgoods::confirmsale(const name& newowner, 
+                        const name& owner, 
+                        const asset& quantity,
+                        const uint64_t& batch_id) {
+
+    require_auth(has_auth(owner) ? owner : get_self());
+    
+    ask_index ask_table( get_self(), get_self().value );
+
+    const auto& ask = ask_table.get( batch_id, "cannot find listing" );
+    check ( ask.amount.amount <= quantity.amount, "Minimun acceptable amount is " + ask.amount.amount);
+    check ( ask.expiration == time_point_sec(0) || ask.expiration > time_point_sec(current_time_point()), "sale has expired");
+
+    // nft(s) bought, change owner to buyer regardless of transferable
+    _changeowner( ask.seller, owner, ask.dgood_ids, "bought by: " + owner.to_string(), false);
+
+    // remove locks, remove from ask table
+    lock_index lock_table( get_self(), get_self().value );
+
+    for ( auto const& dgood_id: ask.dgood_ids ) {
+        const auto& locked_nft = lock_table.get( dgood_id, "dgood not found in lock table" );
+        lock_table.erase( locked_nft );
+    }
+
+    SEND_INLINE_ACTION( *this, logsale, { { get_self(), "active"_n } }, { ask.dgood_ids, ask.seller, newowner, owner } );
+
+    // remove sale listing
+    ask_table.erase( ask );
+}
+
 void dgoods::buynft(const name& from,
                     const name& to,
                     const asset& quantity,

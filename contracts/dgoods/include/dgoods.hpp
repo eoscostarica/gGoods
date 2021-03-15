@@ -55,6 +55,11 @@ CONTRACT dgoods: public contract {
 
         void buynft(const name& from, const name& to, const asset& quantity, const string& memo);
 
+        ACTION confirmsale(const name& newowner, 
+                           const name& owner, 
+                           const asset& quantity, 
+                           const uint16_t& batch_id);
+
         ACTION transfernft(const name& from,
                            const name& to,
                            const vector<uint64_t>& dgood_ids,
