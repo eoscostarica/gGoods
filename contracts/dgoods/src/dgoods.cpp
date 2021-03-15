@@ -276,7 +276,7 @@ ACTION dgoods::listsalenft(const name& seller,
     }
 
     check (dgood_ids.size() <= 20, "max batch size of 20");
-    check( net_sale_amount.amount > .02 * pow(10, net_sale_amount.symbol.precision()), "minimum price of at least 0.02 EOS");
+    check( net_sale_amount.amount > .02 * pow(10, net_sale_amount.symbol.precision()), "minimum price of at least 0.02 USD");
     check( net_sale_amount.symbol == symbol( symbol_code("USD"), 2), "only accept USD for sale" );
 
     dgood_index dgood_table( get_self(), get_self().value );
