@@ -12,6 +12,7 @@ import {
 import { mainConfig } from '../config'
 
 const Home = lazy(() => import('./Home'))
+const Register = lazy(() => import('./Register'))
 const About = lazy(() => import('./About'))
 const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
@@ -21,6 +22,13 @@ const routes = [
     name: 'home',
     icon: <GridIcon />,
     component: Home,
+    path: '/',
+    exact: true
+  },
+  {
+    name: 'register',
+    icon: <GridIcon />,
+    component: Register,
     path: '/',
     exact: true
   },

@@ -1,6 +1,44 @@
-actions: []
+actions:
+- name: check_username
+  definition:
+    kind: synchronous
+    handler: http://hapi:9090/api/check-username
+  permissions:
+  - role: guest
+- name: create_account
+  definition:
+    kind: synchronous
+    handler: http://hapi:9090/api/accounts
+  permissions:
+  - role: guest
+- name: create_account_organization
+  definition:
+    kind: synchronous
+    handler: http://hapi:9090/api/create-account-organization
+- name: create_pre_register_organization
+  definition:
+    kind: synchronous
+    handler: http://hapi:9090/api/pre-register
+- name: login
+  definition:
+    kind: synchronous
+    handler: http://hapi:9090/api/login
+- name: verify_email
+  definition:
+    kind: synchronous
+    handler: http://hapi:9090/api/verify-email
+  permissions:
+  - role: gamer
+  - role: guest
+  - role: organization
 custom_types:
   enums: []
   input_objects: []
-  objects: []
+  objects:
+  - name: verify_email_output
+  - name: create_account_output
+  - name: check_username_output
+  - name: create_account_organization_output
+  - name: create_pre_register_organization_output
+  - name: login_output
   scalars: []
