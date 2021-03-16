@@ -4,9 +4,9 @@ const createAccountValidation = require('./create-account.validation')
 module.exports = {
   method: 'POST',
   path: '/api/accounts',
-  handler: createAccountHandler,
-  options: {
-    validate: createAccountValidation,
-    auth: false
-  }
+  handler: createAccountHandler
+  // options: {
+  //   validate: createAccountValidation,
+  //   auth: false
+  // }
 }

@@ -9,12 +9,12 @@ const {
 } = require('../utils')
 
 const historyApi = require('./history.api')
-const notificationApi = require('./notification.api')
+// const notificationApi = require('./notification.api')
 const userApi = require('./user.api')
 const vaultApi = require('./vault.api')
 const preRegLifebank = require('./pre-register.api')
 const verificationCodeApi = require('./verification-code.api')
-const mailApi = require('../utils/mail')
+// const mailApi = require('../utils/mail')
 const LIFEBANKCODE_CONTRACT = eosConfig.lifebankCodeContractName
 const MAIL_APPROVE_LIFEBANNK = eosConfig.mailApproveLifebank
 
@@ -45,6 +45,7 @@ query MyQuery {
 `
 
 const create = async ({ role, email, emailContent, name, secret }) => {
+  console.log('LEISTER')
   const account = await eosUtils.generateRandomAccountName(role.substring(0, 3))
   const { password, transaction } = await eosUtils.createAccount(account)
   const username = account
@@ -68,14 +69,14 @@ const create = async ({ role, email, emailContent, name, secret }) => {
 
   await historyApi.insert(transaction)
   try {
-    mailApi.sendVerificationCode(
-      email,
-      verification_code,
-      emailContent.subject,
-      emailContent.title,
-      emailContent.message,
-      emailContent.button
-    )
+    // mailApi.sendVerificationCode(
+    //   email,
+    //   verification_code,
+    //   emailContent.subject,
+    //   emailContent.title,
+    //   emailContent.message,
+    //   emailContent.button
+    // )
   } catch (error) {
     console.log(error)
   }
@@ -118,12 +119,12 @@ const createLifebank = async ({
   await historyApi.insert(transaction)
 
   try {
-    mailApi.sendConfirmMessage(
-      email,
-      emailContent.subject,
-      emailContent.title,
-      emailContent.message
-    )
+    // mailApi.sendConfirmMessage(
+    //   email,
+    //   emailContent.subject,
+    //   emailContent.title,
+    //   emailContent.message
+    // )
   } catch (error) {
     console.log(error)
   }
@@ -419,10 +420,10 @@ const verifyEmail = async ({ code }) => {
         resLifebank.update_preregister_lifebank.returning[0]
       )
       try {
-        mailApi.sendRegistrationRequest(
-          MAIL_APPROVE_LIFEBANNK,
-          resLifebank.update_preregister_lifebank.returning[0]
-        )
+        // mailApi.sendRegistrationRequest(
+        //   MAIL_APPROVE_LIFEBANNK,
+        //   resLifebank.update_preregister_lifebank.returning[0]
+        // )
       } catch (error) {
         console.log(error)
       }
@@ -493,17 +494,17 @@ const transfer = async (from, details) => {
 
   const newBalance = await lifebankcoinUtils.getbalance(details.to)
   await historyApi.insert(transaction)
-  await notificationApi.insert({
-    account: details.to,
-    title: 'New tokens',
-    description: `From ${from} ${details.memo}`,
-    type: 'new_tokens',
-    payload: {
-      currentBalance,
-      newBalance,
-      transaction: transaction.transaction_id
-    }
-  })
+  // await notificationApi.insert({
+  //   account: details.to,
+  //   title: 'New tokens',
+  //   description: `From ${from} ${details.memo}`,
+  //   type: 'new_tokens',
+  //   payload: {
+  //     currentBalance,
+  //     newBalance,
+  //     transaction: transaction.transaction_id
+  //   }
+  // })
 
   return transaction
 }

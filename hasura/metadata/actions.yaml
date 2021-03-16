@@ -10,7 +10,9 @@ actions:
     kind: synchronous
     handler: http://hapi:9090/api/accounts
   permissions:
+  - role: gamer
   - role: guest
+  - role: organization
 - name: create_account_organization
   definition:
     kind: synchronous

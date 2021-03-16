@@ -3,6 +3,7 @@ const Boom = require('@hapi/boom')
 const Path = require('path')
 
 const { serverConfig, i18nConfig } = require('./config')
+const { jwtUtils } = require('./utils')
 const routes = require('./routes')
 
 const init = async () => {
@@ -14,7 +15,7 @@ const init = async () => {
       validate: {
         failAction: async (request, h, err) => {
           if (process.env.NODE_ENV === 'production') {
-            throw Boom.badRequest('Invalid request payload input')
+            throw Boom.badRequest(`Invalid request payload input`)
           } else {
             throw err
           }
@@ -39,18 +40,26 @@ const init = async () => {
         prettyPrint: true,
         logEvents: ['request-error']
       }
+    },
+    {
+      plugin: require('@hapi/inert'),
+      options: {}
+    },
+    {
+      plugin: require('hapi-auth-jwt2'),
+      options: {}
     }
   ])
+
+  jwtUtils.auth(server)
 
   await server.start()
 
   console.log(`🚀 Server ready at ${server.info.uri}`)
-  server
-    .table()
-    .forEach((route) => console.log(`${route.method}\t${route.path}`))
+  server.table().forEach(route => console.log(`${route.method}\t${route.path}`))
 }
 
-process.on('unhandledRejection', (err) => {
+process.on('unhandledRejection', err => {
   console.log(err)
   process.exit(1)
 })
