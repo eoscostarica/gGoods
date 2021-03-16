@@ -1,4 +1,4 @@
-export const onImgError = (defaultLogo) => (ev) => {
+export const onImgError = defaultLogo => ev => {
   if (ev.target.src === defaultLogo) {
     return
   }

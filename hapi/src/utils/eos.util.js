@@ -17,7 +17,7 @@ const eosApi = EosApi({
   fetchConfiguration: {}
 })
 
-const newAccount = async (accountName) => {
+const newAccount = async accountName => {
   const password = await walletUtil.create(accountName)
   const key = await walletUtil.createKey(accountName)
 
@@ -140,9 +140,9 @@ const generateRandomAccountName = async (prefix = '') => {
   }
 }
 
-const getAbi = (account) => eosApi.getAbi(account)
+const getAbi = account => eosApi.getAbi(account)
 
-const getAccount = async (account) => {
+const getAccount = async account => {
   try {
     const accountInfo = await eosApi.getAccount(account)
 
@@ -152,7 +152,7 @@ const getAccount = async (account) => {
   }
 }
 
-const getBlock = async (blockNumber) => {
+const getBlock = async blockNumber => {
   try {
     const block = await eosApi.getBlock(blockNumber)
 
@@ -162,41 +162,59 @@ const getBlock = async (blockNumber) => {
   }
 }
 
-const getCodeHash = (account) => eosApi.getCodeHash(account)
+const getCodeHash = account => eosApi.getCodeHash(account)
 
 const getCurrencyBalance = (code, account, symbol) =>
   eosApi.getCurrencyBalance(code, account, symbol)
 
-const getTableRows = (options) =>
-  eosApi.getTableRows({ json: true, ...options })
+const getTableRows = options => eosApi.getTableRows({ json: true, ...options })
 
-const transact = async (actions, account, password) => {
+const transact = async (actions, auths) => {
   try {
-    await walletUtil.unlock(account, password)
-  } catch (error) {}
+    const keys = []
 
-  const keys = await walletUtil.listKeys(account, password)
-  const api = new Api({
-    rpc,
-    textDecoder,
-    textEncoder,
-    chainId: eosConfig.chainId,
-    signatureProvider: new JsSignatureProvider(keys)
-  })
+    for (let index = 0; index < auths.length; index++) {
+      const auth = auths[index]
+      try {
+        await walletUtil.unlock(auth.account, auth.password)
+      } catch (error) {}
 
-  const transaction = await api.transact(
-    {
-      actions
-    },
-    {
-      blocksBehind: 3,
-      expireSeconds: 30
+      try {
+        keys.push(...(await walletUtil.listKeys(auth.account, auth.password)))
+      } catch (error) {}
     }
-  )
 
-  await walletUtil.lock(account)
+    const api = new Api({
+      rpc,
+      textDecoder,
+      textEncoder,
+      chainId: eosConfig.chainId,
+      signatureProvider: new JsSignatureProvider(keys)
+    })
 
-  return transaction
+    const transaction = await api.transact(
+      {
+        actions
+      },
+      {
+        blocksBehind: 3,
+        expireSeconds: 30
+      }
+    )
+
+    for (let index = 0; index < auths.length; index++) {
+      try {
+        const auth = auths[index]
+        await walletUtil.lock(auth.account)
+      } catch (error) {}
+    }
+
+    return transaction
+  } catch (error) {
+    throw new Error(
+      error.message.replace(/assertion failure with message: /gi, '')
+    )
+  }
 }
 
 module.exports = {

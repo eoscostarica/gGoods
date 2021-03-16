@@ -1,90 +1,52 @@
-import React, { Suspense, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { Suspense, useMemo } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
-import { SharedStateProvider } from './context/state.context'
 import routes from './routes'
 import Loader from './components/Loader'
 import DashboardLayout from './layouts/Dashboard'
+import { useSharedState } from './context/state.context'
+import getTheme from './theme'
+import './i18n'
 
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
-import { StylesProvider } from '@material-ui/styles'
-import { ThemeProvider } from 'styled-components'
+const App = () => {
+  const [state] = useSharedState()
 
-import { lightTheme, darkTheme } from './theme'
-
-const App = ({ ual = {} }) => {
-  const renderRoutes = ({ children, component, ...props }, index) => {
-    if (Array.isArray(children) && children.length > 0) {
-      return children.map(renderRoute)
-    }
-
-    if (component) {
-      return renderRoute({ ...props, component }, index)
-    }
-
-    return <></>
-  }
-
-  const renderRoute = (
-    { name, header, icon, path, component: Component, ...props },
-    index
-  ) => (
-    <Route key={`path-${name}-${index}`} path={path} {...props}>
-      <Component ual={ual} {...props} />
+  const renderRoute = ({ component: Component, ...route }, index) => (
+    <Route
+      key={`path-${route.path}-${index}`}
+      path={route.path}
+      exact={route.exact}
+    >
+      <Component />
     </Route>
   )
 
-  const [theme, setTheme] = useState('light')
+  const userRoutes = useMemo(
+    () => routes(state.user?.role || 'guest'),
+
+    [state.user]
+  )
+
+  const theme = useMemo(() => getTheme(state.useDarkMode), [state.useDarkMode])
 
   return (
-    <SharedStateProvider>
-      <BrowserRouter>
-        <StylesProvider injectFirst>
-          <MuiThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-            <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DashboardLayout
-                  ual={ual}
-                  theme={theme}
-                  onThemeChange={setTheme}
-                >
-                  <Suspense fallback={<Loader />}>
-                    <Switch>
-                      {routes
-                        .filter((route) => !route?.path?.includes('http'))
-                        .map(renderRoutes)}
-                    </Switch>
-                  </Suspense>
-                </DashboardLayout>
-              </MuiPickersUtilsProvider>
-            </ThemeProvider>
-          </MuiThemeProvider>
-        </StylesProvider>
-      </BrowserRouter>
-    </SharedStateProvider>
-    // <SharedStateProvider>
-    //   <BrowserRouter>
-    //     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-    //       <DashboardLayout ual={ual}>
-    //         <Suspense fallback={<Loader />}>
-    //           <Switch>
-    //             {routes
-    //               .filter((route) => !route?.path?.includes('http'))
-    //               .map(renderRoutes)}
-    //           </Switch>
-    //         </Suspense>
-    //       </DashboardLayout>
-    //     </MuiPickersUtilsProvider>
-    //   </BrowserRouter>
-    // </SharedStateProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <DashboardLayout routes={userRoutes.sidebar}>
+            <Suspense fallback={<Loader />}>
+              <Switch>{userRoutes.browser.map(renderRoute)}</Switch>
+            </Suspense>
+          </DashboardLayout>
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   )
-}
-
-App.propTypes = {
-  ual: PropTypes.object
 }
 
 export default App

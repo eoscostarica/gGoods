@@ -1,9 +1,10 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/styles'
+import React, { memo } from 'react'
 import Grid from '@material-ui/core/Grid'
 import List from '@material-ui/core/List'
 import ListItemText from '@material-ui/core/ListItemText'
-import MuiListItem from '@material-ui/core/ListItem'
+import ListItem from '@material-ui/core/ListItem'
+import Box from '@material-ui/core/Box'
+import { makeStyles } from '@material-ui/styles'
 
 import { mainConfig } from '../../config'
 
@@ -14,12 +15,16 @@ const useStyles = makeStyles(styles)
 const Footer = () => {
   const classes = useStyles()
 
+  if (!mainConfig.footerLinks?.length) {
+    return <></>
+  }
+
   return (
-    <div className={classes.wrapper}>
+    <Box className={classes.root}>
       <Grid container item xs={12}>
         <List>
           {mainConfig.footerLinks.map((link, index) => (
-            <MuiListItem key={index} className={classes.listItem}>
+            <ListItem className={classes.listItem} key={index}>
               <ListItemText
                 primary={
                   <a href={link.src} target="_blank" rel="noopener noreferrer">
@@ -27,12 +32,12 @@ const Footer = () => {
                   </a>
                 }
               />
-            </MuiListItem>
+            </ListItem>
           ))}
         </List>
       </Grid>
-    </div>
+    </Box>
   )
 }
 
-export default Footer
+export default memo(Footer)

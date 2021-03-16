@@ -1,8 +1,9 @@
 {
   "common": {
     "login": "Ingresar",
-    "logout": "Salir",
-    "footerText": "Un proyecto de código abierto de"
+    "signOut": "Salir",
+    "lightMode": "Modo Claro",
+    "darkMode": "Modo Oscuro"
   },
   "routes": {
     "/>title": "EOSIO Boilerplate",
