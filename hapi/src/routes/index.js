@@ -1,3 +1,3 @@
-const healthzRoute = require('./healthz/healthz.route')
+const healthzRoute = require('./healthz.route')
 
 module.exports = [healthzRoute]

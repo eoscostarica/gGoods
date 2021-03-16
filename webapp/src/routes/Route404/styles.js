@@ -1,4 +1,4 @@
-export default (theme) => ({
+export default theme => ({
   wrapper: {
     padding: theme.spacing(6),
     textAlign: 'center',

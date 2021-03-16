@@ -1,5 +1,11 @@
 {
   "editor.tabSize": 2,
   "editor.renderWhitespace": "all",
-  "editor.formatOnSave": true
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "prettier.prettierPath": "./webapp/.yarn/sdks/prettier/index.js"
 }

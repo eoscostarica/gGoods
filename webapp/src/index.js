@@ -1,15 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { UALProvider, withUAL } from 'ual-reactjs-renderer'
-import { ApolloProvider } from '@apollo/react-hooks'
+import { UALProvider, withUAL } from '@eoscostarica/ual-reactjs-renderer'
+import { ApolloProvider } from '@apollo/client'
 
 import App from './App'
 import { client } from './graphql'
 import * as serviceWorker from './serviceWorker'
-import './i18n'
 import { ualConfig } from './config'
+import { SharedStateProvider } from './context/state.context'
 
-const AppWithUAL = withUAL(App)
+const SharedStateProviderWithUAL = withUAL(SharedStateProvider)
 
 render(
   <UALProvider
@@ -17,9 +17,11 @@ render(
     authenticators={ualConfig.authenticators}
     appName={ualConfig.appName}
   >
-    <ApolloProvider client={client}>
-      <AppWithUAL />
-    </ApolloProvider>
+    <SharedStateProviderWithUAL>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </SharedStateProviderWithUAL>
   </UALProvider>,
   document.getElementById('root')
 )

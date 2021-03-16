@@ -1,15 +1,49 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 const SharedStateContext = React.createContext()
 
+const initialValue = {
+  useDarkMode: false,
+  user: null
+}
+
 const sharedStateReducer = (state, action) => {
   switch (action.type) {
-    case 'update': {
+    case 'ual':
+      return {
+        ...state,
+        user: action.ual?.activeUser
+      }
+
+    case 'set': {
       return {
         ...state,
         ...action.payload
       }
     }
+
+    case 'showMessage':
+      return {
+        ...state,
+        message: action.payload
+      }
+
+    case 'hideMessage':
+      return {
+        ...state,
+        message: null
+      }
+
+    case 'login':
+      state.ual.showModal()
+
+      return state
+
+    case 'logout':
+      state.ual.logout()
+
+      return state
 
     default: {
       throw new Error(`Unsupported action type: ${action.type}`)
@@ -17,13 +51,27 @@ const sharedStateReducer = (state, action) => {
   }
 }
 
-const initialValue = {}
-
-export const SharedStateProvider = ({ ...props }) => {
-  const [state, dispatch] = React.useReducer(sharedStateReducer, initialValue)
+export const SharedStateProvider = ({ children, ual, ...props }) => {
+  const [state, dispatch] = React.useReducer(sharedStateReducer, {
+    ...initialValue,
+    ual
+  })
   const value = React.useMemo(() => [state, dispatch], [state])
 
-  return <SharedStateContext.Provider value={value} {...props} />
+  useEffect(() => {
+    dispatch({ type: 'ual', ual })
+  }, [ual])
+
+  return (
+    <SharedStateContext.Provider value={value} {...props}>
+      {children}
+    </SharedStateContext.Provider>
+  )
+}
+
+SharedStateProvider.propTypes = {
+  children: PropTypes.node,
+  ual: PropTypes.any
 }
 
 export const useSharedState = () => {
@@ -34,12 +82,11 @@ export const useSharedState = () => {
   }
 
   const [state, dispatch] = context
-  const update = (payload) => dispatch({ type: 'update', payload })
+  const setState = payload => dispatch({ type: 'set', payload })
+  const showMessage = payload => dispatch({ type: 'showMessage', payload })
+  const hideMessage = () => dispatch({ type: 'hideMessage' })
+  const login = () => dispatch({ type: 'login' })
+  const logout = () => dispatch({ type: 'logout' })
 
-  return [
-    state,
-    {
-      update
-    }
-  ]
+  return [state, { setState, showMessage, hideMessage, login, logout }]
 }
