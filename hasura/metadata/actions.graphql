@@ -1,2 +1,14 @@
+type Mutation {
+  create_template (
+    category: String!
+    name: String!
+  ): CreateTemplateOutput
+}
 
+
+
+
+type CreateTemplateOutput {
+  trxid : String!
+}
 

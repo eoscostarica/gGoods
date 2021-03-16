@@ -3,12 +3,18 @@
     "login": "Login",
     "signOut": "Logout",
     "lightMode": "Light Mode",
-    "darkMode": "Dark Mode"
+    "darkMode": "Dark Mode",
+    "category": "Category",
+    "name": "Name",
+    "confirm": "Confirm"
   },
   "routes": {
-    "/>title": "EOSIO Boilerplate",
+    "/>title": "GGOODS",
     "/>sidebar": "Home",
     "/>heading": "Welcome",
+    "/create-template>title": "Create Template | GGOODS",
+    "/create-template>sidebar": "Create Template",
+    "/create-template>heading": "New Template",
     "/about>title": "About | EOSIO Boilerplate",
     "/about>sidebar": "About",
     "/about>heading": "About",
