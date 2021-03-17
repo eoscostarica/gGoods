@@ -1,18 +1,15 @@
 import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
-const Home = () => {
-  const { t } = useTranslation('homeRoute')
-
+const Register = () => {
   return (
     <Box>
-      <Typography>{t('welcomeMessage')}</Typography>
+      <Typography>Registro</Typography>
     </Box>
   )
 }
 
-Home.propTypes = {}
+Register.propTypes = {}
 
-export default memo(Home)
+export default memo(Register)

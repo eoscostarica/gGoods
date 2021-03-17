@@ -28,7 +28,6 @@ const createAccount = async (accountName) => {
       eosConfig.baseAccount,
       eosConfig.baseAccountPassword
     )
-    console.log('TEST_2')
   } catch (error) { }
 
   const keys = await walletUtil.listKeys(

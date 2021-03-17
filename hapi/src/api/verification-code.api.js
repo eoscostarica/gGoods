@@ -11,7 +11,7 @@ const generate = async () => {
       verification_code
     )
 
-    if (data.preregister_lifebank.length === 0 && data.user.length === 0)
+    if (data.preregister_organization.length === 0 && data.user.length === 0)
       isOK = true
   }
 

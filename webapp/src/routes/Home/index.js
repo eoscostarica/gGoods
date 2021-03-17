@@ -8,7 +8,7 @@ import { CREATE_ACCOUNT_MUTATION } from '../../gql'
 
 const Home = () => {
   const { t } = useTranslation('homeRoute')
-  const [role, setRole] = useState('guest')
+  const [role, setRole] = useState('donor')
 
   const [user, setUser] = useReducer(
     (user, newUser) => ({ ...user, ...newUser }),
@@ -29,7 +29,7 @@ const Home = () => {
     createAccount({
       variables: {
         role,
-        email: 'leister@gmail.com',
+        email: 'leisterManquiticoForEver@gmail.com',
         emailContent: {
           subject: 'a',
           title: 'a',

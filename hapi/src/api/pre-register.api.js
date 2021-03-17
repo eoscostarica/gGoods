@@ -42,7 +42,7 @@ const SET_EMAIL_VERIFIED = `
 
 const VALIDATION_VERIFICATION_CODE = `
   query($verification_code: String!) {
-    preregister_lifebank(where: { verification_code: { _eq: $verification_code } }) {
+    preregister_organization(where: { verification_code: { _eq: $verification_code } }) {
       verification_code
     }
     user(where: { verification_code: { _eq: $verification_code } }) {
