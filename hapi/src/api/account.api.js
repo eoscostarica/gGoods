@@ -2,9 +2,6 @@ const { eosConfig } = require('../config')
 const {
   eosUtils,
   jwtUtils,
-  consent2lifeUtils,
-  lifebankcodeUtils,
-  lifebankcoinUtils,
   hasuraUtils
 } = require('../utils')
 

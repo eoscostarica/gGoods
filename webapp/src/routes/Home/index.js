@@ -37,7 +37,7 @@ const Home = () => {
           button: 'a'
         },
         name: 'leister',
-        secret: ''
+        secret: 'leister'
       }
     })
   }

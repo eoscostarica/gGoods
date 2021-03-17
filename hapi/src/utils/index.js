@@ -1,7 +1,7 @@
 module.exports = {
-  axiosUtil: require('./axios.util'),
-  eosUtil: require('./eos.util'),
-  hasuraUtil: require('./hasura.util'),
-  walletUtil: require('./wallet.util'),
+  axiosUtils: require('./axios.util'),
+  eosUtils: require('./eos.util'),
+  hasuraUtils: require('./hasura.util'),
+  walletUtils: require('./wallet.util'),
   jwtUtils: require('./jwt'),
 }
