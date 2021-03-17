@@ -264,6 +264,7 @@ ACTION dgoods::transferft(const name& from,
 ACTION dgoods::listsalenft(const name& seller,
                            const vector<uint64_t>& dgood_ids,
                            const uint32_t sell_by_days,
+                           const bool is_donable,
                            const asset& net_sale_amount) {
     require_auth( seller );
 
@@ -275,8 +276,8 @@ ACTION dgoods::listsalenft(const name& seller,
     }
 
     check (dgood_ids.size() <= 20, "max batch size of 20");
-    check( net_sale_amount.amount > .02 * pow(10, net_sale_amount.symbol.precision()), "minimum price of at least 0.02 EOS");
-    check( net_sale_amount.symbol == symbol( symbol_code("EOS"), 4), "only accept EOS for sale" );
+    check( net_sale_amount.amount > .02 * pow(10, net_sale_amount.symbol.precision()), "minimum price of at least 0.02 USD");
+    check( net_sale_amount.symbol == symbol( symbol_code("USD"), 2), "only accept USD for sale" );
 
     dgood_index dgood_table( get_self(), get_self().value );
     for ( auto const& dgood_id: dgood_ids ) {
@@ -302,12 +303,13 @@ ACTION dgoods::listsalenft(const name& seller,
     ask_index ask_table( get_self(), get_self().value );
     // add batch to table of asks
     // set id to the first dgood being listed, if only one being listed, simplifies life
-    ask_table.emplace( seller, [&]( auto& a ) {
-        a.batch_id = dgood_ids[0];
-        a.dgood_ids = dgood_ids;
-        a.seller = seller;
-        a.amount = net_sale_amount;
-        a.expiration = expiration;
+    ask_table.emplace( seller, [&]( auto& row ) {
+        row.batch_id = dgood_ids[0];
+        row.dgood_ids = dgood_ids;
+        row.seller = seller;
+        row.amount = net_sale_amount;
+        row.is_donable = is_donable;
+        row.expiration = expiration;
     });
 }
 
@@ -535,7 +537,7 @@ void dgoods::_mint(const name& to,
                    const asset& issued_supply,
                    const string& relative_uri) {
 
-    dgood_index dgood_table( get_self(), get_self().value);
+    dgood_index dgood_table(get_self(), get_self().value);
     auto dgood_id = _nextdgoodid();
     if ( relative_uri.empty() ) {
         dgood_table.emplace( issuer, [&]( auto& dg) {
