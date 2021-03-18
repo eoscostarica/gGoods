@@ -29,7 +29,7 @@ const Home = () => {
     createAccount({
       variables: {
         role,
-        email: 'leisterManquiticoForEver@gmail.com',
+        email: 'leisterManquiticoFoEve@gmail.com',
         emailContent: {
           subject: 'a',
           title: 'a',
