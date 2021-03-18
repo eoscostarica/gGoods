@@ -1,6 +1,13 @@
-actions: []
+actions:
+- name: payment_transaction_complete
+  definition:
+    kind: synchronous
+    handler: http://hapi:9090/api/payment-transaction-complete
+  permissions:
+  - role: guest
 custom_types:
   enums: []
   input_objects: []
-  objects: []
+  objects:
+  - name: payment_transaction_complete_output
   scalars: []

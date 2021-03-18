@@ -15,6 +15,7 @@ const Home = lazy(() => import('./Home'))
 const About = lazy(() => import('./About'))
 const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
+const Paypal = lazy(() => import('./Paypal'))
 
 const routes = [
   {
@@ -22,6 +23,13 @@ const routes = [
     icon: <GridIcon />,
     component: Home,
     path: '/',
+    exact: true
+  },
+  {
+    name: 'PayPal',
+    icon: <GridIcon />,
+    component: Paypal,
+    path: '/paypalIntegration',
     exact: true
   },
   {
