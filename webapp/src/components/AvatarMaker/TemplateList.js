@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
 import Box from '@material-ui/core/Box'
 import PropTypes from 'prop-types'
