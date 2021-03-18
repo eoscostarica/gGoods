@@ -16,7 +16,7 @@ const {
   }
 } = require('../config')
 
-const LIFE_BANK_CODE = eosConfig.lifebankCodeContractName
+const ORGANIZATION_CODE = eosConfig.lifebankCodeContractName
 
 const preRegister = async ({
   email,
@@ -99,9 +99,9 @@ const editProfile = async (account, profile) => {
 const signup = async (account, profile) => {
   await accountApi.grantConsent(account)
 
-  const password = await vaultApi.getPassword(LIFE_BANK_CODE)
+  const password = await vaultApi.getPassword(ORGANIZATION_CODE)
   const addLifebankTransaction = await lifebankcodeUtils.addLifebank(
-    LIFE_BANK_CODE,
+    ORGANIZATION_CODE,
     password,
     profile
   )

@@ -10,9 +10,9 @@ export const CREATE_ACCOUNT_MUTATION = gql`
   }
 `
 
-export const CREATE_ACCOUNT_LIFEBANK_MUTATION = gql`
+export const CREATE_ACCOUNT_ORGANIZATION_MUTATION = gql`
   mutation($email: String!, $emailContent: jsonb!, $name: String!, $secret: String!, $verification_code: String!) {
-    create_account_lifebank (email: $email, emailContent: $emailContent, name: $name, secret: $secret, verification_code: $verification_code){
+    create_account_organization (email: $email, emailContent: $emailContent, name: $name, secret: $secret, verification_code: $verification_code) {
       account
       token
       transaction_id

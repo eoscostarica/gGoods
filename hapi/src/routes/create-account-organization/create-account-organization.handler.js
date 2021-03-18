@@ -5,7 +5,7 @@ const { accountApi } = require('../../api')
 
 module.exports = async ({ payload: { input } }) => {
   try {
-    const response = await accountApi.createLifebank(input)
+    const response = await accountApi.createOrganization(input)
 
     return response
   } catch (error) {

@@ -17,6 +17,8 @@ actions:
   definition:
     kind: synchronous
     handler: http://hapi:9090/api/create-account-organization
+  permissions:
+  - role: guest
 - name: create_pre_register_organization
   definition:
     kind: synchronous

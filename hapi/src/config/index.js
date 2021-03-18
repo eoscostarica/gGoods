@@ -3,4 +3,5 @@ module.exports = {
   hasuraConfig: require('./hasura.config'),
   serverConfig: require('./server.config'),
   jwtConfig: require('./jwt.config'),
+  constants: require('./constants')
 }
