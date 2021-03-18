@@ -11,7 +11,8 @@ module.exports = {
       payload: Joi.object({
         input: Joi.object({
           category: Joi.string().required(),
-          name: Joi.string().required()
+          name: Joi.string().required(),
+          metadata: Joi.object().required()
         }).required()
       }).options({ stripUnknown: true })
     }
