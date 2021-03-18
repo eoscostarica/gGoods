@@ -4,4 +4,5 @@ module.exports = {
   hasuraUtils: require('./hasura.util'),
   walletUtils: require('./wallet.util'),
   jwtUtils: require('./jwt'),
+  mailUtils: require('./mail')
 }

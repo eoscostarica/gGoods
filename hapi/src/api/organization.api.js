@@ -8,7 +8,7 @@ const vaultApi = require('./vault.api')
 const locationApi = require('./location.api')
 const preregisterApi = require('./pre-register.api')
 const verificationCodeApi = require('./verification-code.api')
-const mailApi = require('../utils/mail')
+const mailApi = require('../utils')
 
 const {
   constants: {
@@ -16,17 +16,12 @@ const {
   }
 } = require('../config')
 
-const LIFE_BANK_CODE = eosConfig.lifebankCodeContractName
+const ORGANIZATION_CODE = eosConfig.lifebankCodeContractName
 
 const preRegister = async ({
   email,
-  emailContent,
   phone,
-  immunity_test,
-  schedule,
-  urgency_level,
   address,
-  coordinates,
   name,
   password,
   description,
@@ -34,24 +29,20 @@ const preRegister = async ({
 }) => {
   const { verification_code } = await verificationCodeApi.generate()
   let resultRegister = 'ok'
-
+  console.log('esta aqui')
   try {
-    await preregisterApi.insertLifebank({
+    await preregisterApi.insertOrganization({
       email,
       password,
       name,
       address,
-      schedule,
       phone,
       description,
-      urgency_level,
-      coordinates,
-      immunity_test,
       invitation_code,
       verification_code
     })
-
-    mailApi.sendVerificationCode(
+    console.log('PASA')
+    mailApi.mailUtils.sendVerificationCode(
       email,
       verification_code,
       emailContent.subject,
@@ -99,9 +90,9 @@ const editProfile = async (account, profile) => {
 const signup = async (account, profile) => {
   await accountApi.grantConsent(account)
 
-  const password = await vaultApi.getPassword(LIFE_BANK_CODE)
+  const password = await vaultApi.getPassword(ORGANIZATION_CODE)
   const addLifebankTransaction = await lifebankcodeUtils.addLifebank(
-    LIFE_BANK_CODE,
+    ORGANIZATION_CODE,
     password,
     profile
   )

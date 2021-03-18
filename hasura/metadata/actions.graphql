@@ -35,12 +35,8 @@ type Mutation {
     password: String!
     name: String!
     address: String!
-    schedule: String!
     phone: String!
     description: String!
-    urgency_level: Int!
-    coordinates: String!
-    immunity_test: Boolean!
     invitation_code: String!
   ): create_pre_register_organization_output
 }
