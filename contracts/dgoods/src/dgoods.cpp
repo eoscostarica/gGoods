@@ -264,6 +264,7 @@ ACTION dgoods::transferft(const name& from,
 ACTION dgoods::listsalenft(const name& seller,
                            const vector<uint64_t>& dgood_ids,
                            const uint32_t sell_by_days,
+                           const bool is_donable,
                            const asset& net_sale_amount) {
     require_auth( seller );
 
@@ -275,8 +276,8 @@ ACTION dgoods::listsalenft(const name& seller,
     }
 
     check (dgood_ids.size() <= 20, "max batch size of 20");
-    check( net_sale_amount.amount > .02 * pow(10, net_sale_amount.symbol.precision()), "minimum price of at least 0.02 EOS");
-    check( net_sale_amount.symbol == symbol( symbol_code("EOS"), 4), "only accept EOS for sale" );
+    check( net_sale_amount.amount > .02 * pow(10, net_sale_amount.symbol.precision()), "minimum price of at least 0.02 USD");
+    check( net_sale_amount.symbol == symbol( symbol_code("USD"), 2), "only accept USD for sale" );
 
     dgood_index dgood_table( get_self(), get_self().value );
     for ( auto const& dgood_id: dgood_ids ) {
@@ -302,12 +303,13 @@ ACTION dgoods::listsalenft(const name& seller,
     ask_index ask_table( get_self(), get_self().value );
     // add batch to table of asks
     // set id to the first dgood being listed, if only one being listed, simplifies life
-    ask_table.emplace( seller, [&]( auto& a ) {
-        a.batch_id = dgood_ids[0];
-        a.dgood_ids = dgood_ids;
-        a.seller = seller;
-        a.amount = net_sale_amount;
-        a.expiration = expiration;
+    ask_table.emplace( seller, [&]( auto& row ) {
+        row.batch_id = dgood_ids[0];
+        row.dgood_ids = dgood_ids;
+        row.seller = seller;
+        row.amount = net_sale_amount;
+        row.is_donable = is_donable;
+        row.expiration = expiration;
     });
 }
 
@@ -327,6 +329,42 @@ ACTION dgoods::closesalenft(const name& seller,
         lock_table.erase( locked_nft );
     }
     ask_table.erase( ask );
+}
+
+ACTION dgoods::confirmsale(const name& newowner, 
+                        const name& owner, 
+                        const asset& quantity,
+                        const uint64_t& batch_id) {
+
+    require_auth(has_auth(owner) ? owner : get_self());
+    
+    ask_index ask_table(get_self(), get_self().value);
+
+    check( quantity.symbol == symbol( symbol_code("USD"), 2), "Buy only with USD" );
+
+    const auto& ask = ask_table.get(batch_id, "cannot find listing");
+    if (ask.is_donable == true)
+        check (ask.amount.amount <= quantity.amount, "Minimun acceptable amount is " + std::to_string(ask.amount.amount));
+    else
+        check (ask.amount.amount == quantity.amount, "Please send the correct amount");
+
+    check (ask.expiration == time_point_sec(0) || ask.expiration > time_point_sec(current_time_point()), "sale has expired");
+
+    // nft(s) bought, change owner to buyer regardless of transferable
+    _changeowner(ask.seller, newowner, ask.dgood_ids, "bought by: " + newowner.to_string(), false);
+
+    // remove locks, remove from ask table
+    lock_index lock_table(get_self(), get_self().value);
+
+    for (auto const& dgood_id: ask.dgood_ids) {
+        const auto& locked_nft = lock_table.get(dgood_id, "dgood not found in lock table");
+        lock_table.erase(locked_nft);
+    }
+
+    SEND_INLINE_ACTION(*this, logsale, { { get_self(), "active"_n } }, { ask.dgood_ids, ask.seller, owner, newowner });
+
+    // remove sale listing
+    ask_table.erase(ask);
 }
 
 void dgoods::buynft(const name& from,
@@ -499,7 +537,7 @@ void dgoods::_mint(const name& to,
                    const asset& issued_supply,
                    const string& relative_uri) {
 
-    dgood_index dgood_table( get_self(), get_self().value);
+    dgood_index dgood_table(get_self(), get_self().value);
     auto dgood_id = _nextdgoodid();
     if ( relative_uri.empty() ) {
         dgood_table.emplace( issuer, [&]( auto& dg) {
@@ -575,7 +613,7 @@ extern "C" {
 
         if ( code == self ) {
             switch( action ) {
-                EOSIO_DISPATCH_HELPER( dgoods, (setconfig)(create)(issue)(burnnft)(burnft)(transfernft)(transferft)(listsalenft)(closesalenft)(logcall)(freezemaxsup) )
+                EOSIO_DISPATCH_HELPER( dgoods, (setconfig)(create)(issue)(burnnft)(burnft)(transfernft)(transferft)(listsalenft)(closesalenft)(confirmsale)(logcall)(freezemaxsup) )
             }
         }
 

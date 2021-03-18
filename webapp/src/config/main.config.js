@@ -1,4 +1,5 @@
-export const version = process.env.REACT_APP_VERSION
+export const appVersion =
+  process.env.REACT_APP_VERSION.replace('$npm_package_version', '') || 'v1.0'
 export const name = process.env.REACT_APP_NAME
 export const title = process.env.REACT_APP_TITLE
 export const logo = process.env.REACT_APP_LOGO

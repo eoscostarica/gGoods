@@ -1,102 +1,53 @@
-export default (theme, darken) => ({
-  drawer: {
-    borderRight: 0,
-    '> div': {
-      borderRight: 0
+export default theme => ({
+  brand: {
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    justifyContent: 'center',
+    padding: theme.spacing(3),
+    '& img': {
+      width: 'auto',
+      height: '125px'
+    },
+    '& img:hover': {
+      cursor: 'pointer'
     }
   },
   scrollbar: {
     backgroundColor: theme.palette.background.paper
   },
-  list: {
-    backgroundColor: theme.palette.background.paper
-  },
-  listItem: {
-    padding: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'start',
-    justifyContent: 'center'
-  },
-  brand: {
-    fontSize: theme.typography.h5.fontSize,
-    fontWeight: theme.typography.fontWeightMedium,
-    backgroundColor: theme.palette.background.paper,
-    fontFamily: theme.typography.fontFamily,
-    minHeight: 56,
-    padding: theme.spacing(2),
-    cursor: 'default',
-    [theme.breakpoints.up('sm')]: {
-      minHeight: 64
-    }
-  },
-  sidebarSection: {
-    color: theme.palette.getContrastText(theme.palette.background.paper),
-    padding: theme.spacing(2, 2, 1, 3),
-    display: 'block',
-    fontWeight: '600'
-  },
-  category: {
-    padding: theme.spacing(2, 3, 2, 3),
-    display: 'flex',
-    flexDirection: 'row',
-    color: theme.palette.getContrastText(theme.palette.background.paper),
-    '& svg': {
-      fontSize: 20,
-      width: 20,
-      height: 20
-    },
-    '& svg, .MuiListItemText-root': {
-      opacity: 0.5
-    },
-    '&:hover': {
-      backgroundColor: darken(0.05, theme.palette.background.paper),
-      'svg, .MuiListItemText-root': {
-        opacity: 1
-      }
-    }
-  },
-  categoryText: {
-    margin: 0,
-    fontSize: theme.typography.body1.fontSize,
-    fontWeight: theme.typography.fontWeightRegular,
-    padding: theme.spacing(0, 1)
-  },
-  categoryIconLess: {
-    color: theme.palette.getContrastText(theme.palette.background.paper)
-  },
-  categoryIconMore: {
-    color: theme.palette.getContrastText(theme.palette.background.paper)
-  },
-  link: {
-    padding: theme.spacing(2, 0, 2, 5)
-  },
   badge: {
-    fontSize: 11,
     fontWeight: theme.typography.fontWeightBold,
-    height: 20,
+    height: '20px',
     backgroundColor: theme.palette.primary.main,
-    'span.MuiChip-label, span.MuiChip-label:hover': {
+    '& span.MuiChip-label, & span.MuiChip-label:hover': {
       cursor: 'pointer',
       color: theme.palette.primary.contrastText,
       padding: theme.spacing(0, 1)
     }
   },
-  sidebarFooter: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(2, 2),
-    minHeight: 61,
+  listItem: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  sidebarFooterText: {
-    color: theme.palette.getContrastText(theme.palette.background.paper)
-  },
-  sidebarFooterSubText: {
-    color: theme.palette.primary.contrastText,
-    fontSize: '0.725rem',
-    display: 'block',
-    padding: 1
+    flexDirection: 'column',
+    '& p': {
+      fonWeight: theme.typography.fontWeightBold,
+      paddingLeft: theme.spacing(2),
+      cursor: 'default'
+    },
+    '& .MuiBox-root': {
+      width: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    '& .MuiCollapse-container': {
+      width: '100%',
+      paddingLeft: theme.spacing(2)
+    },
+    '& .MuiListItemText-root .MuiTypography-root': {
+      fontSize: theme.typography.subtitle2.fontSize
+    },
+    '& .active': {
+      backgroundColor: theme.palette.action.selected
+    }
   }
 })

@@ -1,9 +1,13 @@
 .env*
 !.env.example
-db_data
-wallet_data
 node_modules
-modules 
 tmp/
-node_modules
-build/
+
+# yarn
+.yarn/*
+*/.yarn/*
+!.yarn/releases
+!*/.yarn/releases
+!.yarn/plugins
+!*/.yarn/plugins
+.pnp.*

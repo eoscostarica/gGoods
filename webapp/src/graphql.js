@@ -1,58 +1,29 @@
-import { split } from 'apollo-link'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { setContext } from 'apollo-link-context'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { WebSocketLink } from 'apollo-link-ws'
-import { getMainDefinition } from 'apollo-utilities'
+import {
+  split,
+  HttpLink,
+  ApolloLink,
+  ApolloClient,
+  InMemoryCache,
+  from
+} from '@apollo/client'
+import { getMainDefinition } from '@apollo/client/utilities'
+import { WebSocketLink } from '@apollo/client/link/ws'
 
 import { graphqlConfig } from './config'
 
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
   uri: graphqlConfig.url
-})
-
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('token')
-
-  if (!token) {
-    return {
-      headers
-    }
-  }
-
-  return {
-    headers: {
-      ...headers,
-      Authorization: `Bearer ${token}`
-    }
-  }
 })
 
 const wsLink = new WebSocketLink({
   uri: graphqlConfig.url.replace(/^http?/, 'ws').replace(/^https?/, 'wss'),
   options: {
     lazy: true,
-    reconnect: true,
-    connectionParams: async () => {
-      const token = localStorage.getItem('token')
-
-      if (!token) {
-        return {
-          headers: {}
-        }
-      }
-
-      return {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    }
+    reconnect: true
   }
 })
 
-const link = split(
+const splitLink = split(
   ({ query }) => {
     const definition = getMainDefinition(query)
 
@@ -62,10 +33,23 @@ const link = split(
     )
   },
   wsLink,
-  authLink.concat(httpLink)
+  httpLink
 )
 
+const authMiddleware = new ApolloLink((operation, forward) => {
+  operation.setContext(({ headers = {} }) => ({
+    headers: {
+      ...headers,
+      Authorization: localStorage.getItem('token')
+        ? `Bearer ${localStorage.getItem('token')}`
+        : 'pasa'
+    }
+  }))
+
+  return forward(operation)
+})
+
 export const client = new ApolloClient({
-  link,
+  link: from([authMiddleware, splitLink]),
   cache: new InMemoryCache()
 })

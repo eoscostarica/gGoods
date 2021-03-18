@@ -1,8 +1,9 @@
 {
   "common": {
     "login": "Login",
-    "logout": "Logout",
-    "footerText": "An open source project by"
+    "signOut": "Logout",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode"
   },
   "routes": {
     "/>title": "EOSIO Boilerplate",
