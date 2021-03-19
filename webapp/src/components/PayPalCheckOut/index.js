@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
 import { PayPalButton } from 'react-paypal-button-v2'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 
 import { COMPLETE_PAYMENT_TRANSACTION } from '../../gql'
 
@@ -68,7 +68,7 @@ const PayPalCheckOut = ({
     })
   }
 
-  const onError = (err) => {
+  const onError = err => {
     console.log('error')
     console.log(err)
   }

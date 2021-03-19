@@ -5,7 +5,7 @@ import Divider from '@material-ui/core/Divider'
 import PayPalCheckOut from '../../components/PayPalCheckOut'
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   textField: {
     width: '100%',
     marginBottom: '5px',
@@ -55,7 +55,7 @@ const Paypal = () => {
         label="Description"
         variant="outlined"
         value={requestData.description}
-        onChange={(event) =>
+        onChange={event =>
           handleRequestChange('description', event.target.value)
         }
       />
@@ -64,7 +64,7 @@ const Paypal = () => {
         label="Amount"
         variant="outlined"
         value={requestData.amount}
-        onChange={(event) => handleRequestChange('amount', event.target.value)}
+        onChange={event => handleRequestChange('amount', event.target.value)}
       />
       <Divider className={classes.divider} />
       <TextField
@@ -72,7 +72,7 @@ const Paypal = () => {
         label="Merchant id"
         variant="outlined"
         value={requestData.merchantId}
-        onChange={(event) =>
+        onChange={event =>
           handleRequestChange('merchantId', event.target.value)
         }
       />
@@ -81,7 +81,7 @@ const Paypal = () => {
         label="Payee email"
         variant="outlined"
         value={requestData.payeeEmail}
-        onChange={(event) =>
+        onChange={event =>
           handleRequestChange('payeeEmail', event.target.value)
         }
       />
