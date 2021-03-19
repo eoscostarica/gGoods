@@ -17,8 +17,8 @@ const useStyles = makeStyles(styles)
 const Carousel = ({ items = [] }) => {
   const classes = useStyles()
   const theme = useTheme()
-  const [activeItems, setActiveItems] = useState([])
-  const [active, setActive] = useState(0)
+  const [activeItems, setActiveItems] = useState()
+  const [active, setActive] = useState()
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
 
   const generateItems = (activeValue = 0) => {
@@ -27,7 +27,6 @@ const Carousel = ({ items = [] }) => {
     const leftValue = activeValue - (isMobile ? 1 : 2)
     const rightValue = activeValue + (isMobile ? 2 : 3)
 
-    // for (let i = activeValue - 2; i < activeValue + 3; i++) {
     for (let i = leftValue; i < rightValue; i++) {
       let index = i
 
@@ -66,8 +65,6 @@ const Carousel = ({ items = [] }) => {
     generateItems(active)
   }, [isMobile])
 
-  // console.log({ isMobile })
-
   return (
     <Box className={classes.carousel}>
       <IconButton
@@ -78,7 +75,7 @@ const Carousel = ({ items = [] }) => {
       </IconButton>
 
       <Box className={classes.box}>
-        {activeItems.map(({ id, level }) => (
+        {(activeItems || []).map(({ id, level }) => (
           <Item id={id} level={level} key={id} />
         ))}
       </Box>

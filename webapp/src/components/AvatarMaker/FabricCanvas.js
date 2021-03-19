@@ -15,7 +15,7 @@ const useStyles = makeStyles(styles)
 const FabricCanvas = ({ activeProperty }) => {
   const theme = useTheme()
   const classes = useStyles()
-  const [canvas, setCanvas] = useState('')
+  const [canvas, setCanvas] = useState()
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
 
   const updateCanvasforImage = next => {

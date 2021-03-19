@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
 import { fabric } from 'fabric'
@@ -48,7 +48,7 @@ TabPanel.propTypes = {
 const AvatarMaker = () => {
   const classes = useStyles()
   const [activeProperty, setActiveProperty] = useState(null)
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState()
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -65,6 +65,10 @@ const AvatarMaker = () => {
     setActiveProperty(imgInstance)
   }
 
+  useEffect(() => {
+    setValue(0)
+  }, [])
+
   return (
     <Box className={classes.mainBox}>
       <Grid>
@@ -72,7 +76,7 @@ const AvatarMaker = () => {
       </Grid>
       <Grid>
         <Tabs
-          value={value}
+          value={value || 0}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
