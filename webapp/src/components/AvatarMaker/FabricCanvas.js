@@ -54,6 +54,10 @@ const FabricCanvas = ({ activeProperty }) => {
       width: isMobile ? 310 : 400
     })
 
+  const test = a => b => {
+    console.log({ a, b: b.target.value })
+  }
+
   useEffect(() => {
     setCanvas(initCanvas(isMobile))
   }, [isMobile])
@@ -72,6 +76,7 @@ const FabricCanvas = ({ activeProperty }) => {
             variant="outlined"
             placeholder="Name your animal"
             className={classes.textField}
+            onChange={test('holis')}
           />
           <Button className={classes.btnPublish} onClick={saveToCanvas}>
             PUBLISH

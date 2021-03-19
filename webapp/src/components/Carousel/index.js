@@ -65,6 +65,11 @@ const Carousel = ({ items = [] }) => {
     generateItems(active)
   }, [isMobile])
 
+  useEffect(() => {
+    generateItems(active)
+    setActive(0)
+  }, [])
+
   return (
     <Box className={classes.carousel}>
       <IconButton
