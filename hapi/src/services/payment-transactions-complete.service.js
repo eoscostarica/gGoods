@@ -3,8 +3,8 @@ const { BAD_REQUEST } = require('http-status-codes')
 
 const newTransaction = async payload => {
   try {
-    // TODO: Transfer NTF 
-    console.log(payload)
+    // TODO: do something with payment
+    //getTransactionData(payload.orderId)
     return {
       return_status: true
     }
@@ -13,6 +13,18 @@ const newTransaction = async payload => {
       statusCode: BAD_REQUEST
     })
   }
+}
+
+const getTransactionData = async orderID => {
+  fetch(`https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderID}`, {
+      method: 'get',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer A21AALvZsl4rzNhtHdNKyYKkJn4oA2hDPT1XQzl16Gw7WDsRuxcLb92iGh28y0vT7p_tYgIC4hpCUUs7wh_nEpdOsqiOUYzCQ'
+    },
+  })
+  .then(res => res.json())
+  .then(json => console.log(json));
 }
 
 module.exports = {

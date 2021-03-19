@@ -5,6 +5,7 @@ import { PayPalButton } from 'react-paypal-button-v2'
 import { useMutation } from '@apollo/client'
 
 import { COMPLETE_PAYMENT_TRANSACTION } from '../../gql'
+import { paypalClientId } from '../../config/paypal.config'
 
 const PayPalCheckOut = ({
   purchaseDescription,
@@ -76,9 +77,9 @@ const PayPalCheckOut = ({
   return (
     <Box>
       <PayPalButton
-        debug={true}
         options={{
-          clientId: 'sb'
+          clientId: paypalClientId,
+          debug: true
         }}
         createOrder={(data, actions) => {
           console.log(orderData)
