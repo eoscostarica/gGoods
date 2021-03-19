@@ -4,7 +4,8 @@ const { BAD_REQUEST } = require('http-status-codes')
 const newTransaction = async payload => {
   try {
     // TODO: do something with payment
-    //getTransactionData(payload.orderId)
+    getTransactionData(payload.orderId)
+    
     return {
       return_status: true
     }

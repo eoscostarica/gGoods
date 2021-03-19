@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client'
 
 import { COMPLETE_PAYMENT_TRANSACTION } from '../../gql'
 import { paypalClientId } from '../../config/paypal.config'
+import { useSharedState } from '../../context/state.context'
 
 const PayPalCheckOut = ({
   purchaseDescription,
@@ -14,6 +15,7 @@ const PayPalCheckOut = ({
   merchantId,
   payeeEmail
 }) => {
+  const [, { showMessage }] = useSharedState()
   const orderData = {
     intent: 'CAPTURE',
     purchase_units: [
@@ -55,13 +57,11 @@ const PayPalCheckOut = ({
 
   useEffect(() => {
     if (completePaymentTransactionResult) {
-      console.log(completePaymentTransactionResult)
+      // do something when action complete
     }
   }, [completePaymentTransactionResult])
 
   const onSuccesPay = (details, data) => {
-    console.log(details)
-    console.log(data)
     completePaymentTransaction({
       variables: {
         orderId: data.orderID
@@ -70,8 +70,7 @@ const PayPalCheckOut = ({
   }
 
   const onError = err => {
-    console.log('error')
-    console.log(err)
+    showMessage({ type: 'error', content: err })
   }
 
   return (
