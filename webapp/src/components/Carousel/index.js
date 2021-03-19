@@ -48,10 +48,10 @@ const Carousel = ({ items = [] }) => {
   }
 
   const moveLeft = () => {
-    const newActive = active - 1
+    const activeValie = active - 1 < 0 ? items.length - 1 : active - 1
 
-    generateItems(newActive < 0 ? items.length - 1 : newActive)
-    setActive(newActive < 0 ? items.length - 1 : newActive)
+    generateItems(activeValie)
+    setActive(activeValie)
   }
 
   const moveRight = () => {
@@ -74,7 +74,7 @@ const Carousel = ({ items = [] }) => {
     <Box className={classes.carousel}>
       <IconButton
         className={clsx(classes.arrow, classes.leftArrow)}
-        onClick={() => moveLeft()}
+        onClick={moveLeft}
       >
         <ArrowBackIosIcon />
       </IconButton>
@@ -85,7 +85,7 @@ const Carousel = ({ items = [] }) => {
         ))}
       </Box>
 
-      <IconButton className={classes.arrow} onClick={() => moveRight()}>
+      <IconButton className={classes.arrow} onClick={moveRight}>
         <ArrowForwardIosIcon />
       </IconButton>
     </Box>

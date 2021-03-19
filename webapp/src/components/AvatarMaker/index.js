@@ -12,7 +12,7 @@ import TemplateList from './TemplateList'
 import {
   decolist,
   bglist,
-  mounthlist,
+  mouthlist,
   baselist,
   eyeslist
 } from '../../images/templates/templatelist'
@@ -100,7 +100,7 @@ const AvatarMaker = () => {
             {...a11yProps(1)}
           />
           <Tab
-            label="Mounth"
+            label="Mouth"
             classes={{
               fullWidth: classes.borderTabs,
               selected: classes.tabSelected
@@ -143,8 +143,8 @@ const AvatarMaker = () => {
         </TabPanel>
         <TabPanel value={value} index={2}>
           <TemplateList
-            data={mounthlist}
-            propertyType="mounth"
+            data={mouthlist}
+            propertyType="mouth"
             zIndex={2}
             addToCanvas={addToCanvas}
           />

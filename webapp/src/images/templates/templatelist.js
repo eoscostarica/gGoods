@@ -18,15 +18,15 @@ import bgs6 from './bgs/6.png'
 import deco1 from './deco/1.png'
 import deco2 from './deco/2.png'
 
-import mounth1 from './mounth/1.png'
-import mounth2 from './mounth/2.png'
-import mounth3 from './mounth/3.png'
-import mounth4 from './mounth/4.png'
+import mouth1 from './mouth/1.png'
+import mouth2 from './mouth/2.png'
+import mouth3 from './mouth/3.png'
+import mouth4 from './mouth/4.png'
 
 const baselist = [base1, base2, base3, base4]
 const eyeslist = [eyes1, eyes2, eyes3, eyes4]
 const bglist = [bgs1, bgs2, bgs3, bgs4, bgs5, bgs6]
 const decolist = [deco1, deco2]
-const mounthlist = [mounth1, mounth2, mounth3, mounth4]
+const mouthlist = [mouth1, mouth2, mouth3, mouth4]
 
-export { decolist, bglist, mounthlist, baselist, eyeslist }
+export { decolist, bglist, mouthlist, baselist, eyeslist }

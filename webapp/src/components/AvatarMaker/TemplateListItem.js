@@ -17,7 +17,7 @@ const TemplateListItem = ({ addToCanvas, zIndex, propertyType, url }) => {
 
   return (
     <Box onClick={e => localAddToCanvas(e)} className={classes.itemBox}>
-      <img alt="" src={url} />
+      <img alt="avatar" src={url} />
     </Box>
   )
 }
