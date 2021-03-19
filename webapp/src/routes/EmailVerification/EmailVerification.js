@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import { Box } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 
-import { useUser } from '../../context/user.context'
+//import { useUser } from '../../context/user.context'
 import CustomRouterLink from '../../components/CustomRouterLink'
 import { VERIFY_EMAIL } from '../../gql'
 
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
 const EmailVerification = (props) => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
-  const [, { logout }] = useUser()
+  //const [, { logout }] = useUser()
   const [validate, setValidate] = useState(true)
   const { code } = useParams()
   const history = useHistory()
@@ -87,17 +87,22 @@ const EmailVerification = (props) => {
         code: code
       }
     })
+    console.log('sigue')
   }, [code])
 
   useEffect(() => {
-    if (verifyEmailResult) setValidate(verifyEmailResult.is_verified)
+    console.log('verifyEmailResult:', verifyEmailResult)
+    if (verifyEmailResult) {
+      setValidate(verifyEmailResult.is_verified)
+      console.log(verifyEmailResult)
+    }
 
   }, [verifyEmailResult])
 
   useEffect(() => {
     if (errorVerifyEmail) {
       if (errorVerifyEmail.message === 'GraphQL error: Could not verify JWT: JWTExpired') {
-        logout()
+        //logout()
         verifyEmail({
           variables: {
             code: code

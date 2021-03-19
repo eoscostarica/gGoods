@@ -28,7 +28,7 @@ export const CREATE_PRE_REGISTER_ORGANIZATION_MUTATION = gql`
 
 export const VALIDATION_EMAIL = gql`
   query($email: String!) {
-    preregister_lifebank(where: { email: { _eq: $email } }) {
+    preregister_organization(where: { email: { _eq: $email } }) {
       email
     }
     user(where: { email: { _eq: $email } }) {
@@ -37,21 +37,17 @@ export const VALIDATION_EMAIL = gql`
   }
 `
 
-export const UPDATE_STATE_LIFEBANK = gql`
+export const UPDATE_STATE_ORGANIZATION = gql`
   mutation ($verification_code: String!) {
-    update_preregister_lifebank( where: { verification_code: { _eq: $verification_code },_and: { state: { _eq: "pending" }}}, _set: { state: "approved" }) {
+    update_preregister_organization( where: { verification_code: { _eq: $verification_code },_and: { state: { _eq: "pending" }}}, _set: { state: "approved" }) {
       returning {
         address
-        coordinates
         description
         email
-        immunity_test
         invitation_code
         name
         password
         phone
-        schedule
-        urgency_level
         verification_code
       }
     }

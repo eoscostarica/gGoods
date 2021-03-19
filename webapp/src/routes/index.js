@@ -16,6 +16,8 @@ const Register = lazy(() => import('./Register'))
 const About = lazy(() => import('./About'))
 const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
+const EmailVerification = lazy(() => import('./EmailVerification'))
+const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 
 const routes = [
   {
@@ -66,6 +68,20 @@ const routes = [
     icon: <TelegramIcon />
   },
   {
+    name: 'email-verification',
+    component: EmailVerification,
+    path: '/verification/:code',
+    exact: true
+  },
+  {
+    name: 'register-organization',
+    component: RegisterOrganization,
+    path: '/register-organization/:code',
+    exact: true
+  },
+  {
+    name: 'notFound',
+    path: '/not-found',
     component: Page404
   }
 ]

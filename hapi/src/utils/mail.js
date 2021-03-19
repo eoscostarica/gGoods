@@ -337,22 +337,8 @@ const sendRegistrationRequest = async (to, lifebankData) => {
                       <p style="margin: 0;">${lifebankData.address}</p>
                       <h4>Description</h4>
                       <p style="margin: 0;">${lifebankData.description}</p>
-                      <h4>Location</h4>
-                      <a 
-                        href= "https://maps.google.com/maps?q=${lifebankData.coordinates.latitude},${lifebankData.coordinates.longitude}" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        >
-                        Go to
-                      </a>
                       <h4>Phone</h4>
                       <p style="margin: 0;">${lifebankData.phone}</p>
-                      <h4>Schedule</h4>
-                      <p style="margin: 0;">${lifebankData.schedule}</p>
-                      <h4>Urgency level</h4>
-                      <p style="margin: 0;">${lifebankData.urgency_level}</p>
-                      <h4>Immunity test</h4>
-                      <p style="margin: 0;">${lifebankData.immunity_test}</p>
                       <h4>Invitation code</h4>
                       <p style="margin: 0;">${lifebankData.invitation_code}</p>
                       </td>

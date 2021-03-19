@@ -5,6 +5,7 @@ const { accountApi } = require('../../api')
 
 module.exports = async ({ payload: { input } }) => {
   try {
+    console.log('esta aqui organization')
     const response = await accountApi.createOrganization(input)
 
     return response

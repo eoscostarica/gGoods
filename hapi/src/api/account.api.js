@@ -9,9 +9,9 @@ const historyApi = require('./history.api')
 // const notificationApi = require('./notification.api')
 const userApi = require('./user.api')
 const vaultApi = require('./vault.api')
-const preRegLifebank = require('./pre-register.api')
+const preRegister = require('./pre-register.api')
 const verificationCodeApi = require('./verification-code.api')
-// const mailApi = require('../utils/mail')
+ const mailApi = require('../utils/mail')
 const LIFEBANKCODE_CONTRACT = eosConfig.lifebankCodeContractName
 const MAIL_APPROVE_LIFEBANNK = eosConfig.mailApproveLifebank
 
@@ -116,12 +116,12 @@ const createOrganization = async ({
   await historyApi.insert(transaction)
 
   try {
-    // mailApi.sendConfirmMessage(
-    //   email,
-    //   emailContent.subject,
-    //   emailContent.title,
-    //   emailContent.message
-    // )
+     mailApi.sendConfirmMessage(
+       email,
+       emailContent.subject,
+       emailContent.title,
+       emailContent.message
+     )
   } catch (error) {
     console.log(error)
   }
@@ -203,7 +203,7 @@ const getLifebankData = async account => {
     const { email } = await userApi.getOne({
       account: { _eq: account }
     })
-    const data = await preRegLifebank.getOne({
+    const data = await preRegister.getOne({
       email: { _eq: email }
     })
 
@@ -403,24 +403,24 @@ const verifyEmail = async ({ code }) => {
   const resUser = await userApi.verifyEmail({
     verification_code: { _eq: code }
   })
-  const resLifebank = await preRegLifebank.verifyEmail({
+  console.log(code)
+  const resOrganization = await preRegister.verifyEmail({
     verification_code: { _eq: code }
   })
   let result = false
 
   if (
     resUser.update_user.affected_rows !== 0 ||
-    resLifebank.update_preregister_lifebank.affected_rows !== 0
+    resOrganization.update_preregister_organization.affected_rows !== 0
   ) {
-    if (resLifebank.update_preregister_lifebank.affected_rows !== 0) {
-      resLifebank.update_preregister_lifebank.returning[0] = formatLifebankData(
-        resLifebank.update_preregister_lifebank.returning[0]
-      )
+    if (resOrganization.update_preregister_organization.affected_rows !== 0) {
       try {
-        // mailApi.sendRegistrationRequest(
-        //   MAIL_APPROVE_LIFEBANNK,
-        //   resLifebank.update_preregister_lifebank.returning[0]
-        // )
+        console.log('envio:', resOrganization.update_preregister_organization.returning[0])
+        console.log('MAIL_APPROVE_LIFEBANNK', MAIL_APPROVE_LIFEBANNK)
+        mailApi.sendRegistrationRequest(
+          MAIL_APPROVE_LIFEBANNK,
+          resOrganization.update_preregister_organization.returning[0]
+        )
       } catch (error) {
         console.log(error)
       }

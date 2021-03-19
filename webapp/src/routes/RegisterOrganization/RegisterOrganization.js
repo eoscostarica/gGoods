@@ -9,9 +9,9 @@ import { Box } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { useTranslation } from 'react-i18next'
 
-import { useUser } from '../../context/user.context'
+//import { useUser } from '../../context/user.context'
 import CustomRouterLink from '../../components/CustomRouterLink'
-import { UPDATE_STATE_LIFEBANK, CREATE_ACCOUNT_LIFEBANK_MUTATION } from '../../gql'
+import { UPDATE_STATE_ORGANIZATION, CREATE_ACCOUNT_ORGANIZATION_MUTATION } from '../../gql'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,23 +72,22 @@ const RegisterLifebank = (props) => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
   const [lifebank, setLifebank] = useState()
-  const [, { logout }] = useUser()
+  //const [, { logout }] = useUser()
   const { code } = useParams()
   const history = useHistory()
 
-  const [createAccountLifebank, { error: errorCreateAccount }] = useMutation(CREATE_ACCOUNT_LIFEBANK_MUTATION)
+  const [createAccountLifebank, { error: errorCreateAccount }] = useMutation(CREATE_ACCOUNT_ORGANIZATION_MUTATION)
 
   const [
-    verifyEmail,
-    { loading: loadingVerifyEmail, error: errorVerifyEmail, data: { update_preregister_lifebank: lifebankData } = {} }
-  ] = useMutation(UPDATE_STATE_LIFEBANK)
-
+    updateEmail,
+    { loading: loadingVerifyEmail, error: errorVerifyEmail, data: { update_preregister_organization: organizationData } = {} }
+  ] = useMutation(UPDATE_STATE_ORGANIZATION)
 
   const handleCreateAccountLifebank = () => {
     if (lifebank) {
       const { name, email, verification_code } = lifebank
       const secret = lifebank.password
-
+      console.log('password:', secret)
       createAccountLifebank({
         variables: {
           email,
@@ -106,7 +105,8 @@ const RegisterLifebank = (props) => {
   }
 
   useEffect(() => {
-    verifyEmail({
+    console.log('code:', code)
+    updateEmail({
       variables: {
         verification_code: code
       }
@@ -114,9 +114,13 @@ const RegisterLifebank = (props) => {
   }, [code])
 
   useEffect(() => {
-    if (lifebankData) setLifebank(lifebankData.returning[0])
+    console.log('organizationData:', organizationData)
+    if (organizationData) {
+      console.log('entra')
+      setLifebank(organizationData.returning[0])
+    }
 
-  }, [lifebankData])
+  }, [organizationData])
 
   useEffect(() => {
     if (lifebank) handleCreateAccountLifebank()
@@ -126,8 +130,8 @@ const RegisterLifebank = (props) => {
   useEffect(() => {
     if (errorVerifyEmail) {
       if (errorVerifyEmail.message === 'GraphQL error: Could not verify JWT: JWTExpired') {
-        logout()
-        verifyEmail({
+        //logout()
+        updateEmail({
           variables: {
             verification_code: code
           }
@@ -143,8 +147,8 @@ const RegisterLifebank = (props) => {
   useEffect(() => {
     if (errorCreateAccount) {
       if (errorCreateAccount.message === 'GraphQL error: Could not verify JWT: JWTExpired') {
-        logout()
-        verifyEmail({
+        //logout()
+        updateEmail({
           variables: {
             verification_code: code
           }
