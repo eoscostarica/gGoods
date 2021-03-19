@@ -12,7 +12,7 @@ export default theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: theme.spacing(2),
-    boxShadow: '2px 3px 6px 2px rgba(0,0,0,0.41)',
+    boxShadow: theme.shadows[3],
     borderRadius: 8,
     '& canvas': {
       borderTopLeftRadius: 8,
