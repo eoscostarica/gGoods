@@ -5,7 +5,7 @@ const organizationApi = require('../../api/organization.api')
 
 module.exports = async ({ payload: { input } }) => {
   try {
-    console.log('llega pre')
+    console.log('HAPI, PRE REGISTRO')
     const response = await organizationApi.preRegister(input)
     return response
   } catch (error) {

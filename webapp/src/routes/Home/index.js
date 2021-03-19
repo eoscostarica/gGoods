@@ -98,7 +98,7 @@ const Home = () => {
     // if (!err) {
     preRegisterOrganization({
       variables: {
-        email: 'angelocas13_8@hotmail.com',
+        email: 'leisterac.1997@gmail.com',
         emailContent: {
           subject: 'Asunto',
           title: 'Titulo',

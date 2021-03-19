@@ -42,11 +42,11 @@ services:
       HAPI_HASURA_ADMIN_SECRET: '${HAPI_HASURA_ADMIN_SECRET}'
       JWT_SECRECT: '${JWT_SECRECT}'
       JWT_ISS: '${JWT_ISS}'
-      MAIL_HOST: '${MAIL_HOST}'
-      MAIL_PORT: '${MAIL_PORT}'
-      MAIL_USER: '${MAIL_USER}'
-      MAIL_PASSWORD: '${MAIL_PASSWORD}'
-      MAIL_APPROVE_LIFEBANK: '${MAIL_APPROVE_LIFEBANK}'
+      MAIL_HOST: "${MAIL_HOST}"
+      MAIL_PORT: "${MAIL_PORT}"
+      MAIL_USER: "${MAIL_USER}"
+      MAIL_PASSWORD: "${MAIL_PASSWORD}"
+      MAIL_APPROVE_ORGANIZATION: "${MAIL_APPROVE_ORGANIZATION}"
   hasura:
     container_name: '${STAGE}-${APP_NAME}-hasura'
     image: hasura/graphql-engine:v1.3.3.cli-migrations-v2

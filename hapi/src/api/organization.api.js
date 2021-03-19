@@ -8,7 +8,7 @@ const vaultApi = require('./vault.api')
 const locationApi = require('./location.api')
 const preregisterApi = require('./pre-register.api')
 const verificationCodeApi = require('./verification-code.api')
-const mailApi = require('../utils')
+const mailApi = require('../utils/mail')
 
 const {
   constants: {
@@ -20,6 +20,7 @@ const ORGANIZATION_CODE = eosConfig.lifebankCodeContractName
 
 const preRegister = async ({
   email,
+  emailContent,
   phone,
   address,
   name,
@@ -29,7 +30,7 @@ const preRegister = async ({
 }) => {
   const { verification_code } = await verificationCodeApi.generate()
   let resultRegister = 'ok'
-  console.log('esta aqui')
+  console.log('MARK, preRegister')
   try {
     await preregisterApi.insertOrganization({
       email,
@@ -41,8 +42,10 @@ const preRegister = async ({
       invitation_code,
       verification_code
     })
-    console.log('PASA')
-    mailApi.mailUtils.sendVerificationCode(
+
+    console.log('PRE, mailApi')
+
+    mailApi.sendVerificationCode(
       email,
       verification_code,
       emailContent.subject,
@@ -50,7 +53,11 @@ const preRegister = async ({
       emailContent.message,
       emailContent.button
     )
+
+    console.log('POST, mailApi')
+
   } catch (error) {
+    console.log('ERROR', error)
     resultRegister = 'error'
 
     return {

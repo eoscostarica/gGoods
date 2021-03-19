@@ -10,6 +10,7 @@ const sendVerificationCode = async (
   message,
   buttonText
 ) => {
+  console.log('MARK, sendVerificationCode')
   const transporter = nodemailer.createTransport({
     host: mailConfig.host,
     secure: false,
@@ -22,13 +23,6 @@ const sendVerificationCode = async (
   })
 
   const from = 'Lifebank <webmaster@lifebank.io>'
-
-  console.log(to)
-  console.log(verficationCode)
-  console.log(subject)
-  console.log( title)
-  console.log(message)
-  console.log(buttonText)
 
   await transporter.sendMail({
     from,
