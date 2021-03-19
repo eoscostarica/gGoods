@@ -1,13 +1,26 @@
 type Mutation {
+  create_template (
+    category: String!
+    name: String!
+    metadata: jsonb!
+  ): CreateTemplateOutput
+}
+
+type Mutation {
   payment_transaction_complete (
     orderId: String!
   ): payment_transaction_complete_output
 }
 
 
+type CreateTemplateOutput {
+  trxid : String!
+}
 
 
 type payment_transaction_complete_output {
   return_status : Boolean!
 }
+
+
 

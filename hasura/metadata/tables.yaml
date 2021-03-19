@@ -1,1 +1,6 @@
-[]
+- table:
+    schema: public
+    name: template
+- table:
+    schema: public
+    name: vault

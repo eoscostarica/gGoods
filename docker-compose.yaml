@@ -40,6 +40,9 @@ services:
       HAPI_EOS_WALLET_URL: '${HAPI_EOS_WALLET_URL}'
       HAPI_HASURA_URL: '${HAPI_HASURA_URL}'
       HAPI_HASURA_ADMIN_SECRET: '${HAPI_HASURA_ADMIN_SECRET}'
+      HAPI_DGOODS_ACCOUNT: '${HAPI_DGOODS_ACCOUNT}'
+      HAPI_DGOODS_PASSWORD: '${HAPI_DGOODS_PASSWORD}'
+      HAPI_DGOODS_TOKEN: '${HAPI_DGOODS_TOKEN}'
   hasura:
     container_name: '${STAGE}-${APP_NAME}-hasura'
     image: hasura/graphql-engine:v1.3.3.cli-migrations-v2

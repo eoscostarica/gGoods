@@ -12,6 +12,7 @@ import {
 import { mainConfig } from '../config'
 
 const Home = lazy(() => import('./Home'))
+const CreateTemplate = lazy(() => import('./CreateTemplate'))
 const About = lazy(() => import('./About'))
 const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
@@ -26,11 +27,17 @@ const routes = [
     exact: true
   },
   {
+    name: 'createTemplate',
+    icon: <GridIcon />,
+    component: CreateTemplate,
+    path: '/create-template',
+    exact: true
+  },
+  {
     name: 'PayPal',
     icon: <GridIcon />,
     component: Paypal,
     path: '/paypalIntegration',
-    exact: true
   },
   {
     header: 'docs',
