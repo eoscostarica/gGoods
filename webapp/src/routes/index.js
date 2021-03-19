@@ -37,7 +37,7 @@ const routes = [
     name: 'PayPal',
     icon: <GridIcon />,
     component: Paypal,
-    path: '/paypalIntegration',
+    path: '/paypal-integration',
     exact: true
   },
   {

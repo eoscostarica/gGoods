@@ -6,6 +6,7 @@ type Mutation {
   ): CreateTemplateOutput
 }
 
+
 type Mutation {
   payment_transaction_complete (
     orderId: String!
@@ -13,14 +14,13 @@ type Mutation {
 }
 
 
+
+
 type CreateTemplateOutput {
   trxid : String!
 }
 
-
 type payment_transaction_complete_output {
   return_status : Boolean!
 }
-
-
 
