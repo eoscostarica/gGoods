@@ -20,6 +20,7 @@ import { Sun as SunIcon, Moon as MoonIcon } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 
 import styles from './styles'
+import LoginModal from '../../components/LoginModal'
 
 const useStyles = makeStyles(styles)
 
@@ -148,6 +149,7 @@ const Header = ({ ual, theme, onThemeChange, onDrawerToggle }) => {
               </MuiIconButton>
               <LanguageMenu />
               <UserMenu ual={ual} />
+              <LoginModal isSideBar />
             </Box>
           </Grid>
         </Grid>

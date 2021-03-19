@@ -21,7 +21,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 import {
   CREATE_ACCOUNT_MUTATION,
-  CREATE_PRE_REGITER_LIFEBANK_MUTATION,
+  CREATE_PRE_REGISTER_ORGANIZATION_MUTATION,
   VALIDATION_EMAIL
 } from '../../gql'
 import { useUser } from '../../context/user.context'
@@ -31,7 +31,6 @@ import ValidateEmail from './ValidateEmail'
 
 const SignupDonor = lazy(() => import('./SignupDonor'));
 const SignupLifeBank = lazy(() => import('./SignupLifeBank'));
-const SimpleRegisterForm = lazy(() => import('./SignupSponsor/SimpleRegisterForm'));
 
 const useStyles = makeStyles((theme) => ({
   closeIcon: {
@@ -220,9 +219,9 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
     {
       error: errorpreRegisterLifebank,
       loading: preRegisterLifebankLoading,
-      data: { create_pre_register_lifebank: preRegisterLifebankResult } = {}
+      data: { create_pre_register_organization: preRegisterLifebankResult } = {}
     }
-  ] = useMutation(CREATE_PRE_REGITER_LIFEBANK_MUTATION)
+  ] = useMutation(CREATE_PRE_REGISTER_ORGANIZATION_MUTATION)
 
   const handleRoleChange = (role) => {
     setRole(role)

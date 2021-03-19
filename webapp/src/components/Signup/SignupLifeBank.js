@@ -13,13 +13,7 @@ import Switch from '@material-ui/core/Switch'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useTranslation } from 'react-i18next'
 
-import MapSelectLocation from '../../components/MapSelectLocation'
-import Schedule from '../../components/Schedule'
-import { captchaConfig, constants } from '../../config'
-
-const {
-  LOCATION_TYPES: { LIFE_BANK }
-} = constants
+import { captchaConfig } from '../../config'
 
 const useStyles = makeStyles((theme) => ({
   form: {

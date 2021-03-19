@@ -44,6 +44,25 @@
         "emailVerified": "Tu correo ha sido verificado",
         "somethingHappened": "Ha ocurrido un evento inesperado al tratar de verificar tu email",
         "takeHome": "Ir al inicio"
+      },
+      "emailMessage": {
+        "subjectApproveAccount": "Lifebank Cuenta Aprobada",
+        "titleApproveAccount": "Cuenta Aprobada",
+        "messageApproveAccount": "Su solicitud de registro en Lifebank ha sido aprobada, gracias por ser parte de este hermoso proyecto.",
+        "subjectChangePassword": "Lifebank Cambio de Contraseña",
+        "titleChangePassword": "Cambio de Contraseña",
+        "messageChangePassword": "Su contraseña ha sido cambiada con éxito.",
+        "subjectCredentialsRecovery": "Lifebank Recuperación de Credenciales",
+        "titleCredentialsRecovery": "Recuperación de Credenciales",
+        "messageCredentialsRecovery": "Se ha generado una nueva contraseña para su cuenta, con esta ahora podes acceder a la plataforma.",
+        "subjectVerificationCode": "Verificación del Email",
+        "titleVerificationCode": "Verificación del Email",
+        "messageVerificationCode": "Gracias por ser parte de la comunidad, haga clic en el botón para verificar y validar su cuenta.",
+        "verifyButton": "Verificar"
+      },
+      "approveAccount": {
+        "accountapprove": "Esta cuenta ha sido aprobada",
+        "somethingHappened": "Algo sucedió al intentar aprobar esta cuenta"
       }
     }
 }

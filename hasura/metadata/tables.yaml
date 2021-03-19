@@ -4,6 +4,29 @@
 - table:
     schema: public
     name: preregister_organization
+  select_permissions:
+  - role: guest
+    permission:
+      columns:
+      - address
+      - description
+      - email
+      - email_verified
+      - invitation_code
+      - name
+      - password
+      - phone
+      - state
+      - verification_code
+      filter: {}
+  update_permissions:
+  - role: guest
+    permission:
+      columns:
+      - email_verified
+      - state
+      filter: {}
+      check: null
 - table:
     schema: public
     name: user

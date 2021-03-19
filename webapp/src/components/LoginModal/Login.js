@@ -27,9 +27,8 @@ import {
   GET_SECRET_BY_ACCOUNT,
 } from '../../gql'
 import { useUser } from '../../context/user.context'
-import LoginWithFacebook from './LoginWithFacebook'
 import LoginWithGoogle from './LoginWithGoogle'
-import Signup from '../Signup/Signup'
+import Signup from '../../components/Signup'
 
 const useStyles = makeStyles((theme) => ({
   alert: {
@@ -391,9 +390,6 @@ const LoginModal = ({ isNavBar, isSideBar }) => {
             </Box>
             <Box className={classes.centerBox}>
               {loading && <CircularProgress />}
-            </Box>
-            <Box className={classes.centerBox}>
-              <LoginWithFacebook onSubmit={handleLoginWithAuth} />
             </Box>
             <Box className={classes.centerBox}>
               <LoginWithGoogle onSubmit={handleLoginWithAuth} />

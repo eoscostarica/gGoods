@@ -8,7 +8,6 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useTranslation } from 'react-i18next'
 
-import SignupWithFacebook from './socialSingup/SignupWithFacebook'
 import SignupWithGoogle from './socialSingup/SignupWithGoogle'
 import { captchaConfig } from '../../config'
 
@@ -125,7 +124,6 @@ const DonorSignup = ({
           {t('signup.createAccount')}
         </Button>
         {loading && <CircularProgress />}
-        <SignupWithFacebook handlerSubmit={onSubmitWithAuth} />
         <SignupWithGoogle handlerSubmit={onSubmitWithAuth} />
       </Box>
     </form>
