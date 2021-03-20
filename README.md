@@ -172,6 +172,9 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://www.linkedin.com/in/leister-francisco-alvarez-campos-65b7801bb/"><img src="https://avatars.githubusercontent.com/u/28828796?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Leister Francisco Alvarez Campos</b></sub></a><br /><a href="https://github.com/eoscostarica/Ggoods/commits?author=leisterfrancisco" title="Code">💻</a> <a href="#ideas-leisterfrancisco" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-leisterfrancisco" title="Research">🔬</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3Aleisterfrancisco" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/AngeloCG97"><img src="https://avatars.githubusercontent.com/u/51149817?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AngeloCG97</b></sub></a><br /><a href="https://github.com/eoscostarica/Ggoods/commits?author=AngeloCG97" title="Code">💻</a> <a href="#ideas-AngeloCG97" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-AngeloCG97" title="Research">🔬</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3AAngeloCG97" title="Reviewed Pull Requests">👀</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/kuronosec"><img src="https://avatars.githubusercontent.com/u/6999429?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andres Gomez</b></sub></a><br /><a href="#infra-kuronosec" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#mentoring-kuronosec" title="Mentoring">🧑‍🏫</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3Akuronosec" title="Reviewed Pull Requests">👀</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
