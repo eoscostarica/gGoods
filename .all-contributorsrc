@@ -72,6 +72,18 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "leisterfrancisco",
+      "name": "Leister Francisco Alvarez Campos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28828796?v=4",
+      "profile": "https://www.linkedin.com/in/leister-francisco-alvarez-campos-65b7801bb/",
+      "contributions": [
+        "code",
+        "ideas",
+        "research",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7
