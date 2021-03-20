@@ -120,6 +120,19 @@
         "research",
         "review"
       ]
+    },
+    {
+      "login": "steph222",
+      "name": "Steph Delgado",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31549144?v=4",
+      "profile": "https://www.linkedin.com/in/stephaniedelgadobrenes/",
+      "contributions": [
+        "code",
+        "design",
+        "ideas",
+        "research",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7
