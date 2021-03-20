@@ -23,6 +23,19 @@
         "research",
         "review"
       ]
+    },
+    {
+      "login": "murillojorge",
+      "name": "Jorge Murillo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1179619?v=4",
+      "profile": "http://eoscostarica.io/",
+      "contributions": [
+        "a11y",
+        "design",
+        "ideas",
+        "research",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7

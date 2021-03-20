@@ -165,6 +165,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <table>
   <tr>
     <td align="center"><a href="https://github.com/JustinCast"><img src="https://avatars.githubusercontent.com/u/17890146?v=4?s=100" width="100px;" alt=""/><br /><sub><b>JustinCast</b></sub></a><br /><a href="https://github.com/eoscostarica/Ggoods/commits?author=JustinCast" title="Code">💻</a> <a href="https://github.com/eoscostarica/Ggoods/commits?author=JustinCast" title="Documentation">📖</a> <a href="#ideas-JustinCast" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-JustinCast" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#research-JustinCast" title="Research">🔬</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3AJustinCast" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://eoscostarica.io/"><img src="https://avatars.githubusercontent.com/u/1179619?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jorge Murillo</b></sub></a><br /><a href="#a11y-murillojorge" title="Accessibility">️️️️♿️</a> <a href="#design-murillojorge" title="Design">🎨</a> <a href="#ideas-murillojorge" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-murillojorge" title="Research">🔬</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3Amurillojorge" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
