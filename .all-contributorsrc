@@ -1,0 +1,29 @@
+{
+  "projectName": "Ggoods",
+  "projectOwner": "eoscostarica",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "JustinCast",
+      "name": "JustinCast",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17890146?v=4",
+      "profile": "https://github.com/JustinCast",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "infra",
+        "research",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
