@@ -49,6 +49,20 @@
         "ideas",
         "video"
       ]
+    },
+    {
+      "login": "ldrojas",
+      "name": "Luis Diego Rojas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29232417?v=4",
+      "profile": "https://github.com/ldrojas",
+      "contributions": [
+        "blog",
+        "business",
+        "content",
+        "doc",
+        "ideas",
+        "research"
+      ]
     }
   ],
   "contributorsPerLine": 7
