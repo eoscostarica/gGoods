@@ -16,6 +16,7 @@ A highly scalable skeleton with best practices, fullstack monorepo containing ou
 - [File Structure](#file-structure)
 - [Technical Documentation](#technical-documentation)
   - [Infrastructure Diagram](#infrastructure-diagram)
+  - [Services](#services)
   - [Technologies Specification](#technologies-specification)
     - [Kubernetes Cluster](#kubernetes-cluster)
     - [Web Application](#web-application)
@@ -23,6 +24,7 @@ A highly scalable skeleton with best practices, fullstack monorepo containing ou
     - [Hasura GraphQL Server](#hasura-graphql-server)
     - [Hapi REST Server](#hapi-rest-server)
     - [EOSIO Blockchain Technology Integration](#eosio-blockchain-technology-integration)
+    - [Interplanetary File System (IPFS)](#interplanetary-file-system-ipfs)
 - [License](#license)
 - [Contributing](#contributing)
   - [Contributors](#contributors)
@@ -121,6 +123,12 @@ Within the download you'll find the following directories and files:
   <img src="docs/img/infra.svg" />
 </p>
 
+## Services
+
+<p align="center">
+  <img src="docs/img/services.svg" />
+</p>
+
 ## Technologies Specification
 
 ### Kubernetes Cluster
@@ -146,6 +154,10 @@ We need to handle REST custom requests coming from the Hasura GraphQL server. Fo
 
 As a company that delivers EOSIO blockchain-based solutions, we build a template which contains EOSIO integration, specifically [eosjs](https://github.com/EOSIO/eosjs). This allow us to iterate quickly over the more challenging features of our projects.
 
+### Interplanetary File System (IPFS)
+
+We use IPFS to store the assets that are displayed in the Web Application. IPFS is a decentralized storage that uses blockchain technology to provide auditability and availability of the assets. IPFS can be configured to setup your own node and validate the data, but this time we are using the public IPFS access, i.e. public endpoints.
+
 # License
 
 MIT © [EOS Costa Rica](https://eoscostarica.io)
@@ -159,6 +171,7 @@ Please report bugs big and small by [opening an issue](https://github.com/eoscos
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
