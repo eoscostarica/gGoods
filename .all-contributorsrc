@@ -36,6 +36,19 @@
         "research",
         "review"
       ]
+    },
+    {
+      "login": "edgar-eoscostarica",
+      "name": "Edgar Fernandez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40245170?v=4",
+      "profile": "https://github.com/edgar-eoscostarica",
+      "contributions": [
+        "business",
+        "content",
+        "doc",
+        "ideas",
+        "video"
+      ]
     }
   ],
   "contributorsPerLine": 7
