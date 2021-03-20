@@ -107,6 +107,19 @@
         "mentoring",
         "review"
       ]
+    },
+    {
+      "login": "JeanVegaD",
+      "name": "Jean Vega",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19317138?v=4",
+      "profile": "https://github.com/JeanVegaD",
+      "contributions": [
+        "code",
+        "design",
+        "ideas",
+        "research",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7
