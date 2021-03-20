@@ -133,6 +133,17 @@
         "research",
         "review"
       ]
+    },
+    {
+      "login": "kriskoin",
+      "name": "Kriskoin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3965944?v=4",
+      "profile": "https://github.com/kriskoin",
+      "contributions": [
+        "code",
+        "ideas",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7
