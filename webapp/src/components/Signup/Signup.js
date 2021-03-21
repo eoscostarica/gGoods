@@ -229,7 +229,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   }
 
   const handleSetField = useCallback((field, value) => {
-    setUser({ [field]: value})
+    setUser({ [field]: value })
   }, [])
 
   const handleGoBack = () => {

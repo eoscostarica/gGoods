@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/react-hooks'
 
 import App from './App'
 import { client } from './graphql'
+import { UserProvider } from './context/user.context'
 import * as serviceWorker from './serviceWorker'
 import './i18n'
 import { ualConfig } from './config'
@@ -18,7 +19,9 @@ render(
     appName={ualConfig.appName}
   >
     <ApolloProvider client={client}>
-      <AppWithUAL />
+      <UserProvider>
+        <AppWithUAL />
+      </UserProvider>
     </ApolloProvider>
   </UALProvider>,
   document.getElementById('root')
