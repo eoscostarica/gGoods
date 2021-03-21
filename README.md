@@ -42,6 +42,7 @@ This boilerplate features all the latest technologies and practices in the indus
 - Hasura
 - React
 - Kubernetes
+- EOSIO
 
 # Installation
 
