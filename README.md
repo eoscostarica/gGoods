@@ -4,7 +4,7 @@
 
 ![](https://img.shields.io/github/license/eoscostarica/full-stack-boilerplate) ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) ![](https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter) ![](https://img.shields.io/github/forks/eoscostarica/full-stack-boilerplate?style=social)
 
-A highly scalable skeleton with best practices, fullstack monorepo containing our front end and backend boilerplates
+A highly scalable skeleton with best practices, fullstack monorepo containing our front end and backend boilerplates.
 
 - [EOSCR Boilerplate](#eoscr-boilerplate)
 - [Version](#version)
@@ -12,7 +12,7 @@ A highly scalable skeleton with best practices, fullstack monorepo containing ou
 - [Installation](#installation)
   - [Before to start](#before-to-start)
   - [First time](#first-time)
-  - [Quick start](#quick-start)
+  - [Quick Start](#quick-start)
 - [File Structure](#file-structure)
 - [Technical Documentation](#technical-documentation)
   - [Infrastructure Diagram](#infrastructure-diagram)
@@ -21,8 +21,8 @@ A highly scalable skeleton with best practices, fullstack monorepo containing ou
     - [Kubernetes Cluster](#kubernetes-cluster)
     - [Web Application](#web-application)
     - [Backend](#backend)
-    - [Hasura GraphQL Server](#hasura-graphql-server)
-    - [Hapi REST Server](#hapi-rest-server)
+      - [Hasura GraphQL Server](#hasura-graphql-server)
+      - [Hapi REST Server](#hapi-rest-server)
     - [EOSIO Blockchain Technology Integration](#eosio-blockchain-technology-integration)
     - [Interplanetary File System (IPFS)](#interplanetary-file-system-ipfs)
 - [License](#license)
@@ -57,18 +57,19 @@ Somethings you need before getting started:
 
 ## First time
 
-Copy the `.env.example` then update the environment variables according to your needs
+Copy the `.env.example` then update the environment variables according to your needs.
 
 ```
 cp .env.example .env
 ```
 
-## Quick start
+## Quick Start
 
-1.  Clone this repo using `git clone --depth=1 https://github.com/eoscostarica/full-stack-boilerplate.git <YOUR_PROJECT_NAME>`
+1.  Clone this repo using `git clone --depth=1 https://github.com/eoscostarica/full-stack-boilerplate.git <YOUR_PROJECT_NAME>`.
 2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
 3.  Run `make run` in order to start the project using docker compose.
-    \_At this point you can navigate to `http://localhost:3000`
+
+At this point you can navigate to `http://localhost:3000`.
 
 # File Structure
 
@@ -142,12 +143,12 @@ This FullStack Template uses [React.js](https://reactjs.org) as a Frontend Libra
 
 ### Backend
 
-### Hasura GraphQL Server
+#### Hasura GraphQL Server
 
 [Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allow us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
 Hasura also enables custom REST handling capabilities with the possibility to integrate a custom REST server, that way we can extend the base CRUD functionalities and build custom business logic.
 
-### Hapi REST Server
+#### Hapi REST Server
 
 We need to handle REST custom requests coming from the Hasura GraphQL server. For this, we use [hapi.dev](https://hapi.dev/), which is a simple and easy-to-use backend framework.
 
@@ -161,7 +162,7 @@ We use IPFS to store the assets that are displayed in the Web Application. IPFS 
 
 # License
 
-MIT © [EOS Costa Rica](https://eoscostarica.io)
+MIT © [EOS Costa Rica](https://eoscostarica.io).
 
 # Contributing
 
