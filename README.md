@@ -10,8 +10,8 @@ A highly scalable skeleton with best practices, fullstack monorepo containing ou
 - [Version](#version)
 - [Features!](#features)
 - [Installation](#installation)
-  - [Before to start](#before-to-start)
-  - [First time](#first-time)
+  - [Before to Start](#before-to-start)
+  - [First Time](#first-time)
   - [Quick Start](#quick-start)
 - [File Structure](#file-structure)
 - [Technical Documentation](#technical-documentation)
@@ -46,7 +46,7 @@ This boilerplate features all the latest technologies and practices in the indus
 
 # Installation
 
-## Before to start
+## Before to Start
 
 Somethings you need before getting started:
 
@@ -55,7 +55,7 @@ Somethings you need before getting started:
 - [docker](https://www.docker.com/)
 - [docker-compose](https://docs.docker.com/compose/)
 
-## First time
+## First Time
 
 Copy the `.env.example` then update the environment variables according to your needs.
 
