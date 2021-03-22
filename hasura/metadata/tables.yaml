@@ -30,6 +30,20 @@
 - table:
     schema: public
     name: user
+  select_permissions:
+  - role: guest
+    permission:
+      columns:
+      - account
+      - email
+      - email_verified
+      - id
+      - name
+      - role
+      - secret
+      - username
+      - verification_code
+      filter: {}
 - table:
     schema: public
     name: vault

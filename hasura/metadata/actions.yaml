@@ -29,6 +29,8 @@ actions:
   definition:
     kind: synchronous
     handler: http://hapi:9090/api/login
+  permissions:
+  - role: guest
 - name: verify_email
   definition:
     kind: synchronous

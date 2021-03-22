@@ -182,10 +182,11 @@ const LoginModal = ({ isNavBar, isSideBar }) => {
   }
 
   const handleLogin = async () => {
+    console.log('user.account',user)
     setErrorMessage(null)
     const bcrypt = require('bcryptjs')
     const { data } = await getHash({ account: user.account })
-
+    console.log('data:', data)
     if (data.user.length >= 1) {
       const hash = data.user[0].secret
 
@@ -198,13 +199,17 @@ const LoginModal = ({ isNavBar, isSideBar }) => {
               secret: hash
             }
           })
+          console.log('continua')
         } else {
+          console.log('error 1')
           setErrorMessage(t('login.invalidAccountOrPassword'))
         }
       })
     } else {
+      console.log('error 2')
       setErrorMessage(t('login.invalidAccountOrPassword'))
     }
+    console.log('sale')
   }
 
   const handleLoginWithAuth = async (status, email, secret) => {
@@ -240,6 +245,7 @@ const LoginModal = ({ isNavBar, isSideBar }) => {
 
   useEffect(() => {
     if (loginResult) {
+      console.log('loginResult:', loginResult.token)
       login(loginResult.token)
       setOpen(false)
     }

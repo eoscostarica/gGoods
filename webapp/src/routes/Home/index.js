@@ -8,7 +8,7 @@ import { CREATE_ACCOUNT_MUTATION, CREATE_PRE_REGISTER_ORGANIZATION_MUTATION, CRE
 
 const Home = () => {
   const { t } = useTranslation('homeRoute')
-  const [role, setRole] = useState('guest')
+  const [role, setRole] = useState('gamer')
 
   const [user, setUser] = useReducer(
     (user, newUser) => ({ ...user, ...newUser }),
@@ -37,37 +37,26 @@ const Home = () => {
 
   const handleCreateAccount = () => {
     console.log('TESTING')
-    createAccount({
-      variables: {
-        role,
-        email: 'jaguarrescue@gmail.com',
-        emailContent: {
-          subject: 'a',
-          title: 'a',
-          message: 'a',
-          button: 'a'
-        },
-        name: 'leister',
-        secret: 'leister'
-      }
-    })
-  }
+    const bcrypt = require('bcryptjs')
+    const saltRounds = 10
+    const secret = '1234'
 
-  const handleCreateAccountOrganization = () => {
-    // const { name, email, verification_code } = lifebank
-    // const secret = lifebank.password
-
-    createAccountOrganization({
-      variables: {
-        email: 'leisterac.1997@gmail.com',
-        emailContent: {
-          subject: 'prueba',
-          title: 'Titulo',
-          message: 'Prueba',
-        },
-        name: 'animal rescue',
-        secret: 'animal secret rescue',
-        verification_code: 'none2'
+    bcrypt.hash(secret, saltRounds, function (err, hash) {
+      if (!err) {
+        createAccount({
+          variables: {
+            role,
+            email: 'leisterac.1997@gmail.com',
+            emailContent: {
+              subject: 'a',
+              title: 'a',
+              message: 'Y las manos?',
+              button: 'a'
+            },
+            name: 'leister',
+            secret: hash
+          }
+        })
       }
     })
   }
@@ -96,23 +85,31 @@ const Home = () => {
 
     // bcrypt.hash(password, saltRounds, function (err, hash) {
     // if (!err) {
-    preRegisterOrganization({
-      variables: {
-        email: 'angelocas13_8@hotmail.com',
-        emailContent: {
-          subject: 'Asunto',
-          title: 'Titulo',
-          message: 'Mensaje',
-          button: 'Button Text'
-        },
-        password: 'testing',
-        name: 'new org',
-        address: 'testing',
-        phone: 'testing',
-        description: 'testing',
-        invitation_code: 'testing'
-      }
-    })
+      const bcrypt = require('bcryptjs')
+      const saltRounds = 10
+      const password = '1234'
+  
+      bcrypt.hash(password, saltRounds, function (err, hash) {
+        if (!err) {
+          preRegisterLifebank({
+            variables: {
+              email: 'angelocas13_8@hotmail.com',
+              emailContent: {
+                subject: 'Asunto',
+                title: 'Titulo',
+                message: 'Mensaje',
+                button: 'Button Text'
+              },
+              password: hash,
+              name: 'new org',
+              address: 'testing',
+              phone: 'testing',
+              description: 'testing',
+              invitation_code: 'testing'
+            }
+          })
+        }
+      })
     // }
     // })
   }
@@ -121,7 +118,6 @@ const Home = () => {
     <Box>
       <Button onClick={handleCreateAccount} variant="contained">Create account</Button>
       <Button onClick={handlePreRegisterOrganization} variant="contained">Preregister organization</Button>
-      <Button onClick={handleCreateAccountOrganization} variant="contained">Validate organization</Button>
       <Typography>{t('welcomeMessage')}</Typography>
     </Box>
   )

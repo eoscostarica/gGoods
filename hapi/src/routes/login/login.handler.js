@@ -5,6 +5,7 @@ const { accountApi } = require('../../api')
 
 module.exports = async ({ payload: { input } }) => {
   try {
+    console.log('input:', input)
     const response = await accountApi.login(input)
 
     return response
