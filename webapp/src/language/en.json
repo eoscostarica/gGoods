@@ -15,6 +15,9 @@
     "/create-template>title": "Create Template | GGOODS",
     "/create-template>sidebar": "Create Template",
     "/create-template>heading": "New Template",
+    "/put-on-sale>title": "Put On Sale | GGOODS",
+    "/put-on-sale>sidebar": "Put on sale",
+    "/put-on-sale>heading": "Put on sale your gGoods",
     "/about>title": "About | GGoods",
     "/about>sidebar": "About",
     "/about>heading": "About",
@@ -45,5 +48,10 @@
     "githubEOSCR": "GitHub EOS Costa Rica",
     "telegramChannel": "Telegram Channel",
     "websiteEOSCR": "Website EOS Costa Rica"
+  },
+  "createTemplateRoute": {
+    "successUploadImage": "Success upload image",
+    "avatarMaker": "Avatar Maker",
+    "myOwnDesign": "My Own Design"
   }
 }

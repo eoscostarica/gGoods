@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { makeStyles } from '@material-ui/styles'
 import TextField from '@material-ui/core/TextField'
@@ -16,30 +16,31 @@ import { SketchPicker } from 'react-color'
 import { CREATE_TEMPLATE_MUTATION } from '../../gql'
 import { useSharedState } from '../../context/state.context'
 import AvatarMaker from '../../components/AvatarMaker'
+import { mainConfig } from '../../config'
 
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
-
+const initialValue = {
+  category: '',
+  name: '',
+  metadata: {
+    type: '2dgameAsset',
+    name: '',
+    description: '',
+    imageSmall: '',
+    imageLarge: '',
+    details: {},
+    backgroundColor: '#FFEBC3'
+  }
+}
 const CreateTemplate = () => {
   const classes = useStyles()
-  const { t } = useTranslation('createTemplate')
+  const { t } = useTranslation('createTemplateRoute')
   const [createTemplate, { loading }] = useMutation(CREATE_TEMPLATE_MUTATION)
   const [, { showMessage }] = useSharedState()
   const [tab, setTab] = useState(0)
-  const [payload, setPayload] = useState({
-    category: '',
-    name: '',
-    metadata: {
-      type: '2dgameAsset',
-      name: '',
-      description: '',
-      imageSmall: '',
-      imageLarge: '',
-      details: {},
-      backgroundColor: '#FFEBC3'
-    }
-  })
+  const [payload, setPayload] = useState()
 
   const handleFileUpload = field => async files => {
     if (!files?.length) {
@@ -48,7 +49,7 @@ const CreateTemplate = () => {
 
     const formData = new FormData()
     formData.append('file_name', files[0])
-    const response = await fetch('https://ipfsgw.cryptolions.io/upload', {
+    const response = await fetch(`${mainConfig.ipfsUrl}/upload`, {
       method: 'POST',
       body: formData
     })
@@ -56,11 +57,12 @@ const CreateTemplate = () => {
 
     if (!body.status) {
       showMessage({ type: 'error', content: body.data })
+
       return
     }
 
     setPayload(prev => setData(prev, field, body.data))
-    showMessage({ content: `uploaded image ${body.data}` })
+    showMessage({ content: `${t('successUploadImage')} ${body.data}` })
   }
 
   const handlePayloadChange = field => event => {
@@ -89,24 +91,16 @@ const CreateTemplate = () => {
           ...payload
         }
       })
-      setPayload({
-        category: '',
-        name: '',
-        metadata: {
-          type: '2dgameAsset',
-          name: '',
-          description: '',
-          imageSmall: '',
-          imageLarge: '',
-          details: {},
-          backgroundColor: '#FFEBC3'
-        }
-      })
+      setPayload(initialValue)
       showMessage({ content: `txid: ${data.template.trxid}` })
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
     }
   }
+
+  useEffect(() => {
+    setPayload(initialValue)
+  }, [])
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -114,7 +108,7 @@ const CreateTemplate = () => {
         <Grid item xs={12} md={6}>
           <TextField
             disabled={true}
-            value={payload.metadata.type}
+            value={payload?.metadata?.type || ''}
             label={t('type')}
             onChange={handlePayloadChange('metadata.type')}
           />
@@ -122,7 +116,7 @@ const CreateTemplate = () => {
 
         <Grid item xs={12} md={6}>
           <TextField
-            value={payload.category}
+            value={payload?.category || ''}
             label={t('category')}
             onChange={handlePayloadChange('category')}
           />
@@ -130,7 +124,7 @@ const CreateTemplate = () => {
 
         <Grid item xs={12} md={6}>
           <TextField
-            value={payload.name}
+            value={payload?.name || ''}
             label={t('name')}
             onChange={event => {
               handlePayloadChange('name')(event)
@@ -144,7 +138,7 @@ const CreateTemplate = () => {
             multiline={true}
             rows={1}
             rowsMax={5}
-            value={payload.metadata.description}
+            value={payload?.metadata?.description || ''}
             label={t('description')}
             onChange={handlePayloadChange('metadata.description')}
           />
@@ -152,13 +146,9 @@ const CreateTemplate = () => {
 
         <Grid item xs={12}>
           <AppBar position="static">
-            <Tabs
-              value={tab}
-              onChange={(event, value) => setTab(value)}
-              aria-label="simple tabs example"
-            >
-              <Tab label="Avatar Maker" />
-              <Tab label="My Own Design" />
+            <Tabs value={tab} onChange={(event, value) => setTab(value)}>
+              <Tab label={t('avatarMaker')} />
+              <Tab label={t('myOwnDesign')} />
             </Tabs>
           </AppBar>
           {tab === 0 && (
@@ -170,7 +160,7 @@ const CreateTemplate = () => {
             <Box className={classes.tabPanel}>
               <SketchPicker
                 className={classes.colorPicker}
-                color={payload.metadata.backgroundColor}
+                color={payload?.metadata?.backgroundColor}
                 onChangeComplete={color =>
                   handlePayloadChange('metadata.backgroundColor')({
                     target: { value: color.hex }
@@ -188,7 +178,7 @@ const CreateTemplate = () => {
                 previewGridProps={{
                   container: {
                     style: {
-                      backgroundColor: payload.metadata.backgroundColor
+                      backgroundColor: payload?.metadata?.backgroundColor
                     }
                   }
                 }}
@@ -204,7 +194,7 @@ const CreateTemplate = () => {
                 previewGridProps={{
                   container: {
                     style: {
-                      backgroundColor: payload.metadata.backgroundColor
+                      backgroundColor: payload?.metadata?.backgroundColor
                     }
                   }
                 }}
