@@ -1,8 +1,8 @@
 {
-  "name": "eosioboilerplate",
+  "name": "gGoods",
   "version": "1.0.0",
-  "description": "EOSIO Boilerplate WebApp",
-  "repository": "https://github.com/eoscostarica/eosioboilerplate.git",
+  "description": "gGoods WebApp",
+  "repository": "https://github.com/eoscostarica/Ggoods.git",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",

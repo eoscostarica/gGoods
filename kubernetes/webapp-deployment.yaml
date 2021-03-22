@@ -2,28 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: ggoods-hapi
-  name: ggoods-hapi
+    app: ggoods-webapp
+  name: ggoods-webapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ggoods-hapi
-  strategy:
-    type: Recreate
+      app: ggoods-webapp
   template:
     metadata:
       labels:
-        app: ggoods-hapi
+        app: ggoods-webapp
     spec:
       imagePullSecrets:
           - name: regcred
       containers:
-      - image: ${DOCKER_REGISTRY}/${IMAGE_NAME_HAPI}:${VERSION}
+      - image: ${DOCKER_REGISTRY}/${IMAGE_NAME_WEBAPP}:${VERSION}
         imagePullPolicy: "Always"
-        name: "ggoods-hapi"
+        name: ggoods-webapp
         envFrom:
         - configMapRef:
-            name: ggoods-hapi-config
+            name: ggoods-webapp-config
         ports:
-        - containerPort: 9090
+        - containerPort: 80
+      restartPolicy: Always
