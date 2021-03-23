@@ -5,8 +5,8 @@ module.exports = {
   method: 'POST',
   path: '/api/accounts',
   handler: createAccountHandler,
-  options: {
-    validate: createAccountValidation,
-    auth: false
-  }
+  // options: {
+  //   validate: createAccountValidation,
+  //   auth: false
+  // }
 }

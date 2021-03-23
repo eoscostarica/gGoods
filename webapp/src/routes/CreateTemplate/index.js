@@ -47,11 +47,14 @@ const CreateTemplate = () => {
 
     const formData = new FormData()
     formData.append('file_name', files[0])
+    console.log('file_name:',formData)
     const response = await fetch('https://ipfsgw.cryptolions.io/upload', {
       method: 'POST',
       body: formData
     })
+    
     const body = await response.json()
+    console.log('response: ', body)
 
     if (!body.status) {
       showMessage({ type: 'error', content: body.data })

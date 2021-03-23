@@ -20,7 +20,9 @@ render(
   >
     <SharedStateProviderWithUAL>
       <ApolloProvider client={client}>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </ApolloProvider>
     </SharedStateProviderWithUAL>
   </UALProvider>,

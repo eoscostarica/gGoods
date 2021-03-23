@@ -29,7 +29,27 @@
       check: null
 - table:
     schema: public
+    name: template
+- table:
+    schema: public
     name: user
+  insert_permissions:
+  - role: guest
+    permission:
+      check: {}
+      columns:
+      - account
+      - created_at
+      - email
+      - email_verified
+      - id
+      - name
+      - role
+      - secret
+      - updated_at
+      - username
+      - verification_code
+      backend_only: false
   select_permissions:
   - role: guest
     permission:
@@ -44,6 +64,3 @@
       - username
       - verification_code
       filter: {}
-- table:
-    schema: public
-    name: template

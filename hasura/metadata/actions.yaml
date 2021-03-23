@@ -25,6 +25,13 @@ actions:
     handler: http://hapi:9090/api/pre-register
   permissions:
   - role: guest
+- name: create_template
+  definition:
+    kind: synchronous
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/create-template'
+    forward_client_headers: true
+  permissions:
+  - role: guest
 - name: login
   definition:
     kind: synchronous
@@ -39,13 +46,6 @@ actions:
   - role: gamer
   - role: guest
   - role: organization
-- name: create_template
-  definition:
-    kind: synchronous
-    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/create-template'
-    forward_client_headers: true
-  permissions:
-  - role: guest
 custom_types:
   enums: []
   input_objects: []

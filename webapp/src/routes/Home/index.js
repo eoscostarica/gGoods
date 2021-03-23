@@ -8,6 +8,7 @@ import { CREATE_ACCOUNT_MUTATION, CREATE_PRE_REGISTER_ORGANIZATION_MUTATION, CRE
 
 import AvatarMaker from '../../components/AvatarMaker'
 import Carousel from '../../components/Carousel'
+import LoginModal from '../../components/LoginModal'
 
 const Home = () => {
   const { t } = useTranslation('homeRoute')
@@ -38,7 +39,7 @@ const Home = () => {
 
   const [createAccountOrganization, { error: errorCreateAccount }] = useMutation(CREATE_ACCOUNT_ORGANIZATION_MUTATION)
 
-  const handleCreateAccount = () => {
+  const handleCreateAccount = async () => {
     console.log('TESTING')
     const bcrypt = require('bcryptjs')
     const saltRounds = 10

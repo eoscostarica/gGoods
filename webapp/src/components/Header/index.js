@@ -191,6 +191,7 @@ const Header = memo(({ onDrawerToggle }) => {
             useDarkMode={state.useDarkMode}
             onSwitch={handleSwitchThemeMode}
           />
+          <LoginModal isNavBar />
           <LanguageButton
             current={currentLanguaje}
             onChange={handleChangeLanguage}

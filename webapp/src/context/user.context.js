@@ -12,7 +12,6 @@ const getUserFromToken = (token) => {
 }
 
 const userReducer = (state, action) => {
-  console.log('llega JWT')
   switch (action.type) {
     case 'login': {
       localStorage.setItem('token', action.payload.token)
@@ -41,7 +40,6 @@ export const useUser = () => {
   }
 
   const [user, dispatch] = context
-  console.log('llega JWT 1')
   const login = (token) => dispatch({ type: 'login', payload: { token } })
   const logout = () => dispatch({ type: 'logout' })
 
@@ -55,11 +53,9 @@ export const useUser = () => {
 }
 
 export const UserProvider = (props) => {
-  console.log('llega JWT 2')
   let initialValue
   if (localStorage.getItem('token')) {
     initialValue = getUserFromToken(localStorage.getItem('token'))
-    console.log(initialValue)
   }
 
   const [state, dispatch] = React.useReducer(userReducer, initialValue)

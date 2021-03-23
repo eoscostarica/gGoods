@@ -29,13 +29,6 @@ const routes = [
     exact: true
   },
   {
-    name: 'register',
-    icon: <GridIcon />,
-    component: Register,
-    path: '/',
-    exact: true
-  },
-  {
     name: 'createTemplate',
     icon: <GridIcon />,
     component: CreateTemplate,
