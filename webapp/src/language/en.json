@@ -14,7 +14,7 @@
     "/>heading": "Welcome",
     "/goods>title": "Goods | GGOODS",
     "/goods>sidebar": "Goods",
-    "/goods>heading": "Goods",
+    "/goods>heading": "",
     "/organizations>title": "Organizations | GGOODS",
     "/organizations>sidebar": "Organizations",
     "/organizations>heading": "",
@@ -46,9 +46,13 @@
     "title": "Organizations",
     "paragraph1": "Animal rescues, shelters and any other good cause that you might be interested in."
   },
-  "gamesRoute" : {
+  "gamesRoute": {
     "title": "Games",
     "paragraph1": "Created so you can play with your goods, this games ...."
+  },
+  "goodsRoute": {
+    "title": "Goods",
+    "paragraph1": "Vitual goods designed to help good causes, buy or suscribe to help or just play."
   },
   "aboutRoute": {
     "title": "About gGoods",
