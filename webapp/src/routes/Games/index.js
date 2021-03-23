@@ -2,15 +2,10 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/styles'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+
+import { CardGame } from '../../components/Card'
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
@@ -36,41 +31,6 @@ const Games = () => {
   const classes = useStyles()
   const { t } = useTranslation('gamesRoute')
 
-  const CardComponent = ({ name, description, img }) => {
-    return (
-      <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia className={classes.media} image={img} title={name} />
-          <CardContent>
-            <Typography
-              className={classes.cardTitle}
-              variant="h5"
-              component="h2"
-            >
-              {name}
-            </Typography>
-            <Box className={classes.cardDescriptionBox}>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {description}
-              </Typography>
-            </Box>
-          </CardContent>
-        </CardActionArea>
-        <CardActions className={classes.actionArea}>
-          <Button color="primary" className={classes.buttonCard}>
-            Play game
-          </Button>
-        </CardActions>
-      </Card>
-    )
-  }
-
-  CardComponent.propTypes = {
-    name: PropTypes.string,
-    description: PropTypes.string,
-    img: PropTypes.string
-  }
-
   return (
     <Box>
       <Typography variant="h4" className={classes.titlePage}>
@@ -83,7 +43,7 @@ const Games = () => {
         <Grid container spacing={2}>
           {GamesList.map(game => (
             <Grid item xs={12} md={6} lg={3} key={game.name}>
-              <CardComponent
+              <CardGame
                 name={game.name}
                 category={game.category}
                 description={game.description}

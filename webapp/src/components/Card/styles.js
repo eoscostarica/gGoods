@@ -62,5 +62,32 @@ export default theme => ({
     [theme.breakpoints.up('sm')]: {
       width: 167
     }
+  },
+  cardOngMedia: {
+    height: 200
+  },
+  cardOngTitle: {
+    marginBottom: theme.spacing(0)
+  },
+  cardOngCategory: {
+    fontSize: '14px',
+    marginBottom: theme.spacing(2)
+  },
+  cardOngDescriptionBox: {
+    height: '60px',
+    display: 'box',
+    lineClamp: 3,
+    boxOrient: 'vertical',
+    overflow: 'hidden'
+  },
+  cardActionOngArea: {
+    display: 'flex',
+    justifyContent: 'flex-end'
+  },
+  arrowIcon: {
+    display: 'flex'
+  },
+  cardGameButton: {
+    fontWeight: 'bold'
   }
 })
