@@ -12,7 +12,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const FabricCanvas = ({ activeProperty }) => {
+const FabricCanvas = ({ activeProperty, onGetDataUrl }) => {
   const theme = useTheme()
   const classes = useStyles()
   const [canvas, setCanvas] = useState()
@@ -40,11 +40,9 @@ const FabricCanvas = ({ activeProperty }) => {
     }
   }
 
-  const saveToCanvas = () => {
-    const link = document.createElement('a')
-    link.href = canvas.toDataURL({ format: 'png' })
-    link.download = 'avatar.png'
-    link.click()
+  const getDataUrlCanvas = () => {
+    // TODO: move all this component logic and return dataUrl
+    // const dataUrl = canvas.toDataURL({ format: 'png' })
   }
 
   const initCanvas = isMobile =>
@@ -71,8 +69,9 @@ const FabricCanvas = ({ activeProperty }) => {
             id="outlined-basic"
             variant="outlined"
             placeholder="Name your animal"
+            className={classes.textField}
           />
-          <Button className={classes.btnPublish} onClick={saveToCanvas}>
+          <Button className={classes.btnPublish} onClick={getDataUrlCanvas}>
             PUBLISH
           </Button>
         </Box>
@@ -82,7 +81,8 @@ const FabricCanvas = ({ activeProperty }) => {
 }
 
 FabricCanvas.propTypes = {
-  activeProperty: PropTypes.object
+  activeProperty: PropTypes.object,
+  onGetDataUrl: PropTypes.func
 }
 
 export default FabricCanvas

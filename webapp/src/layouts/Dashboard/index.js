@@ -44,8 +44,10 @@ const Dashboard = ({ children, routes }) => {
       </Box>
       <Box className={classes.mainContent}>
         <Header onDrawerToggle={handleDrawerToggle} />
-        <Box className={classes.childContent}>{children}</Box>
-        <Footer />
+        <Box className={classes.childContent}>
+          {children}
+          <Footer />
+        </Box>
         <Message />
       </Box>
     </Box>
