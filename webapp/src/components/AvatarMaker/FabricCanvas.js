@@ -42,7 +42,7 @@ const FabricCanvas = ({ activeProperty, onGetDataUrl }) => {
 
   const getDataUrlCanvas = () => {
     // TODO: move all this component logic and return dataUrl
-    const dataUrl = canvas.toDataURL({ format: 'png' })
+    // const dataUrl = canvas.toDataURL({ format: 'png' })
   }
 
   const initCanvas = isMobile =>
