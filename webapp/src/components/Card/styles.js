@@ -24,11 +24,14 @@ export default theme => ({
   cardImageRoot: {
     width: '100%'
   },
-  media: {
+  cardImageMedia: {
     height: 336,
     [theme.breakpoints.up('sm')]: {
       height: 500
     }
+  },
+  media: {
+    height: '100%'
   },
   boxInfoCard: {
     height: 75,
@@ -57,11 +60,7 @@ export default theme => ({
     }
   },
   cardAvatarRoot: {
-    width: '46%',
-    margin: theme.spacing(2, 0),
-    [theme.breakpoints.up('sm')]: {
-      width: 167
-    }
+    width: '100%'
   },
   cardOngMedia: {
     height: 200

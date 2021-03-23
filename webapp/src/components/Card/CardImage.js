@@ -17,7 +17,7 @@ const CardImage = ({ img, primaryText, secondaryText }) => {
   return (
     <Card className={classes.cardImageRoot}>
       <CardActionArea>
-        <CardMedia className={classes.media} image={img} />
+        <CardMedia className={classes.cardImageMedia} image={img} />
         <Box className={classes.boxInfoCard}>
           <Typography variant="h5">{primaryText}</Typography>
           <Typography variant="p">{secondaryText}</Typography>

@@ -18,7 +18,7 @@ const CardAvatar = () => {
   return (
     <Card className={classes.cardAvatarRoot}>
       <CardActionArea>
-        <CardMedia component="img" height="140" image={Img} />
+        <CardMedia component="img" image={Img} />
       </CardActionArea>
       <CardActions>
         <Typography>Name</Typography>

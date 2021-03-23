@@ -3,6 +3,7 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Slider from '@ant-design/react-slick'
+import Grid from '@material-ui/core/Grid'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
 
@@ -21,6 +22,30 @@ import bgCanvas from '../../images/templates/bgs/1.png'
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
+
+const GoodsList = [
+  {
+    name: 'Selfie Cam'
+  },
+  {
+    name: 'Free your Animal'
+  },
+  {
+    name: 'Free your Animal'
+  },
+  {
+    name: 'Free your Animal'
+  },
+  {
+    name: 'Free your Animal'
+  },
+  {
+    name: 'Free your Animal'
+  },
+  {
+    name: 'Free your Animal'
+  }
+]
 
 const Home = () => {
   const classes = useStyles()
@@ -120,10 +145,13 @@ const Home = () => {
         </Box>
       </Box>
       <Box className={classes.rowsBoxWrap}>
-        <CardAvatar />
-        <CardAvatar />
-        <CardAvatar />
-        <CardAvatar />
+        <Grid container spacing={2}>
+          {GoodsList.map(game => (
+            <Grid item xs={6} md={4} lg={1} key={game.name}>
+              <CardAvatar />
+            </Grid>
+          ))}
+        </Grid>
       </Box>
       <Box className={classes.browseGoods}>
         <Button size="small">Browse goods</Button>
