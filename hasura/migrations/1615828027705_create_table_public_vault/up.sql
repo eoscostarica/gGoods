@@ -1,1 +1,0 @@
-CREATE TABLE "public"."vault"("id" serial NOT NULL, "account" varchar NOT NULL, "password" varchar NOT NULL, "created_at" timestamp NOT NULL DEFAULT now(), "updated_at" timestamp NOT NULL DEFAULT now(), PRIMARY KEY ("id") , UNIQUE ("id"));

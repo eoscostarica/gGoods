@@ -6,6 +6,9 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button';
 import { CREATE_ACCOUNT_MUTATION, CREATE_PRE_REGISTER_ORGANIZATION_MUTATION, CREATE_ACCOUNT_ORGANIZATION_MUTATION } from '../../gql'
 
+import AvatarMaker from '../../components/AvatarMaker'
+import Carousel from '../../components/Carousel'
+
 const Home = () => {
   const { t } = useTranslation('homeRoute')
   const [role, setRole] = useState('gamer')
@@ -119,6 +122,8 @@ const Home = () => {
       <Button onClick={handleCreateAccount} variant="contained">Create account</Button>
       <Button onClick={handlePreRegisterOrganization} variant="contained">Preregister organization</Button>
       <Typography>{t('welcomeMessage')}</Typography>
+      <AvatarMaker />
+      <Carousel items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]} />
     </Box>
   )
 }

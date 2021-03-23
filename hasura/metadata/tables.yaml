@@ -46,4 +46,4 @@
       filter: {}
 - table:
     schema: public
-    name: vault
+    name: template

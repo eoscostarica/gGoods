@@ -1,7 +1,6 @@
-export default (theme) => ({
-  wrapper: {
-    padding: `${theme.spacing(1) / 4}px ${theme.spacing(4)}px`,
-    background: theme.palette.common.white,
+export default theme => ({
+  root: {
+    padding: theme.spacing(2),
     position: 'relative'
   },
   listItem: {
@@ -9,8 +8,8 @@ export default (theme) => ({
     width: 'auto',
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    '&, &:hover, &:active': {
-      color: '#000000'
+    '&:hover, &:active:': {
+      color: theme.palette.action.selected
     }
   }
 })

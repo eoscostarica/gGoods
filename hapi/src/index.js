@@ -1,6 +1,7 @@
-const Hapi = require('@hapi/hapi')
 const Boom = require('@hapi/boom')
 const Path = require('path')
+
+const Hapi = require('@hapi/hapi')
 
 const { serverConfig, i18nConfig } = require('./config')
 const { jwtUtils } = require('./utils')
@@ -24,14 +25,13 @@ const init = async () => {
       files: {
         relativeTo: Path.join(__dirname, 'files')
       }
-    }
+    },
+    debug: { request: ['handler'] }
   })
 
   server.bind({
     i18n: i18nConfig
   })
-
-  server.route(routes)
 
   await server.register([
     {
@@ -53,15 +53,18 @@ const init = async () => {
 
   jwtUtils.auth(server)
 
+  server.route(routes)
   await server.start()
-
   console.log(`🚀 Server ready at ${server.info.uri}`)
   server.table().forEach(route => console.log(`${route.method}\t${route.path}`))
 }
 
-process.on('unhandledRejection', err => {
-  console.log(err)
-  process.exit(1)
+process.on('uncaughtException', (err, origin) => {
+  console.log('Uncaught Exception:', err, 'Exception origin:', origin)
+})
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection:', promise, 'reason:', reason)
 })
 
 init()

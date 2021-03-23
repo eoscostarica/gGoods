@@ -13,6 +13,7 @@ import { mainConfig } from '../config'
 
 const Home = lazy(() => import('./Home'))
 const Register = lazy(() => import('./Register'))
+const CreateTemplate = lazy(() => import('./CreateTemplate'))
 const About = lazy(() => import('./About'))
 const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
@@ -35,6 +36,13 @@ const routes = [
     exact: true
   },
   {
+    name: 'createTemplate',
+    icon: <GridIcon />,
+    component: CreateTemplate,
+    path: '/create-template',
+    exact: true
+  },
+  {
     header: 'docs',
     name: 'about',
     icon: <InfoIcon />,
@@ -51,7 +59,7 @@ const routes = [
   },
   {
     name: 'changelog',
-    badge: mainConfig.appVersion || 'v1.0',
+    badge: mainConfig.appVersion,
     path: 'https://github.com/eoscostarica/full-stack-boilerplate/tags',
     icon: <GitMergeIcon />,
     exact: true
@@ -86,4 +94,21 @@ const routes = [
   }
 ]
 
-export default routes
+export default role => {
+  const routesForRole = routes.filter(
+    route => !route.roles || route.roles.includes(role)
+  )
+
+  return {
+    sidebar: routesForRole.filter(route => !!route.name),
+    browser: routesForRole
+      .reduce(
+        (routes, route) => [
+          ...routes,
+          ...(route.childrens ? route.childrens : [route])
+        ],
+        []
+      )
+      .filter(route => !!route.component)
+  }
+}

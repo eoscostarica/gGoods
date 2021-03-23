@@ -39,6 +39,13 @@ actions:
   - role: gamer
   - role: guest
   - role: organization
+- name: create_template
+  definition:
+    kind: synchronous
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/create-template'
+    forward_client_headers: true
+  permissions:
+  - role: guest
 custom_types:
   enums: []
   input_objects: []
@@ -49,4 +56,5 @@ custom_types:
   - name: create_account_organization_output
   - name: create_pre_register_organization_output
   - name: login_output
+  - name: CreateTemplateOutput
   scalars: []

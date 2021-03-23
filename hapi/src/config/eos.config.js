@@ -4,5 +4,7 @@ module.exports = {
   baseAccount: process.env.HAPI_EOS_BASE_ACCOUNT,
   baseAccountPassword: process.env.HAPI_EOS_BASE_ACCOUNT_PASSWORD,
   walletUrl: process.env.HAPI_EOS_WALLET_URL,
-  mailApproveLifebank: process.env.MAIL_APPROVE_LIFEBANK
+  dgoodsAccount: process.env.HAPI_DGOODS_ACCOUNT,
+  dgoodsPassword: process.env.HAPI_DGOODS_PASSWORD,
+  dgoodsToken: process.env.HAPI_DGOODS_TOKEN
 }

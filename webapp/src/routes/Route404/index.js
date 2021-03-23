@@ -1,16 +1,12 @@
 import React from 'react'
-import { Button as MuiButton, Typography } from '@material-ui/core'
-import { spacing } from '@material-ui/system'
+import { Button, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
 
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
-
-const Button = styled(MuiButton)(spacing)
 
 const Route404 = () => {
   const classes = useStyles()

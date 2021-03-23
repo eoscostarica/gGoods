@@ -5,6 +5,13 @@ type Mutation {
   ): check_username_output
 }
 
+type Mutation {
+  create_template (
+    category: String!
+    name: String!
+    metadata: jsonb!
+  ): CreateTemplateOutput
+}
 
 type Mutation {
   create_account (
@@ -87,3 +94,6 @@ type login_output {
   token : String!
 }
 
+type CreateTemplateOutput {
+  trxid : String!
+}

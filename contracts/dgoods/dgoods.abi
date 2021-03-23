@@ -1,0 +1,607 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "accounts",
+            "base": "",
+            "fields": [
+                {
+                    "name": "category_name_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "category",
+                    "type": "name"
+                },
+                {
+                    "name": "token_name",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "asks",
+            "base": "",
+            "fields": [
+                {
+                    "name": "batch_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "dgood_ids",
+                    "type": "uint64[]"
+                },
+                {
+                    "name": "seller",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "expiration",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "is_donable",
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "burnft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "category_name_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "burnnft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "dgood_ids",
+                    "type": "uint64[]"
+                }
+            ]
+        },
+        {
+            "name": "categoryinfo",
+            "base": "",
+            "fields": [
+                {
+                    "name": "category",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "closesalenft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "seller",
+                    "type": "name"
+                },
+                {
+                    "name": "batch_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "confirmsale",
+            "base": "",
+            "fields": [
+                {
+                    "name": "newowner",
+                    "type": "name"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                },
+                {
+                    "name": "batch_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "create",
+            "base": "",
+            "fields": [
+                {
+                    "name": "issuer",
+                    "type": "name"
+                },
+                {
+                    "name": "rev_partner",
+                    "type": "name"
+                },
+                {
+                    "name": "category",
+                    "type": "name"
+                },
+                {
+                    "name": "token_name",
+                    "type": "name"
+                },
+                {
+                    "name": "fungible",
+                    "type": "bool"
+                },
+                {
+                    "name": "burnable",
+                    "type": "bool"
+                },
+                {
+                    "name": "sellable",
+                    "type": "bool"
+                },
+                {
+                    "name": "transferable",
+                    "type": "bool"
+                },
+                {
+                    "name": "rev_split",
+                    "type": "float64"
+                },
+                {
+                    "name": "base_uri",
+                    "type": "string"
+                },
+                {
+                    "name": "max_issue_days",
+                    "type": "uint32"
+                },
+                {
+                    "name": "max_supply",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "dgood",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "serial_number",
+                    "type": "uint64"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "category",
+                    "type": "name"
+                },
+                {
+                    "name": "token_name",
+                    "type": "name"
+                },
+                {
+                    "name": "relative_uri",
+                    "type": "string?"
+                }
+            ]
+        },
+        {
+            "name": "dgoodstats",
+            "base": "",
+            "fields": [
+                {
+                    "name": "fungible",
+                    "type": "bool"
+                },
+                {
+                    "name": "burnable",
+                    "type": "bool"
+                },
+                {
+                    "name": "sellable",
+                    "type": "bool"
+                },
+                {
+                    "name": "transferable",
+                    "type": "bool"
+                },
+                {
+                    "name": "issuer",
+                    "type": "name"
+                },
+                {
+                    "name": "rev_partner",
+                    "type": "name"
+                },
+                {
+                    "name": "token_name",
+                    "type": "name"
+                },
+                {
+                    "name": "category_name_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "max_supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "max_issue_window",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "current_supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "issued_supply",
+                    "type": "asset"
+                },
+                {
+                    "name": "rev_split",
+                    "type": "float64"
+                },
+                {
+                    "name": "base_uri",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "freezemaxsup",
+            "base": "",
+            "fields": [
+                {
+                    "name": "category",
+                    "type": "name"
+                },
+                {
+                    "name": "token_name",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "issue",
+            "base": "",
+            "fields": [
+                {
+                    "name": "to",
+                    "type": "name"
+                },
+                {
+                    "name": "category",
+                    "type": "name"
+                },
+                {
+                    "name": "token_name",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                },
+                {
+                    "name": "relative_uri",
+                    "type": "string"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "listsalenft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "seller",
+                    "type": "name"
+                },
+                {
+                    "name": "dgood_ids",
+                    "type": "uint64[]"
+                },
+                {
+                    "name": "sell_by_days",
+                    "type": "uint32"
+                },
+                {
+                    "name": "is_donable",
+                    "type": "bool"
+                },
+                {
+                    "name": "net_sale_amount",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "lockednfts",
+            "base": "",
+            "fields": [
+                {
+                    "name": "dgood_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "logcall",
+            "base": "",
+            "fields": [
+                {
+                    "name": "dgood_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "logsale",
+            "base": "",
+            "fields": [
+                {
+                    "name": "dgood_ids",
+                    "type": "uint64[]"
+                },
+                {
+                    "name": "seller",
+                    "type": "name"
+                },
+                {
+                    "name": "buyer",
+                    "type": "name"
+                },
+                {
+                    "name": "receiver",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "setconfig",
+            "base": "",
+            "fields": [
+                {
+                    "name": "symbol",
+                    "type": "symbol_code"
+                },
+                {
+                    "name": "version",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "tokenconfigs",
+            "base": "",
+            "fields": [
+                {
+                    "name": "standard",
+                    "type": "name"
+                },
+                {
+                    "name": "version",
+                    "type": "string"
+                },
+                {
+                    "name": "symbol",
+                    "type": "symbol_code"
+                },
+                {
+                    "name": "category_name_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "next_dgood_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "transferft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "from",
+                    "type": "name"
+                },
+                {
+                    "name": "to",
+                    "type": "name"
+                },
+                {
+                    "name": "category",
+                    "type": "name"
+                },
+                {
+                    "name": "token_name",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "transfernft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "from",
+                    "type": "name"
+                },
+                {
+                    "name": "to",
+                    "type": "name"
+                },
+                {
+                    "name": "dgood_ids",
+                    "type": "uint64[]"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "burnft",
+            "type": "burnft",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "burnnft",
+            "type": "burnnft",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "closesalenft",
+            "type": "closesalenft",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "confirmsale",
+            "type": "confirmsale",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "create",
+            "type": "create",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "freezemaxsup",
+            "type": "freezemaxsup",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "issue",
+            "type": "issue",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "listsalenft",
+            "type": "listsalenft",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "logcall",
+            "type": "logcall",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "logsale",
+            "type": "logsale",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setconfig",
+            "type": "setconfig",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "transferft",
+            "type": "transferft",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "transfernft",
+            "type": "transfernft",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "accounts",
+            "type": "accounts",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "asks",
+            "type": "asks",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "categoryinfo",
+            "type": "categoryinfo",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "dgood",
+            "type": "dgood",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "dgoodstats",
+            "type": "dgoodstats",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "lockednfts",
+            "type": "lockednfts",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "tokenconfigs",
+            "type": "tokenconfigs",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}
