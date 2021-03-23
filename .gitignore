@@ -1,7 +1,39 @@
+
+node_modules
+
+#Temporary Files
+tmp/
+stdout/
+tmp_data
+db_data
+wallet_data
+node_modules
+modules
+.eslintcache
+
+# Editor Files
+.vscode
+.idea
+*.iml
+*.code-workspace
+.changelog
+
+# Local env
 .env*
 !.env.example
-node_modules
-tmp/
+
+# Build Dirs
+build
+build_*
+
+# Secrets
+contracts/secrets
+eosio.key
+*.key
+wallet_password.txt
+
+# Local Mac files
+.DS_Store
 
 # yarn
 .yarn/*

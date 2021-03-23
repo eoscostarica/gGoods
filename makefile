@@ -1,3 +1,4 @@
+include ./utils/meta.mk ./utils/help.mk
 SHELL := /bin/bash
 BLUE   := $(shell tput -Txterm setaf 6)
 RESET  := $(shell tput -Txterm sgr0)
@@ -69,6 +70,9 @@ clean:
 	@rm -rf tmp/webapp
 	@docker system prune
 
+K8S_BUILD_DIR ?= ./build_k8s
+K8S_FILES := $(shell find ./kubernetes -name '*.yaml' | sed 's:./kubernetes/::g')
+
 build-kubernetes: ##@devops Generate proper k8s files based on the templates
 build-kubernetes: ./kubernetes
 	@echo "Build kubernetes files..."
@@ -105,7 +109,7 @@ build-docker-images:
 push-docker-images: ##@devops Publish docker images
 push-docker-images:
 	@echo $(DOCKER_PASSWORD) | docker login \
-		--username $(DOCKER_USERNAME) \
+		--username $(DOCKER_USER) \
 		--password-stdin
 	for dir in $(SUBDIRS); do \
 		$(MAKE) push-image -C $$dir; \
