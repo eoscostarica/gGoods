@@ -2,38 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: boilerplate-hapi
-  name: boilerplate-hapi
+    app: ggoods-hapi
+  name: ggoods-hapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: boilerplate-hapi
+      app: ggoods-hapi
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: boilerplate-hapi
+        app: ggoods-hapi
     spec:
       imagePullSecrets:
-        - name: regcred
+          - name: regcred
       containers:
-        - image: eoscostarica506/boilerplate-hapi
-          imagePullPolicy: 'Always'
-          name: 'boilerplate-hapi'
-          envFrom:
-            - configMapRef:
-                name: boilerplate-hapi-config
-          ports:
-            - containerPort: 9090
-          volumeMounts:
-            - mountPath: /usr/app
-              name: hapi
-              subPathExpr: $(CODE_DIRECTORY)
-      restartPolicy: Always
-      volumes:
-        - name: hapi
-          nfs:
-            server: nfs-server-new
-            path: /home/ubuntu/
+      - image: ${DOCKER_REGISTRY}/${IMAGE_NAME_HAPI}:${VERSION}
+        imagePullPolicy: "Always"
+        name: "ggoods-hapi"
+        envFrom:
+        - configMapRef:
+            name: ggoods-hapi-config
+        ports:
+        - containerPort: 9090

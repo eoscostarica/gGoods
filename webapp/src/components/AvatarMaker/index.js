@@ -45,7 +45,7 @@ TabPanel.propTypes = {
   index: PropTypes.number
 }
 
-const AvatarMaker = () => {
+const AvatarMaker = ({ onGetDataUrl }) => {
   const classes = useStyles()
   const [activeProperty, setActiveProperty] = useState(null)
   const [value, setValue] = useState()
@@ -72,7 +72,10 @@ const AvatarMaker = () => {
   return (
     <Box className={classes.mainBox}>
       <Grid>
-        <FabricCanvas activeProperty={activeProperty} />
+        <FabricCanvas
+          activeProperty={activeProperty}
+          onGetDataUrl={onGetDataUrl}
+        />
       </Grid>
       <Grid>
         <Tabs
@@ -170,6 +173,12 @@ const AvatarMaker = () => {
   )
 }
 
-AvatarMaker.propTypes = {}
+AvatarMaker.propTypes = {
+  onGetDataUrl: PropTypes.func
+}
+
+AvatarMaker.defaultProp = {
+  onGetDataUrl: () => {}
+}
 
 export default memo(AvatarMaker)

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ggoods-webapp
+  name: ggoods-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ggoods-webapp
+  template:
+    metadata:
+      labels:
+        app: ggoods-webapp
+    spec:
+      imagePullSecrets:
+          - name: regcred
+      containers:
+      - image: ${DOCKER_REGISTRY}/${IMAGE_NAME_WEBAPP}:${VERSION}
+        imagePullPolicy: "Always"
+        name: ggoods-webapp
+        envFrom:
+        - configMapRef:
+            name: ggoods-webapp-config
+        ports:
+        - containerPort: 80
+      restartPolicy: Always

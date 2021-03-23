@@ -1,0 +1,150 @@
+{
+  "projectName": "Ggoods",
+  "projectOwner": "eoscostarica",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "JustinCast",
+      "name": "JustinCast",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17890146?v=4",
+      "profile": "https://github.com/JustinCast",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "infra",
+        "research",
+        "review"
+      ]
+    },
+    {
+      "login": "murillojorge",
+      "name": "Jorge Murillo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1179619?v=4",
+      "profile": "http://eoscostarica.io/",
+      "contributions": [
+        "a11y",
+        "design",
+        "ideas",
+        "research",
+        "review"
+      ]
+    },
+    {
+      "login": "edgar-eoscostarica",
+      "name": "Edgar Fernandez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40245170?v=4",
+      "profile": "https://github.com/edgar-eoscostarica",
+      "contributions": [
+        "business",
+        "content",
+        "doc",
+        "ideas",
+        "video"
+      ]
+    },
+    {
+      "login": "ldrojas",
+      "name": "Luis Diego Rojas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29232417?v=4",
+      "profile": "https://github.com/ldrojas",
+      "contributions": [
+        "blog",
+        "business",
+        "content",
+        "doc",
+        "ideas",
+        "research"
+      ]
+    },
+    {
+      "login": "roafroaf",
+      "name": "Rodolfo Perez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40480825?v=4",
+      "profile": "https://github.com/roafroaf",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "leisterfrancisco",
+      "name": "Leister Francisco Alvarez Campos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28828796?v=4",
+      "profile": "https://www.linkedin.com/in/leister-francisco-alvarez-campos-65b7801bb/",
+      "contributions": [
+        "code",
+        "ideas",
+        "research",
+        "review"
+      ]
+    },
+    {
+      "login": "AngeloCG97",
+      "name": "AngeloCG97",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51149817?v=4",
+      "profile": "https://github.com/AngeloCG97",
+      "contributions": [
+        "code",
+        "ideas",
+        "research",
+        "review"
+      ]
+    },
+    {
+      "login": "kuronosec",
+      "name": "Andres Gomez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6999429?v=4",
+      "profile": "https://github.com/kuronosec",
+      "contributions": [
+        "infra",
+        "mentoring",
+        "review"
+      ]
+    },
+    {
+      "login": "JeanVegaD",
+      "name": "Jean Vega",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19317138?v=4",
+      "profile": "https://github.com/JeanVegaD",
+      "contributions": [
+        "code",
+        "design",
+        "ideas",
+        "research",
+        "review"
+      ]
+    },
+    {
+      "login": "steph222",
+      "name": "Steph Delgado",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31549144?v=4",
+      "profile": "https://www.linkedin.com/in/stephaniedelgadobrenes/",
+      "contributions": [
+        "code",
+        "design",
+        "ideas",
+        "research",
+        "review"
+      ]
+    },
+    {
+      "login": "kriskoin",
+      "name": "Kriskoin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3965944?v=4",
+      "profile": "https://github.com/kriskoin",
+      "contributions": [
+        "code",
+        "ideas",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

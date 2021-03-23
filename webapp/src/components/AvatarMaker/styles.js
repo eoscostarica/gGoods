@@ -20,7 +20,8 @@ export default theme => ({
     }
   },
   bottomBox: {
-    display: 'flex'
+    display: 'flex',
+    width: '100%'
   },
   mainBox: {},
   borderTabs: {
@@ -49,6 +50,7 @@ export default theme => ({
   },
   textField: {
     width: 45,
+    marginBottom: '0px !important',
     '& .MuiOutlinedInput-notchedOutline': {
       border: 'none'
     },

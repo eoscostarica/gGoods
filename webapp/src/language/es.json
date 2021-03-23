@@ -6,7 +6,7 @@
     "darkMode": "Modo Oscuro"
   },
   "routes": {
-    "/>title": "EOSIO Boilerplate",
+    "/>title": "GGoods",
     "/>sidebar": "Inicio",
     "/>heading": "Inicio",
     "/organizations>title": "Organizaciones | GGOODS",
@@ -18,7 +18,7 @@
     "/about>title": "Acerca de | EOSIO Boilerplate",
     "/about>sidebar": "Acerca de",
     "/about>heading": "Acerca de",
-    "/help>title": "Ayuda | EOSIO Boilerplate",
+    "/help>title": "Ayuda | GGoods",
     "/help>sidebar": "Ayuda",
     "/help>heading": "Ayuda",
     "docs": "Documentación",
