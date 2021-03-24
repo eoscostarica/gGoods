@@ -50,7 +50,7 @@ const Organizations = () => {
   const { t } = useTranslation('organizationsRoute')
 
   return (
-    <Box>
+    <Box className={classes.mainBox}>
       <Typography variant="h4" className={classes.titlePage}>
         {t('title')}
       </Typography>

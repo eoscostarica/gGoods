@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/styles'
+import { Link as LinkRouter } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
@@ -41,13 +42,18 @@ const CardOng = ({ name, category, description, img }) => {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.cardActionOngArea}>
-        <IconButton
-          aria-label="open"
-          className={classes.arrowIcon}
-          color="primary"
+        <LinkRouter
+          style={{ textDecoration: 'none' }}
+          to={{ pathname: `organization/ID` }}
         >
-          <ArrowForwardIcon />
-        </IconButton>
+          <IconButton
+            aria-label="open"
+            className={classes.arrowIcon}
+            color="primary"
+          >
+            <ArrowForwardIcon />
+          </IconButton>
+        </LinkRouter>
       </CardActions>
     </Card>
   )

@@ -4,5 +4,8 @@ export default theme => ({
   },
   textPageDescription: {
     marginBottom: theme.spacing(2)
+  },
+  mainBox: {
+    padding: theme.spacing(2)
   }
 })

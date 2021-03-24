@@ -32,7 +32,7 @@ const Games = () => {
   const { t } = useTranslation('gamesRoute')
 
   return (
-    <Box>
+    <Box className={classes.mainBox}>
       <Typography variant="h4" className={classes.titlePage}>
         {t('title')}
       </Typography>

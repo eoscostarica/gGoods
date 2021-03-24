@@ -14,7 +14,7 @@ const About = () => {
   const { t } = useTranslation('aboutRoute')
 
   return (
-    <Box>
+    <Box className={classes.mainBox}>
       <Grid container direction="column">
         <Grid item xs>
           <Grid container direction="column">
