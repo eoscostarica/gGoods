@@ -1,8 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
-import { useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 
@@ -28,9 +26,6 @@ const organization = {
 
 const Organization = () => {
   const classes = useStyles()
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
-  console.log(isMobile)
 
   return (
     <Box>
