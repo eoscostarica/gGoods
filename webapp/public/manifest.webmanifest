@@ -1,8 +1,8 @@
 {
-  "name": "EOSIO Boilerplate",
-  "short_name": "Boilerplate",
+  "name": "Ggoods",
+  "short_name": "Ggoods",
   "lang": "en",
-  "description": "Basic skeleton for EOS Costa Rica projects",
+  "description": "Beyond Blockchain Hackathn",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
