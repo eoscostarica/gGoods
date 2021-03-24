@@ -10,7 +10,6 @@ const sendVerificationCode = async (
   message,
   buttonText
 ) => {
-  console.log('MARK, sendVerificationCode')
   const transporter = nodemailer.createTransport({
     host: mailConfig.host,
     secure: false,

@@ -50,8 +50,6 @@ const SignupWithGoogle = ({ handlerSubmit }) => {
     if (error) handlerSubmit(false, '', '', '')
   }
 
-  console.log('CLIENT ID', oAuthConfig.oAuthConfig)
-
   return (
     <GoogleLogin
       clientId={oAuthConfig.oAuthConfig.google_clienteID}

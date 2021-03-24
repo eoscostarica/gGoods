@@ -87,14 +87,11 @@ const EmailVerification = (props) => {
         code: code
       }
     })
-    console.log('sigue')
   }, [code])
 
   useEffect(() => {
-    console.log('verifyEmailResult:', verifyEmailResult)
     if (verifyEmailResult) {
       setValidate(verifyEmailResult.is_verified)
-      console.log(verifyEmailResult)
     }
 
   }, [verifyEmailResult])

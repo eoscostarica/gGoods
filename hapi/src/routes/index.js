@@ -7,12 +7,11 @@ const createTemplateRoute = require('./create-template.route')
 const healthzRoute = require('./healthz.route')
 
 module.exports = [
-  // healthzRoute,
+  healthzRoute,
   createAccountRoute,
   createAccountOrganization,
   preRegisterOrganization,
   verifyEmailRouteRoute,
   loginRoute,
-  createTemplateRoute,
-  healthzRoute
+  createTemplateRoute
 ]

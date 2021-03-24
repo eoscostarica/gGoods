@@ -181,7 +181,6 @@ const LoginModal = () => {
   }
 
   const handleLogin = async () => {
-    console.log('user.account',user)
     setErrorMessage(null)
     const bcrypt = require('bcryptjs')
     const { data } = await getHash({ account: user.account })
@@ -198,17 +197,13 @@ const LoginModal = () => {
               secret: hash
             }
           })
-          console.log('continua')
         } else {
-          console.log('error 1')
           setErrorMessage(t('login.invalidAccountOrPassword'))
         }
       })
     } else {
-      console.log('error 2')
       setErrorMessage(t('login.invalidAccountOrPassword'))
     }
-    console.log('sale')
   }
 
   const handleLoginWithAuth = async (status, email, secret) => {
@@ -244,19 +239,11 @@ const LoginModal = () => {
 
   useEffect(() => {
     if (loginResult) {
-      console.log('loginResult:', loginResult.token)
       successLogin(loginResult.token)
       cancelLogin()
     }
 
   }, [loginResult])
-
-  /*useEffect(() => {
-    if (currentUser) {
-      cancelLogin()
-    }
-
-  }, [currentUser])*/
 
   function executeLogin(e) {
     if (e.key === 'Enter' && (user.account && user.secret && !loading)) {
@@ -264,7 +251,6 @@ const LoginModal = () => {
       handleLogin()
     }
   }
- console.log('open:', open)
   return (
     <>
       <Dialog

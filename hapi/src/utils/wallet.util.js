@@ -7,10 +7,8 @@ const post = async (endpoint, body) => {
     body,
     method: 'POST'
   })
+  
   const data = await res.json()
-
-  console.log('DATA')
-  console.log(data)
 
   if (data.code) {
     throw new Error(`${data.error.name}: ${data.error.what}`)

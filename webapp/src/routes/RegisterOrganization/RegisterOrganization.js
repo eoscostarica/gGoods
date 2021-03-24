@@ -87,7 +87,6 @@ const RegisterLifebank = (props) => {
     if (lifebank) {
       const { name, email, verification_code } = lifebank
       const secret = lifebank.password
-      console.log('password:', secret)
       createAccountLifebank({
         variables: {
           email,
@@ -105,7 +104,6 @@ const RegisterLifebank = (props) => {
   }
 
   useEffect(() => {
-    console.log('code:', code)
     updateEmail({
       variables: {
         verification_code: code
@@ -114,9 +112,7 @@ const RegisterLifebank = (props) => {
   }, [code])
 
   useEffect(() => {
-    console.log('organizationData:', organizationData)
     if (organizationData) {
-      console.log('entra')
       setLifebank(organizationData.returning[0])
     }
 

@@ -30,7 +30,6 @@ const preRegister = async ({
 }) => {
   const { verification_code } = await verificationCodeApi.generate()
   let resultRegister = 'ok'
-  console.log('MARK, preRegister')
   try {
     await preregisterApi.insertOrganization({
       email,
@@ -43,8 +42,6 @@ const preRegister = async ({
       verification_code
     })
 
-    console.log('PRE, mailApi')
-
     mailApi.sendVerificationCode(
       email,
       verification_code,
@@ -54,10 +51,7 @@ const preRegister = async ({
       emailContent.button
     )
 
-    console.log('POST, mailApi')
-
   } catch (error) {
-    console.log('ERROR', error)
     resultRegister = 'error'
 
     return {

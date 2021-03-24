@@ -61,7 +61,6 @@ const GET_LIFEBANK_DATA = `
 `
 
 const insertOrganization = (preregister_organization) => {
-  console.log('MARK, preregister_organization')
   return hasuraUtils.request(INSERT_ORGANIZATION, { preregister_organization })
 }
 

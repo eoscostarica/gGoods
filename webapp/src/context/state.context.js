@@ -5,12 +5,10 @@ import jwtDecode from 'jwt-decode'
 const SharedStateContext = React.createContext()
 
 const getUserFromToken = (token) => {
-  console.log('token: ', token)
   if(!token)
     return
 
   const claims = jwtDecode(token)
-  console.log("claims:", claims)
   return {
     account: claims.sub,
     role: claims?.['https://hasura.io/jwt/claims']['x-hasura-default-role']
@@ -52,7 +50,6 @@ const sharedStateReducer = (state, action) => {
 
     case 'login':
       //state.ual.showModal()
-      console.log('action: ', action)
       return {
         ...state,
         showLoginModal: true
@@ -74,7 +71,6 @@ const sharedStateReducer = (state, action) => {
       }
     
     case 'successLogin':
-      console.log('action: ', action.payload)
       localStorage.setItem('token', action.payload)
 
       return {

@@ -171,7 +171,6 @@ const Header = memo(({ onDrawerToggle }) => {
   }
 
   const handleLogout = () => {
-    console.log('entra')
     logout()
   }
 
@@ -181,7 +180,6 @@ const Header = memo(({ onDrawerToggle }) => {
 
   return (
     <AppBar className={classes.appBar} position="sticky">
-      {console.log('user:', state.user)}
       <Toolbar className={classes.toolbar}>
         <Hidden mdUp>
           <IconButton aria-label="Open drawer" onClick={onDrawerToggle}>
