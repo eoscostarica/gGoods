@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/client'
 import { useParams, useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 import CircularProgress from '@material-ui/core/CircularProgress'

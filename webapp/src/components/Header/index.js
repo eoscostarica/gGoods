@@ -102,7 +102,7 @@ LanguageButton.propTypes = {
 }
 
 const UserButton = memo(({ user }) => (
-  <>{user && <Button startIcon={<AccountIcon />}>{user.accountName}</Button>}</>
+  <>{user && <Button startIcon={<AccountIcon />}>{user.account}</Button>}</>
 ))
 
 UserButton.displayName = 'UserButton'
@@ -143,12 +143,10 @@ const Header = memo(({ onDrawerToggle }) => {
   const { t } = useTranslation('routes')
   const history = useHistory()
   const location = useLocation()
-  const [state, { setState }] = useSharedState()
   const { i18n } = useTranslation('translations')
   const [currentLanguaje, setCurrentLanguaje] = useState()
   const [menuAnchorEl, setMenuAnchorEl] = useState()
-  const [, { logout }] = useUser()
-  const [currentUser, { login }] = useUser()
+  const [state, { login, logout, setState }] = useSharedState()
 
   const handleSwitchThemeMode = useDarkMode => {
     setState({ useDarkMode })
@@ -184,7 +182,7 @@ const Header = memo(({ onDrawerToggle }) => {
 
   return (
     <AppBar className={classes.appBar} position="sticky">
-      {console.log('user:', currentUser)}
+      {console.log('user:', state.user)}
       <Toolbar className={classes.toolbar}>
         <Hidden mdUp>
           <IconButton aria-label="Open drawer" onClick={onDrawerToggle}>
@@ -211,9 +209,6 @@ const Header = memo(({ onDrawerToggle }) => {
             onLogin={handleLogin}
             onSignOut={handleSignOut}
           />
-          <Button onClick={handleLogout}>
-            Logout
-          </Button>
         </Box>
         <Box className={classes.mobileSection}>
           <IconButton

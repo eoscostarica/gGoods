@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useMutation, useLazyQuery } from '@apollo/react-hooks'
+import { useMutation, useLazyQuery } from '@apollo/client'
 import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
 import Dialog from '@material-ui/core/Dialog'

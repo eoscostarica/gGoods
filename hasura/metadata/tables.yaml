@@ -64,3 +64,6 @@
       - username
       - verification_code
       filter: {}
+- table:
+    schema: public
+    name: vault

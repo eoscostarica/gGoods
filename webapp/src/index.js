@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { UALProvider, withUAL } from '@eoscostarica/ual-reactjs-renderer'
-import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloProvider } from '@apollo/client'
 
 import App from './App'
 import { client } from './graphql'

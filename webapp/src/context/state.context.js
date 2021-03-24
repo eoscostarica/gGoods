@@ -1,11 +1,26 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import jwtDecode from 'jwt-decode'
 
 const SharedStateContext = React.createContext()
 
+const getUserFromToken = (token) => {
+  console.log('token: ', token)
+  if(!token)
+    return
+
+  const claims = jwtDecode(token)
+  console.log("claims:", claims)
+  return {
+    account: claims.sub,
+    role: claims?.['https://hasura.io/jwt/claims']['x-hasura-default-role']
+  }
+}
+
 const initialValue = {
+  showLoginModal: false,
   useDarkMode: false,
-  user: null
+  user: getUserFromToken(localStorage.getItem('token'))
 }
 
 const sharedStateReducer = (state, action) => {
@@ -36,14 +51,36 @@ const sharedStateReducer = (state, action) => {
       }
 
     case 'login':
-      state.ual.showModal()
-
-      return state
+      //state.ual.showModal()
+      console.log('action: ', action)
+      return {
+        ...state,
+        showLoginModal: true
+      }
 
     case 'logout':
-      state.ual.logout()
+      //state.ual.logout()
+      localStorage.removeItem('token')
 
-      return state
+      return {
+        ...state,
+        user: null
+      }
+
+    case 'cancelLogin':
+      return {
+        ...state,
+        showLoginModal: false
+      }
+    
+    case 'successLogin':
+      console.log('action: ', action.payload)
+      localStorage.setItem('token', action.payload)
+
+      return {
+        ...state,
+        user: getUserFromToken(action.payload)
+      }
 
     default: {
       throw new Error(`Unsupported action type: ${action.type}`)
@@ -87,6 +124,8 @@ export const useSharedState = () => {
   const hideMessage = () => dispatch({ type: 'hideMessage' })
   const login = () => dispatch({ type: 'login' })
   const logout = () => dispatch({ type: 'logout' })
+  const cancelLogin = () => dispatch({ type: 'cancelLogin' })
+  const successLogin = (payload) => dispatch({ type: 'successLogin', payload })
 
-  return [state, { setState, showMessage, hideMessage, login, logout }]
+  return [state, { setState, showMessage, hideMessage, login, logout, cancelLogin, successLogin }]
 }

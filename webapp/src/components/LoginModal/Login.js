@@ -1,5 +1,5 @@
 import React, { memo, useState, useEffect } from 'react'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/client'
 import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
@@ -27,6 +27,7 @@ import {
   GET_SECRET_BY_ACCOUNT,
 } from '../../gql'
 import { useUser } from '../../context/user.context'
+import { useSharedState } from '../../context/state.context'
 import LoginWithGoogle from './LoginWithGoogle'
 import Signup from '../../components/Signup'
 
@@ -145,11 +146,12 @@ const useStyles = makeStyles((theme) => ({
 const LoginModal = ({ isNavBar, isSideBar }) => {
   const { t } = useTranslation('translations')
   const [user, setUser] = useState({})
+  const [{showLoginModal: open}, {cancelLogin, successLogin}] = useSharedState()
   const [errorMessage, setErrorMessage] = useState(null)
   const classes = useStyles()
   const theme = useTheme()
-  const [open, setOpen] = useState(false)
-  const [currentUser, { login }] = useUser()
+  //const [open, setOpen] = useState(false)
+  //const [currentUser, { login }] = useUser()
   const [
     loginMutation,
     { loading, error, data: { login: loginResult } = {} }
@@ -174,7 +176,7 @@ const LoginModal = ({ isNavBar, isSideBar }) => {
   })
 
   const handleOpen = () => {
-    setOpen(!open)
+    cancelLogin()
   }
 
   const handleSetField = (field, value) => {
@@ -186,7 +188,7 @@ const LoginModal = ({ isNavBar, isSideBar }) => {
     setErrorMessage(null)
     const bcrypt = require('bcryptjs')
     const { data } = await getHash({ account: user.account })
-    console.log('data:', data)
+    
     if (data.user.length >= 1) {
       const hash = data.user[0].secret
 
@@ -246,18 +248,18 @@ const LoginModal = ({ isNavBar, isSideBar }) => {
   useEffect(() => {
     if (loginResult) {
       console.log('loginResult:', loginResult.token)
-      login(loginResult.token)
-      setOpen(false)
+      successLogin(loginResult.token)
+      cancelLogin()
     }
 
   }, [loginResult])
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (currentUser) {
-      setOpen(false)
+      cancelLogin()
     }
 
-  }, [currentUser])
+  }, [currentUser])*/
 
   function executeLogin(e) {
     if (e.key === 'Enter' && (user.account && user.secret && !loading)) {
@@ -265,30 +267,9 @@ const LoginModal = ({ isNavBar, isSideBar }) => {
       handleLogin()
     }
   }
-
+ console.log('open:', open)
   return (
     <>
-      {isNavBar && !currentUser &&
-        <Button className={classes.btnLoginModal} onClick={handleOpen}>
-          {t('login.login')}
-        </Button>
-      }
-      {isSideBar && !currentUser &&
-        <Box
-          className={classes.registerBtnSideBar}
-          onClick={handleOpen}
-        >
-          <FingerprintIcon className={classes.iconOption} />
-          <Link to="/">
-            <Typography
-              variant="body1"
-              className={classes.labelOption}
-            >
-              {t('login.login')}
-            </Typography>
-          </Link>
-        </Box>
-      }
       <Dialog
         open={open}
         onClose={handleOpen}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer, useCallback, lazy, Suspense } from 'react'
-import { useQuery, useMutation } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/client'
 import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
