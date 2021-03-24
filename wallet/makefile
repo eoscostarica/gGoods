@@ -41,3 +41,4 @@ build-docker-cached: ./Dockerfile
 push-image: ##@devops Push the freshly built image and tag with release or latest tag
 push-image:
 	@docker push $(DOCKER_REGISTRY)/$(IMAGE_NAME_WALLET):$(VERSION)
+	@docker push $(DOCKER_REGISTRY)/$(IMAGE_NAME_WALLET):$(LATEST_TAG)
