@@ -20,7 +20,6 @@ const newTransaction = async payload => {
 }
 
 const getTransactionData = async orderID => {
-  console.log(`Bearer ${paypalConfig.paypalAccesToken}`)
   fetch(`${paypalConfig.paypalGetTransactionUrl}${orderID}`, {
     method: 'get',
     headers: { 
