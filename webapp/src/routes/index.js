@@ -11,6 +11,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 
 const Home = lazy(() => import('./Home'))
 const Organizations = lazy(() => import('./Organizations'))
+const Organization = lazy(() => import('./Organization'))
 const Goods = lazy(() => import('./Goods'))
 const Games = lazy(() => import('./Games'))
 const YourCollection = lazy(() => import('./YourCollection'))
@@ -32,6 +33,10 @@ const routes = [
     component: Organizations,
     path: '/organizations',
     exact: true
+  },
+  {
+    path: '/organization/:id',
+    component: Organization
   },
   {
     name: 'goods',

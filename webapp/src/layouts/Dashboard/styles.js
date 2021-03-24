@@ -21,7 +21,6 @@ export default (theme, drawerWidth) => ({
   childContent: {
     flex: 1,
     height: '100%',
-    padding: theme.spacing(2),
     overflow: 'scroll',
     overflowX: 'hidden'
   }
