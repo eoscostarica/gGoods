@@ -5,9 +5,7 @@ const { accountApi } = require('../../api')
 
 module.exports = async ({ payload: { input } }) => {
   try {
-    console.log('llega')
     const response = await accountApi.verifyEmail(input)
-
     return response
   } catch (error) {
     console.log(error)

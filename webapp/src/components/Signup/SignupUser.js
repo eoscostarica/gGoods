@@ -101,7 +101,6 @@ const UserSignup = ({
           className={classes.textField}
           onChange={(event) => setConfirmPassword(event.target.value)}
         />
-        {console.log('captchaConfig: ',captchaConfig.captchaConfig.sitekey)}
         <ReCAPTCHA
           sitekey={captchaConfig.captchaConfig.sitekey}
           onChange={(value) => serRecaptchaValue(value)}

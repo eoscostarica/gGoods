@@ -5,10 +5,6 @@ const { accountApi } = require('../../api')
 
 module.exports = async ({ payload: { input } }) => {
   try {
-
-    console.log('ANGELO')
-    console.log('ANGELO', input)
-
     const response = await accountApi.create(input)
 
     return response

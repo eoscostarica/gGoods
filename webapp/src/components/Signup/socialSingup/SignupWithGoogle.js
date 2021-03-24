@@ -52,7 +52,7 @@ const SignupWithGoogle = ({ handlerSubmit }) => {
 
   return (
     <GoogleLogin
-      clientId={oAuthConfig.google_clienteID}
+      clientId={oAuthConfig.oAuthConfig.google_clienteID}
       render={(handleProps) => (
         <Button
           onClick={handleProps.onClick}

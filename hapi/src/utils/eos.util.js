@@ -21,9 +21,7 @@ const createAccount = async (accountName) => {
   const password = await walletUtil.create(accountName)
   const key = await walletUtil.createKey(accountName)
 
-  console.log('TEST')
   try {
-    console.log('TEST_1')
     await walletUtil.unlock(
       eosConfig.baseAccount,
       eosConfig.baseAccountPassword

@@ -6,7 +6,6 @@ const {
 } = require('../utils')
 
 const historyApi = require('./history.api')
-// const notificationApi = require('./notification.api')
 const userApi = require('./user.api')
 const vaultApi = require('./vault.api')
 const preRegister = require('./pre-register.api')
@@ -42,7 +41,6 @@ query MyQuery {
 `
 
 const create = async ({ role, email, emailContent, name, secret }) => {
-  console.log('LEISTER')
   const account = await eosUtils.generateRandomAccountName(role.substring(0, 3))
   const { password, transaction } = await eosUtils.createAccount(account)
   const username = account
@@ -403,7 +401,6 @@ const verifyEmail = async ({ code }) => {
   const resUser = await userApi.verifyEmail({
     verification_code: { _eq: code }
   })
-  console.log(code)
   const resOrganization = await preRegister.verifyEmail({
     verification_code: { _eq: code }
   })
@@ -415,8 +412,6 @@ const verifyEmail = async ({ code }) => {
   ) {
     if (resOrganization.update_preregister_organization.affected_rows !== 0) {
       try {
-        console.log('envio:', resOrganization.update_preregister_organization.returning[0])
-        console.log('MAIL_APPROVE_LIFEBANNK', MAIL_APPROVE_LIFEBANNK)
         mailApi.sendRegistrationRequest(
           MAIL_APPROVE_LIFEBANNK,
           resOrganization.update_preregister_organization.returning[0]
@@ -469,43 +464,6 @@ const revokeConsent = async account => {
   return consentTransaction
 }
 
-const transfer = async (from, details) => {
-  const currentBalance = await lifebankcoinUtils.getbalance(details.to)
-  const password = await vaultApi.getPassword(from)
-  const user = await userApi.getOne({
-    account: { _eq: from }
-  })
-
-  let transaction
-
-  switch (user.role) {
-    case 'donor' || 'sponsor':
-      transaction = await lifebankcoinUtils.transfer(from, password, details)
-      break
-    case 'lifebank':
-      transaction = await lifebankcoinUtils.issue(from, password, details)
-      break
-    default:
-      break
-  }
-
-  const newBalance = await lifebankcoinUtils.getbalance(details.to)
-  await historyApi.insert(transaction)
-  // await notificationApi.insert({
-  //   account: details.to,
-  //   title: 'New tokens',
-  //   description: `From ${from} ${details.memo}`,
-  //   type: 'new_tokens',
-  //   payload: {
-  //     currentBalance,
-  //     newBalance,
-  //     transaction: transaction.transaction_id
-  //   }
-  // })
-
-  return transaction
-}
-
 module.exports = {
   create,
   createOrganization,
@@ -513,7 +471,6 @@ module.exports = {
   login,
   grantConsent,
   revokeConsent,
-  transfer,
   verifyEmail,
   getValidSponsors,
   getValidLifebanks

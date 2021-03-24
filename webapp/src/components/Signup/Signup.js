@@ -423,7 +423,6 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
 
   return (
     <>
-      {console.log('state:', state.user)}
       {isHome && (state.user === null) &&
         <Button color="secondary" className={classes.registerBtn} onClick={handleOpen}>
           {t('signup.register')}
