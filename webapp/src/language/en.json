@@ -4,8 +4,13 @@
     "signOut": "Logout",
     "lightMode": "Light Mode",
     "darkMode": "Dark Mode",
+    "template": "Template",
     "category": "Category",
     "name": "Name",
+    "type": "Type",
+    "description": "Description",
+    "smallImage": "Small Image",
+    "largeImage": "Large Image",
     "confirm": "Confirm"
   },
   "routes": {
@@ -52,6 +57,7 @@
   "createTemplateRoute": {
     "successUploadImage": "Success upload image",
     "avatarMaker": "Avatar Maker",
-    "myOwnDesign": "My Own Design"
+    "myOwnDesign": "My Own Design",
+    "successMessage": "Success transaction:"
   }
 }

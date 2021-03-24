@@ -8,15 +8,14 @@ import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import Box from '@material-ui/core/Box'
 import { useMutation } from '@apollo/client'
 import { DropzoneArea } from 'material-ui-dropzone'
 import { SketchPicker } from 'react-color'
 
 import { CREATE_TEMPLATE_MUTATION } from '../../gql'
+import { ipfs, setData } from '../../utils'
 import { useSharedState } from '../../context/state.context'
 import AvatarMaker from '../../components/AvatarMaker'
-import { mainConfig } from '../../config'
 
 import styles from './styles'
 
@@ -34,6 +33,7 @@ const initialValue = {
     backgroundColor: '#FFEBC3'
   }
 }
+
 const CreateTemplate = () => {
   const classes = useStyles()
   const { t } = useTranslation('createTemplateRoute')
@@ -47,41 +47,20 @@ const CreateTemplate = () => {
       return
     }
 
-    const formData = new FormData()
-    formData.append('file_name', files[0])
-    const response = await fetch(`${mainConfig.ipfsUrl}/upload`, {
-      method: 'POST',
-      body: formData
-    })
-    const body = await response.json()
+    try {
+      const { path } = await ipfs.add({
+        content: files[0]
+      })
 
-    if (!body.status) {
-      showMessage({ type: 'error', content: body.data })
-
-      return
+      setPayload(prev => setData(prev, field, path))
+      showMessage({ content: `${t('successUploadImage')} ${path}` })
+    } catch (error) {
+      showMessage({ type: 'error', content: error.message })
     }
-
-    setPayload(prev => setData(prev, field, body.data))
-    showMessage({ content: `${t('successUploadImage')} ${body.data}` })
   }
 
   const handlePayloadChange = field => event => {
     setPayload(prev => setData(prev, field, event.target.value))
-  }
-
-  const setData = (obj, key, value) => {
-    if (key.includes('.')) {
-      const [a, b] = key.split('.')
-      return {
-        ...obj,
-        [a]: setData(obj[a], b, value)
-      }
-    }
-
-    return {
-      ...obj,
-      [key]: value
-    }
   }
 
   const handleSubmit = async () => {
@@ -92,7 +71,7 @@ const CreateTemplate = () => {
         }
       })
       setPayload(initialValue)
-      showMessage({ content: `txid: ${data.template.trxid}` })
+      showMessage({ content: `${t('successMessage')} ${data.template.trxid}` })
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
     }
@@ -104,9 +83,10 @@ const CreateTemplate = () => {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <Grid container direction="row" spacing={2}>
-        <Grid item xs={12} md={6}>
+      <Grid container justify="center" alignItems="center" spacing={2}>
+        <Grid item xs={12}>
           <TextField
+            fullWidth
             disabled={true}
             value={payload?.metadata?.type || ''}
             label={t('type')}
@@ -114,16 +94,18 @@ const CreateTemplate = () => {
           />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
+            fullWidth
             value={payload?.category || ''}
             label={t('category')}
             onChange={handlePayloadChange('category')}
           />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
+            fullWidth
             value={payload?.name || ''}
             label={t('name')}
             onChange={event => {
@@ -133,8 +115,9 @@ const CreateTemplate = () => {
           />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
+            fullWidth
             multiline={true}
             rows={1}
             rowsMax={5}
@@ -151,13 +134,17 @@ const CreateTemplate = () => {
               <Tab label={t('myOwnDesign')} />
             </Tabs>
           </AppBar>
-          {tab === 0 && (
-            <Box className={classes.tabPanel}>
-              <AvatarMaker onGetDataUrl={() => {}} />
-            </Box>
-          )}
-          {tab === 1 && (
-            <Box className={classes.tabPanel}>
+        </Grid>
+
+        {tab === 0 && (
+          <Grid item xs={12}>
+            <AvatarMaker onGetDataUrl={() => {}} />
+          </Grid>
+        )}
+
+        {tab === 1 && (
+          <>
+            <Grid item xs={12}>
               <SketchPicker
                 className={classes.colorPicker}
                 color={payload?.metadata?.backgroundColor}
@@ -167,14 +154,15 @@ const CreateTemplate = () => {
                   })
                 }
               />
+            </Grid>
 
+            <Grid item xs={12}>
               <DropzoneArea
                 filesLimit={1}
                 showAlerts={false}
                 onChange={handleFileUpload('metadata.imageSmall')}
                 acceptedFiles={['image/*']}
                 dropzoneText={t('smallImage')}
-                classes={{ root: classes.dropzoneArea }}
                 previewGridProps={{
                   container: {
                     style: {
@@ -183,14 +171,15 @@ const CreateTemplate = () => {
                   }
                 }}
               />
+            </Grid>
 
+            <Grid item xs={12}>
               <DropzoneArea
                 filesLimit={1}
                 showAlerts={false}
                 onChange={handleFileUpload('metadata.imageLarge')}
                 acceptedFiles={['image/*']}
                 dropzoneText={t('largeImage')}
-                classes={{ root: classes.dropzoneArea }}
                 previewGridProps={{
                   container: {
                     style: {
@@ -199,16 +188,20 @@ const CreateTemplate = () => {
                   }
                 }}
               />
-            </Box>
-          )}
-        </Grid>
-      </Grid>
-      <Box className={classes.actions}>
-        {loading && <CircularProgress color="secondary" size={20} />}
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
-          {t('confirm')}
+            </Grid>
+          </>
+        )}
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+          disabled={loading || !payload?.category || !payload?.name}
+        >
+          {!loading && t('confirm')}
+          {loading && <CircularProgress color="secondary" size={20} />}
         </Button>
-      </Box>
+      </Grid>
     </form>
   )
 }

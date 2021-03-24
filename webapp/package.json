@@ -45,6 +45,7 @@
     "history": "^5.0.0",
     "i18next": "^19.9.1",
     "i18next-browser-languagedetector": "^6.0.1",
+    "ipfs-http-client": "^49.0.4",
     "material-ui-dropzone": "^3.5.0",
     "polished": "^4.1.1",
     "prop-types": "^15.7.2",
