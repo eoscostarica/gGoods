@@ -59,5 +59,11 @@
     "avatarMaker": "Avatar Maker",
     "myOwnDesign": "My Own Design",
     "successMessage": "Success transaction:"
+  },
+  "putOnSaleRoute": {
+    "quantity": "Quantity",
+    "amount": "Amount to receive",
+    "allowDonation": "Allow donation",
+    "successMessage": "New gGoods on sale:"
   }
 }

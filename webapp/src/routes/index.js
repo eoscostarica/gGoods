@@ -13,6 +13,7 @@ import { mainConfig } from '../config'
 
 const Home = lazy(() => import('./Home'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
+const PutOnSale = lazy(() => import('./PutOnSale'))
 const About = lazy(() => import('./About'))
 const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
@@ -38,6 +39,13 @@ const routes = [
     icon: <GridIcon />,
     component: Paypal,
     path: '/paypal-integration',
+    exact: true
+  },
+  {
+    name: 'putOnSale',
+    icon: <GridIcon />,
+    component: PutOnSale,
+    path: '/put-on-sale',
     exact: true
   },
   {
