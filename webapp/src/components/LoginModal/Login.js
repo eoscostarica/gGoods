@@ -3,7 +3,6 @@ import { useQuery, useMutation } from '@apollo/client'
 import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
 import Dialog from '@material-ui/core/Dialog'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Box from '@material-ui/core/Box'
@@ -19,7 +18,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import AccountCircle from '@material-ui/icons/AccountCircle'
-import FingerprintIcon from '@material-ui/icons/Fingerprint'
 
 import {
   LOGIN_MUTATION,

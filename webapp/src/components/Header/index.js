@@ -30,14 +30,14 @@ import LoginModal from '../../components/LoginModal'
 const useStyles = makeStyles(styles)
 
 const SwitchThemeModeButton = memo(({ useDarkMode, onSwitch }) => {
-  const { t } = useTranslation('header')
+  const { t } = useTranslation('translations')
 
   return (
     <Button
       startIcon={useDarkMode ? <SunIcon /> : <MoonIcon />}
       onClick={() => onSwitch(!useDarkMode)}
     >
-      {t(useDarkMode ? 'lightMode' : 'darkMode')}
+      {t(useDarkMode ? 'common.lightMode' : 'common.darkMode')}
     </Button>
   )
 })
@@ -111,18 +111,18 @@ UserButton.propTypes = {
 }
 
 const AuthButton = memo(({ user, onLogin, onSignOut }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('translations')
 
   return (
     <>
       {user && (
         <Button startIcon={<ExitIcon />} onClick={onSignOut}>
-          {t('signOut')}
+          {t('common.signOut')}
         </Button>
       )}
       {!user && (
         <Button startIcon={<FingerprintIcon />} onClick={onLogin}>
-          {t('login')}
+          {t('common.login')}
         </Button>
       )}
     </>
@@ -139,7 +139,7 @@ AuthButton.propTypes = {
 
 const Header = memo(({ onDrawerToggle }) => {
   const classes = useStyles()
-  const { t } = useTranslation('routes')
+  const { t } = useTranslation('translations')
   const history = useHistory()
   const location = useLocation()
   const { i18n } = useTranslation('translations')
@@ -170,18 +170,12 @@ const Header = memo(({ onDrawerToggle }) => {
     setMenuAnchorEl(null)
   }
 
-  const handleLogout = () => {
-    console.log('entra')
-    logout()
-  }
-
   useEffect(() => {
     setCurrentLanguaje(i18n.language?.substring(0, 2) || 'en')
   }, [i18n.language])
 
   return (
     <AppBar className={classes.appBar} position="sticky">
-      {console.log('user:', state.user)}
       <Toolbar className={classes.toolbar}>
         <Hidden mdUp>
           <IconButton aria-label="Open drawer" onClick={onDrawerToggle}>
@@ -189,9 +183,9 @@ const Header = memo(({ onDrawerToggle }) => {
           </IconButton>
         </Hidden>
         <Typography className={classes.typography} variant="h4">
-          {t(`${location.pathname}>heading`, '')}
+          {t(`${location.pathname}routes.>heading`, '')}
         </Typography>
-        <PageTitle title={t(`${location.pathname}>title`, mainConfig.title)} />
+        <PageTitle title={t(`${location.pathname}routes.>title`, mainConfig.title)} />
         <Box className={classes.desktopSection}>
           <SwitchThemeModeButton
             useDarkMode={state.useDarkMode}

@@ -8,12 +8,12 @@ import Carousel from '../../components/Carousel'
 import Signup from '../../components/Signup/Signup'
 
 const Home = () => {
-  const { t } = useTranslation('homeRoute')
+  const { t } = useTranslation('translations')
  
   return (
     <Box>
       <Signup isHome />
-      <Typography>{t('welcomeMessage')}</Typography>
+      <Typography>{t('homeRoute.welcomeMessage')}</Typography>
       <AvatarMaker />
       <Carousel items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]} />
     </Box>

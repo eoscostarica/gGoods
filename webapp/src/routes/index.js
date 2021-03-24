@@ -12,7 +12,6 @@ import {
 import { mainConfig } from '../config'
 
 const Home = lazy(() => import('./Home'))
-const Register = lazy(() => import('./Register'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
 const About = lazy(() => import('./About'))
 const Help = lazy(() => import('./Help'))

@@ -1,15 +1,10 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/styles'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Box from '@material-ui/core/Box'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import Typography from '@material-ui/core/Typography'
-import Slider from '@material-ui/core/Slider'
-import FormGroup from '@material-ui/core/FormGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Switch from '@material-ui/core/Switch'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { useTranslation } from 'react-i18next'
 
@@ -126,20 +121,6 @@ const SignupOrganization = ({
           className={classes.textField}
           onChange={(event) => setField('invitation_code', event.target.value)}
         />
-        <FormGroup className={classes.boxCenter}>
-          <FormControlLabel
-            control={
-              <Switch
-                id="hasImmunityTest"
-                name="hasImmunityTest"
-                color="primary"
-                checked={user.immunity_test || false}
-                onChange={() => setField('immunity_test', !user.immunity_test)}
-              />
-            }
-            label={t('profile.hasImmunityTest')}
-          />
-        </FormGroup>
         <Box className={classes.btnWrapper}>
           <ReCAPTCHA
             sitekey={captchaConfig.captchaConfig.sitekey}

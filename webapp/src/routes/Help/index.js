@@ -15,7 +15,7 @@ const useStyles = makeStyles(styles)
 
 const Help = () => {
   const classes = useStyles()
-  const { t } = useTranslation('helpRoute')
+  const { t } = useTranslation('translations')
 
   return (
     <Box>
@@ -23,10 +23,10 @@ const Help = () => {
         <Grid item xs>
           <Grid container direction="column">
             <Typography variant="h3" className={classes.title}>
-              {t('title')}
+              {t('helpRoute.title')}
             </Typography>
             <Typography variant="body2" align="justify" paragraph>
-              {t('paragraph')}
+              {t('helpRoute.paragraph')}
             </Typography>
 
             <Box className={classes.boxLinks}>
@@ -36,7 +36,7 @@ const Help = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Typography variant="body1">{t('githubEOSCR')}</Typography>
+                <Typography variant="body1">{t('helpRoute.githubEOSCR')}</Typography>
               </Link>
             </Box>
             <Box className={classes.boxLinks}>
@@ -46,7 +46,7 @@ const Help = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Typography variant="body1">{t('telegramChannel')}</Typography>
+                <Typography variant="body1">{t('helpRoute.telegramChannel')}</Typography>
               </Link>
             </Box>
             <Box className={classes.boxLinks}>
@@ -56,7 +56,7 @@ const Help = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Typography variant="body1">{t('websiteEOSCR')}</Typography>
+                <Typography variant="body1">{t('helpRoute.websiteEOSCR')}</Typography>
               </Link>
             </Box>
           </Grid>
