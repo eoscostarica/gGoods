@@ -1,5 +1,5 @@
 import React from 'react'
-import * as jwtDecode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 
 const UserContext = React.createContext()
 

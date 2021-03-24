@@ -27,11 +27,11 @@ const init = async () => {
     },
     debug: { request: ['handler'] }
   })
-  console.log('pasa aqui:')
+  
   server.bind({
     i18n: i18nConfig
   })
-  console.log('sigue aqui:')
+
   await server.register([
     {
       plugin: require('hapi-pino'),
@@ -49,9 +49,9 @@ const init = async () => {
       options: {}
     }
   ])
-  console.log('todo bien aqui:')
+
   jwtUtils.auth(server)
-  console.log('igual aqui:')
+
   server.route(routes)
   await server.start()
   console.log(`🚀 Server ready at ${server.info.uri}`)

@@ -25,6 +25,7 @@ import { mainConfig } from '../../config'
 import PageTitle from '../PageTitle'
 
 import styles from './styles'
+import { useUser } from '../../context/user.context'
 import LoginModal from '../../components/LoginModal'
 
 const useStyles = makeStyles(styles)
@@ -142,10 +143,12 @@ const Header = memo(({ onDrawerToggle }) => {
   const { t } = useTranslation('routes')
   const history = useHistory()
   const location = useLocation()
-  const [state, { setState, login, logout }] = useSharedState()
+  const [state, { setState }] = useSharedState()
   const { i18n } = useTranslation('translations')
   const [currentLanguaje, setCurrentLanguaje] = useState()
   const [menuAnchorEl, setMenuAnchorEl] = useState()
+  const [, { logout }] = useUser()
+  const [currentUser, { login }] = useUser()
 
   const handleSwitchThemeMode = useDarkMode => {
     setState({ useDarkMode })
@@ -170,12 +173,18 @@ const Header = memo(({ onDrawerToggle }) => {
     setMenuAnchorEl(null)
   }
 
+  const handleLogout = () => {
+    console.log('entra')
+    logout()
+  }
+
   useEffect(() => {
     setCurrentLanguaje(i18n.language?.substring(0, 2) || 'en')
   }, [i18n.language])
 
   return (
     <AppBar className={classes.appBar} position="sticky">
+      {console.log('user:', currentUser)}
       <Toolbar className={classes.toolbar}>
         <Hidden mdUp>
           <IconButton aria-label="Open drawer" onClick={onDrawerToggle}>
@@ -202,6 +211,9 @@ const Header = memo(({ onDrawerToggle }) => {
             onLogin={handleLogin}
             onSignOut={handleSignOut}
           />
+          <Button onClick={handleLogout}>
+            Logout
+          </Button>
         </Box>
         <Box className={classes.mobileSection}>
           <IconButton

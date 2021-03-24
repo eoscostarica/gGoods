@@ -95,7 +95,7 @@ const Home = () => {
   
       bcrypt.hash(password, saltRounds, function (err, hash) {
         if (!err) {
-          preRegisterLifebank({
+          preRegisterOrganization({
             variables: {
               email: 'angelocas13_8@hotmail.com',
               emailContent: {
