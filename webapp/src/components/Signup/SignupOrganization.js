@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const SignupLifeBank = ({
+const SignupOrganization = ({
   onSubmit,
   setField,
   user,
@@ -71,42 +71,7 @@ const SignupLifeBank = ({
 }) => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
-  const handleOnGeolocationChange = useCallback(
-    (coordinates) => setField('coordinates', JSON.stringify(coordinates)),
-    [setField]
-  )
-  const handleOnAddSchedule = useCallback(
-    (data) => setField('schedule', JSON.stringify(data)),
-    [setField]
-  )
   const [recaptchaValue, serRecaptchaValue] = useState('')
-
-  const marks = [
-    {
-      value: 1,
-      label: t('editProfile.low')
-    },
-    {
-      value: 2,
-      label: t('editProfile.medium')
-    },
-    {
-      value: 3,
-      label: t('editProfile.high')
-    }
-  ]
-  const valueLabelFormat = (value) => {
-    switch (value) {
-      case 1:
-        return t('editProfile.low')
-      case 2:
-        return t('editProfile.medium')
-      case 3:
-        return t('editProfile.high')
-      default:
-        return 'N/A'
-    }
-  }
 
   return (
     <form autoComplete="off" className={classes.form}>
@@ -175,36 +140,9 @@ const SignupLifeBank = ({
             label={t('profile.hasImmunityTest')}
           />
         </FormGroup>
-        <Box className={classes.boxCenter}>
-          <Typography gutterBottom>{t('common.bloodUrgency')}</Typography>
-          <Slider
-            valueLabelDisplay="auto"
-            valueLabelFormat={valueLabelFormat}
-            onChange={(event, value) => setField('urgency_level', value)}
-            marks={marks}
-            step={null}
-            min={0}
-            max={4}
-          />
-        </Box>
-        <Box className={classes.boxCenter}>
-          <Schedule handleOnAddSchedule={handleOnAddSchedule} />
-        </Box>
-        <Box className={classes.boxCenter}>
-          <Typography gutterBottom>
-            {t('signup.chooseYourLocation')}
-          </Typography>
-          <MapSelectLocation
-            onGeolocationChange={handleOnGeolocationChange}
-            markerType={LIFE_BANK}
-            width="100%"
-            height={400}
-            mb={1}
-          />
-        </Box>
         <Box className={classes.btnWrapper}>
           <ReCAPTCHA
-            sitekey={captchaConfig.sitekey}
+            sitekey={captchaConfig.captchaConfig.sitekey}
             onChange={(value) => serRecaptchaValue(value)}
           />
           <Button
@@ -214,8 +152,6 @@ const SignupLifeBank = ({
               !user.name ||
               !user.address ||
               !user.phone ||
-              !user.schedule ||
-              !user.coordinates ||
               !recaptchaValue ||
               loading
             }
@@ -233,7 +169,7 @@ const SignupLifeBank = ({
   )
 }
 
-SignupLifeBank.propTypes = {
+SignupOrganization.propTypes = {
   onSubmit: PropTypes.func,
   setField: PropTypes.func,
   user: PropTypes.object,
@@ -242,6 +178,6 @@ SignupLifeBank.propTypes = {
   children: PropTypes.node
 }
 
-SignupLifeBank.defaultProps = {}
+SignupOrganization.defaultProps = {}
 
-export default SignupLifeBank
+export default SignupOrganization

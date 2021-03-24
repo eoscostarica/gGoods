@@ -66,14 +66,14 @@ const create = async ({ role, email, emailContent, name, secret }) => {
 
   await historyApi.insert(transaction)
   try {
-    // mailApi.sendVerificationCode(
-    //   email,
-    //   verification_code,
-    //   emailContent.subject,
-    //   emailContent.title,
-    //   emailContent.message,
-    //   emailContent.button
-    // )
+    mailApi.sendVerificationCode(
+      email,
+      verification_code,
+      emailContent.subject,
+      emailContent.title,
+      emailContent.message,
+      emailContent.button
+    )
   } catch (error) {
     console.log(error)
   }

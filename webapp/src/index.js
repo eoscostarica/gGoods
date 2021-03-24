@@ -5,7 +5,6 @@ import { ApolloProvider } from '@apollo/client'
 
 import App from './App'
 import { client } from './graphql'
-import { UserProvider } from './context/user.context'
 import * as serviceWorker from './serviceWorker'
 import { ualConfig } from './config'
 import { SharedStateProvider } from './context/state.context'
@@ -20,9 +19,7 @@ render(
   >
     <SharedStateProviderWithUAL>
       <ApolloProvider client={client}>
-        <UserProvider>
           <App />
-        </UserProvider>
       </ApolloProvider>
     </SharedStateProviderWithUAL>
   </UALProvider>,

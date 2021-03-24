@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const DonorSignup = ({
+const UserSignup = ({
   onSubmit,
   onSubmitWithAuth,
   setField,
@@ -101,8 +101,9 @@ const DonorSignup = ({
           className={classes.textField}
           onChange={(event) => setConfirmPassword(event.target.value)}
         />
+        {console.log('captchaConfig: ',captchaConfig.captchaConfig.sitekey)}
         <ReCAPTCHA
-          sitekey={captchaConfig.sitekey}
+          sitekey={captchaConfig.captchaConfig.sitekey}
           onChange={(value) => serRecaptchaValue(value)}
         />
       </Box>
@@ -130,7 +131,7 @@ const DonorSignup = ({
   )
 }
 
-DonorSignup.propTypes = {
+UserSignup.propTypes = {
   onSubmit: PropTypes.func,
   onSubmitWithAuth: PropTypes.func,
   setField: PropTypes.func,
@@ -139,6 +140,6 @@ DonorSignup.propTypes = {
   children: PropTypes.node
 }
 
-DonorSignup.defaultProps = {}
+UserSignup.defaultProps = {}
 
-export default DonorSignup
+export default UserSignup

@@ -3,7 +3,10 @@
     "login": "Ingresar",
     "signOut": "Salir",
     "lightMode": "Modo Claro",
-    "darkMode": "Modo Oscuro"
+    "darkMode": "Modo Oscuro",
+    "category": "Categoria",
+    "name": "Nombre",
+    "confirm": "Confirmar"
   },
   "routes": {
     "/>title": "EOSIO Boilerplate",
@@ -39,5 +42,35 @@
     "githubEOSCR": "GitHub EOS Costa Rica",
     "telegramChannel": "Grupo de Telegram",
     "websiteEOSCR": "Página web EOS Costa Rica"
+  },
+  "signup": {
+    "register": "Registro",
+    "registerText": "Elija la opción que más le convenga. ",
+    "sucessfulPreregistration": "Pre-registro exitoso",
+    "sucessfulRegistration": "Registro exitoso",
+    "createAnewAccount": "Crear una nueva cuenta",
+    "allYouNeed": "Para registrarte, lo único que tienes que poner es tu email y contraseña",
+    "preRegisterAnewAccount": "Pre-registrar una nueva cuenta",
+    "preRegistrationRequirement": "Para poder realizar el pre-registro, debe indicar la siguiente información, necesaria para la aprobación de la Organización",
+    "termsAndConditions": "Términos y condiciones",
+    "termsAndConditionsInfo": "Esta cuenta debe aceptar nuestros términos y condiciones para los contratos inteligentes. Puede revocar el consentimiento en cualquier momento.",
+    "transactionId": "Id transacción",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "passwordNotMatch": "Las contraseñas no coinciden",
+    "iAccept": "Acepto",
+    "signupWithGoogle": "Registrarse con Google",
+    "createAccount": "Crear cuenta",
+    "name": "Nombre",
+    "address": "Dirección",
+    "addressPlaceholder": "Escribe tu dirección aquí",
+    "phoneNumber": "Número de teléfono",
+    "phoneNumberPlaceholder": "Escribe tu número aquí",
+    "invitationCode": "Código de invitación",
+    "chooseYourLocation": "Escoge tu ubicación",
+    "asAUser": "Como Usuario",
+    "asAOrganization": "Como Organización",
+    "about": "Acerca de",
+    "aboutPlaceholder": "Acerca de la Organización"
   }
 }

@@ -26,7 +26,6 @@ import {
   VALIDATE_EMAIL,
   GET_SECRET_BY_ACCOUNT,
 } from '../../gql'
-import { useUser } from '../../context/user.context'
 import { useSharedState } from '../../context/state.context'
 import LoginWithGoogle from './LoginWithGoogle'
 import Signup from '../../components/Signup'
@@ -143,15 +142,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const LoginModal = ({ isNavBar, isSideBar }) => {
+const LoginModal = () => {
   const { t } = useTranslation('translations')
   const [user, setUser] = useState({})
   const [{showLoginModal: open}, {cancelLogin, successLogin}] = useSharedState()
   const [errorMessage, setErrorMessage] = useState(null)
   const classes = useStyles()
   const theme = useTheme()
-  //const [open, setOpen] = useState(false)
-  //const [currentUser, { login }] = useUser()
   const [
     loginMutation,
     { loading, error, data: { login: loginResult } = {} }

@@ -43,30 +43,20 @@ const SignupRoleSelector = ({ onSubmit }) => {
         variant="contained"
         color="secondary"
         onClick={() => {
-          onSubmit('donor')
+          onSubmit('user')
         }}
       >
-        {t('signup.asAdonor')}
+        {t('signup.asAUser')}
       </Button>
       <Button
         className={classes.btn}
         variant="contained"
         color="secondary"
         onClick={() => {
-          onSubmit('sponsor')
+          onSubmit('organization')
         }}
       >
-        {t('signup.asAsponsor')}
-      </Button>
-      <Button
-        className={classes.btn}
-        variant="contained"
-        color="secondary"
-        onClick={() => {
-          onSubmit('lifebank')
-        }}
-      >
-        {t('signup.asAbank')}
+        {t('signup.asAOrganization')}
       </Button>
     </Box>
   )

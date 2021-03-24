@@ -24,13 +24,13 @@ import {
   CREATE_PRE_REGISTER_ORGANIZATION_MUTATION,
   VALIDATION_EMAIL
 } from '../../gql'
-import { useUser } from '../../context/user.context'
 
 import SignupRoleSelector from './SignupRoleSelector'
 import ValidateEmail from './ValidateEmail'
+import { useSharedState } from '../../context/state.context'
 
-const SignupDonor = lazy(() => import('./SignupDonor'));
-const SignupLifeBank = lazy(() => import('./SignupLifeBank'));
+const SignupUser = lazy(() => import('./SignupUser'));
+const SignupOrganization = lazy(() => import('./SignupOrganization'));
 
 const useStyles = makeStyles((theme) => ({
   closeIcon: {
@@ -140,11 +140,11 @@ const useStyles = makeStyles((theme) => ({
   registerBtn: {
     width: 180,
     height: 49,
-    color: "#ffffff",
+    color: "#000000",
     backgroundColor: 'transparent',
     margin: theme.spacing(2, 0, 4, 0),
     borderRadius: ' 2px',
-    border: 'solid 2px #ffffff'
+    border: 'solid 2px #000000'
   },
   registerBoxModal: {
     display: 'flex',
@@ -186,7 +186,6 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   )
   const [activeStep, setActiveStep] = useState(0)
   const [role, setRole] = useState()
-  const [currentUser, { login }] = useUser()
   const [open, setOpen] = useState(false)
   const [openAlert, setOpenAlert] = useState(false)
   const [messegaAlert, setMessegaAlert] = useState("false")
@@ -197,6 +196,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   const [errorMessage, setErrorMessage] = useState(null)
   const [isEmailValid, setEmailValid] = useState(false)
   const [checkEmailLoading, setcheckEmailLoaded] = useState(false)
+  const [state] = useSharedState()
 
   const handleOpen = () => {
     setOpen(!open)
@@ -214,12 +214,13 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       data: { create_account: createAccountResult } = {}
     }
   ] = useMutation(CREATE_ACCOUNT_MUTATION)
+  
   const [
-    preRegisterLifebank,
+    preRegisterOrganization,
     {
-      error: errorpreRegisterLifebank,
-      loading: preRegisterLifebankLoading,
-      data: { create_pre_register_organization: preRegisterLifebankResult } = {}
+      error: errorpreRegisterOrganization,
+      loading: preRegisterOrganizationLoading,
+      data: { create_pre_register_organization: preRegisterOrganizationResult } = {}
     }
   ] = useMutation(CREATE_PRE_REGISTER_ORGANIZATION_MUTATION)
 
@@ -239,7 +240,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
 
   const handleCreateAccount = () => {
     const { email, secret } = user
-    const name = 'undefined'
+    const name = 'My profile'
     const bcrypt = require('bcryptjs')
     const saltRounds = 10
 
@@ -277,6 +278,12 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
               variables: {
                 role,
                 email,
+                emailContent: {
+                  subject: t('emailMessage.subjectVerificationCode'),
+                  title: t('emailMessage.titleVerificationCode'),
+                  message: t('emailMessage.messageVerificationCode'),
+                  button: t('emailMessage.verifyButton')
+                },
                 name,
                 secret: hash
               }
@@ -289,31 +296,25 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
     }
   }
 
-  const handlePreRegisterLifebank = () => {
+  const handlepreRegisterOrganization = () => {
     const {
       email,
       password,
       name,
       address,
-      schedule,
       phone,
-      description,
-      coordinates
+      description
     } = user
-    let { immunity_test, invitation_code, urgency_level } = user
-
-    if (immunity_test === undefined) immunity_test = false
+    let { invitation_code } = user
 
     if (invitation_code === undefined || !invitation_code) invitation_code = ' '
-
-    if (urgency_level === undefined) urgency_level = 1
 
     const bcrypt = require('bcryptjs')
     const saltRounds = 10
 
     bcrypt.hash(password, saltRounds, function (err, hash) {
       if (!err) {
-        preRegisterLifebank({
+        preRegisterOrganization({
           variables: {
             email,
             emailContent: {
@@ -325,12 +326,8 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
             password: hash,
             name,
             address,
-            schedule,
             phone,
             description,
-            urgency_level,
-            coordinates,
-            immunity_test,
             invitation_code
           }
         })
@@ -353,7 +350,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       })
 
       if (data) {
-        data.preregister_lifebank.length === 0 && data.user.length === 0
+        data.preregister_organization.length === 0 && data.user.length === 0
           ? setEmailValid(true)
           : setEmailValid(false)
 
@@ -370,20 +367,19 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   }, [user?.email, checkEmail])
 
   useEffect(() => {
-    if (preRegisterLifebankResult) {
+    if (preRegisterOrganizationResult) {
       handleOpen()
       setMessegaAlert(t('signup.sucessfulPreregistration'))
       handleOpenAlert()
 
     }
-  }, [preRegisterLifebankResult])
+  }, [preRegisterOrganizationResult])
 
   useEffect(() => {
     if (createAccountResult) {
       handleOpen()
       setMessegaAlert(t('signup.sucessfulRegistration'))
       handleOpenAlert()
-      login(createAccountResult.token)
     }
 
   }, [createAccountResult])
@@ -396,9 +392,9 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
 
 
   useEffect(() => {
-    if (errorpreRegisterLifebank) setErrorMessage(t('errors.authError'))
+    if (errorpreRegisterOrganization) setErrorMessage(t('errors.authError'))
 
-  }, [errorpreRegisterLifebank])
+  }, [errorpreRegisterOrganization])
 
   const ErrorMessage = () => {
     return (
@@ -427,19 +423,20 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
 
   return (
     <>
-      {isHome && !currentUser &&
+      {console.log('state:', state.user)}
+      {isHome && (state.user === null) &&
         <Button color="secondary" className={classes.registerBtn} onClick={handleOpen}>
           {t('signup.register')}
         </Button>
       }
-      {isModal && !currentUser &&
+      {isModal && (state.user === null) &&
         <Box className={classes.registerBoxModal}>
           <Button color="secondary" className={classes.registerTextModal} onClick={handleOpen}>
             {t('login.notAccount')}
           </Button>
         </Box>
       }
-      {isSideBar && !currentUser &&
+      {isSideBar && (state.user!==null) &&
         <Box
           className={classes.registerBtnSideBar}
           onClick={handleOpen}
@@ -495,12 +492,12 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
                   <SignupRoleSelector onSubmit={handleRoleChange} />
                 </>
               )}
-              {activeStep === 1 && role === 'donor' && (
+              {activeStep === 1 && role === 'user' && (
                 <>
-                  <Typography className={classes.titleRegister}>{t('signup.asAdonor')}</Typography>
+                  <Typography className={classes.titleRegister}>{t('signup.asAUser')}</Typography>
                   <Typography className={classes.text}>{t('signup.allYouNeed')}</Typography>
                   <Suspense fallback={<CircularProgress />}>
-                    <SignupDonor
+                    <SignupUser
                       onSubmit={handleCreateAccount}
                       onSubmitWithAuth={handleCreateAccountWithAuth}
                       loading={createAccountLoading}
@@ -514,39 +511,18 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
                         setField={handleSetField}
                         user={user}
                       />
-                    </SignupDonor>
+                    </SignupUser>
                   </Suspense>
                 </>
               )}
-              {activeStep === 1 && role === 'sponsor' && (
+              {activeStep === 1 && role === 'organization' && (
                 <>
-                  <Typography className={classes.titleRegister}>{t('signup.asAsponsor')}</Typography>
-                  <Typography className={classes.text}>{t('signup.allYouNeed')}</Typography>
-                  <Suspense fallback={<CircularProgress />}>
-                    <SimpleRegisterForm
-                      onSubmit={handleCreateAccount}
-                      loading={createAccountLoading}
-                      setField={handleSetField}
-                      isEmailValid={isEmailValid}
-                    >
-                      <ValidateEmail
-                        isValid={isEmailValid}
-                        loading={checkEmailLoading}
-                        user={user}
-                        setField={handleSetField}
-                      />
-                    </SimpleRegisterForm>
-                  </Suspense>
-                </>
-              )}
-              {activeStep === 1 && role === 'lifebank' && (
-                <>
-                  <Typography className={classes.titleRegister}>{t('signup.asAbank')}</Typography>
+                  <Typography className={classes.titleRegister}>{t('signup.asAOrganization')}</Typography>
                   <Typography variant="body1" className={classes.text}>{t('signup.preRegistrationRequirement')}</Typography>
                   <Suspense fallback={<CircularProgress />}>
-                    <SignupLifeBank
-                      onSubmit={handlePreRegisterLifebank}
-                      loading={preRegisterLifebankLoading}
+                    <SignupOrganization
+                      onSubmit={handlepreRegisterOrganization}
+                      loading={preRegisterOrganizationLoading}
                       setField={handleSetField}
                       user={user}
                       isEmailValid={isEmailValid}
@@ -557,7 +533,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
                         user={user}
                         setField={handleSetField}
                       />
-                    </SignupLifeBank>
+                    </SignupOrganization>
                   </Suspense>
                 </>
               )}

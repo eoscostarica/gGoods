@@ -25,7 +25,6 @@ import { mainConfig } from '../../config'
 import PageTitle from '../PageTitle'
 
 import styles from './styles'
-import { useUser } from '../../context/user.context'
 import LoginModal from '../../components/LoginModal'
 
 const useStyles = makeStyles(styles)
