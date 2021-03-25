@@ -20,7 +20,7 @@
     "/organizations>heading": "",
     "/your-collection>title": "My collection | GGOODS",
     "/your-collection>sidebar": "My collection",
-    "/your-collection>heading": "My collection",
+    "/your-collection>heading": "",
     "/games>title": "Games | GGOODS",
     "/games>sidebar": "Games",
     "/games>heading": "",
@@ -53,6 +53,14 @@
   "goodsRoute": {
     "title": "Goods",
     "paragraph1": "Vitual goods designed to help good causes, buy or suscribe to help or just play."
+  },
+  "donteRoute": {
+    "title": "Donate Now!",
+    "paragraph1": "Select your prefered payment method and buy this good. You can increase your donation to further help this cause."
+  },
+  "collectionRoute": {
+    "title": "My collection",
+    "paragraph1": "Goods you’ve bought previously and active subscriptions"
   },
   "aboutRoute": {
     "title1": "About gGoods",

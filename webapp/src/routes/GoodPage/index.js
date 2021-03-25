@@ -10,6 +10,7 @@ import Chip from '@material-ui/core/Chip'
 import Hidden from '@material-ui/core/Hidden'
 
 import { CardAvatar } from '../../components/Card'
+import DonateNow from '../../components/DonateNow'
 import Img from '../../images/avatar.png'
 
 import styles from './styles'
@@ -165,6 +166,7 @@ const GoodPage = () => {
           </Grid>
         </Box>
       </Box>
+      <DonateNow />
     </Box>
   )
 }

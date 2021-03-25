@@ -42,6 +42,10 @@
     "title": "Goods",
     "paragraph1": "Vitual goods designed to help good causes, buy or suscribe to help or just play."
   },
+  "collectionRoute": {
+    "title": "My collection",
+    "paragraph1": "Goods you’ve bought previously and active subscriptions"
+  },
   "aboutRoute": {
     "title1": "About gGoods",
     "whyGgoods": "Why gGoods?",
