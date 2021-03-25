@@ -2,12 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: boilerplate-hasura
-  name: boilerplate-hasura
+    app: ggoods-hasura
+  name: ggoods-hasura
 spec:
   ports:
-    - name: hasura
-      port: 8080
-      targetPort: 8080
+  - port: 8080
+    targetPort: 8080
+    name: hasura
+    protocol: TCP
   selector:
-    app: boilerplate-hasura
+    app: ggoods-hasura

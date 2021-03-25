@@ -1,8 +1,8 @@
 {
-  "name": "eosioboilerplate",
+  "name": "ggoods",
   "version": "1.0.0",
-  "description": "EOSIO Boilerplate WebApp",
-  "repository": "https://github.com/eoscostarica/eosioboilerplate.git",
+  "description": "gGoods WebApp",
+  "repository": "https://github.com/eoscostarica/Ggoods.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",

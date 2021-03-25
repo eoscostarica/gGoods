@@ -15,6 +15,7 @@ import { SketchPicker } from 'react-color'
 
 import { CREATE_TEMPLATE_MUTATION } from '../../gql'
 import { useSharedState } from '../../context/state.context'
+import AvatarMaker from '../../components/AvatarMaker'
 
 import styles from './styles'
 
@@ -59,7 +60,6 @@ const CreateTemplate = () => {
       return
     }
 
-    // setPayload(prev => ({ ...prev, [field]: body.data }))
     setPayload(prev => setData(prev, field, body.data))
     showMessage({ content: `uploaded image ${body.data}` })
   }
@@ -163,7 +163,9 @@ const CreateTemplate = () => {
             </Tabs>
           </AppBar>
           {tab === 0 && (
-            <Box className={classes.tabPanel}>Insert Avatar Maker Here</Box>
+            <Box className={classes.tabPanel}>
+              <AvatarMaker onGetDataUrl={() => {}} />
+            </Box>
           )}
           {tab === 1 && (
             <Box className={classes.tabPanel}>

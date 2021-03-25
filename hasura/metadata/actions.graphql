@@ -66,11 +66,17 @@ type Mutation {
 }
 
 
-
-
 type verify_email_output {
   is_verified : Boolean!
 }
+
+
+type Mutation {
+  payment_transaction_complete (
+    orderId: String!
+  ): payment_transaction_complete_output
+}
+
 
 type create_account_output {
   account : String!
@@ -78,9 +84,11 @@ type create_account_output {
   token : String!
 }
 
+
 type check_username_output {
   is_valid : Boolean!
 }
+
 
 type create_account_organization_output {
   account : String!
@@ -88,15 +96,22 @@ type create_account_organization_output {
   token : String!
 }
 
+
 type create_pre_register_organization_output {
   resultRegister : String!
 }
+
 
 type login_output {
   token : String!
 }
 
+
 type CreateTemplateOutput {
   trxid : String!
 }
 
+
+type payment_transaction_complete_output {
+  return_status : Boolean!
+}

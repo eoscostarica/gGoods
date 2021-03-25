@@ -18,6 +18,7 @@ const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
 const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
+const Paypal = lazy(() => import('./Paypal'))
 
 const routes = [
   {
@@ -32,6 +33,13 @@ const routes = [
     icon: <GridIcon />,
     component: CreateTemplate,
     path: '/create-template',
+    exact: true
+  },
+  {
+    name: 'PayPal',
+    icon: <GridIcon />,
+    component: Paypal,
+    path: '/paypal-integration',
     exact: true
   },
   {
@@ -52,19 +60,19 @@ const routes = [
   {
     name: 'changelog',
     badge: mainConfig.appVersion,
-    path: 'https://github.com/eoscostarica/full-stack-boilerplate/tags',
+    path: 'https://github.com/eoscostarica/Ggoods/tags',
     icon: <GitMergeIcon />,
     exact: true
   },
   {
     header: 'community',
     name: 'github',
-    path: 'https://github.com/eoscostarica/full-stack-boilerplate',
+    path: 'https://github.com/eoscostarica/Ggoods',
     icon: <GitHubIcon />
   },
   {
     name: 'telegram',
-    path: 'https://t.me/blockchaincostarica',
+    path: 'https://t.me/eoscr',
     icon: <TelegramIcon />
   },
   {
