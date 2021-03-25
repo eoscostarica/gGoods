@@ -1,3 +1,4 @@
+include ./utils/meta.mk ./utils/help.mk
 SHELL := /bin/bash
 BLUE   := $(shell tput -Txterm setaf 6)
 RESET  := $(shell tput -Txterm sgr0)
@@ -68,3 +69,48 @@ clean:
 	@rm -rf tmp/hapi
 	@rm -rf tmp/webapp
 	@docker system prune
+
+K8S_BUILD_DIR ?= ./build_k8s
+K8S_FILES := $(shell find ./kubernetes -name '*.yaml' | sed 's:./kubernetes/::g')
+
+build-kubernetes: ##@devops Generate proper k8s files based on the templates
+build-kubernetes: ./kubernetes
+	@echo "Build kubernetes files..."
+	@rm -Rf $(K8S_BUILD_DIR) && mkdir -p $(K8S_BUILD_DIR)
+	@for file in $(K8S_FILES); do \
+		mkdir -p `dirname "$(K8S_BUILD_DIR)/$$file"`; \
+		$(SHELL_EXPORT) envsubst <./kubernetes/$$file >$(K8S_BUILD_DIR)/$$file; \
+	done
+
+deploy-kubernetes: ##@devops Publish the build k8s files
+deploy-kubernetes: $(K8S_BUILD_DIR)
+	@echo "Creating SSL certificates..."
+	@kubectl create secret tls \
+		tls-secret \
+		--key ./ssl/ggoods.io.priv.key \
+		--cert ./ssl/ggoods.io.crt \
+		-n $(NAMESPACE)  || echo "SSL cert already configured.";
+	@echo "Creating configmaps..."
+	@kubectl create configmap -n $(NAMESPACE) \
+	ggoods-wallet-config \
+	--from-file wallet/config/ || echo "Wallet configuration already created.";
+	@echo "Applying kubernetes files..."
+	@for file in $(shell find $(K8S_BUILD_DIR) -name '*.yaml' | sed 's:$(K8S_BUILD_DIR)/::g'); do \
+		kubectl apply -f $(K8S_BUILD_DIR)/$$file -n $(NAMESPACE); \
+	done
+
+build-docker-images: ##@devops Build docker images
+build-docker-images:
+	@echo "Building docker containers..."
+	@for dir in $(SUBDIRS); do \
+		$(MAKE) build-docker -C $$dir; \
+	done
+
+push-docker-images: ##@devops Publish docker images
+push-docker-images:
+	@echo $(DOCKER_PASSWORD) | docker login \
+		--username $(DOCKER_USER) \
+		--password-stdin
+	for dir in $(SUBDIRS); do \
+		$(MAKE) push-image -C $$dir; \
+	done

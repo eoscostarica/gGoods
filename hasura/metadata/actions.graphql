@@ -60,6 +60,13 @@ type Mutation {
 
 
 type Mutation {
+  payment_transaction_complete (
+    orderId: String!
+  ): payment_transaction_complete_output
+}
+
+
+type Mutation {
   verify_email (
     code: String!
   ): verify_email_output
@@ -98,5 +105,9 @@ type login_output {
 
 type CreateTemplateOutput {
   trxid : String!
+}
+
+type payment_transaction_complete_output {
+  return_status : Boolean!
 }
 

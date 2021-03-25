@@ -5,6 +5,7 @@ const verifyEmailRouteRoute = require('./verify-email/verify-email.route')
 const loginRoute = require('./login/login.route')
 const createTemplateRoute = require('./create-template.route')
 const healthzRoute = require('./healthz.route')
+const paymentTransactionRoute = require('./payment-transaction-complete.route')
 
 module.exports = [
   healthzRoute,
@@ -13,5 +14,6 @@ module.exports = [
   preRegisterOrganization,
   verifyEmailRouteRoute,
   loginRoute,
-  createTemplateRoute
+  createTemplateRoute,
+  paymentTransactionRoute
 ]

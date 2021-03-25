@@ -5,4 +5,5 @@ module.exports = {
   jwtConfig: require('./jwt.config'),
   constants: require('./constants'),
   mailConfig: require('./mail.config'),
+  paypalConfig: require('./paypal.config')
 }

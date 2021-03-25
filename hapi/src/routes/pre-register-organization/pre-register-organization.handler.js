@@ -1,7 +1,7 @@
 const Boom = require('@hapi/boom')
 const { INTERNAL_SERVER_ERROR } = require('http-status-codes')
 
-const organizationApi = require('../../api/organization.api')
+const { organizationApi } = require('../../api')
 
 module.exports = async ({ payload: { input } }) => {
   try {
