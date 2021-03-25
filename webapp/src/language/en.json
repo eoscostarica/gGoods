@@ -90,6 +90,15 @@
       "titleVerificationCode": "Email Verification",
       "messageVerificationCode": "Thank you for wanting to be part of the Ggoods community, click on the button to verify and validate your account",
       "verifyButton": "Verify"
+    },
+    "emailVerification": {
+      "emailVerified": "Your email has been verified",
+      "somethingHappened": "Something happened when trying to verify your email",
+      "takeHome": "Take me home"
+    },
+    "approveAccount": {
+      "accountapprove": "This account has been approved",
+      "somethingHappened": "Something happened when trying approve this account"
     }
   },
     "routes": {

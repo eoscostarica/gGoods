@@ -90,6 +90,15 @@
       "titleVerificationCode": "Verificación del Email",
       "messageVerificationCode": "Gracias por ser parte de la comunidad de Ggoods, haga clic en el botón para verificar y validar su cuenta.",
       "verifyButton": "Verificar"
+    },
+    "emailVerification": {
+      "emailVerified": "Tu correo ha sido verificado",
+      "somethingHappened": "Ha ocurrido un evento inesperado al tratar de verificar tu email",
+      "takeHome": "Ir al inicio"
+    },
+    "approveAccount": {
+      "accountapprove": "Esta cuenta ha sido aprobada",
+      "somethingHappened": "Algo sucedió al intentar aprobar esta cuenta"
     }
   },
   "routes": {

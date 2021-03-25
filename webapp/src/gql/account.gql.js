@@ -44,62 +44,6 @@ export const LOGIN_MUTATION = gql`
   }
 `
 
-export const PROFILE_QUERY = gql`
-  query {
-    profile {
-      profile
-    }
-  }
-`
-
-export const GET_VALID_SPONSORS_QUERY = gql`
-  query {
-    get_valid_sponsors {
-      account
-      name
-      openingHours
-      address
-      description
-      logo
-      email
-      location
-      telephone
-      social_media_links
-      photos
-      website
-      covidImpact
-      businessType
-      benefitDescription
-      userName
-      role
-    }
-  }
-`
-
-export const PROFILE_ID_QUERY = gql`
-  query {
-    profile {
-      profile
-    }
-  }
-`
-
-export const GRANT_CONSENT_MUTATION = gql`
-  mutation {
-    grant_consent {
-      transaction_id
-    }
-  }
-`
-
-export const REVOKE_CONSENT_MUTATION = gql`
-  mutation {
-    revoke_consent {
-      transaction_id
-    }
-  }
-`
-
 export const CREDENTIALS_RECOVERY = gql`
   mutation($email: String!, $emailContent: jsonb!) {
     credentials_recovery(email: $email, emailContent: $emailContent) {
@@ -111,34 +55,6 @@ export const CREDENTIALS_RECOVERY = gql`
 export const CHANGE_PASSWORD = gql`
   mutation($email: String!, $emailContent: jsonb!, $currentPassword: String!, $newPassword: String!) {
     change_password(email: $email, emailContent: $emailContent, currentPassword: $currentPassword, newPassword: $newPassword) {
-      success
-    }
-  }
-`
-
-export const TRANSFER_MUTATION = gql`
-  mutation transfer($to: String!, $memo: String!, $quantity: Int) {
-    transfer(to: $to, memo: $memo, quantity: $quantity) {
-      transaction_id
-    }
-  }
-`
-
-export const NOTIFICATION_SUBSCRIPTION = gql`
-  subscription {
-    notification(order_by: { created_at: desc }, limit: 1) {
-      id
-      title
-      description
-      type
-      payload
-    }
-  }
-`
-
-export const EDIT_PROFILE_MUTATION = gql`
-  mutation($profile: jsonb!) {
-    edit_profile(profile: $profile) {
       success
     }
   }
@@ -172,33 +88,6 @@ export const GET_SECRET_BY_ACCOUNT = gql`
       }
     ) {
       secret
-    }
-  }
-`
-
-export const GET_USERNAME = gql`
-  query($account: String!) {
-    user(where: { account: { _eq: $account } }) {
-      username
-    }
-  }
-`
-
-export const SET_USERNAME = gql`
-  mutation($account: String!, $username: String!) {
-    update_user(
-      _set: { username: $username }
-      where: { account: { _eq: $account } }
-    ) {
-      affected_rows
-    }
-  }
-`
-
-export const VERIFY_USERNAME = gql`
-  query($account: String!, $username: String!) {
-    user(where: {username: {_eq: $username}, account: {_neq: $account}}) {
-      username
     }
   }
 `
