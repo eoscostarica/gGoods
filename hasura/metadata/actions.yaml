@@ -38,20 +38,20 @@ actions:
     handler: http://hapi:9090/api/login
   permissions:
   - role: guest
-- name: verify_email
-  definition:
-    kind: synchronous
-    handler: http://hapi:9090/api/verify-email
-  permissions:
-  - role: gamer
-  - role: guest
-  - role: organization
 - name: payment_transaction_complete
   definition:
     kind: synchronous
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/payment-transaction-complete'
   permissions:
   - role: guest
+- name: verify_email
+  definition:
+    kind: synchronous
+    handler: http://hapi:9090/api/verify-email
+  permissions:
+  - role: guest
+  - role: organization
+  - role: user
 custom_types:
   enums: []
   input_objects: []

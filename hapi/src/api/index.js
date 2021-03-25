@@ -1,22 +1,9 @@
 const accountApi = require('./account.api')
-// const historyApi = require('./history.api')
 const userApi = require('./user.api')
-// const vaultApi = require('./vault.api')
-// const locationApi = require('./location.api')
-// const notificationApi = require('./notification.api')
-// const preregisterApi = require('./pre-register.api')
-// const verificationCodeApi = require('./verification-code.api')
+const organizationApi = require('./organization.api')
 
 module.exports = {
   accountApi,
-  // donorApi,
-  // historyApi,
-  // lifebankApi,
-  // sponsorApi,
   userApi,
-  // vaultApi,
-  // locationApi,
-  // // notificationApi,
-  // preregisterApi,
-  // verificationCodeApi
+  organizationApi
 }

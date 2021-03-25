@@ -82,6 +82,7 @@ const EmailVerification = (props) => {
   ] = useMutation(VERIFY_EMAIL)
 
   useEffect(() => {
+    console.log('CODE', code)
     verifyEmail({
       variables: {
         code: code
