@@ -38,7 +38,7 @@ export default theme => ({
     zIndex: 2,
     position: 'fixed',
     top: 261,
-    backgroundColor: 'rgba(0, 0, 0, 0.38)',
+    backgroundColor: 'rgba(0, 0, 0, 0.20)',
     width: '100%',
     display: 'flex',
     flexDirection: 'column',

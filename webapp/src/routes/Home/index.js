@@ -25,25 +25,25 @@ const useStyles = makeStyles(styles)
 
 const GoodsList = [
   {
-    name: 'Selfie Cam'
+    name: 'Name'
   },
   {
-    name: 'Free your Animal'
+    name: 'Name'
   },
   {
-    name: 'Free your Animal'
+    name: 'Name'
   },
   {
-    name: 'Free your Animal'
+    name: 'Name'
   },
   {
-    name: 'Free your Animal'
+    name: 'Name'
   },
   {
-    name: 'Free your Animal'
+    name: 'Name'
   },
   {
-    name: 'Free your Animal'
+    name: 'Name'
   }
 ]
 
