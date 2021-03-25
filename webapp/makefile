@@ -24,6 +24,15 @@ build-docker: ./Dockerfile
 		-t $(DOCKER_REGISTRY)/$(IMAGE_NAME_WEBAPP):$(LATEST_TAG) --target run-stage \
 		--build-arg port="$(PORT)" \
 		--build-arg react_app_title="$(REACT_APP_TITLE)" \
+		--build-arg react_app_logo="$(REACT_APP_LOGO)" \
+		--build-arg react_app_version="$(REACT_APP_VERSION)" \
+		--build-arg react_app_footer_links="$(REACT_APP_FOOTER_LINKS)" \
+		--build-arg react_app_ual_app_name="$(REACT_APP_UAL_APP_NAME)" \
+		--build-arg react_app_ual_api_protocol="$(REACT_APP_UAL_API_PROTOCOL)" \
+		--build-arg react_app_ual_api_host="$(REACT_APP_UAL_API_HOST)" \
+		--build-arg react_app_ual_api_port="$(REACT_APP_UAL_API_PORT)" \
+		--build-arg react_app_ual_chain_id="$(REACT_APP_UAL_CHAIN_ID)" \
+		--build-arg react_app_hasura_url="$(REACT_APP_HASURA_URL)" \
 		.
 
 pull-image: ##@devops Pull the latest image from registry for caching
@@ -37,6 +46,17 @@ build-docker-cached: ./Dockerfile
 		--cache-from $(DOCKER_REGISTRY)/$(IMAGE_NAME_WEBAPP):$(LATEST_TAG) \
 		-t $(DOCKER_REGISTRY)/$(IMAGE_NAME_WEBAPP):$(VERSION) \
 		-t $(DOCKER_REGISTRY)/$(IMAGE_NAME_WEBAPP):$(LATEST_TAG) \
+                --build-arg port="$(PORT)" \
+                --build-arg react_app_title="$(REACT_APP_TITLE)" \
+                --build-arg react_app_logo="$(REACT_APP_LOGO)" \
+                --build-arg react_app_version="$(REACT_APP_VERSION)" \
+                --build-arg react_app_footer_links="$(REACT_APP_FOOTER_LINKS)" \
+                --build-arg react_app_ual_app_name="$(REACT_APP_UAL_APP_NAME)" \
+                --build-arg react_app_ual_api_protocol="$(REACT_APP_UAL_API_PROTOCOL)" \
+                --build-arg react_app_ual_api_host="$(REACT_APP_UAL_API_HOST)" \
+                --build-arg react_app_ual_api_port="$(REACT_APP_UAL_API_PORT)" \
+                --build-arg react_app_ual_chain_id="$(REACT_APP_UAL_CHAIN_ID)" \
+                --build-arg react_app_hasura_url="$(REACT_APP_HASURA_URL)" \
 		.
 
 push-image: ##@devops Push the freshly built image and tag with release or latest tag

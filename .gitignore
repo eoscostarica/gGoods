@@ -43,3 +43,4 @@ wallet_password.txt
 !.yarn/plugins
 !*/.yarn/plugins
 .pnp.*
+ssl
