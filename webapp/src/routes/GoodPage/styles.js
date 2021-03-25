@@ -1,6 +1,9 @@
 export default theme => ({
   mainBox: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(2)
+    }
   },
   titleBox: {
     marginBottom: theme.spacing(4)

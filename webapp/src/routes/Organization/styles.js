@@ -12,7 +12,10 @@ export default theme => ({
     objectFit: 'cover'
   },
   mainBox: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(2)
+    }
   },
   titleBox: {
     marginBottom: theme.spacing(4)
