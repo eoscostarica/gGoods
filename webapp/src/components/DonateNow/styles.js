@@ -14,21 +14,38 @@ export default theme => ({
   dialog: {
     padding: theme.spacing(4)
   },
-  btnLogin: {
+  sectionBox: {
+    marginBottom: theme.spacing(2)
+  },
+  sectionBoxDouble: {
+    marginBottom: theme.spacing(4)
+  },
+  chip: {
+    marginRight: theme.spacing(1),
+    borderRadius: 5
+  },
+  mainButton: {
     borderRadius: '50px',
-    backgroundColor: '#ba0d0d',
-    width: '70%',
-    fontSize: '14px',
-    fontWeight: 500,
-    fontStretch: 'normal',
-    fontStyle: 'normal',
-    lineHeight: 1.14,
-    letterSpacing: '1px',
-    color: '#ffffff',
-    padding: '12px',
-    marginBottom: 10,
-    [theme.breakpoints.down('md')]: {
-      width: '100%'
-    }
+    width: '100%',
+    marginBottom: theme.spacing(2),
+    fontWeight: 'bold',
+    padding: theme.spacing(1)
+  },
+  googleButton: {
+    backgroundColor: 'black',
+    fontWeight: 'bold',
+    color: 'white',
+    borderRadius: '50px',
+    width: '100%',
+    marginBottom: theme.spacing(2),
+    padding: theme.spacing(1)
+  },
+  paypalButton: {
+    backgroundColor: '#FFC439',
+    borderRadius: '50px',
+    width: '100%',
+    marginBottom: theme.spacing(2),
+    fontWeight: 'bold',
+    padding: theme.spacing(1)
   }
 })

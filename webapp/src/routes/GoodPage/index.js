@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -54,6 +54,15 @@ const relatedGoods = [
 
 const GoodPage = () => {
   const classes = useStyles()
+  const [openPayModal, setOpenPayModal] = useState(false)
+
+  const handlerSetOpenPayModal = () => {
+    setOpenPayModal(!openPayModal)
+  }
+
+  const buyNFT = () => {
+    setOpenPayModal(true)
+  }
 
   return (
     <Box className={classes.mainBox}>
@@ -115,6 +124,7 @@ const GoodPage = () => {
                       variant="contained"
                       color="secondary"
                       className={classes.buyButtonDesktop}
+                      onClick={buyNFT}
                     >
                       Buy now
                     </Button>
@@ -166,7 +176,7 @@ const GoodPage = () => {
           </Grid>
         </Box>
       </Box>
-      <DonateNow />
+      <DonateNow open={openPayModal} handlerOpen={handlerSetOpenPayModal} />
     </Box>
   )
 }
