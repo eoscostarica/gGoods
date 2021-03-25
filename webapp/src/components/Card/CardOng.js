@@ -44,7 +44,7 @@ const CardOng = ({ name, category, description, img }) => {
       <CardActions className={classes.cardActionOngArea}>
         <LinkRouter
           style={{ textDecoration: 'none' }}
-          to={{ pathname: `organization/ID` }}
+          to={{ pathname: `/organization/ID` }}
         >
           <IconButton
             aria-label="open"

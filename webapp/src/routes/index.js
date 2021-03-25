@@ -13,6 +13,7 @@ const Home = lazy(() => import('./Home'))
 const Organizations = lazy(() => import('./Organizations'))
 const Organization = lazy(() => import('./Organization'))
 const Goods = lazy(() => import('./Goods'))
+const GoodPage = lazy(() => import('./GoodPage'))
 const Games = lazy(() => import('./Games'))
 const YourCollection = lazy(() => import('./YourCollection'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
@@ -44,6 +45,10 @@ const routes = [
     component: Goods,
     path: '/goods',
     exact: true
+  },
+  {
+    path: '/good/:id',
+    component: GoodPage
   },
   {
     name: 'games',
