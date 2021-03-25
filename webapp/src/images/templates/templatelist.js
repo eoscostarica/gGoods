@@ -14,6 +14,10 @@ import bgs3 from './bgs/3.png'
 import bgs4 from './bgs/4.png'
 import bgs5 from './bgs/5.png'
 import bgs6 from './bgs/6.png'
+import bgs7 from './bgs/7.png'
+import bgs8 from './bgs/8.png'
+import bgs9 from './bgs/9.png'
+import bgs10 from './bgs/10.png'
 
 import deco1 from './deco/1.png'
 import deco2 from './deco/2.png'
@@ -25,7 +29,7 @@ import mouth4 from './mouth/4.png'
 
 const baselist = [base1, base2, base3, base4]
 const eyeslist = [eyes1, eyes2, eyes3, eyes4]
-const bglist = [bgs1, bgs2, bgs3, bgs4, bgs5, bgs6]
+const bglist = [bgs1, bgs2, bgs3, bgs4, bgs5, bgs6, bgs7, bgs8, bgs9, bgs10]
 const decolist = [deco1, deco2]
 const mouthlist = [mouth1, mouth2, mouth3, mouth4]
 

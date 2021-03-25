@@ -16,6 +16,8 @@ import { CREATE_TEMPLATE_MUTATION } from '../../gql'
 import { ipfs, setData } from '../../utils'
 import { useSharedState } from '../../context/state.context'
 import AvatarMaker from '../../components/AvatarMaker'
+import Memory from '../../games/Memory'
+import { baselist } from '../../images/templates/templatelist'
 
 import styles from './styles'
 
@@ -41,6 +43,20 @@ const CreateTemplate = () => {
   const [, { showMessage }] = useSharedState()
   const [tab, setTab] = useState(0)
   const [payload, setPayload] = useState()
+  const [canvas, setCanvas] = useState()
+  const [payload, setPayload] = useState({
+    category: '',
+    name: '',
+    metadata: {
+      type: '2dgameAsset',
+      name: '',
+      description: '',
+      imageSmall: '',
+      imageLarge: '',
+      details: {},
+      backgroundColor: '#FFEBC3'
+    }
+  })
 
   const handleFileUpload = field => async files => {
     if (!files?.length) {
@@ -64,13 +80,15 @@ const CreateTemplate = () => {
   }
 
   const handleSubmit = async () => {
+    const dataUrl = canvas.toDataURL({ format: 'png' })
+
     try {
       const { data } = await createTemplate({
         variables: {
           ...payload
         }
       })
-      setPayload(initialValue)
+      setPayload({ ...initialValue, dataUrl })
       showMessage({ content: `${t('successMessage')} ${data.template.trxid}` })
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
@@ -82,127 +100,130 @@ const CreateTemplate = () => {
   }, [])
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <Grid container justify="center" alignItems="center" spacing={2}>
-        <Grid item xs={12}>
-          <TextField
-            fullWidth
-            disabled={true}
-            value={payload?.metadata?.type || ''}
-            label={t('type')}
-            onChange={handlePayloadChange('metadata.type')}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <TextField
-            fullWidth
-            value={payload?.category || ''}
-            label={t('category')}
-            onChange={handlePayloadChange('category')}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <TextField
-            fullWidth
-            value={payload?.name || ''}
-            label={t('name')}
-            onChange={event => {
-              handlePayloadChange('name')(event)
-              handlePayloadChange('metadata.name')(event)
-            }}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <TextField
-            fullWidth
-            multiline={true}
-            rows={1}
-            rowsMax={5}
-            value={payload?.metadata?.description || ''}
-            label={t('description')}
-            onChange={handlePayloadChange('metadata.description')}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <AppBar position="static">
-            <Tabs value={tab} onChange={(event, value) => setTab(value)}>
-              <Tab label={t('avatarMaker')} />
-              <Tab label={t('myOwnDesign')} />
-            </Tabs>
-          </AppBar>
-        </Grid>
-
-        {tab === 0 && (
+    <>
+      <form className={classes.root} noValidate autoComplete="off">
+        <Grid container justify="center" alignItems="center" spacing={2}>
           <Grid item xs={12}>
-            <AvatarMaker onGetDataUrl={() => {}} />
+            <TextField
+              fullWidth
+              disabled={true}
+              value={payload?.metadata?.type || ''}
+              label={t('type')}
+              onChange={handlePayloadChange('metadata.type')}
+            />
           </Grid>
-        )}
 
-        {tab === 1 && (
-          <>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              value={payload?.category || ''}
+              label={t('category')}
+              onChange={handlePayloadChange('category')}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              value={payload?.name || ''}
+              label={t('name')}
+              onChange={event => {
+                handlePayloadChange('name')(event)
+                handlePayloadChange('metadata.name')(event)
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              multiline={true}
+              rows={1}
+              rowsMax={5}
+              value={payload?.metadata?.description || ''}
+              label={t('description')}
+              onChange={handlePayloadChange('metadata.description')}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <AppBar position="static">
+              <Tabs value={tab} onChange={(event, value) => setTab(value)}>
+                <Tab label={t('avatarMaker')} />
+                <Tab label={t('myOwnDesign')} />
+              </Tabs>
+            </AppBar>
+          </Grid>
+
+          {tab === 0 && (
             <Grid item xs={12}>
-              <SketchPicker
-                className={classes.colorPicker}
-                color={payload?.metadata?.backgroundColor}
-                onChangeComplete={color =>
-                  handlePayloadChange('metadata.backgroundColor')({
-                    target: { value: color.hex }
-                  })
-                }
-              />
+              <AvatarMaker onGetDataUrl={() => {}} />
             </Grid>
+          )}
 
-            <Grid item xs={12}>
-              <DropzoneArea
-                filesLimit={1}
-                showAlerts={false}
-                onChange={handleFileUpload('metadata.imageSmall')}
-                acceptedFiles={['image/*']}
-                dropzoneText={t('smallImage')}
-                previewGridProps={{
-                  container: {
-                    style: {
-                      backgroundColor: payload?.metadata?.backgroundColor
-                    }
+          {tab === 1 && (
+            <>
+              <Grid item xs={12}>
+                <SketchPicker
+                  className={classes.colorPicker}
+                  color={payload?.metadata?.backgroundColor}
+                  onChangeComplete={color =>
+                    handlePayloadChange('metadata.backgroundColor')({
+                      target: { value: color.hex }
+                    })
                   }
-                }}
-              />
-            </Grid>
+                />
+              </Grid>
 
-            <Grid item xs={12}>
-              <DropzoneArea
-                filesLimit={1}
-                showAlerts={false}
-                onChange={handleFileUpload('metadata.imageLarge')}
-                acceptedFiles={['image/*']}
-                dropzoneText={t('largeImage')}
-                previewGridProps={{
-                  container: {
-                    style: {
-                      backgroundColor: payload?.metadata?.backgroundColor
+              <Grid item xs={12}>
+                <DropzoneArea
+                  filesLimit={1}
+                  showAlerts={false}
+                  onChange={handleFileUpload('metadata.imageSmall')}
+                  acceptedFiles={['image/*']}
+                  dropzoneText={t('smallImage')}
+                  previewGridProps={{
+                    container: {
+                      style: {
+                        backgroundColor: payload?.metadata?.backgroundColor
+                      }
                     }
-                  }
-                }}
-              />
-            </Grid>
-          </>
-        )}
+                  }}
+                />
+              </Grid>
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          disabled={loading || !payload?.category || !payload?.name}
-        >
-          {!loading && t('confirm')}
-          {loading && <CircularProgress color="secondary" size={20} />}
-        </Button>
-      </Grid>
-    </form>
+              <Grid item xs={12}>
+                <DropzoneArea
+                  filesLimit={1}
+                  showAlerts={false}
+                  onChange={handleFileUpload('metadata.imageLarge')}
+                  acceptedFiles={['image/*']}
+                  dropzoneText={t('largeImage')}
+                  previewGridProps={{
+                    container: {
+                      style: {
+                        backgroundColor: payload?.metadata?.backgroundColor
+                      }
+                    }
+                  }}
+                />
+              </Grid>
+            </>
+          )}
+
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit}
+            disabled={loading || !payload?.category || !payload?.name}
+          >
+            {!loading && t('confirm')}
+            {loading && <CircularProgress color="secondary" size={20} />}
+          </Button>
+        </Grid>
+      </form>
+      <Memory customOptions={baselist} />
+    </>
   )
 }
 
