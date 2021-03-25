@@ -76,26 +76,6 @@ export const GET_VALID_SPONSORS_QUERY = gql`
   }
 `
 
-export const GET_VALID_LIFEBANKS_QUERY = gql`
-  query {
-    get_valid_lifebanks {
-      account
-      name
-      openingHours
-      address
-      logo
-      description
-      email
-      location
-      telephone
-      role
-      userName
-      photos
-      urgencyLevel
-    }
-  }
-`
-
 export const PROFILE_ID_QUERY = gql`
   query {
     profile {
