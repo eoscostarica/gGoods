@@ -16,6 +16,7 @@ const CreateTemplate = lazy(() => import('./CreateTemplate'))
 const About = lazy(() => import('./About'))
 const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
+const Paypal = lazy(() => import('./Paypal'))
 
 const routes = [
   {
@@ -30,6 +31,13 @@ const routes = [
     icon: <GridIcon />,
     component: CreateTemplate,
     path: '/create-template',
+    exact: true
+  },
+  {
+    name: 'PayPal',
+    icon: <GridIcon />,
+    component: Paypal,
+    path: '/paypal-integration',
     exact: true
   },
   {

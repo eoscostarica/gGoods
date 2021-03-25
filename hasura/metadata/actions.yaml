@@ -6,9 +6,16 @@ actions:
     forward_client_headers: true
   permissions:
   - role: guest
+- name: payment_transaction_complete
+  definition:
+    kind: synchronous
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/payment-transaction-complete'
+  permissions:
+  - role: guest
 custom_types:
   enums: []
   input_objects: []
   objects:
   - name: CreateTemplateOutput
+  - name: payment_transaction_complete_output
   scalars: []
