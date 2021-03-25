@@ -44,19 +44,6 @@ const CreateTemplate = () => {
   const [tab, setTab] = useState(0)
   const [payload, setPayload] = useState()
   const [canvas, setCanvas] = useState()
-  const [payload, setPayload] = useState({
-    category: '',
-    name: '',
-    metadata: {
-      type: '2dgameAsset',
-      name: '',
-      description: '',
-      imageSmall: '',
-      imageLarge: '',
-      details: {},
-      backgroundColor: '#FFEBC3'
-    }
-  })
 
   const handleFileUpload = field => async files => {
     if (!files?.length) {
@@ -157,7 +144,7 @@ const CreateTemplate = () => {
 
           {tab === 0 && (
             <Grid item xs={12}>
-              <AvatarMaker onGetDataUrl={() => {}} />
+              <AvatarMaker onGetDataUrl={setCanvas} />
             </Grid>
           )}
 

@@ -2605,9 +2605,9 @@ __metadata:
   linkType: hard
 
 "@types/estree@npm:*":
-  version: 0.0.46
-  resolution: "@types/estree@npm:0.0.46"
-  checksum: 69fcf647706f5b6a475ec2f9aacf73b40866f577eef6c6f33de95cc3b4897381c2a8257646f13cd5d91fffc5debfe6289b6864ba29ad349ae68703f8b993c9f6
+  version: 0.0.47
+  resolution: "@types/estree@npm:0.0.47"
+  checksum: 28cba548c7b61855f4ff0c20146512e71fb578253e3cb24baf1acf660c626a8a271f99848e8a8c4e0e87f177cfce28e8d1fcecb65a4aad4a92ba48fd73179289
   languageName: node
   linkType: hard
 
@@ -2691,9 +2691,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 14.14.35
-  resolution: "@types/node@npm:14.14.35"
-  checksum: 0f6320bf5370d1ff82105fb7f26aa0658499c97d3ec78561e65b65724280244f281602541182b63470d2c8a98db22fbb4f91409c5c7c97da8c3bb8f97fbc5dbc
+  version: 14.14.36
+  resolution: "@types/node@npm:14.14.36"
+  checksum: 9eff5863af3ddf3dfd0964ce7da85e663df2c05d091412b8c97d069e61b00760fa4ce788442733bdf07ad69ce408088c0bef2fa81b5cfdca54d31117618385f3
   languageName: node
   linkType: hard
 
@@ -4169,20 +4169,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-"base-x@npm:^3.0.2":
-  version: 3.0.8
-  resolution: "base-x@npm:3.0.8"
-  dependencies:
-    safe-buffer: ^5.0.1
-  checksum: 9e5832ab00f4413d63f8227901c18b2a9db5f379525f70b627e6e284007dc5e7940a765ef4ab03974b4c14a664153208758656ebb86979451d1995d13e3fa29b
-  languageName: node
-  linkType: hard
-
 "base64-js@npm:^1.0.2, base64-js@npm:^1.3.1":
-=======
-"base64-js@npm:^1.0.2":
->>>>>>> feat(FE): add memory game
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
   checksum: c1b41a26ddc6620eb7f1ee6c29c812f5942a4e328e74263f995872cfb8ca3aee08542beb25cd10fd7ef16e4f16603e25c35a26e776c01fd55277e5035e829e0e
@@ -4236,13 +4223,6 @@ __metadata:
   version: 5.2.2
   resolution: "big.js@npm:5.2.2"
   checksum: ea33d7d25674df4253ae3667da7f48ade6cc8828cb4f2c3a7753f53975f10cebae57e0d1ecf84f1b920b5467262dc0d4f357e5e497b138472d0e64992a8402a4
-  languageName: node
-  linkType: hard
-
-"bigi@npm:1.4.2, bigi@npm:^1.1.0":
-  version: 1.4.2
-  resolution: "bigi@npm:1.4.2"
-  checksum: 1cf78da7b300a018da23f47e4c93aa105ef57f9f07499f91d2ed2285a36d9ac67bb4be57a0e08df5760d4cef4caaa2a1ef6c9651b4a40247c8f02b080214400f
   languageName: node
   linkType: hard
 
@@ -4429,7 +4409,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "browser-readablestream-to-it@npm:^1.0.1, browser-readablestream-to-it@npm:^1.0.2":
   version: 1.0.2
   resolution: "browser-readablestream-to-it@npm:1.0.2"
@@ -4437,21 +4416,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserify-aes@npm:1.0.6":
-  version: 1.0.6
-  resolution: "browserify-aes@npm:1.0.6"
-  dependencies:
-    buffer-xor: ^1.0.2
-    cipher-base: ^1.0.0
-    create-hash: ^1.1.0
-    evp_bytestokey: ^1.0.0
-    inherits: ^2.0.1
-  checksum: bcd5c6d4a34f262dbc0155e53f58362ef35cd6075f97dd74fea87bfecb5ba1ccf50479d5252e0522f9e5eb5f908b5147f21fa55f421f34ea3f8f2fe901d6834a
-  languageName: node
-  linkType: hard
-
-=======
->>>>>>> feat(FE): add memory game
 "browserify-aes@npm:^1.0.0, browserify-aes@npm:^1.0.4":
   version: 1.2.0
   resolution: "browserify-aes@npm:1.2.0"
@@ -6445,9 +6409,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.564, electron-to-chromium@npm:^1.3.649":
-  version: 1.3.699
-  resolution: "electron-to-chromium@npm:1.3.699"
-  checksum: 25a6906ca28d7b572c87a6567c2fb99c58aa01158561fb4f168abeb2ca6b84edd868bfc7344ba6e0e8429eab422dc8ac285452e2394d59a9db97c56dbefe0574
+  version: 1.3.700
+  resolution: "electron-to-chromium@npm:1.3.700"
+  checksum: e28b9407c87bc32f688f7940b6dc5f89907a3a17cf7e088daa81e2b45ef801eda68da69f156760bdf8f5e823e9edaa099d5e90ad37c5b5d0868b4e4153fc9b52
   languageName: node
   linkType: hard
 
@@ -6466,8 +6430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"elliptic@npm:^6.5.2, elliptic@npm:^6.5.3, elliptic@npm:^6.5.4":
-"elliptic@npm:6.5.4, elliptic@npm:^6.5.3, elliptic@npm:^6.5.4":
+"elliptic@npm:6.5.4, elliptic@npm:^6.5.2, elliptic@npm:^6.5.3, elliptic@npm:^6.5.4":
   version: 6.5.4
   resolution: "elliptic@npm:6.5.4"
   dependencies:
@@ -8143,23 +8106,16 @@ fsevents@^1.2.7:
     husky: 4.3.8
     i18next: ^19.9.1
     i18next-browser-languagedetector: ^6.0.1
-<<<<<<< HEAD
     ipfs-http-client: ^49.0.4
     lint-staged: ^10.5.4
-=======
-    lint-staged: ^10.5.4
     lodash.shuffle: ^4.2.0
->>>>>>> feat(FE): add memory game
     material-ui-dropzone: ^3.5.0
     polished: ^4.1.1
     prettier: ^2.2.1
     prop-types: ^15.7.2
     react: ~17.0.1
     react-app-rewired: ^2.1.8
-<<<<<<< HEAD
-=======
     react-card-flip: ^1.1.0
->>>>>>> feat(FE): add memory game
     react-color: ^2.19.3
     react-dom: ~17.0.1
     react-feather: ^2.0.9
@@ -16210,16 +16166,16 @@ resolve@^2.0.0-next.3:
   linkType: hard
 
 "sockjs-client@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "sockjs-client@npm:1.5.0"
+  version: 1.5.1
+  resolution: "sockjs-client@npm:1.5.1"
   dependencies:
     debug: ^3.2.6
     eventsource: ^1.0.7
     faye-websocket: ^0.11.3
     inherits: ^2.0.4
     json3: ^3.3.3
-    url-parse: ^1.4.7
-  checksum: e5c976415fff9bcef89b280fb5310125cf838f26f94b4e9d1a65eb1ca2f12521383ac76bbab9350f8b110ed04556d3e9d8bdbf64a7b964883e4e2de950f35317
+    url-parse: ^1.5.1
+  checksum: 3de8764067c0a1aad53c517222cc855fdfc589cfcb04cb41b048e18504e5f39db2562bc41ab9ecc9896ba5b138a3f0dbb76a7d890259274e20bc529534e37f0d
   languageName: node
   linkType: hard
 
@@ -17742,7 +17698,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"url-parse@npm:^1.4.3, url-parse@npm:^1.4.7":
+"url-parse@npm:^1.4.3, url-parse@npm:^1.5.1":
   version: 1.5.1
   resolution: "url-parse@npm:1.5.1"
   dependencies:
