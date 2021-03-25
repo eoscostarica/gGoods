@@ -4,8 +4,13 @@
     "signOut": "Logout",
     "lightMode": "Light Mode",
     "darkMode": "Dark Mode",
+    "template": "Template",
     "category": "Category",
     "name": "Name",
+    "type": "Type",
+    "description": "Description",
+    "smallImage": "Small Image",
+    "largeImage": "Large Image",
     "confirm": "Confirm"
   },
   "routes": {
@@ -27,6 +32,9 @@
     "/create-template>title": "Create Template | GGOODS",
     "/create-template>sidebar": "Create Template",
     "/create-template>heading": "New Template",
+    "/put-on-sale>title": "Put On Sale | GGOODS",
+    "/put-on-sale>sidebar": "Put on sale",
+    "/put-on-sale>heading": "Put on sale your gGoods",
     "/about>title": "About | GGoods",
     "/about>sidebar": "About",
     "/about>heading": "About",
@@ -103,5 +111,17 @@
     "githubEOSCR": "GitHub EOS Costa Rica",
     "telegramChannel": "Telegram Channel",
     "websiteEOSCR": "Website EOS Costa Rica"
+  },
+  "createTemplateRoute": {
+    "successUploadImage": "Success upload image",
+    "avatarMaker": "Avatar Maker",
+    "myOwnDesign": "My Own Design",
+    "successMessage": "Success transaction:"
+  },
+  "putOnSaleRoute": {
+    "quantity": "Quantity",
+    "amount": "Amount to receive",
+    "allowDonation": "Allow donation",
+    "successMessage": "New gGoods on sale:"
   }
 }

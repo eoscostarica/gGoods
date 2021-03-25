@@ -17,8 +17,10 @@ const GoodPage = lazy(() => import('./GoodPage'))
 const Games = lazy(() => import('./Games'))
 const YourCollection = lazy(() => import('./YourCollection'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
+const PutOnSale = lazy(() => import('./PutOnSale'))
 const About = lazy(() => import('./About'))
 const Page404 = lazy(() => import('./Route404'))
+const Paypal = lazy(() => import('./Paypal'))
 
 const routes = [
   {
@@ -44,6 +46,25 @@ const routes = [
     icon: <AppsIcon />,
     component: Goods,
     path: '/goods',
+    name: 'PayPal',
+    icon: <GridIcon />,
+    component: Paypal,
+    path: '/paypal-integration',
+    exact: true
+  },
+  {
+    name: 'putOnSale',
+    icon: <GridIcon />,
+    component: PutOnSale,
+    path: '/put-on-sale',
+    exact: true
+  },
+  {
+    header: 'docs',
+    name: 'about',
+    icon: <InfoIcon />,
+    component: About,
+    path: '/about',
     exact: true
   },
   {

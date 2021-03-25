@@ -1,15 +1,33 @@
 type Mutation {
-  create_template (
+  create_template(
     category: String!
     name: String!
     metadata: jsonb!
   ): CreateTemplateOutput
 }
 
+type Mutation {
+  payment_transaction_complete(
+    orderId: String!
+  ): payment_transaction_complete_output
 
-
-
-type CreateTemplateOutput {
-  trxid : String!
+  put_on_sale(
+    template: uuid!
+    quantity: Int!
+    amount: Float!
+    donable: Boolean
+    memo: String
+  ): PutOnSaleOutput
 }
 
+type CreateTemplateOutput {
+  trxid: String!
+}
+
+type payment_transaction_complete_output {
+  return_status: Boolean!
+}
+
+type PutOnSaleOutput {
+  assets: [String]
+}
