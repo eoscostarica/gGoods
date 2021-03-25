@@ -1,45 +1,23 @@
 export default theme => ({
   root: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(6),
     position: 'relative',
     width: '100%',
-    backgroundColor: '#F7F9FA'
+    backgroundColor: '#f8f8f8'
   },
-  listItem: {
-    display: 'inline-block',
-    width: 'auto',
-    padding: theme.spacing(0, 2),
-    '&:hover, &:active:': {
-      color: theme.palette.action.selected
-    }
+  logo: {
+    width: '100%'
   },
-  iconsList: {
-    padding: 0,
-    width: '100%',
+  icon: {
+    fontSize: 32,
+    color: '#000000'
+  },
+  centerBox: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%'
   },
-  legend: {
-    fontFamily: 'Open Sans',
-    fontSize: 16,
-    lineHeight: '28px',
-    display: 'flex',
-    alignItems: 'center',
-    textAlign: 'center',
-    letterSpacing: '0.44px'
-  },
-  orgName: {
-    fontSize: 12,
-    lineHeight: '31px',
-    display: 'flex',
-    alignItems: 'center',
-    textAlign: 'center',
-    letterSpacing: '0.83px',
-    textTransform: 'uppercase'
-  },
-  gridContent: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+  sectionBox: {
+    marginBottom: theme.spacing(2)
   }
 })
