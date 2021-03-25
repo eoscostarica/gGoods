@@ -1,4 +1,4 @@
 module.exports = {
-  secret: process.env.JWT_SECRECT,
-  iss: process.env.JWT_ISS
+  secret: process.env.HAPI_JWT_SECRECT,
+  iss: process.env.HAPI_JWT_ISS
 }

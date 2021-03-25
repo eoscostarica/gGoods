@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   btnHome: {
     borderRadius: '50px',
-    backgroundColor: '#ba0d0d',
+    backgroundColor: '#4DD5EA',
     width: "50%",
     fontSize: '14px',
     fontWeight: 500,

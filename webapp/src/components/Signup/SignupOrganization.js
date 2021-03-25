@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   btnContinue: {
     borderRadius: '50px',
-    backgroundColor: '#ba0d0d',
+    backgroundColor: '#4DD5EA',
     width: "70%",
     fontSize: '14px',
     fontWeight: 500,

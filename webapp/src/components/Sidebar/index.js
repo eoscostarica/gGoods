@@ -53,11 +53,11 @@ ExternalLink.propTypes = {
 }
 
 const ListItemLink = ({ name, path, icon, badge, ...props }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('routes')
   const classes = useStyles()
   const primaryText = path.includes('http')
-    ? t(`routes.${name}`,`routes.${name}`)
-    : t(`${path}routes.>sidebar`, path)
+    ? t(name,name)
+    : t(`${path}>sidebar`, path)
 
   return (
     <MuiListItem
@@ -85,13 +85,13 @@ ListItemLink.propTypes = {
 
 const ListItemGroup = ({ name, icon, path, childrens, ...props }) => {
   const [open, setOpen] = useState(true)
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('routes')
 
   return (
     <>
       <MuiListItem button onClick={() => setOpen(() => !open)} {...props}>
         {icon && <ListItemIcon>{icon}</ListItemIcon>}
-        <ListItemText primary={t(`routes.${name}`)} />
+        <ListItemText primary={t(name)} />
         {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
       </MuiListItem>
       {childrens && (
@@ -119,12 +119,12 @@ ListItemGroup.propTypes = {
 }
 
 const ListItem = ({ header, childrens, ...props }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('routes')
   const classes = useStyles()
 
   return (
     <Box className={classes.listItem}>
-      {header && <Typography>{t(`routes.${header}`)}</Typography>}
+      {header && <Typography>{t(header)}</Typography>}
       {childrens && <ListItemGroup childrens={childrens} {...props} />}
       {!childrens && <ListItemLink {...props} />}
     </Box>

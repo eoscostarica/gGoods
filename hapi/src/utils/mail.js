@@ -21,7 +21,7 @@ const sendVerificationCode = async (
     tls: { rejectUnauthorized: false }
   })
 
-  const from = 'Lifebank <webmaster@lifebank.io>'
+  const from = 'Ggoods <webmaster@ggoods.io>'
 
   await transporter.sendMail({
     from,
@@ -132,7 +132,7 @@ const sendVerificationCode = async (
                     <tr>
                       <td align="center" valign="top" style="padding: 36px 24px;">
                         <a href="" target="_blank" style="display: inline-block;">
-                          <img src="https://raw.githubusercontent.com/eoscostarica/lifebank/master/webapp/src/assets/OverWhite-lifebank-logo.jpg" alt="Logo" border="0" width="70%" style="display: block; width: 70% ">
+                          <img src="https://raw.githubusercontent.com/eoscostarica/eoscostarica.io/7924ceece60b498e008a7454e871b8c2647e7488/static/img/logos/eos-CostaRica-vectors.svg" alt="Logo" border="0" width="70%" style="display: block; width: 70% ">
                         </a>
                       </td>
                     </tr>
@@ -145,7 +145,7 @@ const sendVerificationCode = async (
                   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                       <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #f6f6f6;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; line-height: 48px; color: #BA0D0D;">${title}</h1>
+                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; line-height: 48px; color: #4DD5EA;">${title}</h1>
                       </td>
                     </tr>
                     <tr>
@@ -159,18 +159,18 @@ const sendVerificationCode = async (
                       <td align="center" bgcolor="#ffffff" 
                         style="padding: 24px; font-family: 'Source Sans Pro', 
                         Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify;">
-                        <a href="https://lifebank.io/verification/${verficationCode}" target="_blank"
+                        <a href="https://ggoods.io/verification/${verficationCode}" target="_blank"
                           style="padding: 8px 12px; 
-                          border: 1px solid #ED2939;border-radius: 5px;
+                          border: 1px solid #424242;border-radius: 5px;
                           font-family: Helvetica, Arial, sans-serif;font-size: 14px; 
-                          color: #BA0D0D; text-decoration: none;
+                          color: #4DD5EA; text-decoration: none;
                           font-weight:bold;display: inline-block;">
                           ${buttonText}
                         </a>
                       </td>
                     </tr>
                     <tr>
-                      <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify; border-bottom: 3px solid #BA0D0D">
+                      <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify; border-bottom: 3px solid #4DD5EA">
                       </td>
                     </tr>
                   </table>
@@ -186,7 +186,7 @@ const sendVerificationCode = async (
   })
 }
 
-const sendRegistrationRequest = async (to, lifebankData) => {
+const sendRegistrationRequest = async (to, organizationData) => {
   const transporter = nodemailer.createTransport({
     host: mailConfig.host,
     secure: false,
@@ -198,12 +198,12 @@ const sendRegistrationRequest = async (to, lifebankData) => {
     tls: { rejectUnauthorized: false }
   })
 
-  const from = 'Lifebank <webmaster@lifebank.io>'
+  const from = 'Gggoods <webmaster@ggoods.io>'
 
   await transporter.sendMail({
     from,
     to,
-    subject: 'Lifebank Registration Request',
+    subject: 'Organization Registration Request',
     html: `
           <head>
             <meta charset="utf-8">
@@ -297,7 +297,7 @@ const sendRegistrationRequest = async (to, lifebankData) => {
           <body style="background-color: #f6f6f6;">
             <!-- start preheader -->
             <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-              Lifebank registration request.
+              Organization registration request.
             </div>
             <!-- end preheader -->
             <!-- start body -->
@@ -309,7 +309,7 @@ const sendRegistrationRequest = async (to, lifebankData) => {
                     <tr>
                       <td align="center" valign="top" style="padding: 36px 24px;">
                         <a href="" target="_blank" style="display: inline-block;">
-                          <img src="https://raw.githubusercontent.com/eoscostarica/lifebank/master/webapp/src/assets/OverWhite-lifebank-logo.jpg" alt="Logo" border="0" width="70%" style="display: block; width: 70% ">
+                          <img src="https://raw.githubusercontent.com/eoscostarica/eoscostarica.io/7924ceece60b498e008a7454e871b8c2647e7488/static/img/logos/eos-CostaRica-vectors.svg" alt="Logo" border="0" width="70%" style="display: block; width: 70% ">
                         </a>
                       </td>
                     </tr>
@@ -321,7 +321,7 @@ const sendRegistrationRequest = async (to, lifebankData) => {
                   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600 px;">
                     <tr>
                       <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #f6f6f6;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; line-height: 48px; color: #BA0D0D;">Registration Request</h1>
+                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; line-height: 48px; color: #4DD5EA;">Registration Request</h1>
                       </td>
                     </tr>
                     <tr>
@@ -329,35 +329,35 @@ const sendRegistrationRequest = async (to, lifebankData) => {
                     <tr>
                       <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify;">
                       <h4>Name</h4>
-                      <p style="margin: 0;">${lifebankData.name}</p>
+                      <p style="margin: 0;">${organizationData.name}</p>
                       <h4>Email</h4>
-                      <p style="margin: 0;">${lifebankData.email}</p>
+                      <p style="margin: 0;">${organizationData.email}</p>
                       <h4>Address</h4>
-                      <p style="margin: 0;">${lifebankData.address}</p>
+                      <p style="margin: 0;">${organizationData.address}</p>
                       <h4>Description</h4>
-                      <p style="margin: 0;">${lifebankData.description}</p>
+                      <p style="margin: 0;">${organizationData.description}</p>
                       <h4>Phone</h4>
-                      <p style="margin: 0;">${lifebankData.phone}</p>
+                      <p style="margin: 0;">${organizationData.phone}</p>
                       <h4>Invitation code</h4>
-                      <p style="margin: 0;">${lifebankData.invitation_code}</p>
+                      <p style="margin: 0;">${organizationData.invitation_code}</p>
                       </td>
                     </tr>
                     <tr>
                       <td align="center" bgcolor="#ffffff" 
                         style="padding: 24px; font-family: 'Source Sans Pro', 
                         Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify;">
-                        <a href="https://www.lifebank.io/register-lifebank/${lifebankData.verification_code}" target="_blank"
+                        <a href="https://ggoods.io/register-organization/${organizationData.verification_code}" target="_blank"
                           style="padding: 8px 12px; 
-                          border: 1px solid #ED2939;border-radius: 5px;
+                          border: 1px solid #424242;border-radius: 5px;
                           font-family: Helvetica, Arial, sans-serif;font-size: 14px; 
-                          color: #BA0D0D; text-decoration: none;
+                          color: #4DD5EA; text-decoration: none;
                           font-weight:bold;display: inline-block;">
                           Approve
                         </a>
                       </td>
                     </tr>
                     <tr>
-                      <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify; border-bottom: 3px solid #BA0D0D">
+                      <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify; border-bottom: 3px solid #4DD5EA">
                       </td>
                     </tr>
                   </table>
@@ -394,7 +394,7 @@ const sendCredentialsRecovery = async (
     tls: { rejectUnauthorized: false }
   })
 
-  const from = 'Lifebank <webmaster@lifebank.io>'
+  const from = 'Ggoods <webmaster@ggoods.io>'
 
   await transporter.sendMail({
     from,
@@ -505,7 +505,7 @@ const sendCredentialsRecovery = async (
                     <tr>
                       <td align="center" valign="top" style="padding: 36px 24px;">
                         <a href="" target="_blank" style="display: inline-block;">
-                          <img src="https://raw.githubusercontent.com/eoscostarica/lifebank/master/webapp/src/assets/OverWhite-lifebank-logo.jpg" alt="Logo" border="0" width="70%" style="display: block; width: 70% ">
+                          <img src="https://raw.githubusercontent.com/eoscostarica/eoscostarica.io/7924ceece60b498e008a7454e871b8c2647e7488/static/img/logos/eos-CostaRica-vectors.svg" alt="Logo" border="0" width="70%" style="display: block; width: 70% ">
                         </a>
                       </td>
                     </tr>
@@ -517,7 +517,7 @@ const sendCredentialsRecovery = async (
                   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600 px;">
                     <tr>
                       <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #f6f6f6;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; line-height: 48px; color: #BA0D0D;"${title}</h1>
+                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; line-height: 48px; color: #4DD5EA;"${title}</h1>
                       </td>
                     </tr>
                     <tr>
@@ -532,7 +532,7 @@ const sendCredentialsRecovery = async (
                       </td>
                     </tr>
                     <tr>
-                      <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify; border-bottom: 3px solid #BA0D0D">
+                      <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify; border-bottom: 3px solid #4DD5EA">
                       </td>
                     </tr>
                   </table>
@@ -560,7 +560,7 @@ const sendConfirmMessage = async (to, subject, title, message) => {
     tls: { rejectUnauthorized: false }
   })
 
-  const from = 'Lifebank <webmaster@lifebank.io>'
+  const from = 'Ggoods <webmaster@ggoods.io>'
 
   await transporter.sendMail({
     from,
@@ -671,7 +671,7 @@ const sendConfirmMessage = async (to, subject, title, message) => {
                     <tr>
                       <td align="center" valign="top" style="padding: 36px 24px;">
                         <a href="" target="_blank" style="display: inline-block;">
-                          <img src="https://raw.githubusercontent.com/eoscostarica/lifebank/master/webapp/src/assets/OverWhite-lifebank-logo.jpg" alt="Logo" border="0" width="70%" style="display: block; width: 70% ">
+                          <img src="https://raw.githubusercontent.com/eoscostarica/eoscostarica.io/7924ceece60b498e008a7454e871b8c2647e7488/static/img/logos/eos-CostaRica-vectors.svg" alt="Logo" border="0" width="70%" style="display: block; width: 70% ">
                         </a>
                       </td>
                     </tr>
@@ -683,7 +683,7 @@ const sendConfirmMessage = async (to, subject, title, message) => {
                   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600 px;">
                     <tr>
                       <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #f6f6f6;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; line-height: 48px; color: #BA0D0D;"> ${title}</h1>
+                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; line-height: 48px; color: #4DD5EA;"> ${title}</h1>
                       </td>
                     </tr>
                     <tr>
@@ -694,7 +694,7 @@ const sendConfirmMessage = async (to, subject, title, message) => {
                       </td>
                     </tr>
                     <tr>
-                      <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify; border-bottom: 3px solid #BA0D0D">
+                      <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; text-align: justify; border-bottom: 3px solid #4DD5EA">
                       </td>
                     </tr>
                   </table>

@@ -139,7 +139,7 @@ AuthButton.propTypes = {
 
 const Header = memo(({ onDrawerToggle }) => {
   const classes = useStyles()
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('routes')
   const history = useHistory()
   const location = useLocation()
   const { i18n } = useTranslation('translations')
@@ -183,9 +183,9 @@ const Header = memo(({ onDrawerToggle }) => {
           </IconButton>
         </Hidden>
         <Typography className={classes.typography} variant="h4">
-          {t(`${location.pathname}routes.>heading`, '')}
+          {t(`${location.pathname}>heading`, '')}
         </Typography>
-        <PageTitle title={t(`${location.pathname}routes.>title`, mainConfig.title)} />
+        <PageTitle title={t(`${location.pathname}>title`, mainConfig.title)} />
         <Box className={classes.desktopSection}>
           <SwitchThemeModeButton
             useDarkMode={state.useDarkMode}

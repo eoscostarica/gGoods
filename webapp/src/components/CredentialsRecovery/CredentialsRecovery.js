@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: '6%',
     borderRadius: '50px',
-    backgroundColor: '#ba0d0d',
+    backgroundColor: '#4DD5EA',
     width: "100%",
     height: '40px',
     fontSize: '14px',
