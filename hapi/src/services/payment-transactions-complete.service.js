@@ -8,7 +8,7 @@ const newTransaction = async payload => {
   try {
     // TODO: do something with payment
     getTransactionData(payload.orderId)
-    
+
     return {
       return_status: true
     }
@@ -22,14 +22,13 @@ const newTransaction = async payload => {
 const getTransactionData = async orderID => {
   fetch(`${paypalConfig.paypalGetTransactionUrl}${orderID}`, {
     method: 'get',
-    headers: { 
+    headers: {
       'Content-Type': 'application/json',
-      'Authorization': 
-      `Bearer ${paypalConfig.paypalAccesToken}`
+      Authorization: `Bearer ${paypalConfig.paypalAccesToken}`
     }
   })
-  .then(res => res.json())
-  .then(json => console.log(json))
+    .then(res => res.json())
+    .then(json => console.log(json))
 }
 
 module.exports = {

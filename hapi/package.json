@@ -28,6 +28,7 @@
     "hapi-auth-jwt2": "^10.2.0",
     "hapi-pino": "^6.5.0",
     "http-status-codes": "^1.4.0",
+    "ipfs-http-client": "^49.0.4",
     "joi": "^17.4.0",
     "njwt": "^1.0.0",
     "node-fetch": "^2.6.1",

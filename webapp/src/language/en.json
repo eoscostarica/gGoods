@@ -30,6 +30,18 @@
       "telegramChannel": "Telegram Channel",
       "websiteEOSCR": "Website EOS Costa Rica"
     },
+    "createTemplateRoute": {
+      "successUploadImage": "Success upload image",
+      "avatarMaker": "Avatar Maker",
+      "myOwnDesign": "My Own Design",
+      "successMessage": "Success transaction:"
+    },
+    "putOnSaleRoute": {
+      "quantity": "Quantity",
+      "amount": "Amount to receive",
+      "allowDonation": "Allow donation",
+      "successMessage": "New gGoods on sale:"
+    },
     "signup": {
       "register": "Let's Start!",
       "registerText": "Choose the option that suits you best. ",

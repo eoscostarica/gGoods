@@ -30,6 +30,18 @@
 - table:
     schema: public
     name: template
+  select_permissions:
+  - role: guest
+    permission:
+      columns:
+      - id
+      - account
+      - category
+      - name
+      - metadata
+      - created_at
+      - updated_at
+      filter: {}
 - table:
     schema: public
     name: user
