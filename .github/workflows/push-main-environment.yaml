@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: ggoods-cluster
+  GKE_ZONE: us-central1-c
+  DEPLOYMENT_NAME: ggoods-production
+
 jobs:
   create-main-image:
     name:
@@ -12,7 +18,13 @@ jobs:
     environment: main
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+
+      # Setup gcloud CLI
+      - uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
 
       - name: Setup Docker
         uses: docker-practice/actions-setup-docker@0.0.1
@@ -22,6 +34,13 @@ jobs:
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login \
             --username ${{ secrets.DOCKER_HUB_USER }} \
             --password-stdin
+
+      # Get the GKE credentials so we can deploy to the cluster
+      - uses: google-github-actions/get-gke-credentials@v0.2.1
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
+          credentials: ${{ secrets.GKE_SA_KEY }}
 
       - name: Build new images and push
         run: |
