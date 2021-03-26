@@ -64,6 +64,7 @@ cd ../include
 mv dgoods.hpp $CONTRACT_NAME.hpp
 sed -i'.old' "s/dgoods(/"$CONTRACT_NAME"(/" $CONTRACT_NAME.hpp
 sed -i'.old' "s/dgoods:/"$CONTRACT_NAME":/" $CONTRACT_NAME.hpp
+sed -i'.old' "s/dgoods,/"$CONTRACT_NAME",/" $CONTRACT_NAME.hpp
 
 #get out of /include
 rm *.old
