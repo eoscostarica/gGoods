@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next'
 
 import { CREDENTIALS_RECOVERY, CHANGE_PASSWORD } from '../../gql'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   alert: {
     marginTop: theme.spacing(4)
   },
@@ -39,18 +39,18 @@ const useStyles = makeStyles((theme) => ({
     height: '5vh',
     '& svg': {
       fontSize: 25,
-      color: "rgba(0, 0, 0, 0.6)"
+      color: 'rgba(0, 0, 0, 0.6)'
     }
   },
   loginBtn: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   labelOption: {
     color: theme.palette.primary.main,
     marginLeft: theme.spacing(3),
     fontSize: 14,
-    cursor: "pointer"
+    cursor: 'pointer'
   },
   bodyWrapper: {
     height: '90%',
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '6%',
     borderRadius: '50px',
     backgroundColor: '#4DD5EA',
-    width: "100%",
+    width: '100%',
     height: '40px',
     fontSize: '14px',
     fontWeight: 500,
@@ -83,13 +83,13 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 10
   },
   dialog: {
-    paddingTop: "53px",
-    paddingLeft: "53px",
-    paddingRight: "53px",
-    paddingBottom: "60px",
+    paddingTop: '53px',
+    paddingLeft: '53px',
+    paddingRight: '53px',
+    paddingBottom: '60px',
     [theme.breakpoints.down('md')]: {
-      paddingLeft: "21px",
-      paddingRight: "21px"
+      paddingLeft: '21px',
+      paddingRight: '21px'
     }
   }
 }))
@@ -112,7 +112,11 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
   ] = useMutation(CREDENTIALS_RECOVERY)
   const [
     changePassword,
-    { loading: loadingChangePassword, error: errorChangePassword, data: { change_password: responseChangePassword } = {} }
+    {
+      loading: loadingChangePassword,
+      error: errorChangePassword,
+      data: { change_password: responseChangePassword } = {}
+    }
   ] = useMutation(CHANGE_PASSWORD)
   const [open, setOpen] = useState(false)
 
@@ -165,7 +169,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
 
   useEffect(() => {
     if (error) {
-      if (error.message === `GraphQL error: Cannot read property 'account' of undefined`)
+      if (error.message === `Cannot read property 'account' of undefined`)
         setErrorMessage(t('credentialsRecovery.emailError'))
       else setErrorMessage(error.message.replace('GraphQL error: ', ''))
     }
@@ -173,12 +177,16 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
 
   useEffect(() => {
     if (errorChangePassword) {
-      if (errorChangePassword.message === `GraphQL error: Cannot read property 'secret' of null`)
+      if (
+        errorChangePassword.message === `Cannot read property 'secret' of null`
+      )
         setErrorMessage(t('credentialsRecovery.emailError'))
-      else setErrorMessage(errorChangePassword.message.replace('GraphQL error: ', ''))
+      else
+        setErrorMessage(
+          errorChangePassword.message.replace('GraphQL error: ', '')
+        )
     }
   }, [errorChangePassword])
-
 
   useEffect(() => {
     if (response) {
@@ -196,11 +204,16 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
   }, [responseChangePassword])
 
   function executeCredentialsRecovery(e) {
-    if (e.key === 'Enter' && ((user.newPassword && user.currentPassword && validEmailFormat) && !loadingChangePassword)) {
+    if (
+      e.key === 'Enter' &&
+      user.newPassword &&
+      user.currentPassword &&
+      validEmailFormat &&
+      !loadingChangePassword
+    ) {
       e.preventDefault()
       handleSubmitChangePassword()
-    }
-    else if (e.key === 'Enter' && (validEmailFormat && !loading)) {
+    } else if (e.key === 'Enter' && validEmailFormat && !loading) {
       e.preventDefault()
       handleSubmit()
     }
@@ -228,7 +241,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
         open={open}
         onClose={handleOpen}
         fullScreen={!isDesktop}
-        maxWidth='xs'
+        maxWidth="xs"
         closeAfterTransition
         BackdropProps={{
           timeout: 500
@@ -251,7 +264,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
             </Typography>
             <form autoComplete="off">
               <Box className={classes.textFieldWrapper}>
-                <Typography >
+                <Typography>
                   {t('credentialsRecovery.instructionCredentialsRecovery')}
                 </Typography>
                 <TextField
@@ -262,12 +275,13 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                     shrink: true
                   }}
                   value={user.email || ''}
-                  onChange={(event) =>
-                    handleSetFieldEmail('email', event.target.value.toLowerCase().replace(/\s/g, ''))
+                  onChange={event =>
+                    handleSetFieldEmail(
+                      'email',
+                      event.target.value.toLowerCase().replace(/\s/g, '')
+                    )
                   }
-                  onKeyPress={(event) =>
-                    executeCredentialsRecovery(event)
-                  }
+                  onKeyPress={event => executeCredentialsRecovery(event)}
                   className={classes.marginTop}
                 />
                 <Button
@@ -281,8 +295,10 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                 </Button>
                 {loading && <CircularProgress />}
               </Box>
-              <Box className={clsx(classes.textFieldWrapper, classes.marginTopBox)}>
-                <Typography >
+              <Box
+                className={clsx(classes.textFieldWrapper, classes.marginTopBox)}
+              >
+                <Typography>
                   {t('credentialsRecovery.changePasswordInstructions')}
                 </Typography>
                 <TextField
@@ -293,12 +309,10 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                     shrink: true
                   }}
                   value={user.currentPassword || ''}
-                  onChange={(event) =>
+                  onChange={event =>
                     handleSetField('currentPassword', event.target.value)
                   }
-                  onKeyPress={(event) =>
-                    executeCredentialsRecovery(event)
-                  }
+                  onKeyPress={event => executeCredentialsRecovery(event)}
                   className={classes.marginTop}
                 />
                 <TextField
@@ -309,16 +323,19 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                     shrink: true
                   }}
                   value={user.newPassword || ''}
-                  onChange={(event) =>
+                  onChange={event =>
                     handleSetField('newPassword', event.target.value)
                   }
-                  onKeyPress={(event) =>
-                    executeCredentialsRecovery(event)
-                  }
+                  onKeyPress={event => executeCredentialsRecovery(event)}
                   className={classes.marginTop}
                 />
                 <Button
-                  disabled={(!user.newPassword || !user.currentPassword || !validEmailFormat) || loadingChangePassword}
+                  disabled={
+                    !user.newPassword ||
+                    !user.currentPassword ||
+                    !validEmailFormat ||
+                    loadingChangePassword
+                  }
                   variant="contained"
                   color="secondary"
                   onClick={handleSubmitChangePassword}

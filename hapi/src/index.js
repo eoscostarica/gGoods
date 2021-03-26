@@ -34,17 +34,6 @@ const init = async () => {
 
   await server.register([
     {
-      plugin: require('hapi-pino'),
-      options: {
-        prettyPrint: true,
-        logEvents: ['request-error']
-      }
-    },
-    {
-      plugin: require('@hapi/inert'),
-      options: {}
-    },
-    {
       plugin: require('hapi-auth-jwt2'),
       options: {}
     }

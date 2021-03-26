@@ -248,16 +248,15 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   }
 
   const handleCreateAccount = () => {
-    console.log('MARK')
     const { email, secret } = user
     const name = 'My profile'
     const bcrypt = require('bcryptjs')
     const saltRounds = 10
 
-    bcrypt.hash(secret, saltRounds, async (err, hash) => {
+    bcrypt.hash(secret, saltRounds, (err, hash) => {
       if (!err) {
         try {
-          await createAccount({
+          createAccount({
             variables: {
               role,
               email,
@@ -279,7 +278,6 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   }
 
   const handleCreateAccountWithAuth = async (status, email, name, secret) => {
-    console.log('MARK2-AUTH')
     if (status) {
       const { data } = await checkEmail({ email: email })
 
@@ -287,10 +285,10 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
         const bcrypt = require('bcryptjs')
         const saltRounds = 10
 
-        bcrypt.hash(secret, saltRounds, async (err, hash) => {
+        bcrypt.hash(secret, saltRounds, (err, hash) => {
           if (!err) {
             try {
-              await createAccount({
+              createAccount({
                 variables: {
                   role,
                   email,
@@ -395,7 +393,6 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   }, [createAccountResult])
 
   useEffect(() => {
-    console.log('ERROR', errorcreateAccount)
     if (errorcreateAccount) setErrorMessage(t('errors.authError'))
   }, [errorcreateAccount])
 
