@@ -248,32 +248,38 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   }
 
   const handleCreateAccount = () => {
+    console.log('MARK')
     const { email, secret } = user
     const name = 'My profile'
     const bcrypt = require('bcryptjs')
     const saltRounds = 10
 
-    bcrypt.hash(secret, saltRounds, function (err, hash) {
+    bcrypt.hash(secret, saltRounds, async (err, hash) => {
       if (!err) {
-        createAccount({
-          variables: {
-            role,
-            email,
-            emailContent: {
-              subject: t('emailMessage.subjectVerificationCode'),
-              title: t('emailMessage.titleVerificationCode'),
-              message: t('emailMessage.messageVerificationCode'),
-              button: t('emailMessage.verifyButton')
-            },
-            name,
-            secret: hash
-          }
-        })
+        try {
+          await createAccount({
+            variables: {
+              role,
+              email,
+              emailContent: {
+                subject: t('emailMessage.subjectVerificationCode'),
+                title: t('emailMessage.titleVerificationCode'),
+                message: t('emailMessage.messageVerificationCode'),
+                button: t('emailMessage.verifyButton')
+              },
+              name,
+              secret: hash
+            }
+          })
+        } catch (err) {
+          console.log('ERROR', err)
+        }
       }
     })
   }
 
   const handleCreateAccountWithAuth = async (status, email, name, secret) => {
+    console.log('MARK2-AUTH')
     if (status) {
       const { data } = await checkEmail({ email: email })
 
@@ -281,22 +287,26 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
         const bcrypt = require('bcryptjs')
         const saltRounds = 10
 
-        bcrypt.hash(secret, saltRounds, function (err, hash) {
+        bcrypt.hash(secret, saltRounds, async (err, hash) => {
           if (!err) {
-            createAccount({
-              variables: {
-                role,
-                email,
-                emailContent: {
-                  subject: t('emailMessage.subjectVerificationCode'),
-                  title: t('emailMessage.titleVerificationCode'),
-                  message: t('emailMessage.messageVerificationCode'),
-                  button: t('emailMessage.verifyButton')
-                },
-                name,
-                secret: hash
-              }
-            })
+            try {
+              await createAccount({
+                variables: {
+                  role,
+                  email,
+                  emailContent: {
+                    subject: t('emailMessage.subjectVerificationCode'),
+                    title: t('emailMessage.titleVerificationCode'),
+                    message: t('emailMessage.messageVerificationCode'),
+                    button: t('emailMessage.verifyButton')
+                  },
+                  name,
+                  secret: hash
+                }
+              })
+            } catch (err) {
+              console.log('ERROR ')
+            }
           }
         })
       } else {
@@ -385,6 +395,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   }, [createAccountResult])
 
   useEffect(() => {
+    console.log('ERROR', errorcreateAccount)
     if (errorcreateAccount) setErrorMessage(t('errors.authError'))
   }, [errorcreateAccount])
 

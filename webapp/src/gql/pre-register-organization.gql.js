@@ -38,8 +38,14 @@ export const VALIDATION_EMAIL = gql`
 `
 
 export const UPDATE_STATE_ORGANIZATION = gql`
-  mutation ($verification_code: String!) {
-    update_preregister_organization( where: { verification_code: { _eq: $verification_code },_and: { state: { _eq: "pending" }}}, _set: { state: "approved" }) {
+  mutation($verification_code: String!) {
+    update_preregister_organization(
+      where: {
+        verification_code: { _eq: $verification_code }
+        _and: { state: { _eq: "pending" } }
+      }
+      _set: { state: "approved" }
+    ) {
       returning {
         address
         description

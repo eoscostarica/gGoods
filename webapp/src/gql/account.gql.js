@@ -2,13 +2,19 @@ import gql from 'graphql-tag'
 
 export const CREATE_ACCOUNT_MUTATION = gql`
   mutation(
-    $role: String!,
-    $email: String!,
-    $emailContent: jsonb!,
-    $name: String!,
+    $role: String!
+    $email: String!
+    $emailContent: jsonb!
+    $name: String!
     $secret: String!
+  ) {
+    create_account(
+      role: $role
+      email: $email
+      emailContent: $emailContent
+      name: $name
+      secret: $secret
     ) {
-    create_account(role: $role, email: $email, emailContent: $emailContent, name: $name, secret: $secret) {
       account
       token
       transaction_id
@@ -17,8 +23,20 @@ export const CREATE_ACCOUNT_MUTATION = gql`
 `
 
 export const CREATE_ACCOUNT_ORGANIZATION_MUTATION = gql`
-  mutation($email: String!, $emailContent: jsonb!, $name: String!, $secret: String!, $verification_code: String!) {
-    create_account_organization (email: $email, emailContent: $emailContent, name: $name, secret: $secret, verification_code: $verification_code) {
+  mutation(
+    $email: String!
+    $emailContent: jsonb!
+    $name: String!
+    $secret: String!
+    $verification_code: String!
+  ) {
+    create_account_organization(
+      email: $email
+      emailContent: $emailContent
+      name: $name
+      secret: $secret
+      verification_code: $verification_code
+    ) {
       account
       token
       transaction_id
@@ -115,8 +133,18 @@ export const CREDENTIALS_RECOVERY = gql`
 `
 
 export const CHANGE_PASSWORD = gql`
-  mutation($email: String!, $emailContent: jsonb!, $currentPassword: String!, $newPassword: String!) {
-    change_password(email: $email, emailContent: $emailContent, currentPassword: $currentPassword, newPassword: $newPassword) {
+  mutation(
+    $email: String!
+    $emailContent: jsonb!
+    $currentPassword: String!
+    $newPassword: String!
+  ) {
+    change_password(
+      email: $email
+      emailContent: $emailContent
+      currentPassword: $currentPassword
+      newPassword: $newPassword
+    ) {
       success
     }
   }
@@ -203,7 +231,7 @@ export const SET_USERNAME = gql`
 
 export const VERIFY_USERNAME = gql`
   query($account: String!, $username: String!) {
-    user(where: {username: {_eq: $username}, account: {_neq: $account}}) {
+    user(where: { username: { _eq: $username }, account: { _neq: $account } }) {
       username
     }
   }
