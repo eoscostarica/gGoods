@@ -10,7 +10,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const GamesList = [
+const GAME_LIST = [
   {
     name: 'Selfie Cam',
     description:
@@ -41,7 +41,7 @@ const Games = () => {
       </Typography>
       <Box>
         <Grid container spacing={2}>
-          {GamesList.map(game => (
+          {GAME_LIST.map(game => (
             <Grid item xs={12} md={6} lg={3} key={game.name}>
               <CardGame
                 name={game.name}

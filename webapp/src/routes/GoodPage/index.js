@@ -17,7 +17,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const Good = {
+const GOOD = {
   name: 'Marviva',
   owner: 'Sealife protection',
   bio:
@@ -72,23 +72,23 @@ const GoodPage = () => {
             <Grid item xs={12} md={8}>
               <Box className={classes.titleBox}>
                 <Typography noWrap variant="h3">
-                  {Good.name}
+                  {GOOD.name}
                 </Typography>
                 <Typography noWrap variant="h6">
-                  {Good.owner}
+                  {GOOD.owner}
                 </Typography>
               </Box>
               <Box className={classes.sectionBox}>
                 <Typography noWrap gutterBottom variant="h6">
                   Bio
                 </Typography>
-                <Typography variant="body1">{Good.bio}</Typography>
+                <Typography variant="body1">{GOOD.bio}</Typography>
               </Box>
               <Box className={classes.sectionBox}>
                 <Typography noWrap gutterBottom variant="h6">
                   Impact
                 </Typography>
-                <Typography variant="body1">{Good.impact}</Typography>
+                <Typography variant="body1">{GOOD.impact}</Typography>
               </Box>
               <Typography variant="h6" align="center">
                 We’re Grateful for any help you can provide!
@@ -137,23 +137,23 @@ const GoodPage = () => {
             <Grid item xs={12} md={8}>
               <Box className={classes.titleBox}>
                 <Typography noWrap variant="h3">
-                  {Good.name}
+                  {GOOD.name}
                 </Typography>
                 <Typography noWrap variant="h6">
-                  {Good.owner}
+                  {GOOD.owner}
                 </Typography>
               </Box>
               <Box className={classes.sectionBox}>
                 <Typography noWrap gutterBottom variant="h6">
                   Bio
                 </Typography>
-                <Typography variant="body1">{Good.bio}</Typography>
+                <Typography variant="body1">{GOOD.bio}</Typography>
               </Box>
               <Box className={classes.sectionBox}>
                 <Typography noWrap gutterBottom variant="h6">
                   Impact
                 </Typography>
-                <Typography variant="body1">{Good.impact}</Typography>
+                <Typography variant="body1">{GOOD.impact}</Typography>
               </Box>
               <Typography variant="h6" align="center">
                 We’re Grateful for any help you can provide!
