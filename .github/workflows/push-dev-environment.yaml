@@ -30,6 +30,8 @@ jobs:
             push-docker-images
         env:
           # global
+          DOCKER_USER: ${{ secrets.DOCKER_HUB_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
           NAMESPACE: ggoods-dev
           STAGE: dev
           APP_NAME: ggoods
