@@ -4,9 +4,8 @@ import jwtDecode from 'jwt-decode'
 
 const SharedStateContext = React.createContext()
 
-const getUserFromToken = (token) => {
-  if(!token)
-    return
+const getUserFromToken = token => {
+  if (!token) return
 
   const claims = jwtDecode(token)
   return {
@@ -49,14 +48,14 @@ const sharedStateReducer = (state, action) => {
       }
 
     case 'login':
-      //state.ual.showModal()
+      // state.ual.showModal()
       return {
         ...state,
         showLoginModal: true
       }
 
     case 'logout':
-      //state.ual.logout()
+      // state.ual.logout()
       localStorage.removeItem('token')
 
       return {
@@ -69,7 +68,7 @@ const sharedStateReducer = (state, action) => {
         ...state,
         showLoginModal: false
       }
-    
+
     case 'successLogin':
       localStorage.setItem('token', action.payload)
 
@@ -121,7 +120,18 @@ export const useSharedState = () => {
   const login = () => dispatch({ type: 'login' })
   const logout = () => dispatch({ type: 'logout' })
   const cancelLogin = () => dispatch({ type: 'cancelLogin' })
-  const successLogin = (payload) => dispatch({ type: 'successLogin', payload })
+  const successLogin = payload => dispatch({ type: 'successLogin', payload })
 
-  return [state, { setState, showMessage, hideMessage, login, logout, cancelLogin, successLogin }]
+  return [
+    state,
+    {
+      setState,
+      showMessage,
+      hideMessage,
+      login,
+      logout,
+      cancelLogin,
+      successLogin
+    }
+  ]
 }

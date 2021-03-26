@@ -7,4 +7,6 @@ const CustomRouterLink = forwardRef((props, ref) => (
   </div>
 ))
 
+CustomRouterLink.displayName = 'CustomRouterLink'
+
 export default CustomRouterLink

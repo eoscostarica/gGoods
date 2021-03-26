@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button'
 import Slider from '@ant-design/react-slick'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
-import { useTranslation } from 'react-i18next'
 import Signup from '../../components/Signup/Signup'
 
 import 'slick-carousel/slick/slick.css'
@@ -25,11 +24,7 @@ import styles from './styles'
 const useStyles = makeStyles(styles)
 
 const Home = () => {
-
-  const { t } = useTranslation('translations')
-  
   const classes = useStyles()
-
   const settings = {
     dots: true,
     infinite: true,

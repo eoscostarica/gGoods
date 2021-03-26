@@ -9,11 +9,10 @@ import Typography from '@material-ui/core/Typography'
 import { Box } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 
-//import { useUser } from '../../context/user.context'
 import CustomRouterLink from '../../components/CustomRouterLink'
 import { VERIFY_EMAIL } from '../../gql'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(4),
     display: 'flex',
@@ -25,34 +24,34 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex'
   },
   centerText: {
-    textAlign: 'center',
+    textAlign: 'center'
   },
   title: {
-    fontSize: "34px",
-    fontWeight: "normal",
-    fontStretch: "normal",
-    fontStyle: "normal",
-    lineHeight: "1.18",
-    letterSpacing: "0.25px",
-    textAlign: "center",
-    color: "rgba(0, 0, 0, 0.87)",
+    fontSize: '34px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: '1.18',
+    letterSpacing: '0.25px',
+    textAlign: 'center',
+    color: 'rgba(0, 0, 0, 0.87)',
     marginBottom: 15
   },
   subTitle: {
-    fontSize: "14px",
-    fontWeight: "normal",
-    fontStretch: "normal",
-    fontStyle: "normal",
-    lineHeight: "1.43",
-    letterSpacing: "0.25px",
-    textAlign: "center",
-    color: "rgba(0, 0, 0, 0.6)",
+    fontSize: '14px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: '1.43',
+    letterSpacing: '0.25px',
+    textAlign: 'center',
+    color: 'rgba(0, 0, 0, 0.6)',
     marginBottom: 30
   },
   btnHome: {
     borderRadius: '50px',
     backgroundColor: '#4DD5EA',
-    width: "50%",
+    width: '50%',
     fontSize: '14px',
     fontWeight: 500,
     fontStretch: 'normal',
@@ -63,22 +62,25 @@ const useStyles = makeStyles((theme) => ({
     padding: '12px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
-      width: "100%",
+      width: '100%'
     }
-  },
+  }
 }))
 
-const EmailVerification = (props) => {
+const EmailVerification = () => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
-  //const [, { logout }] = useUser()
   const [validate, setValidate] = useState(true)
   const { code } = useParams()
   const history = useHistory()
 
   const [
     verifyEmail,
-    { loading: loadingVerifyEmail, error: errorVerifyEmail, data: { verify_email: verifyEmailResult } = {} }
+    {
+      loading: loadingVerifyEmail,
+      error: errorVerifyEmail,
+      data: { verify_email: verifyEmailResult } = {}
+    }
   ] = useMutation(VERIFY_EMAIL)
 
   useEffect(() => {
@@ -94,13 +96,14 @@ const EmailVerification = (props) => {
     if (verifyEmailResult) {
       setValidate(verifyEmailResult.is_verified)
     }
-
   }, [verifyEmailResult])
 
   useEffect(() => {
     if (errorVerifyEmail) {
-      if (errorVerifyEmail.message === 'GraphQL error: Could not verify JWT: JWTExpired') {
-        //logout()
+      if (
+        errorVerifyEmail.message ===
+        'GraphQL error: Could not verify JWT: JWTExpired'
+      ) {
         verifyEmail({
           variables: {
             code: code
@@ -111,7 +114,6 @@ const EmailVerification = (props) => {
         history.push('/internal-error')
       }
     }
-
   }, [errorVerifyEmail])
 
   return (

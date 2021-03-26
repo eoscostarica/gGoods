@@ -10,9 +10,9 @@ import { useTranslation } from 'react-i18next'
 
 import { captchaConfig } from '../../config'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   form: {
-    width: '100%',
+    width: '100%'
   },
   textField: {
     marginBottom: 10
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   btnContinue: {
     borderRadius: '50px',
     backgroundColor: '#4DD5EA',
-    width: "70%",
+    width: '70%',
     fontSize: '14px',
     fontWeight: 500,
     fontStretch: 'normal',
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 10,
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
-      width: "100%",
+      width: '100%'
     }
   },
   mapBox: {
@@ -79,7 +79,7 @@ const SignupOrganization = ({
           fullWidth
           variant="outlined"
           className={classes.textField}
-          onChange={(event) => setField('password', event.target.value)}
+          onChange={event => setField('password', event.target.value)}
         />
         <TextField
           id="name"
@@ -87,7 +87,7 @@ const SignupOrganization = ({
           variant="outlined"
           fullWidth
           className={classes.textField}
-          onChange={(event) => setField('name', event.target.value)}
+          onChange={event => setField('name', event.target.value)}
         />
         <TextField
           id="description"
@@ -95,7 +95,7 @@ const SignupOrganization = ({
           variant="outlined"
           fullWidth
           className={classes.textField}
-          onChange={(event) => setField('description', event.target.value)}
+          onChange={event => setField('description', event.target.value)}
         />
         <TextField
           id="address"
@@ -103,7 +103,7 @@ const SignupOrganization = ({
           variant="outlined"
           fullWidth
           className={classes.textField}
-          onChange={(event) => setField('address', event.target.value)}
+          onChange={event => setField('address', event.target.value)}
         />
         <TextField
           id="phoneNumber"
@@ -111,7 +111,7 @@ const SignupOrganization = ({
           variant="outlined"
           fullWidth
           className={classes.textField}
-          onChange={(event) => setField('phone', event.target.value)}
+          onChange={event => setField('phone', event.target.value)}
         />
         <TextField
           id="invitationCode"
@@ -119,12 +119,12 @@ const SignupOrganization = ({
           variant="outlined"
           fullWidth
           className={classes.textField}
-          onChange={(event) => setField('invitation_code', event.target.value)}
+          onChange={event => setField('invitation_code', event.target.value)}
         />
         <Box className={classes.btnWrapper}>
           <ReCAPTCHA
             sitekey={captchaConfig.captchaConfig.sitekey}
-            onChange={(value) => serRecaptchaValue(value)}
+            onChange={value => serRecaptchaValue(value)}
           />
           <Button
             disabled={

@@ -27,7 +27,7 @@ const init = async () => {
     },
     debug: { request: ['handler'] }
   })
-  
+
   server.bind({
     i18n: i18nConfig
   })

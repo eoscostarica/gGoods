@@ -8,13 +8,13 @@ import { useTranslation } from 'react-i18next'
 
 import { oAuthConfig } from '../../config'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   btnGoogle: {
     border: 'solid 1px #e0e0e0',
     display: 'flex',
     backgroundColor: 'white',
     borderRadius: '50px',
-    width: "70%",
+    width: '70%',
     fontSize: '14px',
     fontWeight: 500,
     fontStretch: 'normal',
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '10px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
-      width: "100%",
+      width: '100%'
     }
   },
   googleIcon: {
@@ -37,18 +37,18 @@ const LoginWithGoogle = ({ onSubmit }) => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
 
-  const googleResponse = (response) => {
+  const googleResponse = response => {
     onSubmit(true, response.profileObj.email, response.profileObj.googleId)
   }
 
-  const handleError = (error) => {
+  const handleError = error => {
     if (error) onSubmit(false, '', '')
   }
 
   return (
     <GoogleLogin
       clientId={oAuthConfig.google_clienteID}
-      render={(handleProps) => (
+      render={handleProps => (
         <Button
           onClick={handleProps.onClick}
           className={classes.btnGoogle}

@@ -52,12 +52,7 @@ const CreateTemplate = () => {
 
     const formData = new FormData()
     formData.append('file_name', files[0])
-    const response = await fetch('https://ipfsgw.cryptolions.io/upload', {
-      method: 'POST',
-      body: formData
-    })
-    
-    const body = await response.json()
+
     try {
       const { path } = await ipfs.add({
         content: files[0]

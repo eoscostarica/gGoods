@@ -5,18 +5,18 @@ import Button from '@material-ui/core/Button'
 import Box from '@material-ui/core/Box'
 import { useTranslation } from 'react-i18next'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    width: '100%'
   },
   btn: {
     borderRadius: '50px',
     backgroundColor: '#4DD5EA',
-    width: "60%",
+    width: '60%',
     fontSize: '14px',
     fontWeight: 500,
     fontStretch: 'normal',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '15px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
-      width: "100%",
+      width: '100%'
     }
   }
 }))

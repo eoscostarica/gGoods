@@ -1,6 +1,5 @@
 import React, { memo, useState, useEffect } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
-import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
 import Dialog from '@material-ui/core/Dialog'
@@ -22,13 +21,13 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import {
   LOGIN_MUTATION,
   VALIDATE_EMAIL,
-  GET_SECRET_BY_ACCOUNT,
+  GET_SECRET_BY_ACCOUNT
 } from '../../gql'
 import { useSharedState } from '../../context/state.context'
 import LoginWithGoogle from './LoginWithGoogle'
 import Signup from '../../components/Signup'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   alert: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2)
@@ -42,40 +41,40 @@ const useStyles = makeStyles((theme) => ({
     height: '5vh',
     '& svg': {
       fontSize: 25,
-      color: "rgba(0, 0, 0, 0.6)"
+      color: 'rgba(0, 0, 0, 0.6)'
     }
   },
   dialog: {
-    paddingTop: "48px",
-    paddingLeft: "48px",
-    paddingRight: "48px"
+    paddingTop: '48px',
+    paddingLeft: '48px',
+    paddingRight: '48px'
   },
   title: {
-    fontFamily: "Roboto",
-    fontSize: "34px",
-    fontWeight: "normal",
-    fontStretch: "normal",
-    fontStyle: "normal",
-    lineHeight: "1.18",
-    letterSpacing: "0.25px",
-    textAlign: "left",
-    color: "rgba(0, 0, 0, 0.87)",
+    fontFamily: 'Roboto',
+    fontSize: '34px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: '1.18',
+    letterSpacing: '0.25px',
+    textAlign: 'left',
+    color: 'rgba(0, 0, 0, 0.87)',
     marginBottom: 15
   },
   subTitle: {
-    fontFamily: "Roboto",
-    fontSize: "14px",
-    fontWeight: "normal",
-    fontStretch: "normal",
-    fontStyle: "normal",
-    lineHeight: "1.43",
-    letterSpacing: "0.25px",
-    textAlign: "left",
-    color: "rgba(0, 0, 0, 0.6)",
+    fontFamily: 'Roboto',
+    fontSize: '14px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: '1.43',
+    letterSpacing: '0.25px',
+    textAlign: 'left',
+    color: 'rgba(0, 0, 0, 0.6)',
     marginBottom: 30
   },
   inputStyle: {
-    color: "rgba(0, 0, 0, 0.6)",
+    color: 'rgba(0, 0, 0, 0.6)',
     width: '100%',
     marginBottom: 15
   },
@@ -85,12 +84,12 @@ const useStyles = makeStyles((theme) => ({
   centerBox: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   btnLogin: {
     borderRadius: '50px',
     backgroundColor: '#4DD5EA',
-    width: "70%",
+    width: '70%',
     fontSize: '14px',
     fontWeight: 500,
     fontStretch: 'normal',
@@ -101,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '12px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
-      width: "100%",
+      width: '100%'
     }
   },
   registerBox: {
@@ -136,14 +135,17 @@ const useStyles = makeStyles((theme) => ({
   },
   registerBtnSideBar: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   }
 }))
 
 const LoginModal = () => {
   const { t } = useTranslation('translations')
   const [user, setUser] = useState({})
-  const [{showLoginModal: open}, {cancelLogin, successLogin}] = useSharedState()
+  const [
+    { showLoginModal: open },
+    { cancelLogin, successLogin }
+  ] = useSharedState()
   const [errorMessage, setErrorMessage] = useState(null)
   const classes = useStyles()
   const theme = useTheme()
@@ -182,7 +184,7 @@ const LoginModal = () => {
     setErrorMessage(null)
     const bcrypt = require('bcryptjs')
     const { data } = await getHash({ account: user.account })
-    
+
     if (data.user.length >= 1) {
       const hash = data.user[0].secret
 
@@ -223,7 +225,6 @@ const LoginModal = () => {
               }
             })
           } else setErrorMessage(t('login.invalidAccountOrPassword'))
-
         })
       } else setErrorMessage(t('login.accountDoesntExist'))
     } else setErrorMessage(t('login.somethingHappenedWithAuth'))
@@ -240,11 +241,10 @@ const LoginModal = () => {
       successLogin(loginResult.token)
       cancelLogin()
     }
-
   }, [loginResult])
 
   function executeLogin(e) {
-    if (e.key === 'Enter' && (user.account && user.secret && !loading)) {
+    if (e.key === 'Enter' && user.account && user.secret && !loading) {
       e.preventDefault()
       handleLogin()
     }
@@ -307,18 +307,19 @@ const LoginModal = () => {
                 label={t('common.email')}
                 variant="outlined"
                 className={classes.inputStyle}
-                onChange={(event) =>
-                  handleSetField('account', event.target.value.toLowerCase().replace(/\s/g, ''))
+                onChange={event =>
+                  handleSetField(
+                    'account',
+                    event.target.value.toLowerCase().replace(/\s/g, '')
+                  )
                 }
-                onKeyPress={(event) =>
-                  executeLogin(event)
-                }
+                onKeyPress={event => executeLogin(event)}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
                       <AccountCircle />
                     </InputAdornment>
-                  ),
+                  )
                 }}
               />
               <TextField
@@ -327,21 +328,13 @@ const LoginModal = () => {
                 type="password"
                 variant="outlined"
                 className={classes.inputStyle}
-                onChange={(event) =>
-                  handleSetField('secret', event.target.value)
-                }
-                onKeyPress={(event) =>
-                  executeLogin(event)
-                }
+                onChange={event => handleSetField('secret', event.target.value)}
+                onKeyPress={event => executeLogin(event)}
               />
             </Box>
             <FormControlLabel
               className={classes.formCheckBox}
-              control={
-                <Checkbox
-                  name="checkLogin"
-                />
-              }
+              control={<Checkbox name="checkLogin" />}
               label={t('login.loggedIn')}
             />
             <Box className={classes.centerBox}>
@@ -370,11 +363,6 @@ const LoginModal = () => {
       </Dialog>
     </>
   )
-}
-
-LoginModal.propTypes = {
-  isNavBar: PropTypes.bool,
-  isSideBar: PropTypes.bool,
 }
 
 LoginModal.defaultProps = {
