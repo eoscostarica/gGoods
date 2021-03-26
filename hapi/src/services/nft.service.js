@@ -151,7 +151,6 @@ const nftOnSale = async (payload = {}) => {
     )
 
     return newItems
-    return []
   } catch (error) {
     throw new Boom.Boom(error.message, {
       statusCode: BAD_REQUEST
