@@ -1,4 +1,4 @@
-name: Build images from latest master branch
+name: Build images from latest main branch
 
 on:
   push:
@@ -6,10 +6,10 @@ on:
       - v*
 
 jobs:
-  create-master-image:
+  create-main-image:
     name:
     runs-on: ubuntu-latest
-    environment: master
+    environment: main
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v1
