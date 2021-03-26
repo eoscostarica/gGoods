@@ -20,7 +20,7 @@ const YourCollection = () => {
       </Typography>
       <Typography variant="body1">{t('paragraph1')}</Typography>
       <Box>
-        <Carousel items={[1, 2, 3, 4]} />
+        <Carousel items={[1, 2, 3, 4, 5, 6]} />
       </Box>
     </Box>
   )

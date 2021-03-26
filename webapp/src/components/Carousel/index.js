@@ -24,8 +24,8 @@ const Carousel = ({ items = [] }) => {
   const generateItems = (activeValue = 0) => {
     let level
     const carouselItems = []
-    const leftValue = activeValue - 1 // (isMobile ? 1 : 2)
-    const rightValue = activeValue + 2 // (isMobile ? 2 : 3)
+    const leftValue = activeValue - (isMobile ? 1 : 2)
+    const rightValue = activeValue + (isMobile ? 2 : 3)
 
     for (let i = leftValue; i < rightValue; i++) {
       let index = i

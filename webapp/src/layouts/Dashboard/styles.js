@@ -20,6 +20,9 @@ export default (theme, drawerWidth) => ({
   },
   childContent: {
     flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     height: '100%',
     overflow: 'scroll',
     overflowX: 'hidden'

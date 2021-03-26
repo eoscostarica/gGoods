@@ -26,7 +26,7 @@ const DonateNow = ({ open, handlerOpen }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const classes = useStyles()
-  const { t } = useTranslation('donteRoute')
+  const { t } = useTranslation('donateRoute')
 
   return (
     <Dialog
@@ -94,8 +94,6 @@ const DonateNow = ({ open, handlerOpen }) => {
                 </InputLabel>
                 <FilledInput
                   id="filled-adornment-amount"
-                  // value={values.amount}
-                  // onChange={handleChange('amount')}
                   startAdornment={
                     <InputAdornment position="start">$</InputAdornment>
                   }

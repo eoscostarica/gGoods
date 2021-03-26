@@ -6,8 +6,8 @@ import SportsEsportsIcon from '@material-ui/icons/SportsEsports'
 import InfoIcon from '@material-ui/icons/Info'
 import CollectionsBookmarkOutlinedIcon from '@material-ui/icons/CollectionsBookmarkOutlined'
 import DashboardIcon from '@material-ui/icons/Dashboard'
-
-// import { mainConfig } from '../config'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 const Home = lazy(() => import('./Home'))
 const Organizations = lazy(() => import('./Organizations'))
@@ -46,15 +46,18 @@ const routes = [
     icon: <AppsIcon />,
     component: Goods,
     path: '/goods',
+    exact: true
+  },
+  {
     name: 'PayPal',
-    icon: <GridIcon />,
+    icon: <AppsIcon />,
     component: Paypal,
     path: '/paypal-integration',
     exact: true
   },
   {
     name: 'putOnSale',
-    icon: <GridIcon />,
+    icon: <AppsIcon />,
     component: PutOnSale,
     path: '/put-on-sale',
     exact: true

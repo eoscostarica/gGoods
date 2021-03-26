@@ -7,9 +7,6 @@ import Grid from '@material-ui/core/Grid'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
 
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-
 import { CardImage, CardInfo, CardAvatar } from '../../components/Card'
 import Gift from '../../images/assets/gift.png'
 import Organization from '../../images/assets/organization.png'
@@ -23,7 +20,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const GoodsList = [
+const GOOD_LIST = [
   {
     name: 'Name'
   },
@@ -146,7 +143,7 @@ const Home = () => {
       </Box>
       <Box className={classes.rowsBoxWrap}>
         <Grid container spacing={2}>
-          {GoodsList.map(game => (
+          {GOOD_LIST.map(game => (
             <Grid item xs={6} md={4} lg={1} key={game.name}>
               <CardAvatar />
             </Grid>
