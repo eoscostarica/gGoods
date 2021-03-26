@@ -4,8 +4,5 @@ export default theme => ({
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(2)
     }
-  },
-  sectionBox: {
-    marginBottom: theme.spacing(4)
   }
 })

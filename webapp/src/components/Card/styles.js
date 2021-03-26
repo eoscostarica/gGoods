@@ -24,18 +24,21 @@ export default theme => ({
   cardImageRoot: {
     width: '100%'
   },
-  media: {
+  cardImageMedia: {
     height: 336,
     [theme.breakpoints.up('sm')]: {
       height: 500
     }
+  },
+  media: {
+    height: '100%'
   },
   boxInfoCard: {
     height: 75,
     zIndex: 2,
     position: 'fixed',
     top: 261,
-    backgroundColor: 'rgba(0, 0, 0, 0.38)',
+    backgroundColor: 'rgba(0, 0, 0, 0.20)',
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -57,10 +60,33 @@ export default theme => ({
     }
   },
   cardAvatarRoot: {
-    width: '46%',
-    margin: theme.spacing(2, 0),
-    [theme.breakpoints.up('sm')]: {
-      width: 167
-    }
+    width: '100%'
+  },
+  cardOngMedia: {
+    height: 200
+  },
+  cardOngTitle: {
+    marginBottom: theme.spacing(0)
+  },
+  cardOngCategory: {
+    fontSize: '14px',
+    marginBottom: theme.spacing(2)
+  },
+  cardOngDescriptionBox: {
+    height: '60px',
+    display: 'box',
+    lineClamp: 3,
+    boxOrient: 'vertical',
+    overflow: 'hidden'
+  },
+  cardActionOngArea: {
+    display: 'flex',
+    justifyContent: 'flex-end'
+  },
+  arrowIcon: {
+    display: 'flex'
+  },
+  cardGameButton: {
+    fontWeight: 'bold'
   }
 })
