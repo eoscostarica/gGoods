@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { Link as LinkRouter } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -17,9 +18,14 @@ const CardAvatar = () => {
 
   return (
     <Card className={classes.cardAvatarRoot}>
-      <CardActionArea>
-        <CardMedia component="img" height="140" image={Img} />
-      </CardActionArea>
+      <LinkRouter
+        style={{ textDecoration: 'none' }}
+        to={{ pathname: `/good/ID` }}
+      >
+        <CardActionArea>
+          <CardMedia component="img" image={Img} />
+        </CardActionArea>
+      </LinkRouter>
       <CardActions>
         <Typography>Name</Typography>
       </CardActions>

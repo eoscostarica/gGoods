@@ -1,21 +1,24 @@
 import React, { lazy } from 'react'
-
-import {
-  Grid as GridIcon,
-  Info as InfoIcon,
-  HelpCircle as HelpIcon,
-  GitMerge as GitMergeIcon,
-  GitHub as GitHubIcon,
-  Send as TelegramIcon
-} from 'react-feather'
-
-import { mainConfig } from '../config'
+import AppsIcon from '@material-ui/icons/Apps'
+import HomeIcon from '@material-ui/icons/Home'
+import FilterVintageIcon from '@material-ui/icons/FilterVintage'
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports'
+import InfoIcon from '@material-ui/icons/Info'
+import CollectionsBookmarkOutlinedIcon from '@material-ui/icons/CollectionsBookmarkOutlined'
+import DashboardIcon from '@material-ui/icons/Dashboard'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 const Home = lazy(() => import('./Home'))
+const Organizations = lazy(() => import('./Organizations'))
+const Organization = lazy(() => import('./Organization'))
+const Goods = lazy(() => import('./Goods'))
+const GoodPage = lazy(() => import('./GoodPage'))
+const Games = lazy(() => import('./Games'))
+const YourCollection = lazy(() => import('./YourCollection'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
 const PutOnSale = lazy(() => import('./PutOnSale'))
 const About = lazy(() => import('./About'))
-const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
 const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
@@ -24,28 +27,39 @@ const Paypal = lazy(() => import('./Paypal'))
 const routes = [
   {
     name: 'home',
-    icon: <GridIcon />,
+    icon: <HomeIcon />,
     component: Home,
     path: '/',
     exact: true
   },
   {
-    name: 'createTemplate',
-    icon: <GridIcon />,
-    component: CreateTemplate,
-    path: '/create-template',
+    name: 'organizations',
+    icon: <FilterVintageIcon />,
+    component: Organizations,
+    path: '/organizations',
+    exact: true
+  },
+  {
+    path: '/organization/:id',
+    component: Organization
+  },
+  {
+    name: 'goods',
+    icon: <AppsIcon />,
+    component: Goods,
+    path: '/goods',
     exact: true
   },
   {
     name: 'PayPal',
-    icon: <GridIcon />,
+    icon: <AppsIcon />,
     component: Paypal,
     path: '/paypal-integration',
     exact: true
   },
   {
     name: 'putOnSale',
-    icon: <GridIcon />,
+    icon: <AppsIcon />,
     component: PutOnSale,
     path: '/put-on-sale',
     exact: true
@@ -59,29 +73,36 @@ const routes = [
     exact: true
   },
   {
-    name: 'help',
-    icon: <HelpIcon />,
-    component: Help,
-    path: '/help',
+    path: '/good/:id',
+    component: GoodPage
+  },
+  {
+    name: 'games',
+    icon: <SportsEsportsIcon />,
+    component: Games,
+    path: '/games',
     exact: true
   },
   {
-    name: 'changelog',
-    badge: mainConfig.appVersion,
-    path: 'https://github.com/eoscostarica/Ggoods/tags',
-    icon: <GitMergeIcon />,
+    name: 'your-collection',
+    icon: <CollectionsBookmarkOutlinedIcon />,
+    component: YourCollection,
+    path: '/your-collection',
     exact: true
   },
   {
-    header: 'community',
-    name: 'github',
-    path: 'https://github.com/eoscostarica/Ggoods',
-    icon: <GitHubIcon />
+    name: 'about',
+    icon: <InfoIcon />,
+    component: About,
+    path: '/about',
+    exact: true
   },
   {
-    name: 'telegram',
-    path: 'https://t.me/eoscr',
-    icon: <TelegramIcon />
+    name: 'createTemplate',
+    icon: <DashboardIcon />,
+    component: CreateTemplate,
+    path: '/create-template',
+    exact: true
   },
   {
     component: EmailVerification,
