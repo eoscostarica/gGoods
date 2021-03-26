@@ -30,7 +30,7 @@ jobs:
             push-docker-images
         env:
           # global
-          NAMESPACE: default
+          NAMESPACE: ggoods
           STAGE: dev
           APP_NAME: ggoods
           INGRESS_HOST: ggoods.io
@@ -57,7 +57,7 @@ jobs:
             build-kubernetes
         env:
           # global
-          NAMESPACE: default
+          NAMESPACE: ggoods
           STAGE: dev
           APP_NAME: ggoods
           INGRESS_HOST: ggoods.io
