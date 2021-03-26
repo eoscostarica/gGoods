@@ -11,7 +11,8 @@
     "description": "Description",
     "smallImage": "Small Image",
     "largeImage": "Large Image",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "all": "All"
   },
   "routes": {
     "/>title": "GGOODS",
@@ -35,6 +36,9 @@
     "/put-on-sale>title": "Put On Sale | GGOODS",
     "/put-on-sale>sidebar": "Put on sale",
     "/put-on-sale>heading": "Put on sale your gGoods",
+    "/our-goods>title": "Our Goods | GGOODS",
+    "/our-goods>sidebar": "Our Goods",
+    "/our-goods>heading": "gGoods",
     "/about>title": "About | GGoods",
     "/about>sidebar": "About",
     "/about>heading": "About",
@@ -123,5 +127,10 @@
     "amount": "Amount to receive",
     "allowDonation": "Allow donation",
     "successMessage": "New gGoods on sale:"
+  },
+  "ourGoodsRoute": {
+    "title": "Goods",
+    "description": "Vitual goods designed to help good causes, buy or suscribe to help or just play.",
+    "empty": "There is not ggoods that match your filters"
   }
 }
