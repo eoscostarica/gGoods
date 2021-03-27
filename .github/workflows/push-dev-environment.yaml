@@ -129,8 +129,5 @@ jobs:
           REACT_APP_HASURA_URL: https://graphql.ggoods.io:8080/v1/graphql
 
       - name: Deploy kubernetes files
-        uses: Consensys/kubernetes-action@master
-        env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        with:
-          args: apply -f build_k8s -n ggoods
+        run: |-
+          kubectl apply -f build_k8s -n ggoods-dev
