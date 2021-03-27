@@ -1,52 +1,56 @@
-# EOSCR Boilerplate
 
-[![N|Solid](https://github.com/eoscostarica/eos-rate/raw/master/docs/eoscostarica-logo-black.png)](https://eoscostarica.io/)
+
+[![N|Solid](./docs/ggoods-logo.svg)](https://ggoods.io/)
 
 ![](https://img.shields.io/github/license/eoscostarica/full-stack-boilerplate) ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) ![](https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter) ![](https://img.shields.io/github/forks/eoscostarica/full-stack-boilerplate?style=social)
 
-A highly scalable skeleton with best practices, fullstack monorepo containing our front end and backend boilerplates.
 
-- [EOSCR Boilerplate](#eoscr-boilerplate)
-- [Version](#version)
-- [Features!](#features)
-- [Installation](#installation)
-  - [Before to Start](#before-to-start)
-  - [First Time](#first-time)
-  - [Quick Start](#quick-start)
-- [File Structure](#file-structure)
-- [Technical Documentation](#technical-documentation)
-  - [Infrastructure Diagram](#infrastructure-diagram)
-  - [Services](#services)
-  - [Technologies Specification](#technologies-specification)
-    - [Kubernetes Cluster](#kubernetes-cluster)
-    - [Web Application](#web-application)
-    - [Backend](#backend)
-      - [Hasura GraphQL Server](#hasura-graphql-server)
-      - [Hapi REST Server](#hapi-rest-server)
-    - [EOSIO Blockchain Technology Integration](#eosio-blockchain-technology-integration)
-    - [Interplanetary File System (IPFS)](#interplanetary-file-system-ipfs)
-- [License](#license)
-- [Contributing](#contributing)
-  - [Contributors](#contributors)
-  - [About EOS Costa Rica](#about-eos-costa-rica)
+# About gGoods
+**gGoods was developed by a group of techies at EOS Costa Rica that wish to leverage  blockchain technology and NFTs to impact the way communities raise funds support causes.**
+
+## Why gGoods?
+gGoods is an open-source NFT standard that lets organizations create their own NFT to seek funding. Creating an NFT is easy and straightforward, such as creating an avatar or sticker. The NFT represents a cause for the donor to collect
+
+## Who’s behind gGoods?
+gGoods is developed by a group of Costa Rican techies and led by Edenia Labs and EOS Costa Rica. It was our submission to the 2021 Beyond Blockchain EOSIO Hackathon organized by block.one
+
+## About the hackathon
+The 2021 Beyond Blockchain EOSIO Hackathon was organized by block.one, a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world.
+
+# About the technology
+
+## What is blockchain?
+We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decentralized ledger that registers transactions within a network of various computers or nodes. Once a transaction is validated by the network and registered in the chain, it remains immutable and cannot be altered or hacked, improving transparency and trust. Read more
+
+## What is EOSIO?
+Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts.  Read more
+
+## What are NFTs?
+NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digital assets representing collectibles, digital artwork, tickets to an event, or in-game items. In gaming, NFTs enable users to collect assets that they can use as in-game items or trade with their peers.
+
 
 # Version
 
 - 0.1.0
 
-# Features!
+# Technical Documentation
 
-This boilerplate features all the latest technologies and practices in the industry.
+## EOSCR Boilerplate
+We bulit this project using our own EOSIO project boilerplate, a highly scalable skeleton including best practices. This fullstack monorepo contains our front end and backend boilerplates.
 
-- Hapi
-- Hasura
-- React
-- Kubernetes
-- EOSIO
+This boilerplate features all the following tech stack.
 
-# Installation
+- React Webapp
+- Material UI
+- Hasura GraphQL engine
+- Hapi (HTTP API)
+- Google Kubernetes Engine
+- EOSIO (Jungle3 testnet)
+- IPFS (Interplantary File System)
 
-## Before to Start
+## Installation
+
+## Before you Start
 
 Somethings you need before getting started:
 
@@ -71,7 +75,7 @@ cp .env.example .env
 
 At this point you can navigate to `http://localhost:3000`.
 
-# File Structure
+## File Structure
 
 Within the download you'll find the following directories and files:
 
@@ -117,8 +121,6 @@ Within the download you'll find the following directories and files:
         └── utils
 ```
 
-# Technical Documentation
-
 ## Infrastructure Diagram
 
 <p align="center">
@@ -131,11 +133,7 @@ Within the download you'll find the following directories and files:
   <img src="docs/img/services.svg" />
 </p>
 
-## Technologies Specification
-
-### Kubernetes Cluster
-
-At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
+## Tech Stack Description
 
 ### Web Application
 
@@ -159,6 +157,11 @@ As a company that delivers EOSIO blockchain-based solutions, we build a template
 ### Interplanetary File System (IPFS)
 
 We use IPFS to store the assets that are displayed in the Web Application. IPFS is a decentralized storage that uses blockchain technology to provide auditability and availability of the assets. IPFS can be configured to setup your own node and validate the data, but this time we are using the public IPFS access, i.e. public endpoints.
+
+### Google Kubernetes Engine Cluster
+
+At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
+
 
 # License
 
