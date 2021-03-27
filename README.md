@@ -1,52 +1,71 @@
-# EOSCR Boilerplate
+<p align="center">
+	<a href="https://ggoods.io">
+		<img height="180" src="./docs/ggoods-logo.svg" >
+	</a>
+</p>
 
-[![N|Solid](https://github.com/eoscostarica/eos-rate/raw/master/docs/eoscostarica-logo-black.png)](https://eoscostarica.io/)
+<p align="center">
+	<a href="https://git.io/col">
+		<img src="https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg" alt="Collaborative Etiquette">
+	</a>
+  <a href="#">
+		<img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="Code Style">
+	</a>
+	<a href="#">
+		<img src="https://img.shields.io/github/license/eoscostarica/Ggoods" alt="MIT">
+	</a>
+  <a href="#">
+		<img src="https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter" alt="Twitter">
+	</a>
+  <a href="#">
+		<img src="https://img.shields.io/github/forks/eoscostarica/Ggoods?style=social" alt="Forks">
+	</a>
+</p>
 
-![](https://img.shields.io/github/license/eoscostarica/full-stack-boilerplate) ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) ![](https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter) ![](https://img.shields.io/github/forks/eoscostarica/full-stack-boilerplate?style=social)
+# gGoods are NFTs that enable communities to raise funds 
+## Why gGoods?
+[gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donor as collectables that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
 
-A highly scalable skeleton with best practices, fullstack monorepo containing our front end and backend boilerplates.
+## Who’s behind gGoods?
+gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https://eoscostarica.io). It was our submission to the 2021 [Beyond Blockchain EOSIO Hackathon](https://block.one/news/launches-beyond-blockchain-hackathon/) organized by block.one.
 
-- [EOSCR Boilerplate](#eoscr-boilerplate)
-- [Version](#version)
-- [Features!](#features)
-- [Installation](#installation)
-  - [Before to Start](#before-to-start)
-  - [First Time](#first-time)
-  - [Quick Start](#quick-start)
-- [File Structure](#file-structure)
-- [Technical Documentation](#technical-documentation)
-  - [Infrastructure Diagram](#infrastructure-diagram)
-  - [Services](#services)
-  - [Technologies Specification](#technologies-specification)
-    - [Kubernetes Cluster](#kubernetes-cluster)
-    - [Web Application](#web-application)
-    - [Backend](#backend)
-      - [Hasura GraphQL Server](#hasura-graphql-server)
-      - [Hapi REST Server](#hapi-rest-server)
-    - [EOSIO Blockchain Technology Integration](#eosio-blockchain-technology-integration)
-    - [Interplanetary File System (IPFS)](#interplanetary-file-system-ipfs)
-- [License](#license)
-- [Contributing](#contributing)
-  - [Contributors](#contributors)
-  - [About EOS Costa Rica](#about-eos-costa-rica)
+## About the hackathon
+The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world.
 
-# Version
+# About the technology
 
-- 0.1.0
+## What is blockchain?
+We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decentralized ledger that registers transactions within a network of various computers or nodes. Once a transaction is validated by the network and registered in the chain, it remains immutable and cannot be altered or hacked, improving transparency and trust. Read more
 
-# Features!
+## What is EOSIO?
+Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts.  Read more
 
-This boilerplate features all the latest technologies and practices in the industry.
+## What are NFTs?
+NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digital assets representing collectibles, digital artwork, tickets to an event, or in-game items. In gaming, NFTs enable users to collect assets that they can use as in-game items or trade with their peers.
 
-- Hapi
-- Hasura
-- React
-- Kubernetes
-- EOSIO
 
-# Installation
+# How did we build gGoods?
 
-## Before to Start
+This project features the following tech stack:
+
+- **React Webapp**
+- **Material UI**
+- **Hasura GraphQL engine**
+- **Hapi** (HTTP API)
+- **Google Kubernetes Engine**
+- **EOSIO** (Jungle3 testnet)
+- **dGoods** (We forked the dGgoods Smart Contracts)
+- **IPFS** (Interplantary File System)
+
+**EOSCR Boilerplate**
+
+We built this project using our own [EOSIO project boilerplate](https://github.com/eoscostarica/full-stack-boilerplate), a highly scalable skeleton including best practices. This fullstack monorepo contains our front end and backend boilerplates.
+
+
+
+## Installation
+
+## Before you Start
 
 Somethings you need before getting started:
 
@@ -65,13 +84,13 @@ cp .env.example .env
 
 ## Quick Start
 
-1.  Clone this repo using `git clone --depth=1 https://github.com/eoscostarica/full-stack-boilerplate.git <YOUR_PROJECT_NAME>`.
+1.  Clone this repo using `git clone --depth=1 https://github.com/eoscostarica/Ggoods.git <YOUR_PROJECT_NAME>`.
 2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
 3.  Run `make run` in order to start the project using docker compose.
 
 At this point you can navigate to `http://localhost:3000`.
 
-# File Structure
+## File Structure
 
 Within the download you'll find the following directories and files:
 
@@ -117,8 +136,6 @@ Within the download you'll find the following directories and files:
         └── utils
 ```
 
-# Technical Documentation
-
 ## Infrastructure Diagram
 
 <p align="center">
@@ -131,11 +148,7 @@ Within the download you'll find the following directories and files:
   <img src="docs/img/services.svg" />
 </p>
 
-## Technologies Specification
-
-### Kubernetes Cluster
-
-At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
+## Tech Stack Description
 
 ### Web Application
 
@@ -160,6 +173,14 @@ As a company that delivers EOSIO blockchain-based solutions, we build a template
 
 We use IPFS to store the assets that are displayed in the Web Application. IPFS is a decentralized storage that uses blockchain technology to provide auditability and availability of the assets. IPFS can be configured to setup your own node and validate the data, but this time we are using the public IPFS access, i.e. public endpoints.
 
+### Google Kubernetes Engine Cluster
+
+At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
+
+# Version
+
+- 0.1.0
+
 # License
 
 MIT © [EOS Costa Rica](https://eoscostarica.io).
@@ -168,7 +189,7 @@ MIT © [EOS Costa Rica](https://eoscostarica.io).
 
 Please Read EOS Costa Rica's [Open Source Contributing Guidelines](https://developers.eoscostarica.io/docs/open-source-guidelines).
 
-Please report bugs big and small by [opening an issue](https://github.com/eoscostarica/full-stack-boilerplate/issues)
+Please report bugs big and small by [opening an issue](https://github.com/eoscostarica/Ggoodsissues)
 
 ## Contributors
 
@@ -191,7 +212,11 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/kuronosec"><img src="https://avatars.githubusercontent.com/u/6999429?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andres Gomez</b></sub></a><br /><a href="#infra-kuronosec" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#mentoring-kuronosec" title="Mentoring">🧑‍🏫</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3Akuronosec" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/JeanVegaD"><img src="https://avatars.githubusercontent.com/u/19317138?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jean Vega</b></sub></a><br /><a href="https://github.com/eoscostarica/Ggoods/commits?author=JeanVegaD" title="Code">💻</a> <a href="#design-JeanVegaD" title="Design">🎨</a> <a href="#ideas-JeanVegaD" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-JeanVegaD" title="Research">🔬</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3AJeanVegaD" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/stephaniedelgadobrenes/"><img src="https://avatars.githubusercontent.com/u/31549144?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Steph Delgado</b></sub></a><br /><a href="https://github.com/eoscostarica/Ggoods/commits?author=steph222" title="Code">💻</a> <a href="#design-steph222" title="Design">🎨</a> <a href="#ideas-steph222" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-steph222" title="Research">🔬</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3Asteph222" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/kriskoin"><img src="https://avatars.githubusercontent.com/u/3965944?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kriskoin</b></sub></a><br /><a href="https://github.com/eoscostarica/Ggoods/commits?author=kriskoin" title="Code">💻</a> <a href="#ideas-kriskoin" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3Akriskoin" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/kriskoin"><img src="https://avatars.githubusercontent.com/u/3965944?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kriskoin</b></sub></a><br /><a href="https://github.com/eoscostarica/Ggoods/commits?author=kriskoin" title="Code">💻</a> <a href="#ideas-kriskoin" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/Ggoods/pulls?q=is%3Apr+reviewed-by%3Akriskoin" title="Reviewed Pull Requests">👀</a></td><td align="center"><a href="https://github.com/xavier506"><img src="https://avatars0.githubusercontent.com/u/5632966?v=4" width="100px;" alt="Xavier Fernandez"/><br /><sub><b>Xavier Fernandez</b></sub></a><br /><a href="#ideas-xavier506" title="Ideas, Planning, & Feedback">🤔</a> <a href="#blog-xavier506" title="Blogposts">📝</a> <a href="#talk-xavier506" title="Talks">📢</a> <a href="#infra-xavier506" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+ <td align="center"><a href="https://github.com/tetogomez">
+      <img src="https://avatars3.githubusercontent.com/u/10634375?s=460&v=4" width="100px;" alt="Teto Gomez"/><br /><sub><b>Teto Gomez</b></sub></a><br /><a href="https://github.com/eoscostarica/eosrate/commits?author=tetogomez" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/eosrate/commits?author=tetogomez" title="Code">💻</a> <a href="#review-tetogomez" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center"><a href="https://github.com/adriexnet">
+      <img src="https://avatars3.githubusercontent.com/u/5375168?s=460&u=542a27a00b761d98851991c6a6d5f78d7b35a2b2&v=4" width="100px;" alt="Adriel Diaz"/><br /><sub><b>Adriel Diaz</b></sub></a><br /><a href="https://github.com/eoscostarica/eosrate/commits?author=adriexnet" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/eosrate/commits?author=adriexnet" title="Code">💻</a> <a href="#review-adriexnet" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
@@ -200,15 +225,6 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/xavier506"><img src="https://avatars0.githubusercontent.com/u/5632966?v=4" width="100px;" alt="Xavier Fernandez"/><br /><sub><b>Xavier Fernandez</b></sub></a><br /><a href="#ideas-xavier506" title="Ideas, Planning, & Feedback">🤔</a> <a href="#blog-xavier506" title="Blogposts">📝</a> <a href="#talk-xavier506" title="Talks">📢</a> <a href="#infra-xavier506" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
- <td align="center"><a href="https://github.com/tetogomez">
-      <img src="https://avatars3.githubusercontent.com/u/10634375?s=460&v=4" width="100px;" alt="Teto Gomez"/><br /><sub><b>Teto Gomez</b></sub></a><br /><a href="https://github.com/eoscostarica/eosrate/commits?author=tetogomez" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/eosrate/commits?author=tetogomez" title="Code">💻</a> <a href="#review-tetogomez" title="Reviewed Pull Requests">👀</a></td>
-      <td align="center"><a href="https://github.com/adriexnet">
-      <img src="https://avatars3.githubusercontent.com/u/5375168?s=460&u=542a27a00b761d98851991c6a6d5f78d7b35a2b2&v=4" width="100px;" alt="Adriel Diaz"/><br /><sub><b>Adriel Diaz</b></sub></a><br /><a href="https://github.com/eoscostarica/eosrate/commits?author=adriexnet" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/eoscostarica/eosrate/commits?author=adriexnet" title="Code">💻</a> <a href="#review-adriexnet" title="Reviewed Pull Requests">👀</a></td>
-  </tr>
-</table>
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
