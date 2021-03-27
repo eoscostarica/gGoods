@@ -1,6 +1,6 @@
 
 
-[![N|Solid](./docs/ggoods-logo.svg)](https://ggoods.io/)
+[![N|Solid](docs/ggoods-logo.svg)](https://ggoods.io/)
 
 ![](https://img.shields.io/github/license/eoscostarica/full-stack-boilerplate) ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) ![](https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter) ![](https://img.shields.io/github/forks/eoscostarica/full-stack-boilerplate?style=social)
 
