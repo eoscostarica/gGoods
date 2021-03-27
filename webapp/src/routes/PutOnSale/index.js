@@ -48,7 +48,7 @@ const PutOnSale = () => {
       const { data: response } = await putOnSale({
         variables: {
           ...payload,
-          template: data.templates.find(
+          template: data.items.find(
             template => template.name === payload.template
           ).id,
           amount: parseFloat(payload.amount),
@@ -69,12 +69,12 @@ const PutOnSale = () => {
   }, [])
 
   useEffect(() => {
-    setTemplateOptions(data?.templates?.map(template => template.name) || [])
+    setTemplateOptions(data?.items?.map(template => template.name) || [])
   }, [data])
 
   useEffect(() => {
     setTemplate(
-      data?.templates?.find(template => template.name === payload?.template)
+      data?.items?.find(template => template.name === payload?.template)
     )
   }, [data, payload?.template])
 

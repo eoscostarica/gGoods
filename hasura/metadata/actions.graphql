@@ -1,17 +1,28 @@
 type Mutation {
-  create_template(
+  create_template (
     category: String!
     name: String!
     metadata: jsonb!
   ): CreateTemplateOutput
 }
 
+
+type Query {
+  goods_on_sale (
+    seller: String
+  ): [GoodsOnSaleOutput]
+}
+
+
 type Mutation {
-  payment_transaction_complete(
+  payment_transaction_complete (
     orderId: String!
   ): payment_transaction_complete_output
+}
 
-  put_on_sale(
+
+type Mutation {
+  put_on_sale (
     template: uuid!
     quantity: Int!
     amount: Float!
@@ -20,14 +31,27 @@ type Mutation {
   ): PutOnSaleOutput
 }
 
+
+
+
 type CreateTemplateOutput {
-  trxid: String!
+  trxid : String!
 }
 
 type payment_transaction_complete_output {
-  return_status: Boolean!
+  return_status : Boolean!
 }
 
 type PutOnSaleOutput {
-  assets: [String]
+  assets : [String]
 }
+
+type GoodsOnSaleOutput {
+  id : String!
+  seller : String!
+  amount : String!
+  donable : Boolean!
+  expiration : String!
+  ggoods : jsonb
+}
+
