@@ -1,12 +1,28 @@
+<p align="center">
+	<a href="https://ggoods.io">
+		<img height="120" src="docs/ggoods-logo.svg" >
+	</a>
+</p>
 
+<p align="center">
+	<a href="https://git.io/col">
+		<img src="https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg" alt="Collaborative Etiquette">
+	</a>
+  <a href="#">
+		<img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="Code Style">
+	</a>
+	<a href="#">
+		<img src="https://img.shields.io/github/license/eoscostarica/Ggoods" alt="MIT">
+	</a>
+  <a href="#">
+		<img src="https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter" alt="Twitter">
+	</a>
+  <a href="#">
+		<img src="https://img.shields.io/github/forks/eoscostarica/Ggoods?style=social" alt="Forks">
+	</a>
+</p>
 
-[![N|Solid](docs/ggoods-logo.svg)](https://ggoods.io/)
-
-![](https://img.shields.io/github/license/eoscostarica/full-stack-boilerplate) ![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg) ![](https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg) ![](https://img.shields.io/twitter/follow/eoscostarica.svg?style=social&logo=twitter) ![](https://img.shields.io/github/forks/eoscostarica/full-stack-boilerplate?style=social)
-
-
-# About gGoods
-**gGoods was developed by a group of techies at EOS Costa Rica that wish to leverage  blockchain technology and NFTs to impact the way communities raise funds support causes.**
+### NFTs to impact the way communities raise funds support causes
 
 ## Why gGoods?
 gGoods is an open-source NFT standard that lets organizations create their own NFT to seek funding. Creating an NFT is easy and straightforward, such as creating an avatar or sticker. The NFT represents a cause for the donor to collect
