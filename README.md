@@ -38,14 +38,19 @@ The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://
 # About the technology
 
 ## What is blockchain?
-We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decentralized ledger that registers transactions within a network of various computers or nodes. Once a transaction is validated by the network and registered in the chain, it remains immutable and cannot be altered or hacked, improving transparency and trust. [Read more]()
+We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decentralized ledger that registers transactions within a network of various computers or nodes. Once a transaction is validated by the network and registered in the chain, it remains immutable and cannot be altered or hacked, improving transparency and trust. 
+
+[Learn more about blockchain](https://eoscostarica.medium.com/what-is-blockchain-an-introduction-9535ed3e6005)
 
 ## What is EOSIO?
-Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts.  Read more
+Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts. 
+
+[Explore EOSIO](https://guide.eoscostarica.io/docs/eos-learn/eosio-protocol)
 
 ## What are NFTs?
 NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digital assets representing collectibles, digital artwork, tickets to an event, or in-game items. In gaming, NFTs enable users to collect assets that they can use as in-game items or trade with their peers.
 
+[Read more on NFTs](https://medium.com/dgoods/introducing-dgoods-7204a90193f4)
 
 # How did we build gGoods?
 
@@ -53,7 +58,7 @@ This project features the following tech stack:
 
 - **[Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine)**
 - **[EOSIO](https://eos.io)** ([Jungle testnet](https://jungle3.bloks.io/account/ggoodsggoods))
-- **[dGgoods](https://dgoods.org/)** (We forked the dGgoods Smart Contracts)
+- **[dGgoods](https://github.com/MythicalGames/dgoods)** (We forked the dGgoods Smart Contracts)
 - **[IPFS](https://ipfs.io/)** 
 - **[React JS](https://reactjs.org/)**
 - **[Material UI](https://material-ui.com/)**
