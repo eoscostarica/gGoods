@@ -1,7 +1,7 @@
 const Boom = require('@hapi/boom')
 const { BAD_REQUEST } = require('http-status-codes')
 
-const { dgoodsUtil, hasuraUtil, ipfsUtil } = require('../utils')
+const { dgoodsUtil, hasuraUtil, ipfsUtil, axiosUtil } = require('../utils')
 
 const vaultService = require('./vault.service')
 
@@ -107,7 +107,59 @@ const putOnSale = async payload => {
   }
 }
 
+const nftOnSale = async (payload = {}) => {
+  try {
+    const items = await dgoodsUtil.asksTableRows(payload)
+    const newItems = await Promise.all(
+      items.map(async item => {
+        const ggoods = await Promise.all(
+          item.dgood_ids.map(async ggoodId => {
+            const ggoodInfo = await dgoodsUtil.dgoodTableRow({ id: ggoodId })
+            const statsInfo = await dgoodsUtil.dgoodstatsTableRow({
+              category: ggoodInfo.category,
+              name: ggoodInfo.token_name
+            })
+            let metadata = {}
+
+            try {
+              const { data } = await axiosUtil.get(
+                `${statsInfo.base_uri}/${ggoodInfo.relative_uri}`
+              )
+              metadata = data
+            } catch (error) {}
+
+            return {
+              metadata,
+              id: ggoodInfo.id,
+              category: ggoodInfo.category,
+              issuer: statsInfo.issuer,
+              owner: ggoodInfo.owner,
+              serial: ggoodInfo.serial_number
+            }
+          })
+        )
+
+        return {
+          ggoods,
+          id: item.batch_id,
+          seller: item.seller,
+          amount: item.amount,
+          donable: item.is_donable,
+          expiration: item.expiration
+        }
+      })
+    )
+
+    return newItems
+  } catch (error) {
+    throw new Boom.Boom(error.message, {
+      statusCode: BAD_REQUEST
+    })
+  }
+}
+
 module.exports = {
   createTemplate,
-  putOnSale
+  putOnSale,
+  nftOnSale
 }

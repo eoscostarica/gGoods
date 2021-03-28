@@ -23,6 +23,7 @@ const Page404 = lazy(() => import('./Route404'))
 const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Paypal = lazy(() => import('./Paypal'))
+const OurGoods = lazy(() => import('./OurGoods'))
 
 const routes = [
   {
@@ -58,10 +59,24 @@ const routes = [
     exact: true
   },
   {
+    name: 'createTemplate',
+    icon: <DashboardIcon />,
+    component: CreateTemplate,
+    path: '/create-template',
+    exact: true
+  },
+  {
     name: 'putOnSale',
-    icon: <AppsIcon />,
+    icon: <DashboardIcon />,
     component: PutOnSale,
     path: '/put-on-sale',
+    exact: true
+  },
+  {
+    name: 'ourGoods',
+    icon: <DashboardIcon />,
+    component: OurGoods,
+    path: '/our-goods',
     exact: true
   },
   {
@@ -88,20 +103,6 @@ const routes = [
     icon: <CollectionsBookmarkOutlinedIcon />,
     component: YourCollection,
     path: '/your-collection',
-    exact: true
-  },
-  {
-    name: 'about',
-    icon: <InfoIcon />,
-    component: About,
-    path: '/about',
-    exact: true
-  },
-  {
-    name: 'createTemplate',
-    icon: <DashboardIcon />,
-    component: CreateTemplate,
-    path: '/create-template',
     exact: true
   },
   {

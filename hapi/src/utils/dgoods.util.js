@@ -151,8 +151,79 @@ const listsalenft = async (
   return transaction
 }
 
+const asksTableRows = async ({ seller, limit = 100 }) => {
+  let filter = {
+    limit,
+    json: true,
+    code: eosConfig.dgoodsAccount,
+    scope: eosConfig.dgoodsAccount,
+    table: 'asks'
+  }
+
+  if (seller) {
+    filter = {
+      ...filter,
+      index_position: 2,
+      key_type: 'name',
+      lower_bound: seller,
+      upper_bound: seller
+    }
+  }
+
+  const { rows } = await eosUtil.getTableRows(filter)
+
+  return rows
+}
+
+const dgoodTableRow = async ({ id, limit = 1 }) => {
+  let filter = {
+    limit,
+    json: true,
+    code: eosConfig.dgoodsAccount,
+    scope: eosConfig.dgoodsAccount,
+    table: 'dgood'
+  }
+
+  if (id) {
+    filter = {
+      ...filter,
+      lower_bound: id,
+      upper_bound: id
+    }
+  }
+
+  const { rows } = await eosUtil.getTableRows(filter)
+
+  return rows[0]
+}
+
+const dgoodstatsTableRow = async ({ category, name, limit = 1 }) => {
+  let filter = {
+    limit,
+    json: true,
+    code: eosConfig.dgoodsAccount,
+    scope: category,
+    table: 'dgoodstats'
+  }
+
+  if (name) {
+    filter = {
+      ...filter,
+      lower_bound: name,
+      upper_bound: name
+    }
+  }
+
+  const { rows } = await eosUtil.getTableRows(filter)
+
+  return rows[0]
+}
+
 module.exports = {
   create,
   issue,
-  listsalenft
+  listsalenft,
+  asksTableRows,
+  dgoodTableRow,
+  dgoodstatsTableRow
 }

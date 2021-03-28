@@ -182,7 +182,7 @@ const Header = memo(({ onDrawerToggle }) => {
             <MenuIcon />
           </IconButton>
         </Hidden>
-        <Typography className={classes.typography} variant="h4">
+        <Typography className={classes.typography} variant="h6">
           {t(`${location.pathname}>heading`, '')}
         </Typography>
         <PageTitle title={t(`${location.pathname}>title`, mainConfig.title)} />
