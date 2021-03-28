@@ -1,4 +1,64 @@
 actions:
+  - name: check_username
+    definition:
+      kind: synchronous
+      handler: http://hapi:9090/api/check-username
+    permissions:
+      - role: guest
+  - name: create_account
+    definition:
+      kind: synchronous
+      handler: http://hapi:9090/api/accounts
+    permissions:
+      - role: gamer
+      - role: guest
+      - role: organization
+  - name: create_account_organization
+    definition:
+      kind: synchronous
+      handler: http://hapi:9090/api/create-account-organization
+    permissions:
+      - role: guest
+  - name: create_pre_register_organization
+    definition:
+      kind: synchronous
+      handler: http://hapi:9090/api/pre-register
+    permissions:
+      - role: guest
+  - name: create_template
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/create-template'
+      forward_client_headers: true
+    permissions:
+      - role: guest
+  - name: login
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/login'
+    permissions:
+      - role: guest
+  - name: payment_transaction_complete
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/payment-transaction-complete'
+    permissions:
+      - role: guest
+  - name: verify_email
+    definition:
+      kind: synchronous
+      handler: http://hapi:9090/api/verify-email
+    permissions:
+      - role: guest
+      - role: organization
+      - role: user
+  - name: put_on_sale
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/put-on-sale'
+      forward_client_headers: true
+    permissions:
+      - role: guest
 - name: create_template
   definition:
     kind: synchronous
@@ -28,8 +88,14 @@ custom_types:
   enums: []
   input_objects: []
   objects:
-  - name: CreateTemplateOutput
-  - name: payment_transaction_complete_output
-  - name: PutOnSaleOutput
-  - name: GoodsOnSaleOutput
+    - name: verify_email_output
+    - name: create_account_output
+    - name: check_username_output
+    - name: create_account_organization_output
+    - name: create_pre_register_organization_output
+    - name: login_output
+    - name: CreateTemplateOutput
+    - name: payment_transaction_complete_output
+    - name: PutOnSaleOutput
+    - name: GoodsOnSaleOutput
   scalars: []

@@ -1,5 +1,34 @@
 - table:
     schema: public
+    name: history
+- table:
+    schema: public
+    name: preregister_organization
+  select_permissions:
+  - role: guest
+    permission:
+      columns:
+      - address
+      - description
+      - email
+      - email_verified
+      - invitation_code
+      - name
+      - password
+      - phone
+      - state
+      - verification_code
+      filter: {}
+  update_permissions:
+  - role: guest
+    permission:
+      columns:
+      - email_verified
+      - state
+      filter: {}
+      check: null
+- table:
+    schema: public
     name: template
   select_permissions:
   - role: guest
@@ -12,6 +41,40 @@
       - metadata
       - created_at
       - updated_at
+      filter: {}
+- table:
+    schema: public
+    name: user
+  insert_permissions:
+  - role: guest
+    permission:
+      check: {}
+      columns:
+      - account
+      - created_at
+      - email
+      - email_verified
+      - id
+      - name
+      - role
+      - secret
+      - updated_at
+      - username
+      - verification_code
+      backend_only: false
+  select_permissions:
+  - role: guest
+    permission:
+      columns:
+      - account
+      - email
+      - email_verified
+      - id
+      - name
+      - role
+      - secret
+      - username
+      - verification_code
       filter: {}
 - table:
     schema: public

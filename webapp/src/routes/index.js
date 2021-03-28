@@ -20,6 +20,8 @@ const CreateTemplate = lazy(() => import('./CreateTemplate'))
 const PutOnSale = lazy(() => import('./PutOnSale'))
 const About = lazy(() => import('./About'))
 const Page404 = lazy(() => import('./Route404'))
+const EmailVerification = lazy(() => import('./EmailVerification'))
+const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Paypal = lazy(() => import('./Paypal'))
 const OurGoods = lazy(() => import('./OurGoods'))
 
@@ -104,6 +106,17 @@ const routes = [
     exact: true
   },
   {
+    component: EmailVerification,
+    path: '/verification/:code',
+    exact: true
+  },
+  {
+    component: RegisterOrganization,
+    path: '/register-organization/:code',
+    exact: true
+  },
+  {
+    path: '/not-found',
     component: Page404
   }
 ]

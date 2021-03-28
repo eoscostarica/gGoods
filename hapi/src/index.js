@@ -1,6 +1,9 @@
+const Boom = require('@hapi/boom')
+const Path = require('path')
 const Hapi = require('@hapi/hapi')
 
-const { serverConfig } = require('./config')
+const { serverConfig, i18nConfig } = require('./config')
+const { jwtUtils } = require('./utils')
 const routes = require('./routes')
 
 const init = async () => {
@@ -8,10 +11,35 @@ const init = async () => {
     port: serverConfig.port,
     host: serverConfig.host,
     routes: {
-      cors: { origin: ['*'] }
+      cors: { origin: ['*'] },
+      validate: {
+        failAction: async (request, h, err) => {
+          if (process.env.NODE_ENV === 'production') {
+            throw Boom.badRequest(`Invalid request payload input`)
+          } else {
+            throw err
+          }
+        }
+      },
+      files: {
+        relativeTo: Path.join(__dirname, 'files')
+      }
     },
     debug: { request: ['handler'] }
   })
+
+  server.bind({
+    i18n: i18nConfig
+  })
+
+  await server.register([
+    {
+      plugin: require('hapi-auth-jwt2'),
+      options: {}
+    }
+  ])
+
+  jwtUtils.auth(server)
 
   server.route(routes)
   await server.start()

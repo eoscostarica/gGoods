@@ -25,18 +25,19 @@ import { mainConfig } from '../../config'
 import PageTitle from '../PageTitle'
 
 import styles from './styles'
+import LoginModal from '../../components/LoginModal'
 
 const useStyles = makeStyles(styles)
 
 const SwitchThemeModeButton = memo(({ useDarkMode, onSwitch }) => {
-  const { t } = useTranslation('header')
+  const { t } = useTranslation('translations')
 
   return (
     <Button
       startIcon={useDarkMode ? <SunIcon /> : <MoonIcon />}
       onClick={() => onSwitch(!useDarkMode)}
     >
-      {t(useDarkMode ? 'lightMode' : 'darkMode')}
+      {t(useDarkMode ? 'common.lightMode' : 'common.darkMode')}
     </Button>
   )
 })
@@ -100,7 +101,7 @@ LanguageButton.propTypes = {
 }
 
 const UserButton = memo(({ user }) => (
-  <>{user && <Button startIcon={<AccountIcon />}>{user.accountName}</Button>}</>
+  <>{user && <Button startIcon={<AccountIcon />}>{user.account}</Button>}</>
 ))
 
 UserButton.displayName = 'UserButton'
@@ -110,18 +111,18 @@ UserButton.propTypes = {
 }
 
 const AuthButton = memo(({ user, onLogin, onSignOut }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('translations')
 
   return (
     <>
       {user && (
         <Button startIcon={<ExitIcon />} onClick={onSignOut}>
-          {t('signOut')}
+          {t('common.signOut')}
         </Button>
       )}
       {!user && (
         <Button startIcon={<FingerprintIcon />} onClick={onLogin}>
-          {t('login')}
+          {t('common.login')}
         </Button>
       )}
     </>
@@ -141,10 +142,10 @@ const Header = memo(({ onDrawerToggle }) => {
   const { t } = useTranslation('routes')
   const history = useHistory()
   const location = useLocation()
-  const [state, { setState, login, logout }] = useSharedState()
   const { i18n } = useTranslation('translations')
   const [currentLanguaje, setCurrentLanguaje] = useState()
   const [menuAnchorEl, setMenuAnchorEl] = useState()
+  const [state, { login, logout, setState }] = useSharedState()
 
   const handleSwitchThemeMode = useDarkMode => {
     setState({ useDarkMode })
@@ -190,6 +191,7 @@ const Header = memo(({ onDrawerToggle }) => {
             useDarkMode={state.useDarkMode}
             onSwitch={handleSwitchThemeMode}
           />
+          <LoginModal isNavBar />
           <LanguageButton
             current={currentLanguaje}
             onChange={handleChangeLanguage}

@@ -11,7 +11,7 @@ const useStyles = makeStyles(styles)
 
 const About = () => {
   const classes = useStyles()
-  const { t } = useTranslation('aboutRoute')
+  const { t } = useTranslation('translations')
 
   return (
     <Box className={classes.mainBox}>

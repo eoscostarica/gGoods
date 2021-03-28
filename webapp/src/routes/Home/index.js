@@ -6,6 +6,7 @@ import Slider from '@ant-design/react-slick'
 import Grid from '@material-ui/core/Grid'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
+import Signup from '../../components/Signup/Signup'
 
 import { CardImage, CardInfo, CardAvatar } from '../../components/Card'
 import Gift from '../../images/assets/gift.png'
@@ -46,7 +47,6 @@ const GOOD_LIST = [
 
 const Home = () => {
   const classes = useStyles()
-
   const settings = {
     dots: true,
     infinite: true,
@@ -58,6 +58,7 @@ const Home = () => {
 
   return (
     <Box>
+      <Signup isHome />
       <Slider {...settings}>
         <div>
           <CardImage

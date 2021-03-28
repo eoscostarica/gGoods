@@ -1,5 +1,45 @@
 type Mutation {
-  create_template (
+  check_username (
+    role: String!
+    username: String!
+  ): check_username_output
+}
+
+type Mutation {
+  create_account (
+    role: String!
+    email: String!
+    emailContent: jsonb!
+    name: String!
+    secret: String!
+  ): create_account_output
+}
+
+type Mutation {
+  create_account_organization (
+    email: String!
+    emailContent: jsonb!
+    name: String!
+    secret: String!
+    verification_code: String!
+  ): create_account_organization_output
+}
+
+type Mutation {
+  create_pre_register_organization (
+    email: String!
+    emailContent: jsonb!
+    password: String!
+    name: String!
+    address: String!
+    phone: String!
+    description: String!
+    invitation_code: String!
+  ): create_pre_register_organization_output
+}
+
+type Mutation {
+  create_template(
     category: String!
     name: String!
     metadata: jsonb!
@@ -15,7 +55,14 @@ type Query {
 
 
 type Mutation {
-  payment_transaction_complete (
+  login (
+    account: String!
+    secret: String!
+  ): login_output
+}
+
+type Mutation {
+  payment_transaction_complete(
     orderId: String!
   ): payment_transaction_complete_output
 }
@@ -31,8 +78,39 @@ type Mutation {
   ): PutOnSaleOutput
 }
 
+type Mutation {
+  verify_email (
+    code: String!
+  ): verify_email_output
+}
 
+type verify_email_output {
+  is_verified : Boolean!
+}
 
+type create_account_output {
+  account : String!
+  transaction_id : String!
+  token : String!
+}
+
+type check_username_output {
+  is_valid : Boolean!
+}
+
+type create_account_organization_output {
+  account : String!
+  transaction_id : String!
+  token : String!
+}
+
+type create_pre_register_organization_output {
+  resultRegister : String!
+}
+
+type login_output {
+  token : String!
+}
 
 type CreateTemplateOutput {
   trxid : String!
