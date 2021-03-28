@@ -50,7 +50,7 @@ sed -i'.old' "s/dgoods dgoods.cpp/"$CONTRACT_NAME" "$CONTRACT_NAME".cpp/" CMakeL
 mv dgoods.cpp $CONTRACT_NAME.cpp
 sed -i'.old' "s/<dgoods.hpp>/<"$CONTRACT_NAME".hpp>/" $CONTRACT_NAME.cpp
 sed -i'.old' "s/dgoods::/"$CONTRACT_NAME"::/" $CONTRACT_NAME.cpp
-
+sed -i'.old' "s/dgoods,/"$CONTRACT_NAME",/" $CONTRACT_NAME.cpp
 #get out of /src
 rm *.old
 cd ..
@@ -64,7 +64,6 @@ cd ../include
 mv dgoods.hpp $CONTRACT_NAME.hpp
 sed -i'.old' "s/dgoods(/"$CONTRACT_NAME"(/" $CONTRACT_NAME.hpp
 sed -i'.old' "s/dgoods:/"$CONTRACT_NAME":/" $CONTRACT_NAME.hpp
-sed -i'.old' "s/dgoods,/"$CONTRACT_NAME",/" $CONTRACT_NAME.hpp
 
 #get out of /include
 rm *.old
