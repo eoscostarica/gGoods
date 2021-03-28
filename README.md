@@ -4,9 +4,7 @@
 	</a>
 </p>
 
-<p align="center" style="font-weight:bold; font-size:32px; color:#585858;">
-  NFTs that enable communities to raise funds
-</p>
+# NFTs That Enable Communities To Raise Funds
 
 <p align="center">
 	<a href="https://git.io/col">
