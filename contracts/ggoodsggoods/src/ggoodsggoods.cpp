@@ -17,7 +17,6 @@
 #include <math.h>
 
 ACTION ggoodsggoods::setconfig(const symbol_code& sym, const string& version) {
-
     require_auth( get_self() );
     // valid symbol
     check( sym.is_valid(), "not valid symbol" );
@@ -43,9 +42,7 @@ ACTION ggoodsggoods::create(const name& issuer,
                       const string& base_uri,
                       const uint32_t& max_issue_days,
                       const asset& max_supply) {
-
     require_auth( get_self() );
-
     time_point_sec max_issue_window = time_point_sec(0);
     // true max supply, not time based supply window
     if ( max_issue_days == 0 ) {
@@ -119,7 +116,6 @@ ACTION ggoodsggoods::issue(const name& to,
                      const asset& quantity,
                      const string& relative_uri,
                      const string& memo) {
-
     check( is_account( to ), "to account does not exist");
     check( memo.size() <= 256, "memo has more than 256 bytes" );
 
@@ -228,7 +224,6 @@ ACTION ggoodsggoods::transfernft(const name& from,
                            const name& to,
                            const vector<uint64_t>& dgood_ids,
                            const string& memo ) {
-
     check( dgood_ids.size() <= 20, "max batch size of 20" );
     // ensure authorized to send from account
     check( from != to, "cannot transfer to self" );
@@ -349,7 +344,6 @@ ACTION ggoodsggoods::confirmsale(const name& newowner,
                         const name& owner, 
                         const asset& quantity,
                         const uint64_t& batch_id) {
-
     require_auth(has_auth(owner) ? owner : get_self());
     
     ask_index ask_table(get_self(), get_self().value);
@@ -544,7 +538,6 @@ void ggoodsggoods::_mint(const name& to,
                    const name& token_name,
                    const asset& issued_supply,
                    const string& relative_uri) {
-
     dgood_index dgood_table(get_self(), get_self().value);
     auto dgood_id = _nextdgoodid();
     if ( relative_uri.empty() ) {
@@ -569,7 +562,6 @@ void ggoodsggoods::_mint(const name& to,
 }
 
 uint64_t ggoodsggoods::_nextdgoodid() {
-
     // get next_dgood_id and increment
     config_index config_table( get_self(), get_self().value );
     check(config_table.exists(), "dgoods config table does not exist, setconfig first");
@@ -598,7 +590,6 @@ void ggoodsggoods::_add_balance(const name& owner, const name& ram_payer, const 
 }
 
 void ggoodsggoods::_sub_balance(const name& owner, const uint64_t& category_name_id, const asset& quantity) {
-
     account_index from_account( get_self(), owner.value );
     const auto& acct = from_account.get( category_name_id, "token does not exist in account" );
     check( acct.amount.amount >= quantity.amount, "quantity is more than account balance");
