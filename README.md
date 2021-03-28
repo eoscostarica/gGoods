@@ -4,6 +4,10 @@
 	</a>
 </p>
 
+<p align="center" style="font-weight:bold; font-size:32px; color:#585858;">
+  NFTs that enable communities to raise funds
+</p>
+
 <p align="center">
 	<a href="https://git.io/col">
 		<img src="https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg" alt="Collaborative Etiquette">
@@ -22,9 +26,8 @@
 	</a>
 </p>
 
-# gGoods are NFTs that enable communities to raise funds 
 ## Why gGoods?
-[gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donor as collectables that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
+[gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donors as collectables that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
 
 ## Who’s behind gGoods?
 gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https://eoscostarica.io). It was our submission to the 2021 [Beyond Blockchain EOSIO Hackathon](https://block.one/news/launches-beyond-blockchain-hackathon/) organized by block.one.
@@ -35,7 +38,7 @@ The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://
 # About the technology
 
 ## What is blockchain?
-We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decentralized ledger that registers transactions within a network of various computers or nodes. Once a transaction is validated by the network and registered in the chain, it remains immutable and cannot be altered or hacked, improving transparency and trust. Read more
+We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decentralized ledger that registers transactions within a network of various computers or nodes. Once a transaction is validated by the network and registered in the chain, it remains immutable and cannot be altered or hacked, improving transparency and trust. [Read more]()
 
 ## What is EOSIO?
 Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts.  Read more
@@ -48,20 +51,18 @@ NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digi
 
 This project features the following tech stack:
 
-- **React Webapp**
-- **Material UI**
-- **Hasura GraphQL engine**
-- **Hapi** (HTTP API)
-- **Google Kubernetes Engine**
-- **EOSIO** (Jungle3 testnet)
-- **dGoods** (We forked the dGgoods Smart Contracts)
-- **IPFS** (Interplantary File System)
+- **[Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine)**
+- **[EOSIO](https://eos.io)** ([Jungle testnet](https://jungle3.bloks.io/account/ggoodsggoods))
+- **[dGgoods](https://dgoods.org/)** (We forked the dGgoods Smart Contracts)
+- **[IPFS](https://ipfs.io/)** 
+- **[React JS](https://reactjs.org/)**
+- **[Material UI](https://material-ui.com/)**
+- **[hasura](https://hasura.io) GraphQL engine**
+- **[hapi](https://hapi.dev/)** (HTTP API)
 
 **EOSCR Boilerplate**
 
 We built this project using our own [EOSIO project boilerplate](https://github.com/eoscostarica/full-stack-boilerplate), a highly scalable skeleton including best practices. This fullstack monorepo contains our front end and backend boilerplates.
-
-
 
 ## Installation
 
@@ -92,48 +93,20 @@ At this point you can navigate to `http://localhost:3000`.
 
 ## File Structure
 
-Within the download you'll find the following directories and files:
+## File Structure
+
+Within the repo you'll find the following directories:
 
 ```
-├── docs
-│   └── img
-├── hapi
-│   └── src
-│       ├── config
-│       ├── routes
-│       ├── services
-│       └── utils
-├── hasura
-│   ├── metadata
-│   ├── migrations
-│   └── seeds
-├── kubernetes
-├── utils
-├── wallet
-│   └── config
-└── webapp
-    ├── public
-    └── src
-        ├── components
-        │   ├── Footer
-        │   ├── Header
-        │   ├── Loader
-        │   ├── Message
-        │   ├── PageTitle
-        │   └── Sidebar
-        ├── config
-        ├── context
-        ├── gql
-        ├── language
-        ├── layouts
-        │   └── Dashboard
-        ├── routes
-        │   ├── About
-        │   ├── Help
-        │   ├── Home
-        │   └── Route404
-        ├── theme
-        └── utils
+.
+├── contracts ..................... gGoods Smart Contract
+├── docs .......................... Diagrams and Images for docs
+├── hasura ........................ Hasura GraphQL Engine
+├── hapi .......................... HTTP API 
+├── kubernetes .................... Kubernetes Manifests 
+├── utils ......................... Makefiles for project build
+├── wallet ........................ EOSIO Wallet Service
+└── webapp ........................ ReactJS Web Application
 ```
 
 ## Infrastructure Diagram
