@@ -40,7 +40,6 @@ namespace utility {
         }));
     }
 
-    
     /**
     *
     *  trim from right (in place)
@@ -54,8 +53,7 @@ namespace utility {
             return !isspace(ch);
         }).base(), s.end());
     }
-
-   
+ 
     /**
     *
     *  trim from both ends (in place)
@@ -89,7 +87,6 @@ namespace utility {
         // will abort if stoull throws error since wasm no error checking
         uint64_t batch_id = stoull( trim( memo.substr( 0, comma_pos ) ) );
         name to_account = name( trim ( memo.substr( comma_pos + 1 ) ) );
-
         return make_tuple(batch_id, to_account);
 
     }
