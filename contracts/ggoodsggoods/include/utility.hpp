@@ -88,6 +88,5 @@ namespace utility {
         uint64_t batch_id = stoull( trim( memo.substr( 0, comma_pos ) ) );
         name to_account = name( trim ( memo.substr( comma_pos + 1 ) ) );
         return make_tuple(batch_id, to_account);
-
     }
 }
