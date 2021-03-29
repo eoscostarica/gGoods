@@ -248,7 +248,6 @@ CONTRACT ggoodsggoods: public contract {
 
         TABLE lockednfts {
             uint64_t dgood_id;
-
             uint64_t primary_key() const { return dgood_id; }
         };
 
@@ -261,7 +260,6 @@ CONTRACT ggoodsggoods: public contract {
             asset amount;
             time_point_sec expiration;
             bool is_donable;
-
             uint64_t primary_key() const { return batch_id; }
             uint64_t get_seller() const { return seller.value; }
         };
@@ -276,7 +274,6 @@ CONTRACT ggoodsggoods: public contract {
 
         TABLE categoryinfo {
             name category;
-
             uint64_t primary_key() const { return category.value; }
         };
 
@@ -297,7 +294,6 @@ CONTRACT ggoodsggoods: public contract {
             asset          issued_supply;
             double         rev_split;
             string         base_uri;
-
             uint64_t primary_key() const { return token_name.value; }
         };
 
@@ -309,10 +305,8 @@ CONTRACT ggoodsggoods: public contract {
             name category;
             name token_name;
             std::optional<string> relative_uri;
-
             uint64_t primary_key() const { return id; }
             uint64_t get_owner() const { return owner.value; }
-
         };
 
         EOSLIB_SERIALIZE( dgood, (id)(serial_number)(owner)(category)(token_name)(relative_uri) )
@@ -323,26 +317,18 @@ CONTRACT ggoodsggoods: public contract {
             name category;
             name token_name;
             asset amount;
-
             uint64_t primary_key() const { return category_name_id; }
         };
 
         using config_index = singleton< "tokenconfigs"_n, tokenconfigs >;
-
         using account_index = multi_index< "accounts"_n, accounts >;
-
         using category_index = multi_index< "categoryinfo"_n, categoryinfo>;
-
         using stats_index = multi_index< "dgoodstats"_n, dgoodstats>;
-
         using dgood_index = multi_index< "dgood"_n, dgood,
             indexed_by< "byowner"_n, const_mem_fun< dgood, uint64_t, &dgood::get_owner> > >;
-
         using ask_index = multi_index< "asks"_n, asks,
             indexed_by< "byseller"_n, const_mem_fun< asks, uint64_t, &asks::get_seller> > >;
-
         using lock_index = multi_index< "lockednfts"_n, lockednfts>;
-
       private:
         /**
         *
