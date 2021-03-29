@@ -11,7 +11,7 @@ module.exports = async ({ payload: { input } }) => {
     const user = await userApi.getOne({
       email: { _eq: input.email }
     })
-    const currentPasswordIsOk = await new Promise((resolve) => {
+    const currentPasswordIsOk = await new Promise(resolve => {
       bcrypt.compare(input.currentPassword, user.secret, function (err, res) {
         if (!err && res) resolve(true)
         else resolve(false)
@@ -19,7 +19,7 @@ module.exports = async ({ payload: { input } }) => {
     })
 
     if (currentPasswordIsOk) {
-      const encripnewPassword = await new Promise((resolve) => {
+      const encripnewPassword = await new Promise(resolve => {
         bcrypt.hash(input.newPassword, saltRounds, function (err, hash) {
           if (!err) resolve(hash)
         })

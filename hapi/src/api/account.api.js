@@ -1,16 +1,12 @@
 const { eosConfig } = require('../config')
-const {
-  eosUtils,
-  jwtUtils,
-  hasuraUtils
-} = require('../utils')
+const { eosUtils, jwtUtils, hasuraUtils } = require('../utils')
 
 const historyApi = require('./history.api')
 const userApi = require('./user.api')
 const vaultApi = require('./vault.api')
 const preRegister = require('./pre-register.api')
 const verificationCodeApi = require('./verification-code.api')
- const mailApi = require('../utils/mail')
+const mailApi = require('../utils/mail')
 const LIFEBANKCODE_CONTRACT = eosConfig.lifebankCodeContractName
 const MAIL_APPROVE_LIFEBANNK = eosConfig.mailApproveLifebank
 
@@ -114,12 +110,12 @@ const createOrganization = async ({
   await historyApi.insert(transaction)
 
   try {
-     mailApi.sendConfirmMessage(
-       email,
-       emailContent.subject,
-       emailContent.title,
-       emailContent.message
-     )
+    mailApi.sendConfirmMessage(
+      email,
+      emailContent.subject,
+      emailContent.title,
+      emailContent.message
+    )
   } catch (error) {
     console.log(error)
   }

@@ -11,7 +11,7 @@ module.exports = async ({ payload: { input } }) => {
     const tempSecret = crypto.randomBytes(8).toString('hex')
     const saltRounds = 10
 
-    const encripTempSecret = await new Promise((resolve) => {
+    const encripTempSecret = await new Promise(resolve => {
       bcrypt.hash(tempSecret, saltRounds, function (err, hash) {
         if (!err) resolve(hash)
       })
