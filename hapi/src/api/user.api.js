@@ -86,7 +86,7 @@ const setSecret = (where, secret) => {
   return hasuraUtils.request(SET_SECRET, { where, secret })
 }
 
-const verifyEmail = (where) => {
+const verifyEmail = where => {
   return hasuraUtils.request(SET_EMAIL_VERIFIED, { where })
 }
 

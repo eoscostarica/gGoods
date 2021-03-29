@@ -70,7 +70,8 @@ const CreateTemplate = () => {
   }
 
   const handleSubmit = async () => {
-    const dataUrl = canvas.toDataURL({ format: 'png' })
+    const dataUrl = canvas?.toDataURL({ format: 'png' })
+    console.log(dataUrl)
 
     try {
       const { data } = await createTemplate({
@@ -78,7 +79,7 @@ const CreateTemplate = () => {
           ...payload
         }
       })
-      setPayload({ ...initialValue, dataUrl })
+      setPayload({ ...initialValue })
       showMessage({ content: `${t('successMessage')} ${data.template.trxid}` })
     } catch (error) {
       showMessage({ type: 'error', content: error.message })

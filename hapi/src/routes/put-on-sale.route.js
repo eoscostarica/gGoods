@@ -16,6 +16,8 @@ module.exports = {
           donable: Joi.bool().optional()
         }).required()
       }).options({ stripUnknown: true })
-    }
+    },
+    // TODO: ENABLED AUTH HERE
+    auth: false
   }
 }

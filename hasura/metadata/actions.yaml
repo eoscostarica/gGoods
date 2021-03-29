@@ -25,23 +25,10 @@ actions:
       handler: http://hapi:9090/api/pre-register
     permissions:
       - role: guest
-  - name: create_template
-    definition:
-      kind: synchronous
-      handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/create-template'
-      forward_client_headers: true
-    permissions:
-      - role: guest
   - name: login
     definition:
       kind: synchronous
       handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/login'
-    permissions:
-      - role: guest
-  - name: payment_transaction_complete
-    definition:
-      kind: synchronous
-      handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/payment-transaction-complete'
     permissions:
       - role: guest
   - name: verify_email
@@ -52,6 +39,19 @@ actions:
       - role: guest
       - role: organization
       - role: user
+  - name: payment_transaction_complete
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/payment-transaction-complete'
+    permissions:
+      - role: guest
+  - name: create_template
+    definition:
+      kind: synchronous
+      handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/create-template'
+      forward_client_headers: true
+    permissions:
+      - role: guest
   - name: put_on_sale
     definition:
       kind: synchronous
@@ -68,7 +68,7 @@ actions:
     - role: guest
   - name: goods_on_sale
     definition:
-      kind: ""
+      kind: ''
       handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/nft-on-sale'
       forward_client_headers: true
     permissions:

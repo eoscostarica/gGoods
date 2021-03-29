@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 
 import { eosConfig } from '../../config'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   wrapper: {
     maxHeight: 400
   },

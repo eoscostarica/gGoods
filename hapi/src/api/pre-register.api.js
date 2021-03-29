@@ -47,7 +47,7 @@ const insertOrganization = (preregister_organization) => {
   return hasuraUtils.request(INSERT_ORGANIZATION, { preregister_organization })
 }
 
-const verifyEmail = (where) => {
+const verifyEmail = where => {
   return hasuraUtils.request(SET_EMAIL_VERIFIED, { where })
 }
 

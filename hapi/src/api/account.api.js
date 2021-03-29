@@ -1,8 +1,5 @@
 const { eosConfig } = require('../config')
-const {
-  eosUtils,
-  jwtUtils,
-} = require('../utils')
+const { eosUtils, jwtUtils } = require('../utils')
 
 const historyApi = require('./history.api')
 const userApi = require('./user.api')
@@ -86,12 +83,12 @@ const createOrganization = async ({
   await historyApi.insert(transaction)
 
   try {
-     mailApi.sendConfirmMessage(
-       email,
-       emailContent.subject,
-       emailContent.title,
-       emailContent.message
-     )
+    mailApi.sendConfirmMessage(
+      email,
+      emailContent.subject,
+      emailContent.title,
+      emailContent.message
+    )
   } catch (error) {
     console.log(error)
   }
