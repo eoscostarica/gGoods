@@ -50,7 +50,6 @@ const preRegister = async ({
       emailContent.message,
       emailContent.button
     )
-
   } catch (error) {
     resultRegister = 'error'
 

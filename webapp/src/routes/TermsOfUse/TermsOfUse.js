@@ -8,7 +8,7 @@ import Tab from '@material-ui/core/Tab'
 import RicardianContract from '../../components/RicardianContract'
 import { GET_CONTRACTS_QUERY } from '../../gql'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   tabsWrapper: {
     margin: theme.spacing(4, 0, 4, 0),
     [theme.breakpoints.down('sm')]: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   wrapper: {
-    minHeight:'100vh',
+    minHeight: '100vh',
     height: '95vh',
     padding: theme.spacing(2, 1, 0, 1),
     '& img': {

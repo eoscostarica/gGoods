@@ -17,7 +17,7 @@ const eosApi = EosApi({
   fetchConfiguration: {}
 })
 
-const createAccount = async (accountName) => {
+const createAccount = async accountName => {
   const password = await walletUtil.create(accountName)
   const key = await walletUtil.createKey(accountName)
 
@@ -26,7 +26,7 @@ const createAccount = async (accountName) => {
       eosConfig.baseAccount,
       eosConfig.baseAccountPassword
     )
-  } catch (error) { }
+  } catch (error) {}
 
   const keys = await walletUtil.listKeys(
     eosConfig.baseAccount,

@@ -7,7 +7,7 @@ const post = async (endpoint, body) => {
     body,
     method: 'POST'
   })
-  
+
   const data = await res.json()
 
   if (data.code) {
