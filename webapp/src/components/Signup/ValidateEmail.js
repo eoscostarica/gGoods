@@ -6,20 +6,20 @@ import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   success: {
     color: theme.palette.success.main
   },
   textField: {
     marginBottom: 10
-  },
+  }
 }))
 
 const ValidateEmail = ({ isValid, loading, user, setField }) => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
 
-  const validateFormatEmail = (email) => {
+  const validateFormatEmail = email => {
     const regularExpresion = /\S+@\S+\.\S+/
     if (regularExpresion.test(email)) {
       return true
@@ -36,8 +36,10 @@ const ValidateEmail = ({ isValid, loading, user, setField }) => {
       variant="outlined"
       type="email"
       fullWidth
-      value={user?.email || ""}
-      onChange={(event) => setField('email', event.target.value.toLowerCase().replace(/\s/g, ''))}
+      value={user?.email || ''}
+      onChange={event =>
+        setField('email', event.target.value.toLowerCase().replace(/\s/g, ''))
+      }
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -49,8 +51,8 @@ const ValidateEmail = ({ isValid, loading, user, setField }) => {
         validateFormatEmail(user.email) && !isValid && loading
           ? t('miscellaneous.alreadyAssociated')
           : !isValid
-            ? ''
-            : ''
+          ? ''
+          : ''
       }
       error={!isValid && loading && validateFormatEmail(user.email)}
     />

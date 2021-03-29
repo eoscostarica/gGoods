@@ -32,17 +32,16 @@ const FabricCanvas = ({ activeProperty, onGetDataUrl }) => {
       if (next.the_type === 'bg') {
         canvas.setBackgroundImage(next)
         canvas.renderAll()
+        onGetDataUrl(canvas)
+
         return
       }
 
       canvas.add(next)
       canvas.moveTo(next, next.zIndex)
-    }
-  }
 
-  const getDataUrlCanvas = () => {
-    // TODO: move all this component logic and return dataUrl
-    // const dataUrl = canvas.toDataURL({ format: 'png' })
+      onGetDataUrl(canvas)
+    }
   }
 
   const initCanvas = isMobile =>
@@ -71,9 +70,7 @@ const FabricCanvas = ({ activeProperty, onGetDataUrl }) => {
             placeholder="Name your animal"
             className={classes.textField}
           />
-          <Button className={classes.btnPublish} onClick={getDataUrlCanvas}>
-            PUBLISH
-          </Button>
+          <Button className={classes.btnPublish}>PUBLISH</Button>
         </Box>
       </Box>
     </Box>

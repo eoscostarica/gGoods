@@ -8,11 +8,13 @@ import Grid from '@material-ui/core/Grid'
 import { Box } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import { useTranslation } from 'react-i18next'
-
 import CustomRouterLink from '../../components/CustomRouterLink'
-import { UPDATE_STATE_ORGANIZATION, CREATE_ACCOUNT_ORGANIZATION_MUTATION } from '../../gql'
+import {
+  UPDATE_STATE_ORGANIZATION,
+  CREATE_ACCOUNT_ORGANIZATION_MUTATION
+} from '../../gql'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(4),
     display: 'flex',
@@ -24,34 +26,34 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex'
   },
   centerText: {
-    textAlign: 'center',
+    textAlign: 'center'
   },
   title: {
-    fontSize: "34px",
-    fontWeight: "normal",
-    fontStretch: "normal",
-    fontStyle: "normal",
-    lineHeight: "1.18",
-    letterSpacing: "0.25px",
-    textAlign: "center",
-    color: "rgba(0, 0, 0, 0.87)",
+    fontSize: '34px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: '1.18',
+    letterSpacing: '0.25px',
+    textAlign: 'center',
+    color: 'rgba(0, 0, 0, 0.87)',
     marginBottom: 15
   },
   subTitle: {
-    fontSize: "14px",
-    fontWeight: "normal",
-    fontStretch: "normal",
-    fontStyle: "normal",
-    lineHeight: "1.43",
-    letterSpacing: "0.25px",
-    textAlign: "center",
-    color: "rgba(0, 0, 0, 0.6)",
+    fontSize: '14px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: '1.43',
+    letterSpacing: '0.25px',
+    textAlign: 'center',
+    color: 'rgba(0, 0, 0, 0.6)',
     marginBottom: 30
   },
   btnHome: {
     borderRadius: '50px',
     backgroundColor: '#4DD5EA',
-    width: "50%",
+    width: '50%',
     fontSize: '14px',
     fontWeight: 500,
     fontStretch: 'normal',
@@ -62,28 +64,34 @@ const useStyles = makeStyles((theme) => ({
     padding: '12px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
-      width: "100%",
+      width: '100%'
     }
-  },
+  }
 }))
 
-const RegisterLifebank = (props) => {
+const RegisterLifebank = () => {
   const { t } = useTranslation('translations')
   const classes = useStyles()
   const [lifebank, setLifebank] = useState()
   const { code } = useParams()
   const history = useHistory()
 
-  const [createAccountLifebank, { error: errorCreateAccount }] = useMutation(CREATE_ACCOUNT_ORGANIZATION_MUTATION)
+  const [createAccountLifebank, { error: errorCreateAccount }] = useMutation(
+    CREATE_ACCOUNT_ORGANIZATION_MUTATION
+  )
 
   const [
     updateEmail,
-    { loading: loadingVerifyEmail, error: errorVerifyEmail, data: { update_preregister_organization: organizationData } = {} }
+    {
+      loading: loadingVerifyEmail,
+      error: errorVerifyEmail,
+      data: { update_preregister_organization: organizationData } = {}
+    }
   ] = useMutation(UPDATE_STATE_ORGANIZATION)
 
   const handleCreateAccountLifebank = () => {
     if (lifebank) {
-      const { name, email, verification_code } = lifebank
+      const { name, email } = lifebank
       const secret = lifebank.password
       createAccountLifebank({
         variables: {
@@ -91,11 +99,11 @@ const RegisterLifebank = (props) => {
           emailContent: {
             subject: t('emailMessage.subjectApproveAccount'),
             title: t('emailMessage.titleApproveAccount'),
-            message: t('emailMessage.messageApproveAccount'),
+            message: t('emailMessage.messageApproveAccount')
           },
           name,
           secret,
-          verification_code
+          verification_code: lifebank.verification_code
         }
       })
     }
@@ -113,17 +121,18 @@ const RegisterLifebank = (props) => {
     if (organizationData) {
       setLifebank(organizationData.returning[0])
     }
-
   }, [organizationData])
 
   useEffect(() => {
     if (lifebank) handleCreateAccountLifebank()
-
   }, [lifebank])
 
   useEffect(() => {
     if (errorVerifyEmail) {
-      if (errorVerifyEmail.message === 'GraphQL error: Could not verify JWT: JWTExpired') {
+      if (
+        errorVerifyEmail.message ===
+        'GraphQL error: Could not verify JWT: JWTExpired'
+      ) {
         updateEmail({
           variables: {
             verification_code: code
@@ -134,12 +143,14 @@ const RegisterLifebank = (props) => {
         history.push('/internal-error')
       }
     }
-
   }, [errorVerifyEmail])
 
   useEffect(() => {
     if (errorCreateAccount) {
-      if (errorCreateAccount.message === 'GraphQL error: Could not verify JWT: JWTExpired') {
+      if (
+        errorCreateAccount.message ===
+        'GraphQL error: Could not verify JWT: JWTExpired'
+      ) {
         updateEmail({
           variables: {
             verification_code: code
@@ -150,7 +161,6 @@ const RegisterLifebank = (props) => {
         history.push('/internal-error')
       }
     }
-
   }, [errorCreateAccount])
 
   return (

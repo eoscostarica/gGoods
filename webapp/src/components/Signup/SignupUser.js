@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next'
 import SignupWithGoogle from './socialSingup/SignupWithGoogle'
 import { captchaConfig } from '../../config'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   form: {
     width: '100%',
     padding: theme.spacing(0, 2)
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   btnSignup: {
     borderRadius: '50px',
     backgroundColor: '#4DD5EA',
-    width: "70%",
+    width: '70%',
     fontSize: '14px',
     fontWeight: 500,
     fontStretch: 'normal',
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '12px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
-      width: "100%",
+      width: '100%'
     }
   }
 }))
@@ -67,8 +67,7 @@ const UserSignup = ({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (confirmPassword && confirmPassword !== password)
-        setError(true)
+      if (confirmPassword && confirmPassword !== password) setError(true)
       else setError(false)
     }, 100)
     return () => clearTimeout(timer)
@@ -85,7 +84,7 @@ const UserSignup = ({
           fullWidth
           variant="outlined"
           className={classes.textField}
-          onChange={(event) => {
+          onChange={event => {
             setField('secret', event.target.value)
             setPassword(event.target.value)
           }}
@@ -99,11 +98,11 @@ const UserSignup = ({
           helperText={error && t('signup.passwordNotMatch')}
           variant="outlined"
           className={classes.textField}
-          onChange={(event) => setConfirmPassword(event.target.value)}
+          onChange={event => setConfirmPassword(event.target.value)}
         />
         <ReCAPTCHA
           sitekey={captchaConfig.captchaConfig.sitekey}
-          onChange={(value) => serRecaptchaValue(value)}
+          onChange={value => serRecaptchaValue(value)}
         />
       </Box>
       <Box className={classes.btnWrapper}>

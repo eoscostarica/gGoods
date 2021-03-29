@@ -5,7 +5,6 @@ type Mutation {
   ): check_username_output
 }
 
-
 type Mutation {
   create_account (
     role: String!
@@ -16,7 +15,6 @@ type Mutation {
   ): create_account_output
 }
 
-
 type Mutation {
   create_account_organization (
     email: String!
@@ -26,7 +24,6 @@ type Mutation {
     verification_code: String!
   ): create_account_organization_output
 }
-
 
 type Mutation {
   create_pre_register_organization (
@@ -41,13 +38,19 @@ type Mutation {
   ): create_pre_register_organization_output
 }
 
-
 type Mutation {
-  create_template (
+  create_template(
     category: String!
     name: String!
     metadata: jsonb!
   ): CreateTemplateOutput
+}
+
+
+type Query {
+  goods_on_sale (
+    seller: String
+  ): [GoodsOnSaleOutput]
 }
 
 
@@ -58,22 +61,28 @@ type Mutation {
   ): login_output
 }
 
-
 type Mutation {
-  payment_transaction_complete (
+  payment_transaction_complete(
     orderId: String!
   ): payment_transaction_complete_output
 }
 
 
 type Mutation {
+  put_on_sale (
+    template: uuid!
+    quantity: Int!
+    amount: Float!
+    donable: Boolean
+    memo: String
+  ): PutOnSaleOutput
+}
+
+type Mutation {
   verify_email (
     code: String!
   ): verify_email_output
 }
-
-
-
 
 type verify_email_output {
   is_verified : Boolean!
@@ -109,5 +118,18 @@ type CreateTemplateOutput {
 
 type payment_transaction_complete_output {
   return_status : Boolean!
+}
+
+type PutOnSaleOutput {
+  assets : [String]
+}
+
+type GoodsOnSaleOutput {
+  id : String!
+  seller : String!
+  amount : String!
+  donable : Boolean!
+  expiration : String!
+  ggoods : jsonb
 }
 

@@ -41,13 +41,13 @@ spec:
       volumes:
         - name: config-directory
           configMap:
-            name: dashboard-wallet-config
+            name: ggoods-wallet-config
   volumeClaimTemplates:
     - metadata:
         name: data-directory
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: dashboard-storage
+        storageClassName: ggoods-storage
         resources:
           requests:
             storage: 50Gi

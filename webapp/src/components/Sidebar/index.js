@@ -56,7 +56,7 @@ const ListItemLink = ({ name, path, icon, badge, ...props }) => {
   const { t } = useTranslation('routes')
   const classes = useStyles()
   const primaryText = path.includes('http')
-    ? t(name,name)
+    ? t(name, name)
     : t(`${path}>sidebar`, path)
 
   return (

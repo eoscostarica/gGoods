@@ -36,7 +36,9 @@ const Help = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Typography variant="body1">{t('helpRoute.githubEOSCR')}</Typography>
+                <Typography variant="body1">
+                  {t('helpRoute.githubEOSCR')}
+                </Typography>
               </Link>
             </Box>
             <Box className={classes.boxLinks}>
@@ -46,7 +48,9 @@ const Help = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Typography variant="body1">{t('helpRoute.telegramChannel')}</Typography>
+                <Typography variant="body1">
+                  {t('helpRoute.telegramChannel')}
+                </Typography>
               </Link>
             </Box>
             <Box className={classes.boxLinks}>
@@ -56,7 +60,9 @@ const Help = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Typography variant="body1">{t('helpRoute.websiteEOSCR')}</Typography>
+                <Typography variant="body1">
+                  {t('helpRoute.websiteEOSCR')}
+                </Typography>
               </Link>
             </Box>
           </Grid>

@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useReducer, useCallback, lazy, Suspense } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useCallback,
+  lazy,
+  Suspense
+} from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
@@ -29,10 +36,10 @@ import SignupRoleSelector from './SignupRoleSelector'
 import ValidateEmail from './ValidateEmail'
 import { useSharedState } from '../../context/state.context'
 
-const SignupUser = lazy(() => import('./SignupUser'));
-const SignupOrganization = lazy(() => import('./SignupOrganization'));
+const SignupUser = lazy(() => import('./SignupUser'))
+const SignupOrganization = lazy(() => import('./SignupOrganization'))
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   closeIcon: {
     position: 'absolute',
     zIndex: 1,
@@ -42,24 +49,24 @@ const useStyles = makeStyles((theme) => ({
     height: '5vh',
     '& svg': {
       fontSize: 25,
-      color: "rgba(0, 0, 0, 0.6)"
+      color: 'rgba(0, 0, 0, 0.6)'
     }
   },
   dialog: {
-    paddingTop: "53px",
-    paddingLeft: "53px",
-    paddingRight: "53px",
-    paddingBottom: "38px",
+    paddingTop: '53px',
+    paddingLeft: '53px',
+    paddingRight: '53px',
+    paddingBottom: '38px',
     [theme.breakpoints.down('md')]: {
-      paddingLeft: "21px",
-      paddingRight: "21px",
+      paddingLeft: '21px',
+      paddingRight: '21px'
     }
   },
   register: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100%',
+    height: '100%'
   },
   gridContainer: {
     display: 'flex',
@@ -76,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
     height: '5vh',
     '& svg': {
       fontSize: 25,
-      color: "rgba(0, 0, 0, 0.6)"
+      color: 'rgba(0, 0, 0, 0.6)'
     }
   },
   registerBack: {
@@ -140,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
   registerBtn: {
     width: 180,
     height: 49,
-    color: "#000000",
+    color: '#000000',
     backgroundColor: 'transparent',
     margin: theme.spacing(2, 0, 4, 0),
     borderRadius: ' 2px',
@@ -150,7 +157,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   registerTextModal: {
     fontSize: '12px',
@@ -159,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'normal',
     lineHeight: 1.33,
     letterSpacing: '0.4px',
-    color: '#000000',
+    color: '#000000'
   },
   labelOption: {
     color: `${theme.palette.primary.main} !important`,
@@ -173,8 +180,8 @@ const useStyles = makeStyles((theme) => ({
   },
   registerBtnSideBar: {
     display: 'flex',
-    alignItems: 'center',
-  },
+    alignItems: 'center'
+  }
 }))
 
 const Signup = ({ isHome, isModal, isSideBar }) => {
@@ -188,7 +195,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   const [role, setRole] = useState()
   const [open, setOpen] = useState(false)
   const [openAlert, setOpenAlert] = useState(false)
-  const [messegaAlert, setMessegaAlert] = useState("false")
+  const [messegaAlert, setMessegaAlert] = useState('false')
   const [maxWidth] = useState('sm')
   const theme = useTheme()
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'))
@@ -214,17 +221,19 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       data: { create_account: createAccountResult } = {}
     }
   ] = useMutation(CREATE_ACCOUNT_MUTATION)
-  
+
   const [
     preRegisterOrganization,
     {
       error: errorpreRegisterOrganization,
       loading: preRegisterOrganizationLoading,
-      data: { create_pre_register_organization: preRegisterOrganizationResult } = {}
+      data: {
+        create_pre_register_organization: preRegisterOrganizationResult
+      } = {}
     }
   ] = useMutation(CREATE_PRE_REGISTER_ORGANIZATION_MUTATION)
 
-  const handleRoleChange = (role) => {
+  const handleRoleChange = role => {
     setRole(role)
     setActiveStep(activeStep + 1)
   }
@@ -244,22 +253,26 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
     const bcrypt = require('bcryptjs')
     const saltRounds = 10
 
-    bcrypt.hash(secret, saltRounds, function (err, hash) {
+    bcrypt.hash(secret, saltRounds, (err, hash) => {
       if (!err) {
-        createAccount({
-          variables: {
-            role,
-            email,
-            emailContent: {
-              subject: t('emailMessage.subjectVerificationCode'),
-              title: t('emailMessage.titleVerificationCode'),
-              message: t('emailMessage.messageVerificationCode'),
-              button: t('emailMessage.verifyButton')
-            },
-            name,
-            secret: hash
-          }
-        })
+        try {
+          createAccount({
+            variables: {
+              role,
+              email,
+              emailContent: {
+                subject: t('emailMessage.subjectVerificationCode'),
+                title: t('emailMessage.titleVerificationCode'),
+                message: t('emailMessage.messageVerificationCode'),
+                button: t('emailMessage.verifyButton')
+              },
+              name,
+              secret: hash
+            }
+          })
+        } catch (err) {
+          console.log('ERROR', err)
+        }
       }
     })
   }
@@ -272,22 +285,26 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
         const bcrypt = require('bcryptjs')
         const saltRounds = 10
 
-        bcrypt.hash(secret, saltRounds, function (err, hash) {
+        bcrypt.hash(secret, saltRounds, (err, hash) => {
           if (!err) {
-            createAccount({
-              variables: {
-                role,
-                email,
-                emailContent: {
-                  subject: t('emailMessage.subjectVerificationCode'),
-                  title: t('emailMessage.titleVerificationCode'),
-                  message: t('emailMessage.messageVerificationCode'),
-                  button: t('emailMessage.verifyButton')
-                },
-                name,
-                secret: hash
-              }
-            })
+            try {
+              createAccount({
+                variables: {
+                  role,
+                  email,
+                  emailContent: {
+                    subject: t('emailMessage.subjectVerificationCode'),
+                    title: t('emailMessage.titleVerificationCode'),
+                    message: t('emailMessage.messageVerificationCode'),
+                    button: t('emailMessage.verifyButton')
+                  },
+                  name,
+                  secret: hash
+                }
+              })
+            } catch (err) {
+              console.log('ERROR ')
+            }
           }
         })
       } else {
@@ -297,21 +314,12 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   }
 
   const handlepreRegisterOrganization = () => {
-    const {
-      email,
-      password,
-      name,
-      address,
-      phone,
-      description
-    } = user
-    let { invitation_code } = user
-
-    if (invitation_code === undefined || !invitation_code) invitation_code = ' '
+    const { email, password, name, address, phone, description } = user
+    let { invitationCode } = user
+    if (invitationCode === undefined || !invitationCode) invitationCode = ' '
 
     const bcrypt = require('bcryptjs')
     const saltRounds = 10
-
     bcrypt.hash(password, saltRounds, function (err, hash) {
       if (!err) {
         preRegisterOrganization({
@@ -328,7 +336,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
             address,
             phone,
             description,
-            invitation_code
+            invitation_code: invitationCode
           }
         })
       }
@@ -371,7 +379,6 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       handleOpen()
       setMessegaAlert(t('signup.sucessfulPreregistration'))
       handleOpenAlert()
-
     }
   }, [preRegisterOrganizationResult])
 
@@ -381,19 +388,14 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       setMessegaAlert(t('signup.sucessfulRegistration'))
       handleOpenAlert()
     }
-
   }, [createAccountResult])
-
 
   useEffect(() => {
     if (errorcreateAccount) setErrorMessage(t('errors.authError'))
-
   }, [errorcreateAccount])
-
 
   useEffect(() => {
     if (errorpreRegisterOrganization) setErrorMessage(t('errors.authError'))
-
   }, [errorpreRegisterOrganization])
 
   const ErrorMessage = () => {
@@ -423,34 +425,36 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
 
   return (
     <>
-      {isHome && (state.user === null) &&
-        <Button color="secondary" className={classes.registerBtn} onClick={handleOpen}>
+      {isHome && state.user === null && (
+        <Button
+          color="secondary"
+          className={classes.registerBtn}
+          onClick={handleOpen}
+        >
           {t('signup.register')}
         </Button>
-      }
-      {isModal && (state.user === null) &&
+      )}
+      {isModal && state.user === null && (
         <Box className={classes.registerBoxModal}>
-          <Button color="secondary" className={classes.registerTextModal} onClick={handleOpen}>
+          <Button
+            color="secondary"
+            className={classes.registerTextModal}
+            onClick={handleOpen}
+          >
             {t('login.notAccount')}
           </Button>
         </Box>
-      }
-      {isSideBar && (state.user!==null) &&
-        <Box
-          className={classes.registerBtnSideBar}
-          onClick={handleOpen}
-        >
+      )}
+      {isSideBar && state.user !== null && (
+        <Box className={classes.registerBtnSideBar} onClick={handleOpen}>
           <ContactMailIcon className={classes.iconOption} />
           <Link to="/">
-            <Typography
-              variant="body1"
-              className={classes.labelOption}
-            >
+            <Typography variant="body1" className={classes.labelOption}>
               {t('signup.register')}
             </Typography>
           </Link>
         </Box>
-      }
+      )}
       <Dialog
         fullScreen={fullScreen}
         maxWidth={maxWidth}
@@ -467,11 +471,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       >
         <Box className={classes.dialog}>
           <Box className={classes.closeIcon}>
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              onClick={handleOpen}
-            >
+            <IconButton aria-label="close" color="inherit" onClick={handleOpen}>
               <CloseIcon fontSize="inherit" />
             </IconButton>
           </Box>
@@ -486,15 +486,23 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
             <Box className={classes.stepperContent}>
               {activeStep === 0 && (
                 <>
-                  <Typography className={classes.titleRegister}>{t('signup.register')}</Typography>
-                  <Typography className={classes.text}>{t('signup.registerText')}</Typography>
+                  <Typography className={classes.titleRegister}>
+                    {t('signup.register')}
+                  </Typography>
+                  <Typography className={classes.text}>
+                    {t('signup.registerText')}
+                  </Typography>
                   <SignupRoleSelector onSubmit={handleRoleChange} />
                 </>
               )}
               {activeStep === 1 && role === 'user' && (
                 <>
-                  <Typography className={classes.titleRegister}>{t('signup.asAUser')}</Typography>
-                  <Typography className={classes.text}>{t('signup.allYouNeed')}</Typography>
+                  <Typography className={classes.titleRegister}>
+                    {t('signup.asAUser')}
+                  </Typography>
+                  <Typography className={classes.text}>
+                    {t('signup.allYouNeed')}
+                  </Typography>
                   <Suspense fallback={<CircularProgress />}>
                     <SignupUser
                       onSubmit={handleCreateAccount}
@@ -516,8 +524,12 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
               )}
               {activeStep === 1 && role === 'organization' && (
                 <>
-                  <Typography className={classes.titleRegister}>{t('signup.asAOrganization')}</Typography>
-                  <Typography variant="body1" className={classes.text}>{t('signup.preRegistrationRequirement')}</Typography>
+                  <Typography className={classes.titleRegister}>
+                    {t('signup.asAOrganization')}
+                  </Typography>
+                  <Typography variant="body1" className={classes.text}>
+                    {t('signup.preRegistrationRequirement')}
+                  </Typography>
                   <Suspense fallback={<CircularProgress />}>
                     <SignupOrganization
                       onSubmit={handlepreRegisterOrganization}
@@ -540,7 +552,11 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
           </Box>
         </Box>
       </Dialog>
-      <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleOpenAlert}>
+      <Snackbar
+        open={openAlert}
+        autoHideDuration={6000}
+        onClose={handleOpenAlert}
+      >
         <Alert onClose={handleOpenAlert} severity="success">
           {messegaAlert}
         </Alert>
@@ -552,7 +568,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
 Signup.propTypes = {
   isHome: PropTypes.bool,
   isModal: PropTypes.bool,
-  isSideBar: PropTypes.bool,
+  isSideBar: PropTypes.bool
 }
 
 Signup.defaultProps = {

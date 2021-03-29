@@ -1,0 +1,141 @@
+name: Build images from latest main branch
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: ggoods-cluster
+  GKE_ZONE: us-central1-c
+  DEPLOYMENT_NAME: ggoods-production
+
+jobs:
+  create-main-image:
+    name:
+    runs-on: ubuntu-latest
+    environment: main
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      # Setup gcloud CLI
+      - uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
+
+      - name: Setup Docker
+        uses: docker-practice/actions-setup-docker@0.0.1
+
+      - name: Log in to docker registry
+        run: |
+          echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login \
+            --username ${{ secrets.DOCKER_HUB_USER }} \
+            --password-stdin
+
+      # Get the GKE credentials so we can deploy to the cluster
+      - uses: google-github-actions/get-gke-credentials@v0.2.1
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER }}
+          location: ${{ env.GKE_ZONE }}
+          credentials: ${{ secrets.GKE_SA_KEY }}
+
+      - name: Install node module dependencies
+        run: |
+          cd hapi
+          yarn install
+          cd ../webapp
+          yarn install
+          cd ..
+
+      - name: Build new images and push
+        run: |
+          make \
+            build-docker-images \
+            push-docker-images
+        env:
+          # global
+          DOCKER_USER: ${{ secrets.DOCKER_HUB_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          NAMESPACE: ggoods
+          STAGE: dev
+          APP_NAME: ggoods
+          INGRESS_HOST: ggoods.io
+          INGRESS_GRAPHQL_HOST: graphql.ggoods.io
+
+          #webapp
+          PORT: 80
+          REACT_APP_VERSION: $npm_package_version
+          REACT_APP_NAME: $npm_package_name
+          REACT_APP_TITLE: gGoods App
+          REACT_APP_LOGO: https://raw.githubusercontent.com/eoscostarica/design-assets/master/logos/eosCR/fullColor-vertiall-transparent-white.png
+          REACT_APP_FOOTER_LINKS: '[]'
+          REACT_APP_UAL_APP_NAME: gGoods
+          REACT_APP_UAL_API_PROTOCOL: https
+          REACT_APP_UAL_API_HOST: jungle.eosio.cr
+          REACT_APP_UAL_API_PORT: 443
+          REACT_APP_UAL_CHAIN_ID: 2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840
+          REACT_APP_HASURA_URL: https://graphql.ggoods.io:8080/v1/graphql
+
+      - name: Build kubernetes files
+        id: build_kubernetes_files
+        run: |
+          make \
+            build-kubernetes
+        env:
+          # global
+          NAMESPACE: ggoods
+          STAGE: dev
+          APP_NAME: ggoods
+          INGRESS_HOST: ggoods.io
+          INGRESS_GRAPHQL_HOST: graphql.ggoods.io
+
+          # wallet
+          WALLET_DATA: ./wallet_data
+
+          # postgres
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_DATA: ${{ secrets.POSTGRES_DATA }}
+
+          # hasura
+          HASURA_GRAPHQL_ENABLE_CONSOLE: true
+          HASURA_GRAPHQL_DATABASE_URL: ${{ secrets.HASURA_GRAPHQL_DATABASE_URL }}
+          HASURA_GRAPHQL_ADMIN_SECRET: ${{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}
+          HASURA_GRAPHQL_UNAUTHORIZED_ROLE: ${{ secrets.HASURA_GRAPHQL_UNAUTHORIZED_ROLE }}
+          HASURA_GRAPHQL_ACTION_BASE_URL: ${{ secrets.HASURA_GRAPHQL_ACTION_BASE_URL }}
+
+          # hapi
+          HAPI_SERVER_PORT: 9090
+          HAPI_SERVER_ADDRESS: hapi
+          HAPI_EOS_API_ENDPOINT: http://jungle.eosio.cr
+          HAPI_EOS_API_CHAIN_ID: 2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840
+          HAPI_EOS_BASE_ACCOUNT: ${{ secrets.HAPI_EOS_BASE_ACCOUNT }}
+          HAPI_EOS_BASE_ACCOUNT_PASSWORD: ${{ secrets.HAPI_EOS_BASE_ACCOUNT_PASSWORD }}
+          HAPI_EOS_WALLET_URL: http://ggoods-wallet:8888
+          HAPI_HASURA_URL: http://ggoods-hasura:8080/v1/graphql
+          HAPI_HASURA_ADMIN_SECRET: ${{ secrets.HAPI_HASURA_ADMIN_SECRET }}
+          HAPI_DGOODS_ACCOUNT: ${{ secrets.HAPI_DGOODS_ACCOUNT }}
+          HAPI_DGOODS_PASSWORD: ${{ secrets.HAPI_DGOODS_PASSWORD }}
+          HAPI_DGOODS_TOKEN: ${{ secrets.HAPI_DGOODS_TOKEN }}
+
+          #webapp
+          PORT: 80
+          REACT_APP_VERSION: $npm_package_version
+          REACT_APP_NAME: $npm_package_name
+          REACT_APP_TITLE: gGoods App
+          REACT_APP_LOGO: https://raw.githubusercontent.com/eoscostarica/design-assets/master/logos/eosCR/fullColor-vertiall-transparent-white.png
+          REACT_APP_FOOTER_LINKS: '[]'
+          REACT_APP_UAL_APP_NAME: gGoods
+          REACT_APP_UAL_API_PROTOCOL: https
+          REACT_APP_UAL_API_HOST: jungle.eosio.cr
+          REACT_APP_UAL_API_PORT: 443
+          REACT_APP_UAL_CHAIN_ID: 2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840
+          REACT_APP_HASURA_URL: https://graphql.ggoods.io:8080/v1/graphql
+
+      - name: Deploy kubernetes files
+        run: |-
+          kubectl apply -f build_k8s -n ggoods

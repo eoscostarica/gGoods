@@ -27,23 +27,12 @@ const init = async () => {
     },
     debug: { request: ['handler'] }
   })
-  
+
   server.bind({
     i18n: i18nConfig
   })
 
   await server.register([
-    {
-      plugin: require('hapi-pino'),
-      options: {
-        prettyPrint: true,
-        logEvents: ['request-error']
-      }
-    },
-    {
-      plugin: require('@hapi/inert'),
-      options: {}
-    },
     {
       plugin: require('hapi-auth-jwt2'),
       options: {}

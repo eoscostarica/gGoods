@@ -3,13 +3,10 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Slider from '@ant-design/react-slick'
+import Grid from '@material-ui/core/Grid'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
-import { useTranslation } from 'react-i18next'
 import Signup from '../../components/Signup/Signup'
-
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 
 import { CardImage, CardInfo, CardAvatar } from '../../components/Card'
 import Gift from '../../images/assets/gift.png'
@@ -24,12 +21,32 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
+const GOOD_LIST = [
+  {
+    name: 'Name'
+  },
+  {
+    name: 'Name'
+  },
+  {
+    name: 'Name'
+  },
+  {
+    name: 'Name'
+  },
+  {
+    name: 'Name'
+  },
+  {
+    name: 'Name'
+  },
+  {
+    name: 'Name'
+  }
+]
+
 const Home = () => {
-
-  const { t } = useTranslation('translations')
-  
   const classes = useStyles()
-
   const settings = {
     dots: true,
     infinite: true,
@@ -126,10 +143,13 @@ const Home = () => {
         </Box>
       </Box>
       <Box className={classes.rowsBoxWrap}>
-        <CardAvatar />
-        <CardAvatar />
-        <CardAvatar />
-        <CardAvatar />
+        <Grid container spacing={2}>
+          {GOOD_LIST.map(game => (
+            <Grid item xs={6} md={4} lg={1} key={game.name}>
+              <CardAvatar />
+            </Grid>
+          ))}
+        </Grid>
       </Box>
       <Box className={classes.browseGoods}>
         <Button size="small">Browse goods</Button>
