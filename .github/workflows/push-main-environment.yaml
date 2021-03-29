@@ -79,8 +79,8 @@ jobs:
           REACT_APP_UAL_CHAIN_ID: 2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840
           REACT_APP_HASURA_URL: https://graphql.ggoods.io/v1/graphql
           REACT_APP_IPFS_URL: ${{ secrets.https://ipfs.smartholdem.io
-          REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.Ae7uCZFfaTjXL6vUaXc9_8HTo3_2nha7EgXnQj0oI2Eab3CD-hERA4xE2CEYakU-PqREFGBi3zsoYOxg
-          REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY}'
+          REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
+          REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY }}
 
       - name: Build kubernetes files
         id: build_kubernetes_files
