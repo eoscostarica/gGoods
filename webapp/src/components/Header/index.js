@@ -187,15 +187,19 @@ const Header = memo(({ onDrawerToggle }) => {
         </Typography>
         <PageTitle title={t(`${location.pathname}>title`, mainConfig.title)} />
         <Box className={classes.desktopSection}>
-          <SwitchThemeModeButton
+          {/* disable dark theme
+            <SwitchThemeModeButton
             useDarkMode={state.useDarkMode}
             onSwitch={handleSwitchThemeMode}
           />
+          */}
           <LoginModal isNavBar />
-          <LanguageButton
-            current={currentLanguaje}
-            onChange={handleChangeLanguage}
-          />
+          {/* disable language selector
+            <LanguageButton
+              current={currentLanguaje}
+              onChange={handleChangeLanguage}
+            />
+          */}
           <UserButton user={state.user} />
           <AuthButton
             user={state.user}
