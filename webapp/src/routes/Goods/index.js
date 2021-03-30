@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/styles'
 import Grid from '@material-ui/core/Grid'
+import FilterListIcon from '@material-ui/icons/FilterList'
+import Button from '@material-ui/core/Button'
 
 import { CardAvatar } from '../../components/Card'
+import GoodsFilter from '../../components/GoodsFilter'
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
@@ -37,6 +40,15 @@ const GOODS_LIST = [
 const Goods = () => {
   const classes = useStyles()
   const { t } = useTranslation('goodsRoute')
+  const [openFilter, setopenFilter] = useState(false)
+
+  const handlerSetOpenFilter = () => {
+    setopenFilter(!openFilter)
+  }
+
+  const filter = () => {
+    setopenFilter(true)
+  }
 
   return (
     <Box className={classes.mainBox}>
@@ -46,6 +58,27 @@ const Goods = () => {
       <Typography className={classes.textPageDescription}>
         {t('paragraph1')}
       </Typography>
+      <Grid container xs={12} className={classes.grid}>
+        <Grid item xs={6}>
+          <Typography
+            style={{ fontWeight: 'bold' }}
+            className={classes.available}
+          >
+            {GOODS_LIST.length}
+            {t('available')}
+          </Typography>
+        </Grid>
+        <Grid container xs={6}>
+          <Grid item xs={6}>
+            <Typography />
+          </Grid>
+          <Grid item xs={6}>
+            <Button startIcon={<FilterListIcon />} onClick={filter}>
+              {t('filter')}
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
       <Box>
         <Grid container spacing={2}>
           {GOODS_LIST.map(game => (
@@ -55,6 +88,7 @@ const Goods = () => {
           ))}
         </Grid>
       </Box>
+      <GoodsFilter open={openFilter} handlerOpen={handlerSetOpenFilter} />
     </Box>
   )
 }

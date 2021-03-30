@@ -169,13 +169,21 @@
   },
   "goodsRoute": {
     "title": "Goods",
-    "paragraph1": "Vitual goods designed to help good causes, buy or suscribe to help or just play."
+    "paragraph1": "Vitual goods designed to help good causes, buy or suscribe to help or just play.",
+    "filter": "FILTERS",
+    "available": " GOODS AVAILABLE"
   },
   "donateRoute": {
     "title": "Donate Now!",
     "paragraph1": "Select your prefered payment method and buy this good. You can increase your donation to further help this cause.",
     "selectedGood": "Selected Good",
     "suggestedPrice": "Suggested Price"
+  },
+  "filterGoodsRoute":{
+    "title": "Filter items",
+    "bottonTitle": "Filter",
+    "subtitle1": "Author",
+    "subtitle2": "Donation Amount"
   },
   "collectionRoute": {
     "title": "My collection",
