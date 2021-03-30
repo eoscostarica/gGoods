@@ -144,6 +144,8 @@ const Header = memo(({ onDrawerToggle }) => {
   const location = useLocation()
   const { i18n } = useTranslation('translations')
   const [currentLanguaje, setCurrentLanguaje] = useState()
+  const [enableDarkTheme, setEnableDarkTheme] = useState()
+  const [enableLanguageSelector, setEnableLanguageSelector] = useState()
   const [menuAnchorEl, setMenuAnchorEl] = useState()
   const [state, { login, logout, setState }] = useSharedState()
 
@@ -174,6 +176,11 @@ const Header = memo(({ onDrawerToggle }) => {
     setCurrentLanguaje(i18n.language?.substring(0, 2) || 'en')
   }, [i18n.language])
 
+  useEffect(() => {
+    setEnableDarkTheme(false)
+    setEnableLanguageSelector(false)
+  }, [enableDarkTheme, enableLanguageSelector])
+
   return (
     <AppBar className={classes.appBar} position="sticky">
       <Toolbar className={classes.toolbar}>
@@ -187,19 +194,19 @@ const Header = memo(({ onDrawerToggle }) => {
         </Typography>
         <PageTitle title={t(`${location.pathname}>title`, mainConfig.title)} />
         <Box className={classes.desktopSection}>
-          {/* disable dark theme
+          {enableDarkTheme && (
             <SwitchThemeModeButton
-            useDarkMode={state.useDarkMode}
-            onSwitch={handleSwitchThemeMode}
-          />
-          */}
+              useDarkMode={state.useDarkMode}
+              onSwitch={handleSwitchThemeMode}
+            />
+          )}
           <LoginModal isNavBar />
-          {/* disable language selector
+          {enableLanguageSelector && (
             <LanguageButton
               current={currentLanguaje}
               onChange={handleChangeLanguage}
             />
-          */}
+          )}
           <UserButton user={state.user} />
           <AuthButton
             user={state.user}
