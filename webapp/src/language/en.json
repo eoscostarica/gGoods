@@ -156,6 +156,9 @@
     "/our-goods>title": "Our Goods | GGOODS",
     "/our-goods>sidebar": "Our Goods",
     "/our-goods>heading": "gGoods",
+    "/inventory>title": "Inventory | GGOODS",
+    "/inventory>sidebar": "Inventory",
+    "/inventory>heading": "",
     "/about>title": "About | GGoods",
     "/about>sidebar": "About",
     "/about>heading": "About",
@@ -203,6 +206,35 @@
   "collectionRoute": {
     "title": "My collection",
     "paragraph1": "Goods you’ve bought previously and active subscriptions"
+  },
+  "inventoryRoute": {
+    "title": "Inventory",
+    "paragraph1": "Create templates and publish Goods created by your organization.",
+    "uploadButton": "Upload Premade Template",
+    "createButton": "Create a new Template",
+    "emptyTemplate": "No templates or goods have been created yet.",
+    "templatesTitle": "Templates",
+    "templatesParagraph": "Select a template to publish a new set of Goods and make them available on the marketplace.",
+    "goodsTitle": "Published Goods",
+    "goodsParagraph": "Select a Good to go or the Bio page or to unpublish it by burning it."
+  },
+  "publishGood": {
+    "title": "Publish Good",
+    "paragraph1": "Publish a new set of Goods and make them available on the marketplace.",
+    "amount": "Amount of Goods",
+    "suggestedPrice": "Suggested Price",
+    "createGood": "Create Good"
+  },
+  "publishGoodInfo": {
+    "title": "Published Good Info",
+    "paragraph1": "Current status and information for your publish good available for donations.",
+    "suggestedPrice": "Suggested Price",
+    "availableNow": "Available now",
+    "deleteMessage": "You can also eliminate this batch of Goods by burning them.",
+    "deleteTitle": "Are you sure?",
+    "deleteBody": "Burning will permanently delete this batch of Goods.",
+    "yes": "Yes",
+    "no": "No"
   },
   "aboutRoute": {
     "title1": "About gGoods",

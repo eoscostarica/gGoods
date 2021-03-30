@@ -24,6 +24,7 @@ const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Paypal = lazy(() => import('./Paypal'))
 const OurGoods = lazy(() => import('./OurGoods'))
+const Inventory = lazy(() => import('./Inventory'))
 
 const routes = [
   {
@@ -113,6 +114,13 @@ const routes = [
   {
     component: RegisterOrganization,
     path: '/register-organization/:code',
+    exact: true
+  },
+  {
+    name: 'Inventory',
+    icon: <CollectionsBookmarkOutlinedIcon />,
+    component: Inventory,
+    path: '/inventory',
     exact: true
   },
   {
