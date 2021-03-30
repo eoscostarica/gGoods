@@ -137,7 +137,6 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
 
   const handleSubmit = () => {
     setErrorMessage(null)
-    console.log('user:', user)
     credentialsRecovery({
       variables: {
         email: user.email,
@@ -155,7 +154,6 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
 
   const handleSubmitChangePassword = () => {
     setErrorMessage(null)
-    console.log('user:', user)
     changePassword({
       variables: {
         ...user,
