@@ -8,6 +8,8 @@ const healthzRoute = require('./healthz.route')
 const nftOnSaleRoute = require('./nft-on-sale.route')
 const paymentTransactionRoute = require('./payment-transaction-complete.route')
 const putOnSaleRoute = require('./put-on-sale.route')
+const credentialsRecovery = require('./credentials-recovery/credentials-recovery.route')
+const changePassword = require('./change-password/change-password.route')
 
 module.exports = [
   healthzRoute,
@@ -19,5 +21,7 @@ module.exports = [
   createTemplateRoute,
   nftOnSaleRoute,
   paymentTransactionRoute,
-  putOnSaleRoute
+  putOnSaleRoute,
+  credentialsRecovery,
+  changePassword
 ]

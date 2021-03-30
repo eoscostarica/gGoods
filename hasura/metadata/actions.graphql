@@ -1,9 +1,23 @@
 type Mutation {
-  check_username(role: String!, username: String!): check_username_output
+  change_password (
+    email: String!
+    emailContent: jsonb!
+    currentPassword: String!
+    newPassword: String!
+  ): change_password_output
 }
 
+
 type Mutation {
-  create_account(
+  check_username (
+    role: String!
+    username: String!
+  ): check_username_output
+}
+
+
+type Mutation {
+  create_account (
     role: String!
     email: String!
     emailContent: jsonb!
@@ -12,8 +26,9 @@ type Mutation {
   ): create_account_output
 }
 
+
 type Mutation {
-  create_account_organization(
+  create_account_organization (
     email: String!
     emailContent: jsonb!
     name: String!
@@ -22,8 +37,9 @@ type Mutation {
   ): create_account_organization_output
 }
 
+
 type Mutation {
-  create_pre_register_organization(
+  create_pre_register_organization (
     email: String!
     emailContent: jsonb!
     password: String!
@@ -35,30 +51,48 @@ type Mutation {
   ): create_pre_register_organization_output
 }
 
-type Mutation {
-  login(account: String!, secret: String!): login_output
-}
 
 type Mutation {
-  verify_email(code: String!): verify_email_output
-}
-
-type Mutation {
-  payment_transaction_complete(
-    orderId: String!
-  ): payment_transaction_complete_output
-}
-
-type Mutation {
-  create_template(
+  create_template (
     category: String!
     name: String!
     metadata: jsonb!
   ): CreateTemplateOutput
 }
 
+
 type Mutation {
-  put_on_sale(
+  credentials_recovery (
+    email: String!
+    emailContent: jsonb!
+  ): credentials_recovery_output
+}
+
+
+type Query {
+  goods_on_sale (
+    seller: String
+  ): [GoodsOnSaleOutput]
+}
+
+
+type Mutation {
+  login (
+    account: String!
+    secret: String!
+  ): login_output
+}
+
+
+type Mutation {
+  payment_transaction_complete (
+    orderId: String!
+  ): payment_transaction_complete_output
+}
+
+
+type Mutation {
+  put_on_sale (
     template: uuid!
     quantity: Int!
     amount: Float!
@@ -67,55 +101,70 @@ type Mutation {
   ): PutOnSaleOutput
 }
 
-type Query {
-  goods_on_sale(seller: String): [GoodsOnSaleOutput]
+
+type Mutation {
+  verify_email (
+    code: String!
+  ): verify_email_output
 }
 
+
+
+
 type check_username_output {
-  is_valid: Boolean!
+  is_valid : Boolean!
 }
 
 type create_account_output {
-  account: String!
-  transaction_id: String!
-  token: String!
+  account : String!
+  transaction_id : String!
+  token : String!
 }
 
 type create_pre_register_organization_output {
-  resultRegister: String!
+  resultRegister : String!
 }
 
 type create_account_organization_output {
-  account: String!
-  transaction_id: String!
-  token: String!
+  account : String!
+  transaction_id : String!
+  token : String!
 }
 
 type login_output {
-  token: String!
+  token : String!
 }
 
 type verify_email_output {
-  is_verified: Boolean!
+  is_verified : Boolean!
 }
 
 type payment_transaction_complete_output {
-  return_status: Boolean!
+  return_status : Boolean!
 }
 
 type CreateTemplateOutput {
-  trxid: String!
+  trxid : String!
 }
 
 type PutOnSaleOutput {
-  assets: [String]
+  assets : [String]
 }
 
 type GoodsOnSaleOutput {
-  id: String!
-  seller: String!
-  amount: String!
-  donable: Boolean!
-  expiration: String!
-  ggoods: jsonb
+  id : String!
+  seller : String!
+  amount : String!
+  donable : Boolean!
+  expiration : String!
+  ggoods : jsonb
 }
+
+type credentials_recovery_output {
+  success : Boolean!
+}
+
+type change_password_output {
+  success : Boolean!
+}
+
