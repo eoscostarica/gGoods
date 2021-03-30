@@ -31,7 +31,7 @@ const CardAvatar = ({
     <Card className={classes.cardAvatarRoot}>
       <LinkRouter
         style={{ textDecoration: 'none' }}
-        to={publish ? '#' : { pathname: `/good/ID` }}
+        to={publish || viewPusblish ? '#' : { pathname: `/good/ID` }}
       >
         {publish && (
           <CardActionArea onClick={handlerPublish}>

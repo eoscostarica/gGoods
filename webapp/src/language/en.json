@@ -205,6 +205,20 @@
     "goodsTitle": "Published Goods",
     "goodsParagraph": "Select a Good to go or the Bio page or to unpublish it by burning it."
   },
+  "publishGood": {
+    "title": "Publish Good",
+    "paragraph1": "Publish a new set of Goods and make them available on the marketplace.",
+    "amount": "Amount of Goods",
+    "suggestedPrice": "Suggested Price",
+    "createGood": "Create Good"
+  },
+  "publishGoodInfo": {
+    "title": "Published Good Info",
+    "paragraph1": "Current status and information for your publish good available for donations.",
+    "suggestedPrice": "Suggested Price",
+    "availableNow": "Available now",
+    "deleteMessage": "You can also eliminate this batch of Goods by burning them."
+  },
   "aboutRoute": {
     "title1": "About gGoods",
     "whyGgoods": "Why gGoods?",

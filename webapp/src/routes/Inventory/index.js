@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
@@ -7,6 +7,9 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
 import { CardAvatar } from '../../components/Card'
+import PublishGood from '../../components/PublishGood'
+import PublishGoodInfo from '../../components/PublishGoodInfo'
+
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
@@ -32,13 +35,25 @@ const goodsList = [
 const Inventory = () => {
   const classes = useStyles()
   const { t } = useTranslation('inventoryRoute')
+  const [openModalPublish, setOpenModalPublish] = useState(false)
+  const [openModalPublishInfo, setOpenModalPublishInfo] = useState(false)
 
   const handlerPublish = () => {
     console.log('hola mundo')
+    setOpenModalPublish(true)
   }
 
   const handlerViewPublish = () => {
     console.log('hola mundo')
+    setOpenModalPublishInfo(true)
+  }
+
+  const handlerCloseModalPublish = () => {
+    setOpenModalPublish(false)
+  }
+
+  const handlerCloseModalPublishInfo = () => {
+    setOpenModalPublishInfo(false)
   }
 
   return (
@@ -126,6 +141,14 @@ const Inventory = () => {
           </Grid>
         </Box>
       )}
+      <PublishGood
+        open={openModalPublish}
+        handlerOpen={handlerCloseModalPublish}
+      />
+      <PublishGoodInfo
+        open={openModalPublishInfo}
+        handlerOpen={handlerCloseModalPublishInfo}
+      />
     </Box>
   )
 }
