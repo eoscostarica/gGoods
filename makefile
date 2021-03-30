@@ -91,6 +91,12 @@ deploy-kubernetes: $(K8S_BUILD_DIR)
 		--cert ./ssl/ggoods.io.crt \
 		-n $(NAMESPACE)  || echo "SSL cert already configured.";
 	@echo "Creating configmaps..."
+	@kubectl create configmap \
+		wallet-seeds \
+		--from-file wallet/seeds/ \
+		--dry-run=client \
+		-o yaml | \
+		kubectl -n $(NAMESPACE) apply -f -
 	@kubectl create configmap -n $(NAMESPACE) \
 	ggoods-wallet-config \
 	--from-file wallet/config/ || echo "Wallet configuration already created.";
