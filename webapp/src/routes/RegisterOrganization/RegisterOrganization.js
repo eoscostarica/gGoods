@@ -91,7 +91,7 @@ const RegisterLifebank = () => {
 
   const handleCreateAccountLifebank = () => {
     if (lifebank) {
-      const { name, email, verificationCode } = lifebank
+      const { name, email } = lifebank
       const secret = lifebank.password
       createAccountLifebank({
         variables: {
@@ -103,7 +103,7 @@ const RegisterLifebank = () => {
           },
           name,
           secret,
-          verificationCode
+          verification_code: lifebank.verification_code
         }
       })
     }
@@ -112,7 +112,7 @@ const RegisterLifebank = () => {
   useEffect(() => {
     updateEmail({
       variables: {
-        verificationCode: code
+        verification_code: code
       }
     })
   }, [code])
@@ -135,7 +135,7 @@ const RegisterLifebank = () => {
       ) {
         updateEmail({
           variables: {
-            verificationCode: code
+            verification_code: code
           }
         })
       } else {
@@ -153,7 +153,7 @@ const RegisterLifebank = () => {
       ) {
         updateEmail({
           variables: {
-            verificationCode: code
+            verification_code: code
           }
         })
       } else {
