@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
@@ -7,12 +7,16 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Chip from '@material-ui/core/Chip'
+import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Backdrop from '@material-ui/core/Backdrop'
 import Button from '@material-ui/core/Button'
 import DeleteIcon from '@material-ui/icons/Delete'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
 
 import styles from './styles'
 import { CardAvatar } from '../Card'
@@ -23,7 +27,54 @@ const PublishGoodInfo = ({ open, handlerOpen }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const classes = useStyles()
+  const [deleteModal, setDeleteModal] = useState(false)
   const { t } = useTranslation('publishGoodInfo')
+
+  const closeDeleteModal = () => {
+    setDeleteModal(false)
+  }
+
+  const openDeleteModal = () => {
+    setDeleteModal(true)
+  }
+
+  const DeleteConfirmation = () => {
+    return (
+      <Dialog
+        open={deleteModal}
+        onClose={closeDeleteModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500
+        }}
+      >
+        <Card className={classes.cardRoot}>
+          <CardContent>
+            <Typography variant="h5" gutterBottom>
+              {t('deleteTitle')}
+            </Typography>
+            <Typography variant="body2">{t('deleteBody')}</Typography>
+          </CardContent>
+          <Divider />
+          <CardActions>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <Button color="primary" className={classes.awnserButton}>
+                  {t('yes')}
+                </Button>
+              </Grid>
+              <Grid item xs={6}>
+                <Button color="primary" className={classes.awnserButton}>
+                  {t('no')}
+                </Button>
+              </Grid>
+            </Grid>
+          </CardActions>
+        </Card>
+      </Dialog>
+    )
+  }
 
   return (
     <Dialog
@@ -101,11 +152,16 @@ const PublishGoodInfo = ({ open, handlerOpen }) => {
           <Typography variant="body1" gutterBottom>
             {t('deleteMessage')}
           </Typography>
-          <Button className={classes.deleteButton} startIcon={<DeleteIcon />}>
+          <Button
+            className={classes.deleteButton}
+            startIcon={<DeleteIcon />}
+            onClick={openDeleteModal}
+          >
             Delete
           </Button>
         </Box>
       </Box>
+      <DeleteConfirmation />
     </Dialog>
   )
 }

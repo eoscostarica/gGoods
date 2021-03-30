@@ -30,5 +30,15 @@ export default theme => ({
     marginBottom: theme.spacing(2),
     fontWeight: 'bold',
     padding: theme.spacing(1)
+  },
+  cardRoot: {
+    minWidth: 275
+  },
+  cardActionArea: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  awnserButton: {
+    width: '100%'
   }
 })

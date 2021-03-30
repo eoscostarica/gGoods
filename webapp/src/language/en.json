@@ -217,7 +217,11 @@
     "paragraph1": "Current status and information for your publish good available for donations.",
     "suggestedPrice": "Suggested Price",
     "availableNow": "Available now",
-    "deleteMessage": "You can also eliminate this batch of Goods by burning them."
+    "deleteMessage": "You can also eliminate this batch of Goods by burning them.",
+    "deleteTitle": "Are you sure?",
+    "deleteBody": "Burning will permanently delete this batch of Goods.",
+    "yes": "Yes",
+    "no": "No"
   },
   "aboutRoute": {
     "title1": "About gGoods",
