@@ -5,6 +5,17 @@
     schema: public
     name: preregister_organization
   select_permissions:
+  - role: gamer
+    permission:
+      columns:
+      - address
+      - description
+      - email
+      - id
+      - name
+      - orgInfo
+      - phone
+      filter: {}
   - role: guest
     permission:
       columns:
@@ -12,12 +23,36 @@
       - description
       - email
       - email_verified
+      - id
       - invitation_code
       - name
+      - orgInfo
       - password
       - phone
       - state
       - verification_code
+      filter: {}
+  - role: organization
+    permission:
+      columns:
+      - address
+      - description
+      - email
+      - id
+      - name
+      - orgInfo
+      - phone
+      filter: {}
+  - role: user
+    permission:
+      columns:
+      - address
+      - description
+      - email
+      - id
+      - name
+      - orgInfo
+      - phone
       filter: {}
   update_permissions:
   - role: guest
