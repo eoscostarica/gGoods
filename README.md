@@ -41,7 +41,6 @@ That is not to say that NGOs are powerless. gGoods is an innovative low-cost sol
 ## What it does
 gGoods is an open-source NFT standard that lets communities create tokens for crowdfunding. The platform connects non-profit organizations and charitable causes to their supporters worldwide. A community can create its own NFT representing a cause and supporters can acquire the NFT to use as an in-app asset. The donation will be sent to the organization directly, enabling each supporter to verify its destination. Supporters can also collect and use their NFTs as in-game items in a games library. 
 
-
 By minting and selling NFTs in our marketplace, gGoods can help communities and NGOs solve the immediate liquidity issues caused by economic slowdown. gGoods enable voluntary donations and payment subscriptions in exchange for an NFT. This is a unique, innovative funding strategy that NGOs can apply to help reduce the negative financial impact to their organization while engaging with their supporters.
 
 ## Who’s behind gGoods?
@@ -49,6 +48,38 @@ gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https:/
 
 ## About the hackathon
 The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world. The judging committee included Google, Galaxy Interactive and Mythical Games. 
+
+### Challenges we ran into
+- Payment gateways:  We wanted the payment gateway to be easy to use for a community not familiar with cryptocurrencies while also allowing interesting feature sets like perpetual revenue streams built in the smart contract standard
+- In-app / in-game use cases:  We wanted to show the functionality of gGoods in different in-app use cases but struggled to balance the level of effort without sacrificing the concept.
+- Focus on gaming:  We started with a specific focus on gaming but realized that gGoods were a new way for anyone to interact with a cause they care about and a new way for communities to crowdfund. 
+- Displaying NFTs:  We struggled to find the right balance between displaying the technical aspects of an NFT and the wide marketing opportunities.  We chose a “trophy case” type display to make NFTs more approachable.  
+- Accomplishments that we are proud of
+- Researching all the different NFT standards in EOSIO and other blockchains to determine the right features for gGoods. 
+- Integrating payment gateways like Google Pay and Paypal for the purchase of NFTs
+- Integrating Augmented Reality and progressive web applications into the gGoods in-app usage “selfie cam”.
+- Making the purchase of an NFT as easy as donating to an NGO. 
+- Using blockchain technology to encourage anyone to donate their time, creativity and uniqueness to a cause they support.  Not just money.  
+
+### What we learned
+- NFTs can be a new platform for crowdfunding
+- NGOs and communities are looking for new ways to engage with their supporters and raise funds
+- People are looking for new ways to support causes they care about through an experience that doesn't involve physical travel or just a monetary donation
+- NFTs can be more impactful if they are not just collectible art.  By using them as in-app assets, they become a badge of honor, a representation of the user and a fun digital asset. 
+
+### What’s next for gGoods?
+- New avatar categories:  Humans, Robots, Zombies, Objects, etc
+- Improve Security
+- Dark Mode and other UI enhancements
+- Language Translations
+- 3D preview of the assets
+- Subscription payments through Google Pay and other payment gateways
+- Displaying the ricardian contract component of the NFT contract
+- Royalty payments to the community in perpetuity for secondary market sales
+- Allowing secondary market sales
+- Allowing “My Own NFT Design”
+- Ability to create an NFT on behalf of an organization
+- NFT filters and categories
 
 # About the technology
 
