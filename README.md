@@ -4,7 +4,7 @@
 	</a>
 </p>
 
-# NFTs That enable communities to raise funds
+# NFTs to enable communities to raise funds
 
 <p align="center">
 	<a href="https://git.io/col">
@@ -28,7 +28,7 @@
 
 ## Why gGoods?
 
-Life is beginning to return to normal for many industries. Unfortunately this is not the case for many NGOs, who are being hit particularly hard by the economic effects of the pandemic. As sales slowed, jobs were lost and financial challenges persist, it is proving to be difficult for communities to raise and maintain donations. 2019 broke records of charitable donations ever recorded. However 2020 was disastrous for many NGOs and 2021 will undoubtedly continue to be tough. 
+Life is beginning to return to normal for many industries. Unfortunately this is not the case for many NGOs, who are being hit particularly hard by the economic effects of the pandemic. As sales slowed, jobs were lost and financial challenges persist, it is proving to be difficult for communities to raise and maintain donations. 2019 broke records of charitable donations ever recorded. However 2020 was disastrous for many charitable causes and 2021 will undoubtedly continue to be tough. 
 
 One report reveals that 1 in 5 donors have stopped giving altogether and are not prepared to resume any funding activities until the economy fully recovers. This scenario will likely be familiar to organizations in operation during the 2008 financial crisis, where giving sharply declined during the recession.  
 
@@ -36,13 +36,13 @@ The economic downturn has affected incoming revenue for many not-for-profits and
 
 That is not to say that NGOs are powerless. gGoods is an innovative low-cost solution that charities can leverage to help boost their funding, even during this difficult period.
 
-By minting and selling NFTs in our marketplace gGoods can help communities and NGOs solve the immediate liquidity issues caused by economic slowdowmn. gGoods allows for voluntary donations and payment subscriptions while purchasing an NFT which is a totrally new funding strategy that NGOs can apply to help reduce the negative financial impact to their organization.
+By minting and selling NFTs in our marketplace, gGoods can help communities and NGOs solve the immediate liquidity issues caused by economic slowdowmn. gGoods enable voluntary donations and payment subscriptions in exchange for an NFT. This is unique, innovative funding strategy that NGOs can apply to help reduce the negative financial impact to their organization while engaging with their supporters.
 
 ## Who’s behind gGoods?
 gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https://eoscostarica.io). It was our submission to the 2021 [Beyond Blockchain EOSIO Hackathon](https://block.one/news/launches-beyond-blockchain-hackathon/) organized by block.one.
 
 ## About the hackathon
-The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world.
+The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world. The judging committee included Google, Galaxy Interactive and Mythical Games. 
 
 # About the technology
 
