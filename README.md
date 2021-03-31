@@ -104,7 +104,7 @@ This project features the following tech stack:
 
 - **[Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine)**
 - **[EOSIO](https://eos.io)** ([Jungle testnet](https://jungle3.bloks.io/account/ggoodsggoods))
-- **[dGgoods](https://github.com/MythicalGames/dgoods)** (We forked the dGgoods Smart Contracts)
+- **[dGoods](https://github.com/MythicalGames/dgoods)** (We forked the dGoods Smart Contracts)
 - **[IPFS](https://ipfs.io/)** 
 - **[React JS](https://reactjs.org/)**
 - **[Material UI](https://material-ui.com/)**
