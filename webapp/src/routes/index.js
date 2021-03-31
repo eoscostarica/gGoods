@@ -25,6 +25,7 @@ const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Paypal = lazy(() => import('./Paypal'))
 const OurGoods = lazy(() => import('./OurGoods'))
 const Inventory = lazy(() => import('./Inventory'))
+const SelfieCam = lazy(() => import('./SelfieCam'))
 
 const routes = [
   {
@@ -109,6 +110,11 @@ const routes = [
   {
     path: '/good/:id',
     component: GoodPage
+  },
+  {
+    component: SelfieCam,
+    path: '/games/selfie-cam',
+    exact: true
   },
   {
     component: EmailVerification,

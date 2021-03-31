@@ -193,6 +193,14 @@
     "title": "Games",
     "paragraph1": "Created so you can have fun with your goods."
   },
+  "selfieCam": {
+    "title": "Selfie Cam",
+    "subTitle": "Your Goods",
+    "paragraph1": "Select one of your Goods and take a selfie together, then share the pic to your social media and spread the word.",
+    "share": "Share to Social",
+    "save": "Save to Device",
+    "cancel": "Cancel"
+  },
   "goodsRoute": {
     "title": "Goods",
     "paragraph1": "Vitual goods designed to help good causes, buy or suscribe to help or just play."

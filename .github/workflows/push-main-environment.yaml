@@ -152,5 +152,6 @@ jobs:
           REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY }}
 
       - name: Deploy kubernetes files
-        run: |-
-          kubectl apply -f build_k8s -n ggoods
+        run: |
+          make \
+            deploy-kubernetes
