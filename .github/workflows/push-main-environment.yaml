@@ -84,7 +84,6 @@ jobs:
 
           # hasura
           HASURA_GRAPHQL_DATABASE_URL: ${{ secrets.HASURA_GRAPHQL_DATABASE_URL }}
-          HASURA_GRAPHQL_JWT_SECRET: ${{ secrets.HASURA_GRAPHQL_JWT_SECRET }}
 
       - name: Build kubernetes files
         id: build_kubernetes_files
