@@ -25,6 +25,7 @@ const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Paypal = lazy(() => import('./Paypal'))
 const OurGoods = lazy(() => import('./OurGoods'))
 const Inventory = lazy(() => import('./Inventory'))
+const SelfieCam = lazy(() => import('./SelfieCam'))
 
 const routes = [
   {
@@ -97,6 +98,11 @@ const routes = [
     icon: <SportsEsportsIcon />,
     component: Games,
     path: '/games',
+    exact: true
+  },
+  {
+    component: SelfieCam,
+    path: '/games/selfie-cam',
     exact: true
   },
   {

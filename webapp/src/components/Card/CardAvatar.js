@@ -15,23 +15,19 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const CardAvatar = ({
-  id,
-  name,
-  donation,
-  units,
+const BodyCardAvatar = ({
+  useLink,
   publish,
-  handlerPublish,
   viewPusblish,
+  handlerPublish,
+  goodId,
   handlerViewPublish
 }) => {
-  const classes = useStyles()
-
-  return (
-    <Card className={classes.cardAvatarRoot}>
+  if (useLink)
+    return (
       <LinkRouter
         style={{ textDecoration: 'none' }}
-        to={publish || viewPusblish ? '#' : { pathname: `/good/ID` }}
+        to={publish || viewPusblish ? '#' : { pathname: `/good/${goodId}` }}
       >
         {publish && (
           <CardActionArea onClick={handlerPublish}>
@@ -49,6 +45,52 @@ const CardAvatar = ({
           </CardActionArea>
         )}
       </LinkRouter>
+    )
+
+  return (
+    <CardActionArea>
+      <CardMedia component="img" image={Img} />
+    </CardActionArea>
+  )
+}
+
+BodyCardAvatar.propTypes = {
+  viewPusblish: PropTypes.bool,
+  publish: PropTypes.bool,
+  handlerViewPublish: PropTypes.func,
+  handlerPublish: PropTypes.func,
+  useLink: PropTypes.bool,
+  goodId: PropTypes.string
+}
+
+const CardAvatar = ({
+  id,
+  name,
+  donation,
+  units,
+  publish,
+  handlerPublish,
+  viewPusblish,
+  handlerViewPublish,
+  useLink,
+  onClick
+}) => {
+  const classes = useStyles()
+
+  const handleOnClick = () => {
+    onClick && onClick()
+  }
+
+  return (
+    <Card className={classes.cardAvatarRoot} onClick={handleOnClick}>
+      <BodyCardAvatar
+        goodId={id}
+        useLink={useLink}
+        publish={publish}
+        viewPusblish={viewPusblish}
+        handlerPublish={handlerPublish}
+        handlerViewPublish={handlerViewPublish}
+      />
       <CardActions>
         <Box>
           <Typography variant="subtitle2">{name}</Typography>
@@ -74,7 +116,14 @@ CardAvatar.propTypes = {
   publish: PropTypes.bool,
   handlerPublish: PropTypes.func,
   viewPusblish: PropTypes.bool,
-  handlerViewPublish: PropTypes.func
+  handlerViewPublish: PropTypes.func,
+  onClick: PropTypes.func,
+  useLink: PropTypes.bool
+}
+
+CardAvatar.defaultProp = {
+  name: 'no name',
+  useLink: true
 }
 
 export default CardAvatar

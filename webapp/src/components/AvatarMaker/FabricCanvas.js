@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { fabric } from 'fabric'
 import { makeStyles } from '@material-ui/styles'
-import Button from '@material-ui/core/Button'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useTheme } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
 import Box from '@material-ui/core/Box'
 
 import styles from './styles'
@@ -30,7 +28,7 @@ const FabricCanvas = ({ activeProperty, onGetDataUrl }) => {
       canvas.remove(toRemove)
 
       if (next.the_type === 'bg') {
-        canvas.setBackgroundImage(next)
+        canvas.backgroundColor = next.backgroundColor
         canvas.renderAll()
         onGetDataUrl(canvas)
 
@@ -48,7 +46,8 @@ const FabricCanvas = ({ activeProperty, onGetDataUrl }) => {
     new fabric.StaticCanvas('main-canvas', {
       preserveObjectStacking: true,
       height: 375,
-      width: isMobile ? 310 : 400
+      width: isMobile ? 310 : 400,
+      backgroundColor: 'red'
     })
 
   useEffect(() => {
@@ -63,15 +62,6 @@ const FabricCanvas = ({ activeProperty, onGetDataUrl }) => {
     <Box className={classes.mainCanvasContainer}>
       <Box className={classes.previewBow}>
         <canvas id="main-canvas" />
-        <Box className={classes.bottomBox}>
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            placeholder="Name your animal"
-            className={classes.textField}
-          />
-          <Button className={classes.btnPublish}>PUBLISH</Button>
-        </Box>
       </Box>
     </Box>
   )
