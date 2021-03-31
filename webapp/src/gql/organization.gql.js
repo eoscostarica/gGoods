@@ -23,6 +23,17 @@ export const GET_ORGANIZATION_BY_ID = gql`
       name
       phone
       orgInfo
+      getAccount {
+        account
+      }
+    }
+  }
+`
+
+export const GET_ACCOUNT_FROM_ID = gql`
+  query($email: String!) {
+    user(where: { email: { _eq: $email } }) {
+      account
     }
   }
 `

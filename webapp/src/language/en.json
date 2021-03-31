@@ -197,7 +197,8 @@
     "website": "Website",
     "location": "Location",
     "contact": "Contact",
-    "ourGoods": "Our Goods"
+    "ourGoods": "Our Goods",
+    "empty": "Organization without goods"
   },
   "gamesRoute": {
     "title": "Games",
