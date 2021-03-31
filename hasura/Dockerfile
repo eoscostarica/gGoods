@@ -6,6 +6,7 @@ ARG hasura_graphql_metadata_dir
 ENV HASURA_GRAPHQL_MIGRATIONS_DIR $hasura_graphql_migrations_dir
 ENV HASURA_GRAPHQL_METADATA_DIR $hasura_graphql_metadata_dir
 ENV PORT 8080
+ENV NAMESPACE ggoods
 
 EXPOSE $PORT
 
@@ -14,4 +15,5 @@ COPY metadata $HASURA_GRAPHQL_METADATA_DIR
 
 CMD graphql-engine \
   serve \
-  --database-url $HASURA_GRAPHQL_DATABASE_URL
+  --database-url $HASURA_GRAPHQL_DATABASE_URL \
+  --jwt-secret $HASURA_GRAPHQL_JWT_SECRET
