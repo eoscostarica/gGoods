@@ -1,4 +1,4 @@
-const { hasuraUtils } = require('../utils')
+const { hasuraUtil } = require('../utils')
 
 const INSERT_ORGANIZATION = `
   mutation ($preregister_organization: preregister_organization_insert_input!) {
@@ -43,16 +43,16 @@ const VALIDATION_VERIFICATION_CODE = `
   }
 `
 
-const insertOrganization = (preregister_organization) => {
-  return hasuraUtils.request(INSERT_ORGANIZATION, { preregister_organization })
+const insertOrganization = preregister_organization => {
+  return hasuraUtil.request(INSERT_ORGANIZATION, { preregister_organization })
 }
 
 const verifyEmail = where => {
-  return hasuraUtils.request(SET_EMAIL_VERIFIED, { where })
+  return hasuraUtil.request(SET_EMAIL_VERIFIED, { where })
 }
 
-const validationVerificationCode = (verification_code) => {
-  return hasuraUtils.request(VALIDATION_VERIFICATION_CODE, {
+const validationVerificationCode = verification_code => {
+  return hasuraUtil.request(VALIDATION_VERIFICATION_CODE, {
     verification_code
   })
 }

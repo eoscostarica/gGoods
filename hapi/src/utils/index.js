@@ -1,14 +1,10 @@
 module.exports = {
-  axiosUtils: require('./axios.util'),
-  eosUtils: require('./eos.util'),
-  hasuraUtils: require('./hasura.util'),
-  walletUtils: require('./wallet.util'),
-  jwtUtils: require('./jwt'),
-  mailUtils: require('./mail'),
   axiosUtil: require('./axios.util'),
   dgoodsUtil: require('./dgoods.util'),
-  eosUtil: require('./eos.util'),
+  eosUtils: require('./eos.util'),
   hasuraUtil: require('./hasura.util'),
   ipfsUtil: require('./ipfs.util'),
+  jwtUtil: require('./jwt.util'),
+  mailUtil: require('./mail'),
   walletUtil: require('./wallet.util')
 }
