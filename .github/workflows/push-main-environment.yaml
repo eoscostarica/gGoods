@@ -155,3 +155,6 @@ jobs:
         run: |
           make \
             deploy-kubernetes
+        env:
+          NAMESPACE: ggoods
+          K8S_BUILD_DIR: build_k8s
