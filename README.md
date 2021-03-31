@@ -4,7 +4,7 @@
 	</a>
 </p>
 
-# NFTs for NGOs: enabling communities to raise funds
+# NFTs that enable communities to raise funds
 
 <p align="center">
 	<a href="https://git.io/col">
