@@ -28,6 +28,8 @@
 
 ## Why gGoods?
 
+We want to use blockchain technology to encourage anyone to donate their time, creativity and uniqueness to support a cause.  Not just money.  
+
 Life is beginning to return to normal for many industries. Unfortunately this is not the case for many NGOs, who are being hit particularly hard by the economic effects of the pandemic. As sales slowed, jobs were lost and financial challenges persist, it is proving to be difficult for communities to raise and maintain donations. 2019 broke records of charitable donations ever recorded. However 2020 was disastrous for many charitable causes and 2021 will undoubtedly continue to be tough. 
 
 One report reveals that 1 in 5 donors have stopped giving altogether and are not prepared to resume any funding activities until the economy fully recovers. This scenario will likely be familiar to organizations in operation during the 2008 financial crisis, where giving sharply declined during the recession.  
