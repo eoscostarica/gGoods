@@ -18,6 +18,14 @@ export default theme => ({
     color: `${theme.palette.text.primary}`,
     flexGrow: 1
   },
+  logoBox: {
+    flexGrow: 1,
+    display: 'flex',
+    alignItems: 'center'
+  },
+  logoMobile: {
+    width: '150px'
+  },
   desktopSection: {
     display: 'none',
     height: 54,

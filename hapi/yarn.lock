@@ -870,6 +870,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bcryptjs@npm:^2.4.3":
+  version: 2.4.3
+  resolution: "bcryptjs@npm:2.4.3"
+  checksum: 5a320711757b5932da200856a5193cad0123df7c43b46417172eabf2aa436a8f08f64851722052fea6335453f96290005b6694a7dd26d8951810362de343175c
+  languageName: node
+  linkType: hard
+
 "bigi@npm:1.4.2, bigi@npm:^1.1.0":
   version: 1.4.2
   resolution: "bigi@npm:1.4.2"
@@ -2604,6 +2611,7 @@ fsevents@~2.3.1:
     "@hapi/boom": ^9.0.0
     "@hapi/hapi": ^19.1.1
     axios: ^0.19.2
+    bcryptjs: ^2.4.3
     env-cmd: ^10.1.0
     eosjs: ^20.0.3
     eosjs-api: ^7.0.4
