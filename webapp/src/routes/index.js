@@ -9,6 +9,10 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
+import { Map as MapIcon } from 'react-feather'
+
+import gGoodsLand from './gGoodsLand'
+
 const Home = lazy(() => import('./Home'))
 const Organizations = lazy(() => import('./Organizations'))
 const Organization = lazy(() => import('./Organization'))
@@ -78,7 +82,13 @@ const routes = [
     name: 'ourGoods',
     icon: <DashboardIcon />,
     component: OurGoods,
-    path: '/our-goods',
+    path: '/our-goods'
+  },
+  {
+    name: 'ggoodsLand',
+    path: '/ggoods-land',
+    icon: <MapIcon />,
+    component: gGoodsLand,
     exact: true
   },
   {

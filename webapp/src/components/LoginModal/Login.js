@@ -184,7 +184,7 @@ const LoginModal = () => {
     setErrorMessage(null)
     const bcrypt = require('bcryptjs')
     const { data } = await getHash({ account: user.account })
-
+    console.log(data)
     if (data.user.length >= 1) {
       const hash = data.user[0].secret
 

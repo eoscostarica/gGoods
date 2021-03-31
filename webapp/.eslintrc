@@ -11,6 +11,8 @@
     "browser": true
   },
   "rules": {
+    "promise/always-return": "off",
+    "react/display-name": "off",
     "complexity": [
       "error",
       {
