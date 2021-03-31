@@ -5,6 +5,7 @@ const verifyEmailRouteRoute = require('./verify-email/verify-email.route')
 const loginRoute = require('./login/login.route')
 const createTemplateRoute = require('./create-template.route')
 const healthzRoute = require('./healthz.route')
+const myGGoodsRoute = require('./my-ggoods.route')
 const nftOnSaleRoute = require('./nft-on-sale.route')
 const confirmSaleWithPaypalRoute = require('./confirm-sale-with-paypal.route')
 const putOnSaleRoute = require('./put-on-sale.route')
@@ -19,6 +20,7 @@ module.exports = [
   loginRoute,
   createTemplateRoute,
   healthzRoute,
+  myGGoodsRoute,
   nftOnSaleRoute,
   putOnSaleRoute,
   confirmSaleWithPaypalRoute,
