@@ -17,6 +17,13 @@ type Mutation {
 
 
 type Mutation {
+  confirm_sale_with_paypal (
+    orderId: String!
+  ): confirm_sale_with_paypal_output
+}
+
+
+type Mutation {
   create_account (
     role: String!
     email: String!
@@ -84,10 +91,15 @@ type Mutation {
 }
 
 
+
 type Mutation {
   payment_transaction_complete (
     orderId: String!
   ): payment_transaction_complete_output
+}
+
+type Query {
+  my_ggoods : [my_ggoods_output]
 }
 
 
@@ -107,8 +119,6 @@ type Mutation {
     code: String!
   ): verify_email_output
 }
-
-
 
 
 type check_username_output {
@@ -160,11 +170,24 @@ type GoodsOnSaleOutput {
   ggoods : jsonb
 }
 
+
 type credentials_recovery_output {
   success : Boolean!
 }
 
 type change_password_output {
+  success : Boolean!
+}
+
+type my_ggoods_output {
+  id : Int!
+  category : String!
+  owner : String!
+  serial : Int
+  metadata : jsonb
+}
+
+type confirm_sale_with_paypal_output {
   success : Boolean!
 }
 

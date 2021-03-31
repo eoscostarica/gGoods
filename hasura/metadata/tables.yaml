@@ -78,7 +78,7 @@
     schema: public
     name: template
   select_permissions:
-  - role: guest
+  - role: organization
     permission:
       columns:
       - id
@@ -88,7 +88,9 @@
       - metadata
       - created_at
       - updated_at
-      filter: {}
+      filter:
+        account:
+          _eq: X-Hasura-User-Account
 - table:
     schema: public
     name: user
