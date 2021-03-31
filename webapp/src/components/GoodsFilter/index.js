@@ -33,13 +33,13 @@ const AUTHOR_LIST = [
     name: 'Animal Sanctuary'
   },
   {
-    name: 'Per Rescue'
+    name: 'Pet Rescue'
   },
   {
-    name: 'Per Rescue'
+    name: 'Pet Rescue'
   },
   {
-    name: 'Per Rescue'
+    name: 'Pet Rescue'
   }
 ]
 

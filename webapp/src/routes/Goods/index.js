@@ -58,27 +58,18 @@ const Goods = () => {
       <Typography className={classes.textPageDescription}>
         {t('paragraph1')}
       </Typography>
-      <Grid container xs={12} className={classes.grid}>
-        <Grid item xs={6}>
-          <Typography
-            style={{ fontWeight: 'bold' }}
-            className={classes.available}
-          >
-            {GOODS_LIST.length}
-            {t('available')}
-          </Typography>
-        </Grid>
-        <Grid container xs={6}>
-          <Grid item xs={6}>
-            <Typography />
-          </Grid>
-          <Grid item xs={6}>
-            <Button startIcon={<FilterListIcon />} onClick={filter}>
-              {t('filter')}
-            </Button>
-          </Grid>
-        </Grid>
-      </Grid>
+      <Box className={classes.box}>
+        <Typography
+          style={{ fontWeight: 'bold' }}
+          className={classes.available}
+        >
+          {GOODS_LIST.length}
+          {t('available')}
+        </Typography>
+        <Button startIcon={<FilterListIcon />} onClick={filter}>
+          {t('filter')}
+        </Button>
+      </Box>
       <Box>
         <Grid container spacing={2}>
           {GOODS_LIST.map(game => (

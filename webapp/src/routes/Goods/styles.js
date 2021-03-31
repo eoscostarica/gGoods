@@ -11,18 +11,12 @@ export default theme => ({
       padding: theme.spacing(2)
     }
   },
-  grid: {
-    marginBottom: 10,
-    paddingLeft: 100,
-    paddingRight: 25,
-    [theme.breakpoints.down('sm')]: {
-      paddingLeft: 10
-    }
-  },
   available: {
-    paddingTop: 10,
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: 0
-    }
+    flexGrow: 1,
+    paddingTop: 5
+  },
+  box: {
+    display: 'flex',
+    marginBottom: theme.spacing(1)
   }
 })
