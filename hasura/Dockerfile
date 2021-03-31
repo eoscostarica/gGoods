@@ -6,7 +6,6 @@ ARG hasura_graphql_metadata_dir
 ENV HASURA_GRAPHQL_MIGRATIONS_DIR $hasura_graphql_migrations_dir
 ENV HASURA_GRAPHQL_METADATA_DIR $hasura_graphql_metadata_dir
 ENV PORT 8080
-ENV NAMESPACE ggoods
 
 EXPOSE $PORT
 
