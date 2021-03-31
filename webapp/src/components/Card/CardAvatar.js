@@ -72,7 +72,8 @@ const CardAvatar = ({
   handlerPublish,
   viewPusblish,
   handlerViewPublish,
-  useLink
+  useLink,
+  onClick
 }) => {
   const classes = useStyles()
 
@@ -89,7 +90,6 @@ const CardAvatar = ({
         viewPusblish={viewPusblish}
         handlerPublish={handlerPublish}
         handlerViewPublish={handlerViewPublish}
-        useLink={useLink}
       />
       <CardActions>
         <Box>

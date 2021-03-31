@@ -65,8 +65,6 @@ const AvatarMaker = ({ onGetDataUrl }) => {
       zIndex
     })
 
-    console.log({ imgCanvas })
-
     setActiveProperty(imgCanvas)
   }
 
