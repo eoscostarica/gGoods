@@ -61,6 +61,10 @@ const SelfieCam = () => {
   })
   /* eslint-enable no-unused-vars */
 
+  const handleCancel = () => {
+    setSelfie(null)
+  }
+
   const handleOpen = () => {
     setOpen(true)
   }
@@ -166,7 +170,11 @@ const SelfieCam = () => {
                     </Box>
                   </Grid>
                   <Grid item xs={12} sm={4} className={classes.cancelBtn}>
-                    <Box p={2} className={classes.boxButton}>
+                    <Box
+                      p={2}
+                      className={classes.boxButton}
+                      onClick={handleCancel}
+                    >
                       <DeleteIcon />
                       <Typography>{t('cancel')}</Typography>
                     </Box>
