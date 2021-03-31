@@ -44,15 +44,13 @@ const getTemplate = async id => {
   return template
 }
 
-const createTemplate = async payload => {
+const createTemplate = async (user, payload) => {
   try {
-    // TODO: get account from the current user
-    const account = 'animalrescue'
-    const password = await vaultService.getSecret(account)
-    const transaction = await dgoodsUtil.create(account, password, payload)
+    const password = await vaultService.getSecret(user.account)
+    const transaction = await dgoodsUtil.create(user.account, password, payload)
     await saveTemplate({
       ...payload,
-      account
+      account: user.account
     })
 
     return {
@@ -65,11 +63,9 @@ const createTemplate = async payload => {
   }
 }
 
-const putOnSale = async payload => {
+const putOnSale = async (user, payload) => {
   try {
-    // TODO: get account from the current user
-    const account = 'animalrescue'
-    const password = await vaultService.getSecret(account)
+    const password = await vaultService.getSecret(user.account)
     const template = await getTemplate(payload.template)
     const assets = []
 
@@ -80,7 +76,7 @@ const putOnSale = async payload => {
           createdAt: new Date()
         })
       )
-      const transaction = await dgoodsUtil.issue(account, password, {
+      const transaction = await dgoodsUtil.issue(user.account, password, {
         category: template.category,
         name: template.name,
         memo: payload.memo,
@@ -95,7 +91,7 @@ const putOnSale = async payload => {
       )
       const id = inlineTraces.act.data.dgood_id
 
-      await dgoodsUtil.listsalenft(account, password, {
+      await dgoodsUtil.listsalenft(user.account, password, {
         assets: [id],
         amount: payload.amount,
         donable: payload.donable
@@ -164,6 +160,45 @@ const nftOnSale = async (payload = {}) => {
   }
 }
 
+const myGGoods = async user => {
+  try {
+    const items = await dgoodsUtil.dgoodTableRowsByOwner({
+      owner: user.account
+    })
+    const newItems = await Promise.all(
+      items.map(async ggoodInfo => {
+        let metadata = {}
+
+        try {
+          const statsInfo = await dgoodsUtil.dgoodstatsTableRow({
+            category: ggoodInfo.category,
+            name: ggoodInfo.token_name
+          })
+          const { data } = await axiosUtil.get(
+            `${statsInfo.base_uri}/${ggoodInfo.relative_uri}`
+          )
+
+          metadata = data
+        } catch (error) {}
+
+        return {
+          metadata,
+          id: ggoodInfo.id,
+          category: ggoodInfo.category,
+          owner: ggoodInfo.owner,
+          serial: ggoodInfo.serial_number
+        }
+      })
+    )
+
+    return newItems
+  } catch (error) {
+    throw new Boom.Boom(error.message, {
+      statusCode: BAD_REQUEST
+    })
+  }
+}
+
 const confirmSaleWithPaypal = async (user, payload) => {
   try {
     const order = await paypalUtil.getOrder(payload.orderId)
@@ -196,5 +231,6 @@ module.exports = {
   createTemplate,
   putOnSale,
   nftOnSale,
+  myGGoods,
   confirmSaleWithPaypal
 }

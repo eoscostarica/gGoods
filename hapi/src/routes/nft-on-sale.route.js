@@ -14,7 +14,6 @@ module.exports = {
         }).optional()
       }).options({ stripUnknown: true })
     },
-    // TODO: ENABLED AUTH HERE
     auth: false
   }
 }
