@@ -95,18 +95,18 @@
       "continue": "Continue"
     },
     "emailMessage": {
-      "subjectApproveAccount": "Ggoods Approve Account",
+      "subjectApproveAccount": "gGoods Approve Account",
       "titleApproveAccount": "Approve Account",
-      "messageApproveAccount": "Your application for registration in Ggoods has been approved, thank you for being part of this project",
-      "subjectChangePassword": "Ggoods Change Password",
+      "messageApproveAccount": "Your application for registration in gGoods has been approved, thank you for being part of this project",
+      "subjectChangePassword": "gGoods Change Password",
       "titleChangePassword": "Change Password",
       "messageChangePassword": "Your password has been successfully changed, thank you for donating",
-      "subjectCredentialsRecovery": "Ggoods Credentials Recovery",
+      "subjectCredentialsRecovery": "gGoods Credentials Recovery",
       "titleCredentialsRecovery": "Credentials Recovery",
-      "messageCredentialsRecovery": "A new password has been generated for your account, with this you can now access Ggoods and continue donating.",
-      "subjectVerificationCode": "Ggoods Email Verification",
+      "messageCredentialsRecovery": "A new password has been generated for your account, with this you can now access gGoods and continue donating.",
+      "subjectVerificationCode": "gGoods Email Verification",
       "titleVerificationCode": "Email Verification",
-      "messageVerificationCode": "Thank you for wanting to be part of the Ggoods community, click on the button to verify and validate your account",
+      "messageVerificationCode": "Thank you for wanting to be part of the gGoods community, click on the button to verify and validate your account",
       "verifyButton": "Verify"
     },
     "emailVerification": {
@@ -132,37 +132,37 @@
     }
   },
   "routes": {
-    "/>title": "GGOODS",
+    "/>title": "gGoods",
     "/>sidebar": "Home",
     "/>heading": "Welcome",
-    "/goods>title": "Goods | GGOODS",
-    "/goods>sidebar": "Goods",
+    "/goods>title": "gGoods | gGoods",
+    "/goods>sidebar": "gGoods",
     "/goods>heading": "",
-    "/organizations>title": "Organizations | GGOODS",
-    "/organizations>sidebar": "Organizations",
+    "/organizations>title": "Comunities | gGoods",
+    "/organizations>sidebar": "Comunities",
     "/organizations>heading": "",
-    "/your-collection>title": "My collection | GGOODS",
-    "/your-collection>sidebar": "My Collection",
+    "/your-collection>title": "Your collection | gGoods",
+    "/your-collection>sidebar": "Your Collection",
     "/your-collection>heading": "",
-    "/games>title": "Games | GGOODS",
+    "/games>title": "Games | gGoods",
     "/games>sidebar": "Games",
     "/games>heading": "",
-    "/create-template>title": "Create NFT Template | GGOODS",
+    "/create-template>title": "Create NFT Template | gGoods",
     "/create-template>sidebar": "Create NFT Template",
     "/create-template>heading": "New NFT Template",
-    "/put-on-sale>title": "Sell your NFTs | GGOODS",
+    "/put-on-sale>title": "Sell your NFTs | gGoods",
     "/put-on-sale>sidebar": "Sell your NFTs",
     "/put-on-sale>heading": "Sell your NFTs",
-    "/our-goods>title": "Our Goods | GGOODS",
+    "/our-goods>title": "Our Goods | gGoods",
     "/our-goods>sidebar": "Our Goods",
     "/our-goods>heading": "gGoods",
-    "/inventory>title": "Inventory | GGOODS",
+    "/inventory>title": "Inventory | gGoods",
     "/inventory>sidebar": "Inventory",
     "/inventory>heading": "",
-    "/about>title": "About | GGoods",
+    "/about>title": "About | gGoods",
     "/about>sidebar": "About",
     "/about>heading": "About",
-    "/help>title": "Help | GGoods",
+    "/help>title": "Help | gGoods",
     "/help>sidebar": "Help",
     "/help>heading": "Help",
     "docs": "Docs",
@@ -214,13 +214,21 @@
   },
   "goodsRoute": {
     "title": "Goods",
-    "paragraph1": "Vitual goods designed to help good causes, buy or suscribe to help or just play."
+    "paragraph1": "Virtual goods designed to help good causes, buy or subscribe to help or just play.",
+    "filter": "FILTERS",
+    "available": " GOODS AVAILABLE"
   },
   "donateRoute": {
     "title": "Donate Now!",
     "paragraph1": "Select your prefered payment method and buy this good. You can increase your donation to further help this cause.",
     "selectedGood": "Selected Good",
     "suggestedPrice": "Suggested Price"
+  },
+  "filterGoodsRoute":{
+    "title": "Filter items",
+    "bottonTitle": "Filter",
+    "subtitle1": "Author",
+    "subtitle2": "Donation Amount"
   },
   "collectionRoute": {
     "title": "My collection",
@@ -257,8 +265,8 @@
   },
   "aboutRoute": {
     "title1": "About gGoods",
-    "whyGgoods": "Why gGoods?",
-    "whyGgoodsParagraph": "gGoods is an open-source NFT standard that lets organizations create their own NFT to seek funding. Creating an NFT is easy and straightforward, such as creating an avatar or sticker. The NFT represents a cause for the donor to collect",
+    "whygGoods": "Why gGoods?",
+    "whygGoodsParagraph": "gGoods is an open-source NFT standard that lets organizations create their own NFT to seek funding. Creating an NFT is easy and straightforward, such as creating an avatar or sticker. The NFT represents a cause for the donor to collect",
     "behindgGoogs": "Who’s behind gGoods?",
     "behindgGoogsParagraph": "gGoods is developed by a group of Costa Rican techies and led by Edenia Labs and EOS Costa Rica. It was our submission to the 2021 Beyond Blockchain EOSIO Hackathon organized by block.one",
     "aboutHack": "About the hackathon",
@@ -299,6 +307,6 @@
   "ourGoodsRoute": {
     "title": "Goods",
     "description": "Vitual goods designed to help good causes, buy or suscribe to help or just play.",
-    "empty": "There is not ggoods that match your filters"
+    "empty": "There is not gGoods that match your filters"
   }
 }

@@ -6,16 +6,14 @@ import Slider from '@ant-design/react-slick'
 import Grid from '@material-ui/core/Grid'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
-import Signup from '../../components/Signup/Signup'
-import CredentialsRecovery from '../../components/CredentialsRecovery'
 
 import { CardImage, CardInfo, CardAvatar } from '../../components/Card'
 import Gift from '../../images/assets/gift.png'
 import Organization from '../../images/assets/organization.png'
 import Help from '../../images/assets/help.png'
-import Bg from '../../images/assets/cardBg.png'
+import Bg from '../../images/assets/cardBg.jpg'
 import Bg1 from '../../images/assets/cardBg1.png'
-import Bg2 from '../../images/assets/cardBg2.png'
+import Bg2 from '../../images/assets/cardBg2.jpg'
 import bgCanvas from '../../images/templates/bgs/1.png'
 
 import styles from './styles'
@@ -59,8 +57,6 @@ const Home = () => {
 
   return (
     <Box>
-      <Signup isHome />
-      <CredentialsRecovery />
       <Slider {...settings}>
         <div>
           <CardImage
