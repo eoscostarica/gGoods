@@ -1,4 +1,4 @@
-export default () => {
+export default theme => {
   const defaultHeight = 80
   const defaultWidth = 25
   const level2Height = defaultHeight - 8
@@ -27,8 +27,8 @@ export default () => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 75,
-      width: 55,
-      height: 55,
+      width: 15,
+      height: 60,
       backgroundColor: '#6796E5',
       cursor: 'pointer',
       transition: 'all 500ms',
@@ -38,6 +38,10 @@ export default () => {
       '&:hover': {
         backgroundColor: '#512DA8',
         color: '#FFEB3B'
+      },
+      [theme.breakpoints.up('sm')]: {
+        width: 55,
+        height: 55
       }
     },
     item: {
@@ -66,9 +70,12 @@ export default () => {
     levelCurrent: {
       boxShadow: level0Bs,
       height: `${level0Height}%`,
-      width: `${level0Width}%`,
       backgroundColor: '#4EC9E1',
-      zIndex: 2
+      width: '90%',
+      zIndex: 2,
+      [theme.breakpoints.up('sm')]: {
+        width: `${level0Width}%`
+      }
     },
     levelRight1: {
       boxShadow: subLevel1Bs,

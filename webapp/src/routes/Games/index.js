@@ -13,6 +13,7 @@ const useStyles = makeStyles(styles)
 const GAME_LIST = [
   {
     name: 'Selfie Cam',
+    pathname: '/games/selfie-cam',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat auctor faucibus. Donec sed arcu eu elit gravida',
     img:
@@ -20,6 +21,7 @@ const GAME_LIST = [
   },
   {
     name: 'Free your Animal',
+    pathname: '',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat auctor faucibus. Donec sed arcu eu elit gravida rhoncus id non eu tempor diam maximu',
     img:
@@ -48,6 +50,7 @@ const Games = () => {
                 category={game.category}
                 description={game.description}
                 img={game.img}
+                pathname={game.pathname}
               />
             </Grid>
           ))}
