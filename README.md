@@ -4,7 +4,7 @@
 	</a>
 </p>
 
-# NFTs that enable communities to raise funds
+# NFTs for NGOs: enabling communities to raise funds
 
 <p align="center">
 	<a href="https://git.io/col">
@@ -24,7 +24,7 @@
 	</a>
 </p>
 
-[gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donors as collectables that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
+[gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donors as collectibles that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
 
 ## Why gGoods?
 
@@ -56,7 +56,7 @@ We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decent
 [Learn more about blockchain](https://eoscostarica.medium.com/what-is-blockchain-an-introduction-9535ed3e6005)
 
 ## What is EOSIO?
-Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts. 
+Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developer friendly tech that uses the C++ language to program smart contracts. 
 
 [Explore EOSIO](https://guide.eoscostarica.io/docs/eos-learn/eosio-protocol)
 
@@ -149,7 +149,7 @@ This FullStack Template uses [React.js](https://reactjs.org) as a Frontend Libra
 
 #### Hasura GraphQL Server
 
-[Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allow us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
+[Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allows us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
 Hasura also enables custom REST handling capabilities with the possibility to integrate a custom REST server, that way we can extend the base CRUD functionalities and build custom business logic.
 
 #### Hapi REST Server
@@ -166,7 +166,7 @@ We use IPFS to store the assets that are displayed in the Web Application. IPFS 
 
 ### Google Kubernetes Engine Cluster
 
-At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
+At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows us to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
 
 # Version
 
