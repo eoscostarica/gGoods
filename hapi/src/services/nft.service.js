@@ -1,7 +1,13 @@
 const Boom = require('@hapi/boom')
 const { BAD_REQUEST } = require('http-status-codes')
 
-const { dgoodsUtil, hasuraUtil, ipfsUtil, axiosUtil } = require('../utils')
+const {
+  dgoodsUtil,
+  hasuraUtil,
+  ipfsUtil,
+  axiosUtil,
+  paypalUtil
+} = require('../utils')
 
 const vaultService = require('./vault.service')
 
@@ -158,8 +164,37 @@ const nftOnSale = async (payload = {}) => {
   }
 }
 
+const confirmSaleWithPaypal = async (user, payload) => {
+  try {
+    const order = await paypalUtil.getOrder(payload.orderId)
+
+    for (let i = 0; i < order.purchase_units.length; i++) {
+      const purchaseUnit = order.purchase_units[i]
+
+      for (let j = 0; j < purchaseUnit.items.length; j++) {
+        const item = purchaseUnit.items[j]
+        const ggoodInfo = await dgoodsUtil.dgoodTableRow({ id: item.sku })
+        const password = await vaultService.getSecret(ggoodInfo.owner)
+        await dgoodsUtil.confirmsale(ggoodInfo.owner, password, {
+          newowner: user.account,
+          quantity: `${item.unit_amount.value} ${item.unit_amount.currency_code}`,
+          id: item.sku
+        })
+      }
+    }
+
+    return { success: true }
+  } catch (error) {
+    console.log(error)
+    throw new Boom.Boom(error.message, {
+      statusCode: BAD_REQUEST
+    })
+  }
+}
+
 module.exports = {
   createTemplate,
   putOnSale,
-  nftOnSale
+  nftOnSale,
+  confirmSaleWithPaypal
 }
