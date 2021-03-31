@@ -24,6 +24,8 @@ const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Paypal = lazy(() => import('./Paypal'))
 const OurGoods = lazy(() => import('./OurGoods'))
+const Inventory = lazy(() => import('./Inventory'))
+const SelfieCam = lazy(() => import('./SelfieCam'))
 
 const routes = [
   {
@@ -99,6 +101,11 @@ const routes = [
     exact: true
   },
   {
+    component: SelfieCam,
+    path: '/games/selfie-cam',
+    exact: true
+  },
+  {
     name: 'your-collection',
     icon: <CollectionsBookmarkOutlinedIcon />,
     component: YourCollection,
@@ -113,6 +120,13 @@ const routes = [
   {
     component: RegisterOrganization,
     path: '/register-organization/:code',
+    exact: true
+  },
+  {
+    name: 'Inventory',
+    icon: <CollectionsBookmarkOutlinedIcon />,
+    component: Inventory,
+    path: '/inventory',
     exact: true
   },
   {

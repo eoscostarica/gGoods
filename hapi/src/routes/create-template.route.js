@@ -15,6 +15,8 @@ module.exports = {
           metadata: Joi.object().required()
         }).required()
       }).options({ stripUnknown: true })
-    }
+    },
+    // TODO: ENABLED AUTH HERE
+    auth: false
   }
 }

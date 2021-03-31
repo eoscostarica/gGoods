@@ -13,6 +13,8 @@ module.exports = {
           seller: Joi.string().allow('').optional()
         }).optional()
       }).options({ stripUnknown: true })
-    }
+    },
+    // TODO: ENABLED AUTH HERE
+    auth: false
   }
 }

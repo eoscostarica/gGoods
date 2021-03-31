@@ -8,5 +8,6 @@ module.exports = {
   dgoodsAccount: process.env.HAPI_DGOODS_ACCOUNT,
   dgoodsPassword: process.env.HAPI_DGOODS_PASSWORD,
   dgoodsToken: process.env.HAPI_DGOODS_TOKEN,
+  mailApproveOrganization: process.env.HAPI_MAIL_APPROVE_ORGANIZATION,
   dgoodsCurrency: process.env.HAPI_DGOODS_CURRENCY
 }

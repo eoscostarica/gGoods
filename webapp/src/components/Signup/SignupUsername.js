@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   success: {
     color: theme.palette.success.main
   }
@@ -28,7 +28,7 @@ const SignupUsername = ({ isValid, loading, user, setField }) => {
         shrink: true
       }}
       value={user?.username || ''}
-      onChange={(event) =>
+      onChange={event =>
         setField(
           'username',
           event.target.value.length > 9 ? user.username : event.target.value

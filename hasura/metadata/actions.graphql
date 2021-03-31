@@ -1,9 +1,20 @@
 type Mutation {
+  change_password (
+    email: String!
+    emailContent: jsonb!
+    currentPassword: String!
+    newPassword: String!
+  ): change_password_output
+}
+
+
+type Mutation {
   check_username (
     role: String!
     username: String!
   ): check_username_output
 }
+
 
 type Mutation {
   create_account (
@@ -15,6 +26,7 @@ type Mutation {
   ): create_account_output
 }
 
+
 type Mutation {
   create_account_organization (
     email: String!
@@ -24,6 +36,7 @@ type Mutation {
     verification_code: String!
   ): create_account_organization_output
 }
+
 
 type Mutation {
   create_pre_register_organization (
@@ -38,12 +51,21 @@ type Mutation {
   ): create_pre_register_organization_output
 }
 
+
 type Mutation {
-  create_template(
+  create_template (
     category: String!
     name: String!
     metadata: jsonb!
   ): CreateTemplateOutput
+}
+
+
+type Mutation {
+  credentials_recovery (
+    email: String!
+    emailContent: jsonb!
+  ): credentials_recovery_output
 }
 
 
@@ -61,8 +83,9 @@ type Mutation {
   ): login_output
 }
 
+
 type Mutation {
-  payment_transaction_complete(
+  payment_transaction_complete (
     orderId: String!
   ): payment_transaction_complete_output
 }
@@ -78,27 +101,21 @@ type Mutation {
   ): PutOnSaleOutput
 }
 
+
 type Mutation {
   verify_email (
     code: String!
   ): verify_email_output
 }
 
-type verify_email_output {
-  is_verified : Boolean!
-}
 
-type create_account_output {
-  account : String!
-  transaction_id : String!
-  token : String!
-}
+
 
 type check_username_output {
   is_valid : Boolean!
 }
 
-type create_account_organization_output {
+type create_account_output {
   account : String!
   transaction_id : String!
   token : String!
@@ -108,16 +125,26 @@ type create_pre_register_organization_output {
   resultRegister : String!
 }
 
+type create_account_organization_output {
+  account : String!
+  transaction_id : String!
+  token : String!
+}
+
 type login_output {
   token : String!
 }
 
-type CreateTemplateOutput {
-  trxid : String!
+type verify_email_output {
+  is_verified : Boolean!
 }
 
 type payment_transaction_complete_output {
   return_status : Boolean!
+}
+
+type CreateTemplateOutput {
+  trxid : String!
 }
 
 type PutOnSaleOutput {
@@ -131,5 +158,13 @@ type GoodsOnSaleOutput {
   donable : Boolean!
   expiration : String!
   ggoods : jsonb
+}
+
+type credentials_recovery_output {
+  success : Boolean!
+}
+
+type change_password_output {
+  success : Boolean!
 }
 

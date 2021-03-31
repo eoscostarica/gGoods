@@ -4,7 +4,7 @@
 	</a>
 </p>
 
-# NFTs That Enable Communities To Raise Funds
+# NFTs that enable communities to raise funds
 
 <p align="center">
 	<a href="https://git.io/col">
@@ -24,11 +24,13 @@
 	</a>
 </p>
 
-[gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donors as collectables that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
+[gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donors as collectibles that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
 
 ## Why gGoods?
 
-Life is beginning to return to normal for many industries. Unfortunately this is not the case for many NGOs, who are being hit particularly hard by the economic effects of the pandemic. As sales slowed, jobs were lost and financial challenges persist, it is proving to be difficult for communities to raise and maintain donations. 2019 broke records of charitable donations ever recorded. However 2020 was disastrous for many NGOs and 2021 will undoubtedly continue to be tough. 
+We want to use blockchain technology to encourage anyone to donate their time, creativity and uniqueness to support a cause.  Not just money.  
+
+Life is beginning to return to normal for many industries. Unfortunately this is not the case for many NGOs, who are being hit particularly hard by the economic effects of the pandemic. As sales slowed, jobs were lost and financial challenges persist, it is proving to be difficult for communities to raise and maintain donations. 2019 broke records of charitable donations ever recorded. However 2020 was disastrous for many charitable causes and 2021 will undoubtedly continue to be tough. 
 
 One report reveals that 1 in 5 donors have stopped giving altogether and are not prepared to resume any funding activities until the economy fully recovers. This scenario will likely be familiar to organizations in operation during the 2008 financial crisis, where giving sharply declined during the recession.  
 
@@ -36,13 +38,49 @@ The economic downturn has affected incoming revenue for many not-for-profits and
 
 That is not to say that NGOs are powerless. gGoods is an innovative low-cost solution that charities can leverage to help boost their funding, even during this difficult period.
 
-By minting and selling NFTs in our marketplace gGoods can help communities and NGOs solve the immediate liquidity issues caused by economic slowdowmn. gGoods allows for voluntary donations and payment subscriptions while purchasing an NFT which is a totrally new funding strategy that NGOs can apply to help reduce the negative financial impact to their organization.
+## What it does
+gGoods is an open-source NFT standard that lets communities create tokens for crowdfunding. The platform connects non-profit organizations and charitable causes to their supporters worldwide. A community can create its own NFT representing a cause and supporters can acquire the NFT to use as an in-app asset. The donation will be sent to the organization directly, enabling each supporter to verify its destination. Supporters can also collect and use their NFTs as in-game items in a games library. 
+
+By minting and selling NFTs in our marketplace, gGoods can help communities and NGOs solve the immediate liquidity issues caused by economic slowdown. gGoods enable voluntary donations and payment subscriptions in exchange for an NFT. This is a unique, innovative funding strategy that NGOs can apply to help reduce the negative financial impact to their organization while engaging with their supporters.
 
 ## Who’s behind gGoods?
-gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https://eoscostarica.io). It was our submission to the 2021 [Beyond Blockchain EOSIO Hackathon](https://block.one/news/launches-beyond-blockchain-hackathon/) organized by block.one.
+gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https://eoscostarica.io). It was our submission to the 2021 [Beyond Blockchain EOSIO Hackathon](https://block.one/news/launches-beyond-blockchain-hackathon/) organized by block.one, Google, Galaxy Interactive and Mythical Games.
 
 ## About the hackathon
-The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world.
+The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world. The judging committee included Google, Galaxy Interactive and Mythical Games. 
+
+### Challenges we ran into
+- Payment gateways:  We wanted the payment gateway to be easy to use for a community not familiar with cryptocurrencies while also allowing interesting feature sets like perpetual revenue streams built in the smart contract standard
+- In-app / in-game use cases:  We wanted to show the functionality of gGoods in different in-app use cases but struggled to balance the level of effort without sacrificing the concept.
+- Focus on gaming:  We started with a specific focus on gaming but realized that gGoods were a new way for anyone to interact with a cause they care about and a new way for communities to crowdfund. 
+- Displaying NFTs:  We struggled to find the right balance between displaying the technical aspects of an NFT and the wide marketing opportunities.  We chose a “trophy case” type display to make NFTs more approachable.  
+
+### Accomplishments that we are proud of
+- Researching all the different NFT standards in EOSIO and other blockchains to determine the right features for gGoods. 
+- Integrating payment gateways like Google Pay and Paypal for the purchase of NFTs
+- Integrating Augmented Reality and progressive web applications into the gGoods in-app usage “selfie cam”.
+- Making the purchase of an NFT as easy as donating to an NGO. 
+- Using blockchain technology to encourage anyone to donate their time, creativity and uniqueness to a cause they support.  Not just money.  
+
+### What we learned
+- NFTs can be a new platform for crowdfunding
+- NGOs and communities are looking for new ways to engage with their supporters and raise funds
+- People are looking for new ways to support causes they care about through an experience that doesn't involve physical travel or just a monetary donation
+- NFTs can be more impactful if they are not just collectible art.  By using them as in-app assets, they become a badge of honor, a representation of the user and a fun digital asset. 
+
+### What’s next for gGoods?
+- New avatar categories:  Humans, Robots, Zombies, Objects, etc
+- Improve Security
+- Dark Mode and other UI enhancements
+- Language Translations
+- 3D preview of the assets
+- Subscription payments through Google Pay and other payment gateways
+- Displaying the ricardian contract component of the NFT contract
+- Royalty payments to the community in perpetuity for secondary market sales
+- Allowing secondary market sales
+- Allowing “My Own NFT Design”
+- Ability to create an NFT on behalf of an organization
+- NFT filters and categories
 
 # About the technology
 
@@ -52,7 +90,7 @@ We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decent
 [Learn more about blockchain](https://eoscostarica.medium.com/what-is-blockchain-an-introduction-9535ed3e6005)
 
 ## What is EOSIO?
-Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts. 
+Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developer friendly tech that uses the C++ language to program smart contracts. 
 
 [Explore EOSIO](https://guide.eoscostarica.io/docs/eos-learn/eosio-protocol)
 
@@ -67,7 +105,7 @@ This project features the following tech stack:
 
 - **[Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine)**
 - **[EOSIO](https://eos.io)** ([Jungle testnet](https://jungle3.bloks.io/account/ggoodsggoods))
-- **[dGgoods](https://github.com/MythicalGames/dgoods)** (We forked the dGgoods Smart Contracts)
+- **[dGoods](https://github.com/MythicalGames/dgoods)** (We forked the dGoods Smart Contracts)
 - **[IPFS](https://ipfs.io/)** 
 - **[React JS](https://reactjs.org/)**
 - **[Material UI](https://material-ui.com/)**
@@ -145,7 +183,7 @@ This FullStack Template uses [React.js](https://reactjs.org) as a Frontend Libra
 
 #### Hasura GraphQL Server
 
-[Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allow us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
+[Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allows us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
 Hasura also enables custom REST handling capabilities with the possibility to integrate a custom REST server, that way we can extend the base CRUD functionalities and build custom business logic.
 
 #### Hapi REST Server
@@ -162,7 +200,7 @@ We use IPFS to store the assets that are displayed in the Web Application. IPFS 
 
 ### Google Kubernetes Engine Cluster
 
-At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
+At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows us to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
 
 # Version
 

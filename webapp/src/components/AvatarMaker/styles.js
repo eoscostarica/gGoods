@@ -1,4 +1,7 @@
 export default theme => ({
+  tabIndicator: {
+    display: 'none'
+  },
   mainCanvasContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -23,13 +26,22 @@ export default theme => ({
     display: 'flex',
     width: '100%'
   },
-  mainBox: {},
-  borderTabs: {
+  rootTab: {
+    minWidth: 100,
+    marginBottom: 10,
     border: '1px solid rgb(206 206 206)'
+  },
+  flexContainer: {
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   },
   itemsWrapper: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'nowrap',
+    overflowX: 'scroll',
+    [theme.breakpoints.up('sm')]: {
+      flexWrap: 'wrap'
+    }
   },
   itemBox: {
     border: '1px solid #aaa',
@@ -48,21 +60,7 @@ export default theme => ({
     backgroundColor: theme.palette.primary.main,
     color: 'white !important'
   },
-  textField: {
-    width: 45,
-    marginBottom: '0px !important',
-    '& .MuiOutlinedInput-notchedOutline': {
-      border: 'none'
-    },
-    [theme.breakpoints.up('sm')]: {
-      width: 245
-    }
-  },
-  btnPublish: {
-    width: 45,
-    color: theme.palette.primary.main,
-    [theme.breakpoints.up('sm')]: {
-      width: 128
-    }
+  colorPicker: {
+    margin: 'auto'
   }
 })

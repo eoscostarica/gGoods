@@ -316,12 +316,10 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   const handlepreRegisterOrganization = () => {
     const { email, password, name, address, phone, description } = user
     let { invitationCode } = user
-
     if (invitationCode === undefined || !invitationCode) invitationCode = ' '
 
     const bcrypt = require('bcryptjs')
     const saltRounds = 10
-
     bcrypt.hash(password, saltRounds, function (err, hash) {
       if (!err) {
         preRegisterOrganization({
@@ -338,7 +336,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
             address,
             phone,
             description,
-            invitationCode
+            invitation_code: invitationCode
           }
         })
       }

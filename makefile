@@ -91,12 +91,18 @@ deploy-kubernetes: $(K8S_BUILD_DIR)
 		--cert ./ssl/ggoods.io.crt \
 		-n $(NAMESPACE)  || echo "SSL cert already configured.";
 	@echo "Creating configmaps..."
+	@kubectl create configmap \
+		wallet-seeds \
+		--from-file wallet/seeds/ \
+		--dry-run=client \
+		-o yaml | \
+		kubectl -n $(NAMESPACE) apply -f - || echo "Wallet seeds already created.";
 	@kubectl create configmap -n $(NAMESPACE) \
 	ggoods-wallet-config \
 	--from-file wallet/config/ || echo "Wallet configuration already created.";
 	@echo "Applying kubernetes files..."
 	@for file in $(shell find $(K8S_BUILD_DIR) -name '*.yaml' | sed 's:$(K8S_BUILD_DIR)/::g'); do \
-		kubectl apply -f $(K8S_BUILD_DIR)/$$file -n $(NAMESPACE); \
+		kubectl apply -f $(K8S_BUILD_DIR)/$$file -n $(NAMESPACE) || echo "${file} Cannot be updated."; \
 	done
 
 build-docker-images: ##@devops Build docker images

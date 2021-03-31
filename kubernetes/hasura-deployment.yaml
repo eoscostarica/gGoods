@@ -26,9 +26,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: ggoods-hasura-config
-          image: hasura/graphql-engine:v1.3.2.cli-migrations-v2
+          image: ${DOCKER_REGISTRY}/${IMAGE_NAME_HASURA}:${VERSION}
           imagePullPolicy: "IfNotPresent"
           name: "ggoods-hasura"
           ports:
             - containerPort: 8080
       restartPolicy: Always
+      
