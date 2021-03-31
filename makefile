@@ -96,7 +96,7 @@ deploy-kubernetes: $(K8S_BUILD_DIR)
 		--from-file wallet/seeds/ \
 		--dry-run=client \
 		-o yaml | \
-		kubectl -n $(NAMESPACE) apply -f -
+		kubectl -n $(NAMESPACE) apply -f - || echo "Wallet seeds already created.";
 	@kubectl create configmap -n $(NAMESPACE) \
 	ggoods-wallet-config \
 	--from-file wallet/config/ || echo "Wallet configuration already created.";
