@@ -25,24 +25,11 @@ spec:
             - --enable-console
           envFrom:
             - configMapRef:
-                name: hasura-config
+                name: ggoods-hasura-config
           image: ${DOCKER_REGISTRY}/${IMAGE_NAME_HASURA}:${VERSION}
           imagePullPolicy: "IfNotPresent"
           name: "ggoods-hasura"
           ports:
             - containerPort: 8080
       restartPolicy: Always
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: hasura-config
-  labels:
-    version: ${VERSION}
-data:
-  HASURA_GRAPHQL_ENABLE_CONSOLE: ${HASURA_GRAPHQL_ENABLE_CONSOLE}
-  HASURA_GRAPHQL_DATABASE_URL: ${HASURA_GRAPHQL_DATABASE_URL}
-  HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
-  HASURA_GRAPHQL_UNAUTHORIZED_ROLE: ${HASURA_GRAPHQL_UNAUTHORIZED_ROLE}
-  HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
-  HASURA_ACTION_BASE_URL: ${HASURA_ACTION_BASE_URL}
+      
