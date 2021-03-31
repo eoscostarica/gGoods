@@ -43,7 +43,7 @@ gGoods is an open-source NFT standard that lets communities create tokens for cr
 By minting and selling NFTs in our marketplace, gGoods can help communities and NGOs solve the immediate liquidity issues caused by economic slowdown. gGoods enable voluntary donations and payment subscriptions in exchange for an NFT. This is a unique, innovative funding strategy that NGOs can apply to help reduce the negative financial impact to their organization while engaging with their supporters.
 
 ## Who’s behind gGoods?
-gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https://eoscostarica.io). It was our submission to the 2021 [Beyond Blockchain EOSIO Hackathon](https://block.one/news/launches-beyond-blockchain-hackathon/) organized by block.one.
+gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https://eoscostarica.io). It was our submission to the 2021 [Beyond Blockchain EOSIO Hackathon](https://block.one/news/launches-beyond-blockchain-hackathon/) organized by block.one, Google, Galaxy Interactive and Mythical Games.
 
 ## About the hackathon
 The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world. The judging committee included Google, Galaxy Interactive and Mythical Games. 
