@@ -36,6 +36,10 @@ The economic downturn has affected incoming revenue for many not-for-profits and
 
 That is not to say that NGOs are powerless. gGoods is an innovative low-cost solution that charities can leverage to help boost their funding, even during this difficult period.
 
+## What it does
+gGoods is an open-source NFT standard that lets communities create tokens for crowdfunding. The platform connects non-profit organizations and charitable causes to their supporters worldwide. A community can create its own NFT representing a cause and supporters can acquire the NFT to use as an in-app asset. The donation will be sent to the organization directly, enabling each supporter to verify its destination. Supporters can also collect and use their NFTs as in-game items in a games library. 
+
+
 By minting and selling NFTs in our marketplace, gGoods can help communities and NGOs solve the immediate liquidity issues caused by economic slowdowmn. gGoods enable voluntary donations and payment subscriptions in exchange for an NFT. This is unique, innovative funding strategy that NGOs can apply to help reduce the negative financial impact to their organization while engaging with their supporters.
 
 ## Who’s behind gGoods?
