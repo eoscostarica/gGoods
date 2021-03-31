@@ -13,7 +13,7 @@ title: create
 summary: The intent of the `{{ create }}` action s create a good 
 icon:  https://github.com/eoscostarica/gGoods/blob/main/webapp/public/favicon.ico
 
-<h1 class="contract">issue token</h1>
+<h1 class="contract">issue</h1>
 ---
 spec-version: 0.1.0
 title: issue token
