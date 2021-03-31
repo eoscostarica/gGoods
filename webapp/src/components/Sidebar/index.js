@@ -21,6 +21,7 @@ import Scrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
 import { mainConfig } from '../../config'
+import LogoVertical from '../../images/logos/ggoods-logoVertical.svg'
 
 import styles from './styles'
 
@@ -145,7 +146,7 @@ const Sidebar = ({ routes, ...props }) => {
       <Box className={classes.brand}>
         <img
           alt={mainConfig.title}
-          src={mainConfig.logo}
+          src={LogoVertical}
           onClick={() => history.push('/')}
         />
       </Box>

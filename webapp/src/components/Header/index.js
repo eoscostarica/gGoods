@@ -11,7 +11,6 @@ import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 import Box from '@material-ui/core/Box'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import MenuIcon from '@material-ui/icons/Menu'
 import LanguageIcon from '@material-ui/icons/Language'
 import FingerprintIcon from '@material-ui/icons/Fingerprint'
@@ -23,6 +22,7 @@ import { Sun as SunIcon, Moon as MoonIcon } from 'react-feather'
 import { useSharedState } from '../../context/state.context'
 import { mainConfig } from '../../config'
 import PageTitle from '../PageTitle'
+import LogoHorizontal from '../../images/logos/ggoods-logo.svg'
 
 import styles from './styles'
 import LoginModal from '../../components/LoginModal'
@@ -189,9 +189,16 @@ const Header = memo(({ onDrawerToggle }) => {
             <MenuIcon />
           </IconButton>
         </Hidden>
-        <Typography className={classes.typography} variant="h6">
-          {t(`${location.pathname}>heading`, '')}
-        </Typography>
+        <Box className={classes.logoBox}>
+          <Hidden mdUp>
+            <img
+              alt={mainConfig.title}
+              src={LogoHorizontal}
+              onClick={() => history.push('/')}
+              className={classes.logoMobile}
+            />
+          </Hidden>
+        </Box>
         <PageTitle title={t(`${location.pathname}>title`, mainConfig.title)} />
         <Box className={classes.desktopSection}>
           {enableDarkTheme && (
@@ -229,18 +236,22 @@ const Header = memo(({ onDrawerToggle }) => {
         open={!!menuAnchorEl}
         onClose={handleCloseMenu}
       >
-        <MenuItem>
-          <SwitchThemeModeButton
-            useDarkMode={state.useDarkMode}
-            onSwitch={handleSwitchThemeMode}
-          />
-        </MenuItem>
-        <MenuItem>
-          <LanguageButton
-            current={currentLanguaje}
-            onChange={handleChangeLanguage}
-          />
-        </MenuItem>
+        {enableDarkTheme && (
+          <MenuItem>
+            <SwitchThemeModeButton
+              useDarkMode={state.useDarkMode}
+              onSwitch={handleSwitchThemeMode}
+            />
+          </MenuItem>
+        )}
+        {enableLanguageSelector && (
+          <MenuItem>
+            <LanguageButton
+              current={currentLanguaje}
+              onChange={handleChangeLanguage}
+            />
+          </MenuItem>
+        )}
         {state.user && (
           <MenuItem>
             <UserButton user={state.user} />
