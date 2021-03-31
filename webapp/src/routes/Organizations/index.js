@@ -34,6 +34,7 @@ const Organizations = () => {
         )}
         <Grid container spacing={2}>
           {!loading &&
+            organizationResults &&
             organizationResults.preregister_organization.map(org => (
               <Grid item xs={12} md={6} lg={3} key={org.id}>
                 <CardOng

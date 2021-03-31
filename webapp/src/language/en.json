@@ -189,6 +189,16 @@
     "title": "Organizations",
     "paragraph1": "Communities, NGOs and any other good causes that you might be interested in."
   },
+  "organizationRoute": {
+    "objectives": "Objectives",
+    "history": "history",
+    "impact": "Impact",
+    "information": "Information",
+    "website": "Website",
+    "location": "Location",
+    "contact": "Contact",
+    "ourGoods": "Our Goods"
+  },
   "gamesRoute": {
     "title": "Games",
     "paragraph1": "Created so you can have fun with your goods."

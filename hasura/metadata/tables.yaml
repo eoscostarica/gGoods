@@ -15,6 +15,7 @@
       - name
       - orgInfo
       - phone
+      - state
       filter: {}
   - role: guest
     permission:
@@ -42,6 +43,7 @@
       - name
       - orgInfo
       - phone
+      - state
       filter: {}
   - role: user
     permission:
@@ -53,6 +55,7 @@
       - name
       - orgInfo
       - phone
+      - state
       filter: {}
   update_permissions:
   - role: guest
