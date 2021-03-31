@@ -26,6 +26,7 @@ const Paypal = lazy(() => import('./Paypal'))
 const OurGoods = lazy(() => import('./OurGoods'))
 const Inventory = lazy(() => import('./Inventory'))
 const SelfieCam = lazy(() => import('./SelfieCam'))
+const TermsOfUse = lazy(() => import('./TermsOfUse'))
 
 const routes = [
   {
@@ -75,6 +76,12 @@ const routes = [
     path: '/your-collection',
     exact: true,
     roles: ['gamer', 'user']
+  },
+  {
+    name: 'terms-of-use',
+    component: TermsOfUse,
+    path: '/terms-of-use',
+    exact: true
   },
   {
     name: 'about',

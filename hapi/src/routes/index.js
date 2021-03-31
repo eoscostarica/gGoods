@@ -10,6 +10,7 @@ const paymentTransactionRoute = require('./payment-transaction-complete.route')
 const putOnSaleRoute = require('./put-on-sale.route')
 const credentialsRecovery = require('./credentials-recovery/credentials-recovery.route')
 const changePassword = require('./change-password/change-password.route')
+const getContract = require('./get-contract/get-contract.route')
 
 module.exports = [
   healthzRoute,
@@ -23,5 +24,6 @@ module.exports = [
   paymentTransactionRoute,
   putOnSaleRoute,
   credentialsRecovery,
-  changePassword
+  changePassword,
+  getContract
 ]
