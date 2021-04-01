@@ -44,7 +44,7 @@ export default theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     padding: theme.spacing(0, 2),
-    '& span': {
+    '& .MuiTypography-body1': {
       fontSize: 14,
       lineHeight: '20px',
       letterSpacing: '0.25px',
