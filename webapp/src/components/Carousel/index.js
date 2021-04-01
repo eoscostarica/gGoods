@@ -39,7 +39,7 @@ const Carousel = ({ items = [] }) => {
       level = activeValue - i
 
       carouselItems.push({
-        id: items[index],
+        ...items[index],
         level
       })
     }
@@ -80,8 +80,14 @@ const Carousel = ({ items = [] }) => {
       </IconButton>
 
       <Box className={classes.box}>
-        {(activeItems || []).map(({ id, level }) => (
-          <Item id={id} level={level} key={id} />
+        {(activeItems || []).map(({ id, image, level, backgroundColor }) => (
+          <Item
+            key={id}
+            id={id}
+            level={level}
+            image={image}
+            backgroundColor={backgroundColor}
+          />
         ))}
       </Box>
 

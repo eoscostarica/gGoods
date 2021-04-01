@@ -11,14 +11,19 @@ actions:
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/check-username'
   permissions:
   - role: guest
+- name: confirm_sale_with_paypal
+  definition:
+    kind: synchronous
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/confirm-sale-with-paypal'
+    forward_client_headers: true
+  permissions:
+  - role: user
 - name: create_account
   definition:
     kind: synchronous
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/accounts'
   permissions:
-  - role: gamer
   - role: guest
-  - role: organization
 - name: create_account_organization
   definition:
     kind: synchronous
@@ -37,7 +42,7 @@ actions:
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/create-template'
     forward_client_headers: true
   permissions:
-  - role: guest
+  - role: organization
 - name: credentials_recovery
   definition:
     kind: synchronous
@@ -51,23 +56,28 @@ actions:
     forward_client_headers: true
   permissions:
   - role: guest
+  - role: organization
+  - role: user
 - name: login
   definition:
     kind: synchronous
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/login'
   permissions:
   - role: guest
-- name: payment_transaction_complete
+- name: my_ggoods
   definition:
-    kind: synchronous
-    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/payment-transaction-complete'
+    kind: ""
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/my-ggoods'
+    forward_client_headers: true
+  permissions:
+  - role: user
 - name: put_on_sale
   definition:
     kind: synchronous
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/put-on-sale'
     forward_client_headers: true
   permissions:
-  - role: guest
+  - role: organization
 - name: verify_email
   definition:
     kind: synchronous
@@ -92,4 +102,6 @@ custom_types:
   - name: GoodsOnSaleOutput
   - name: credentials_recovery_output
   - name: change_password_output
+  - name: my_ggoods_output
+  - name: confirm_sale_with_paypal_output
   scalars: []

@@ -58,7 +58,7 @@ const UserSignup = ({
   isEmailValid,
   children
 }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('signup')
   const classes = useStyles()
   const [password, setPassword] = useState()
   const [recaptchaValue, serRecaptchaValue] = useState('')
@@ -79,7 +79,7 @@ const UserSignup = ({
         {children}
         <TextField
           id="secret"
-          label={t('signup.password')}
+          label={t('password')}
           type="password"
           fullWidth
           variant="outlined"
@@ -91,11 +91,11 @@ const UserSignup = ({
         />
         <TextField
           id="confirm-password"
-          label={t('signup.confirmPassword')}
+          label={t('confirmPassword')}
           type="password"
           fullWidth
           error={error}
-          helperText={error && t('signup.passwordNotMatch')}
+          helperText={error && t('passwordNotMatch')}
           variant="outlined"
           className={classes.textField}
           onChange={event => setConfirmPassword(event.target.value)}
@@ -120,7 +120,7 @@ const UserSignup = ({
           color="secondary"
           onClick={onSubmit}
         >
-          {t('signup.createAccount')}
+          {t('createAccount')}
         </Button>
         {loading && <CircularProgress />}
         <SignupWithGoogle handlerSubmit={onSubmitWithAuth} />

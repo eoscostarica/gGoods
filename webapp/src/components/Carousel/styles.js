@@ -51,26 +51,26 @@ export default theme => {
       color: 'white',
       fontSize: 100,
       transition:
-        'box-shadow 1s, height 250ms, width 250ms, left 1s, margin-top 1s, line-height 250ms, background-color 1s'
+        'box-shadow 1s, height 250ms, width 250ms, left 1s, margin-top 1s, line-height 250ms, background-color 1s',
+      '& img': {
+        maxWidth: 200
+      }
     },
     levelLeft2: {
       boxShadow: level2Bs,
       height: `${level2Height}%`,
       width: `${level2Width}%`,
-      backgroundColor: '#228291',
       zIndex: 0
     },
     levelLeft1: {
       boxShadow: level1Bs,
       height: `${level1Height}%`,
       width: `${level1Width}%`,
-      backgroundColor: '#6796E5',
       zIndex: 1
     },
     levelCurrent: {
       boxShadow: level0Bs,
       height: `${level0Height}%`,
-      backgroundColor: '#4EC9E1',
       width: '90%',
       zIndex: 2,
       [theme.breakpoints.up('sm')]: {
@@ -81,14 +81,12 @@ export default theme => {
       boxShadow: subLevel1Bs,
       height: `${level1Height}%`,
       width: `${level1Width}%`,
-      backgroundColor: '#6796E5',
       zIndex: 1
     },
     levelRight2: {
       boxShadow: subLevel2Bs,
       height: `${level2Height}%`,
       width: `${level2Width}%`,
-      backgroundColor: '#228291',
       zIndex: 0
     },
     box: {

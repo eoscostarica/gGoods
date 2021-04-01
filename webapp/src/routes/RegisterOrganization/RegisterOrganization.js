@@ -70,7 +70,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const RegisterLifebank = () => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('registerOrganization')
   const classes = useStyles()
   const [lifebank, setLifebank] = useState()
   const { code } = useParams()
@@ -171,12 +171,12 @@ const RegisterLifebank = () => {
             {loadingVerifyEmail && <CircularProgress />}
             {!loadingVerifyEmail && lifebank && (
               <Typography className={classes.title}>
-                {t('approveAccount.accountapprove')}
+                {t('accountapprove')}
               </Typography>
             )}
             {!loadingVerifyEmail && !lifebank && (
               <Typography className={classes.title}>
-                {t('approveAccount.somethingHappened')}
+                {t('somethingHappened')}
               </Typography>
             )}
             {!loadingVerifyEmail && (
@@ -187,7 +187,7 @@ const RegisterLifebank = () => {
                 to="/"
                 className={classes.btnHome}
               >
-                {t('emailVerification.takeHome')}
+                {t('takeHome')}
               </Button>
             )}
           </Box>

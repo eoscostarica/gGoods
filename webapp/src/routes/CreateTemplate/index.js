@@ -209,7 +209,7 @@ const CreateTemplate = () => {
             disabled={loading || !payload?.category || !payload?.name}
           >
             {!loading && t('confirm')}
-            {loading && <CircularProgress color="secondary" size={20} />}
+            {loading && <CircularProgress />}
           </Button>
         </Grid>
       </form>

@@ -3,5 +3,8 @@ module.exports = {
   path: '/healthz',
   handler: () => {
     return 'OK'
+  },
+  options: {
+    auth: false
   }
 }

@@ -23,7 +23,7 @@ import { CardAvatar } from '../Card'
 
 const useStyles = makeStyles(styles)
 
-const PublishGoodInfo = ({ open, handlerOpen }) => {
+const PublishGoodInfo = ({ open, ggood, onClose }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const classes = useStyles()
@@ -79,7 +79,7 @@ const PublishGoodInfo = ({ open, handlerOpen }) => {
   return (
     <Dialog
       open={open}
-      onClose={handlerOpen}
+      onClose={onClose}
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       fullScreen={isMobile}
@@ -97,7 +97,7 @@ const PublishGoodInfo = ({ open, handlerOpen }) => {
             aria-label="close"
             color="inherit"
             size="small"
-            onClick={handlerOpen}
+            onClick={onClose}
           >
             <CloseIcon fontSize="inherit" />
           </IconButton>
@@ -111,7 +111,11 @@ const PublishGoodInfo = ({ open, handlerOpen }) => {
         <Box className={classes.sectionBox}>
           <Grid container justify="center">
             <Grid item xs={6}>
-              <CardAvatar name="Lola the Jaguar" />
+              <CardAvatar
+                name={ggood?.name}
+                image={ggood?.image}
+                backgroundColor={ggood?.backgroundColor}
+              />
             </Grid>
           </Grid>
         </Box>
@@ -123,11 +127,14 @@ const PublishGoodInfo = ({ open, handlerOpen }) => {
                 style={{ fontWeight: 'bold' }}
                 gutterBottom
               >
-                {t('suggestedPrice')}
+                {t('suggestedDonation')}
               </Typography>
               <Box className={classes.sectionBox}>
-                <Chip label="Basic" color="primary" className={classes.chip} />
-                <Chip label="Basic" color="primary" className={classes.chip} />
+                <Chip
+                  label={ggood?.amount}
+                  color="primary"
+                  className={classes.chip}
+                />
               </Box>
             </Grid>
           </Grid>
@@ -168,7 +175,8 @@ const PublishGoodInfo = ({ open, handlerOpen }) => {
 
 PublishGoodInfo.propTypes = {
   open: PropTypes.bool,
-  handlerOpen: PropTypes.func
+  onClose: PropTypes.func,
+  ggood: PropTypes.any
 }
 
 export default PublishGoodInfo

@@ -1,22 +1,20 @@
 const { eosConfig } = require('../config')
-const { eosUtils, jwtUtils } = require('../utils')
+const { eosUtil, jwtUtil } = require('../utils')
 
 const historyApi = require('./history.api')
 const userApi = require('./user.api')
 const vaultApi = require('./vault.api')
 const preRegister = require('./pre-register.api')
 const verificationCodeApi = require('./verification-code.api')
- const mailApi = require('../utils/mail')
+const mailApi = require('../utils/mail')
 const MAIL_APPROVE_ORGANIZATION = eosConfig.mailApproveOrganization
 
 const create = async ({ role, email, emailContent, name, secret }) => {
-  const account = await eosUtils.generateRandomAccountName(role.substring(0, 3))
-  const { password, transaction } = await eosUtils.createAccount(account)
+  const account = await eosUtil.generateRandomAccountName(role.substring(0, 3))
+  const { password, transaction } = await eosUtil.createAccount(account)
   const username = account
-  const token = jwtUtils.create({ role, username, account })
   const { verification_code } = await verificationCodeApi.generate()
-
-  await userApi.insert({
+  const { insert_user_one: user } = await userApi.insert({
     role,
     username,
     account,
@@ -32,6 +30,14 @@ const create = async ({ role, email, emailContent, name, secret }) => {
   })
 
   await historyApi.insert(transaction)
+
+  const { access_token: token } = jwtUtil.sign({
+    role,
+    username,
+    account,
+    id: user.id
+  })
+
   try {
     mailApi.sendVerificationCode(
       email,
@@ -60,12 +66,10 @@ const createOrganization = async ({
   verification_code
 }) => {
   const role = 'organization'
-  const account = await eosUtils.generateRandomAccountName(role.substring(0, 3))
-  const { password, transaction } = await eosUtils.createAccount(account)
+  const account = await eosUtil.generateRandomAccountName(role.substring(0, 3))
+  const { password, transaction } = await eosUtil.createAccount(account)
   const username = account
-  const token = jwtUtils.create({ role, username, account })
-
-  await userApi.insert({
+  const { insert_user_one: user } = await userApi.insert({
     role,
     username,
     account,
@@ -81,6 +85,13 @@ const createOrganization = async ({
   })
 
   await historyApi.insert(transaction)
+
+  const { access_token: token } = jwtUtil.sign({
+    role,
+    username,
+    account,
+    id: user.id
+  })
 
   try {
     mailApi.sendConfirmMessage(
@@ -143,7 +154,10 @@ const login = async ({ account, secret }) => {
     throw new Error('Invalid account or secret')
   }
 
-  const token = jwtUtils.create({
+  const { access_token: token } = jwtUtil.sign({
+    id: user.id,
+    name: user.name,
+    email: user.email,
     account: user.account,
     role: user.role,
     username: user.username
@@ -158,5 +172,5 @@ module.exports = {
   create,
   createOrganization,
   login,
-  verifyEmail,
+  verifyEmail
 }

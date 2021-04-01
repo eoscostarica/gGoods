@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SignupRoleSelector = ({ onSubmit }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('signup')
   const classes = useStyles()
 
   return (
@@ -46,7 +46,7 @@ const SignupRoleSelector = ({ onSubmit }) => {
           onSubmit('user')
         }}
       >
-        {t('signup.asAUser')}
+        {t('asAUser')}
       </Button>
       <Button
         className={classes.btn}
@@ -56,7 +56,7 @@ const SignupRoleSelector = ({ onSubmit }) => {
           onSubmit('organization')
         }}
       >
-        {t('signup.asAOrganization')}
+        {t('asAOrganization')}
       </Button>
     </Box>
   )

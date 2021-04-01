@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
@@ -16,17 +16,107 @@ import InputLabel from '@material-ui/core/InputLabel'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import FilledInput from '@material-ui/core/FilledInput'
 import Button from '@material-ui/core/Button'
+import { PayPalButton } from 'react-paypal-button-v2'
+import { useMutation } from '@apollo/client'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { useHistory } from 'react-router-dom'
+
+import { CardAvatar } from '../Card'
+import { paypalClientId } from '../../config/paypal.config'
+import { CONFIRM_SALE_WITH_PAYPAL } from '../../gql'
+import { useSharedState } from '../../context/state.context'
 
 import styles from './styles'
-import { CardAvatar } from '../Card'
 
 const useStyles = makeStyles(styles)
 
 const DonateNow = ({ open, handlerOpen }) => {
+  const classes = useStyles()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-  const classes = useStyles()
-  const { t } = useTranslation('donateRoute')
+  const { t } = useTranslation('goodRoute')
+  const history = useHistory()
+  const [, { showMessage }] = useSharedState()
+  const [amount, setAmount] = useState()
+  const [confirmSaleWithPaypal, { loading }] = useMutation(
+    CONFIRM_SALE_WITH_PAYPAL
+  )
+  const [{ ggoodOnSaleSelected }] = useSharedState()
+
+  const handleOnSucces = async (details, data) => {
+    try {
+      await confirmSaleWithPaypal({
+        variables: {
+          orderId: data.orderID
+        }
+      })
+      showMessage({ type: 'success', content: t('sucessMessage') })
+      handlerOpen(false)
+      history.push('/donation-succesful')
+    } catch (error) {
+      showMessage({ type: 'error', content: error.message })
+    }
+  }
+
+  const handleOnError = error => {
+    showMessage({ type: 'error', content: error.message })
+  }
+
+  const handleOnCreateOrder = (data, actions) => {
+    const [, currency] = ggoodOnSaleSelected?.amount.split(' ')
+
+    return actions.order.create({
+      intent: 'CAPTURE',
+      purchase_units: [
+        {
+          description: 'donation for organization.name', // @todo: get this info from the organization
+          amount: {
+            currency_code: currency,
+            value: amount,
+            breakdown: {
+              item_total: { value: amount, currency_code: currency }
+            }
+          },
+          items: [
+            {
+              name: ggoodOnSaleSelected?.name,
+              description: ggoodOnSaleSelected?.description || 'ggood',
+              sku: ggoodOnSaleSelected?.id,
+              unit_amount: {
+                currency_code: currency,
+                value: amount
+              },
+              quantity: '1',
+              category: 'DIGITAL_GOODS'
+            }
+          ],
+          payee: {
+            email_address: 'sb-yeqgj5780647@business.example.com',
+            merchant_id: 'Z69NTV3EDWEC2'
+          } // @todo: get this info from the organization
+        }
+      ],
+      application_context: {
+        brand_name: 'gGoods',
+        shipping_preference: 'NO_SHIPPING'
+      }
+    })
+  }
+
+  const handleOnChangeAmount = event => {
+    const [amount] = (ggoodOnSaleSelected?.amount || '').split(' ')
+
+    if (parseFloat(event.target.value || 0) < parseFloat(amount)) {
+      return
+    }
+
+    setAmount(event.target.value)
+  }
+
+  useEffect(() => {
+    const [amount] = (ggoodOnSaleSelected?.amount || '').split(' ')
+    setAmount(amount)
+  }, [ggoodOnSaleSelected])
 
   return (
     <Dialog
@@ -56,9 +146,9 @@ const DonateNow = ({ open, handlerOpen }) => {
         </Box>
         <Box className={classes.sectionBox}>
           <Typography variant="h6" gutterBottom>
-            {t('title')}
+            {t('modalTitle')}
           </Typography>
-          <Typography variant="body1">{t('paragraph1')}</Typography>
+          <Typography variant="body1">{t('modalParagraph1')}</Typography>
         </Box>
         <Box className={classes.sectionBox}>
           <Grid container justify="center">
@@ -70,7 +160,12 @@ const DonateNow = ({ open, handlerOpen }) => {
               >
                 {t('selectedGood')}
               </Typography>
-              <CardAvatar />
+              <CardAvatar
+                id={ggoodOnSaleSelected?.id}
+                name={ggoodOnSaleSelected?.name}
+                image={ggoodOnSaleSelected?.image}
+                backgroundColor={ggoodOnSaleSelected?.backgroundColor}
+              />
             </Grid>
           </Grid>
         </Box>
@@ -82,53 +177,63 @@ const DonateNow = ({ open, handlerOpen }) => {
                 style={{ fontWeight: 'bold' }}
                 gutterBottom
               >
-                {t('suggestedPrice')}
+                {t('suggestedDonation')}
               </Typography>
               <Box className={classes.sectionBox}>
-                <Chip label="Basic" color="primary" className={classes.chip} />
-                <Chip label="Basic" color="primary" className={classes.chip} />
-              </Box>
-              <FormControl fullWidth variant="filled">
-                <InputLabel htmlFor="filled-adornment-amount">
-                  Amount
-                </InputLabel>
-                <FilledInput
-                  id="filled-adornment-amount"
-                  startAdornment={
-                    <InputAdornment position="start">$</InputAdornment>
-                  }
+                <Chip
+                  label={ggoodOnSaleSelected?.amount}
+                  color="primary"
+                  className={classes.chip}
                 />
-              </FormControl>
+              </Box>
+              {!!ggoodOnSaleSelected?.donable && (
+                <FormControl fullWidth variant="filled">
+                  <InputLabel htmlFor="filled-adornment-amount">
+                    {t('amount')}
+                  </InputLabel>
+                  <FilledInput
+                    value={amount || ''}
+                    onChange={handleOnChangeAmount}
+                    startAdornment={
+                      <InputAdornment position="start">$</InputAdornment>
+                    }
+                  />
+                </FormControl>
+              )}
             </Grid>
           </Grid>
         </Box>
-        <Box className={classes.sectionBox}>
-          <Grid container justify="center">
-            <Grid item xs={10}>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.googleButton}
-              >
-                Google pay
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.paypalButton}
-              >
-                Paypal
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.mainButton}
-              >
-                EOS WALLET
-              </Button>
+        {loading && <CircularProgress />}
+        {!loading && (
+          <Box className={classes.sectionBox}>
+            <Grid container justify="center">
+              <Grid item xs={10}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.googleButton}
+                >
+                  Google pay
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.mainButton}
+                >
+                  EOS WALLET
+                </Button>
+                <PayPalButton
+                  options={{
+                    clientId: paypalClientId
+                  }}
+                  createOrder={handleOnCreateOrder}
+                  onSuccess={handleOnSucces}
+                  catchError={handleOnError}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
+          </Box>
+        )}
       </Box>
     </Dialog>
   )
