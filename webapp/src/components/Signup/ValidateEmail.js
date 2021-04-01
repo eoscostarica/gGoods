@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ValidateEmail = ({ isValid, loading, user, setField }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation()
   const classes = useStyles()
 
   const validateFormatEmail = email => {
@@ -32,7 +32,7 @@ const ValidateEmail = ({ isValid, loading, user, setField }) => {
     <TextField
       className={classes.textField}
       id="email"
-      label={t('common.email')}
+      label={t('email')}
       variant="outlined"
       type="email"
       fullWidth
@@ -49,7 +49,7 @@ const ValidateEmail = ({ isValid, loading, user, setField }) => {
       }}
       helperText={
         validateFormatEmail(user.email) && !isValid && loading
-          ? t('miscellaneous.alreadyAssociated')
+          ? t('alreadyAssociated')
           : !isValid
           ? ''
           : ''
