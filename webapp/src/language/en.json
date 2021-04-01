@@ -194,7 +194,8 @@
     "title": "Donate Now!",
     "paragraph1": "Select your preferred payment method and buy this good. You can increase your donation to further help this cause.",
     "selectedGood": "Selected Good",
-    "suggestedPrice": "Suggested Price"
+    "suggestedPrice": "Suggested Price",
+    "sucessMessage": "Thanks for your donation"
   },
   "filterGoodsRoute": {
     "title": "Filter items",
@@ -280,5 +281,9 @@
     "title": "Goods",
     "description": "Virtual goods designed to help good causes, buy or subscribe to help or just play.",
     "empty": "There is not gGoods that match your filters"
+  },
+  "donationSuccesfulRoute": {
+    "title": "Donation Succesful!",
+    "paragraph1": "We want to thank you for kindly donating towards this cause. We’re working towards empowering local communities and educating people towards the importance of wildlife preservation. Your funds will be dedicated 100% towards the specific cause listed for the good you just sponsored. "
   }
 }

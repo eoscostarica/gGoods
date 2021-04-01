@@ -14,6 +14,7 @@ const Organizations = lazy(() => import('./Organizations'))
 const Organization = lazy(() => import('./Organization'))
 const Goods = lazy(() => import('./Goods'))
 const GoodPage = lazy(() => import('./GoodPage'))
+const DonationSuccesful = lazy(() => import('./DonationSuccesful'))
 const Games = lazy(() => import('./Games'))
 const YourCollection = lazy(() => import('./YourCollection'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
@@ -51,11 +52,27 @@ const routes = [
     exact: true
   },
   {
+    path: '/good/:id',
+    component: GoodPage
+  },
+  {
+    path: '/donation-succesful',
+    component: DonationSuccesful
+  },
+  {
     name: 'games',
     icon: <GamesIcon />,
     component: Games,
     path: '/games',
     exact: true
+  },
+  {
+    name: 'your-collection',
+    icon: <InsertEmoticonIcon />,
+    component: YourCollection,
+    path: '/your-collection',
+    exact: true,
+    roles: ['user']
   },
   {
     name: 'Inventory',
@@ -72,24 +89,13 @@ const routes = [
     exact: true,
     roles: ['organization']
   },
-  {
-    name: 'your-collection',
-    icon: <InsertEmoticonIcon />,
-    component: YourCollection,
-    path: '/your-collection',
-    exact: true,
-    roles: ['user']
-  },
+
   {
     name: 'about',
     icon: <InfoIcon />,
     component: About,
     path: '/about',
     exact: true
-  },
-  {
-    path: '/good/:id',
-    component: GoodPage
   },
   {
     component: SelfieCam,

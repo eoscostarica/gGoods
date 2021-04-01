@@ -55,7 +55,8 @@ const Goods = () => {
           name: `${item?.ggoods[0]?.metadata?.name} v${item?.ggoods[0]?.serial}`,
           image: `${mainConfig.ipfsUrl}/ipfs/${item?.ggoods[0]?.metadata?.imageSmall}`,
           backgroundColor: item?.ggoods[0]?.metadata?.backgroundColor,
-          amount: item.amount
+          amount: item.amount,
+          donable: item.donable
         }))
     )
   }, [ggoods])

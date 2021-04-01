@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
@@ -19,6 +19,7 @@ import Button from '@material-ui/core/Button'
 import { PayPalButton } from 'react-paypal-button-v2'
 import { useMutation } from '@apollo/client'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import { useHistory } from 'react-router-dom'
 
 import { CardAvatar } from '../Card'
 import { paypalClientId } from '../../config/paypal.config'
@@ -34,7 +35,9 @@ const DonateNow = ({ open, handlerOpen }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const { t } = useTranslation('donateRoute')
+  const history = useHistory()
   const [, { showMessage }] = useSharedState()
+  const [amount, setAmount] = useState()
   const [confirmSaleWithPaypal, { loading }] = useMutation(
     CONFIRM_SALE_WITH_PAYPAL
   )
@@ -49,6 +52,7 @@ const DonateNow = ({ open, handlerOpen }) => {
       })
       showMessage({ type: 'success', content: t('sucessMessage') })
       handlerOpen(false)
+      history.push('/donation-succesful')
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
     }
@@ -59,7 +63,7 @@ const DonateNow = ({ open, handlerOpen }) => {
   }
 
   const handleOnCreateOrder = (data, actions) => {
-    const [amount, currency] = ggoodOnSaleSelected?.amount.split(' ')
+    const [, currency] = ggoodOnSaleSelected?.amount.split(' ')
 
     return actions.order.create({
       intent: 'CAPTURE',
@@ -98,6 +102,21 @@ const DonateNow = ({ open, handlerOpen }) => {
       }
     })
   }
+
+  const handleOnChangeAmount = event => {
+    const [amount] = (ggoodOnSaleSelected?.amount || '').split(' ')
+
+    if (parseFloat(event.target.value || 0) < parseFloat(amount)) {
+      return
+    }
+
+    setAmount(event.target.value)
+  }
+
+  useEffect(() => {
+    const [amount] = (ggoodOnSaleSelected?.amount || '').split(' ')
+    setAmount(amount)
+  }, [ggoodOnSaleSelected])
 
   return (
     <Dialog
@@ -167,17 +186,20 @@ const DonateNow = ({ open, handlerOpen }) => {
                   className={classes.chip}
                 />
               </Box>
-              <FormControl fullWidth variant="filled">
-                <InputLabel htmlFor="filled-adornment-amount">
-                  Amount
-                </InputLabel>
-                <FilledInput
-                  id="filled-adornment-amount"
-                  startAdornment={
-                    <InputAdornment position="start">$</InputAdornment>
-                  }
-                />
-              </FormControl>
+              {!!ggoodOnSaleSelected?.donable && (
+                <FormControl fullWidth variant="filled">
+                  <InputLabel htmlFor="filled-adornment-amount">
+                    {t('amount')}
+                  </InputLabel>
+                  <FilledInput
+                    value={amount || ''}
+                    onChange={handleOnChangeAmount}
+                    startAdornment={
+                      <InputAdornment position="start">$</InputAdornment>
+                    }
+                  />
+                </FormControl>
+              )}
             </Grid>
           </Grid>
         </Box>
