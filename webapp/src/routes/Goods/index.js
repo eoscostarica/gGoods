@@ -6,41 +6,25 @@ import { makeStyles } from '@material-ui/styles'
 import Grid from '@material-ui/core/Grid'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import Button from '@material-ui/core/Button'
+import { useQuery } from '@apollo/client'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { CardAvatar } from '../../components/Card'
 import GoodsFilter from '../../components/GoodsFilter'
+import { GGOODS_ON_SALE } from '../../gql'
+import { mainConfig } from '../../config'
+
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
-
-const GOODS_LIST = [
-  {
-    name: 'Selfie Cam'
-  },
-  {
-    name: 'Free your Animal'
-  },
-  {
-    name: 'Free your Animal'
-  },
-  {
-    name: 'Free your Animal'
-  },
-  {
-    name: 'Free your Animal'
-  },
-  {
-    name: 'Free your Animal'
-  },
-  {
-    name: 'Free your Animal'
-  }
-]
 
 const Goods = () => {
   const classes = useStyles()
   const { t } = useTranslation('goodsRoute')
   const [openFilter, setopenFilter] = useState(false)
+  const { loading, data } = useQuery(GGOODS_ON_SALE, {
+    variables: { seller: '' }
+  })
 
   const handlerSetOpenFilter = () => {
     setopenFilter(!openFilter)
@@ -63,20 +47,33 @@ const Goods = () => {
           style={{ fontWeight: 'bold' }}
           className={classes.available}
         >
-          {GOODS_LIST.length}
+          {
+            data?.items?.filter(item => !!item?.ggoods[0]?.metadata?.imageSmall)
+              .length
+          }
           {t('available')}
         </Typography>
         <Button startIcon={<FilterListIcon />} onClick={filter}>
           {t('filter')}
         </Button>
       </Box>
+      {loading && <CircularProgress />}
       <Box>
         <Grid container spacing={2}>
-          {GOODS_LIST.map(game => (
-            <Grid item xs={6} md={3} lg={2} key={game.name}>
-              <CardAvatar />
-            </Grid>
-          ))}
+          {data?.items
+            ?.filter(item => !!item?.ggoods[0]?.metadata?.imageSmall)
+            ?.map((item, index) => (
+              <Grid item xs={6} md={3} lg={2} key={index}>
+                <CardAvatar
+                  id={item.id}
+                  name={item?.ggoods[0]?.metadata?.name}
+                  image={`${mainConfig.ipfsUrl}/ipfs/${item?.ggoods[0]?.metadata?.imageSmall}`}
+                  backgroundColor={item?.ggoods[0]?.metadata?.backgroundColor}
+                  amount={item?.amount}
+                  donable={item?.donable}
+                />
+              </Grid>
+            ))}
         </Grid>
       </Box>
       <GoodsFilter open={openFilter} handlerOpen={handlerSetOpenFilter} />

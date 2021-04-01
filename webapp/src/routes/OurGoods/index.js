@@ -98,7 +98,7 @@ const OurGoods = () => {
 
       {loading && (
         <Grid item xs={12}>
-          <CircularProgress size={20} />
+          <CircularProgress />
         </Grid>
       )}
 
