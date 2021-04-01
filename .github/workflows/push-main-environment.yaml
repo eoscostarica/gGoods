@@ -82,6 +82,9 @@ jobs:
           REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
           REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY }}
 
+          # hasura
+          HASURA_GRAPHQL_DATABASE_URL: ${{ secrets.HASURA_GRAPHQL_DATABASE_URL }}
+
       - name: Build kubernetes files
         id: build_kubernetes_files
         run: |
