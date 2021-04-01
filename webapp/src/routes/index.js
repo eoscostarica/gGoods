@@ -22,7 +22,6 @@ const About = lazy(() => import('./About'))
 const Page404 = lazy(() => import('./Route404'))
 const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
-const Paypal = lazy(() => import('./Paypal'))
 const OurGoods = lazy(() => import('./OurGoods'))
 const Inventory = lazy(() => import('./Inventory'))
 const SelfieCam = lazy(() => import('./SelfieCam'))
@@ -74,7 +73,7 @@ const routes = [
     component: YourCollection,
     path: '/your-collection',
     exact: true,
-    roles: ['gamer', 'user']
+    roles: ['user']
   },
   {
     name: 'about',
@@ -84,22 +83,20 @@ const routes = [
     exact: true
   },
   {
-    icon: <AppsIcon />,
-    component: Paypal,
-    path: '/paypal-integration',
-    exact: true
-  },
-  {
+    name: 'createTemplate',
     icon: <DashboardIcon />,
     component: CreateTemplate,
     path: '/create-template',
-    exact: true
+    exact: true,
+    roles: ['organization']
   },
   {
+    name: 'createTemplate',
     icon: <DashboardIcon />,
     component: PutOnSale,
     path: '/put-on-sale',
-    exact: true
+    exact: true,
+    roles: ['organization']
   },
   {
     icon: <DashboardIcon />,

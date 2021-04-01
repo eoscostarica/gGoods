@@ -55,3 +55,15 @@ export const GGOODS_ON_SALE = gql`
     }
   }
 `
+
+export const MY_GGOODS = gql`
+  query {
+    ggoods: my_ggoods {
+      id
+      category
+      owner
+      serial
+      metadata
+    }
+  }
+`
