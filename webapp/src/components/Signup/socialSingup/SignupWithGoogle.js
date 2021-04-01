@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SignupWithGoogle = ({ handlerSubmit }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('signup')
   const classes = useStyles()
 
   const googleResponse = response => {
@@ -82,7 +82,7 @@ const SignupWithGoogle = ({ handlerSubmit }) => {
             </SvgIcon>
           }
         >
-          {t('signup.signupWithGoogle')}
+          {t('signupWithGoogle')}
         </Button>
       )}
       buttonText="Login"

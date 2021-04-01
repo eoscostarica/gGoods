@@ -15,19 +15,23 @@ const LEVEL = {
   '-2': 'Left2'
 }
 
-const Item = ({ level, id }) => {
+const Item = ({ level, image, backgroundColor }) => {
   const classes = useStyles()
 
   return (
-    <Box className={clsx(classes.item, classes[`level${LEVEL[level]}`])}>
-      <span>{id}</span>
+    <Box
+      className={clsx(classes.item, classes[`level${LEVEL[level]}`])}
+      style={{ backgroundColor }}
+    >
+      <img src={image} alt="ggood item" />
     </Box>
   )
 }
 
 Item.propTypes = {
+  backgroundColor: PropTypes.string,
   level: PropTypes.any,
-  id: PropTypes.any
+  image: PropTypes.string
 }
 
 export default Item

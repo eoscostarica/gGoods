@@ -33,8 +33,8 @@ export const PUT_ON_SALE_MUTATION = gql`
 `
 
 export const TEMPLATES_QUERY = gql`
-  query templates($account: String!) {
-    items: template(where: { account: { _eq: $account } }) {
+  query templates {
+    items: template {
       id
       category
       name
@@ -44,7 +44,7 @@ export const TEMPLATES_QUERY = gql`
 `
 
 export const GGOODS_ON_SALE = gql`
-  query($seller: String!) {
+  query($seller: String) {
     items: goods_on_sale(seller: $seller) {
       id
       seller
@@ -52,6 +52,26 @@ export const GGOODS_ON_SALE = gql`
       donable
       expiration
       ggoods
+    }
+  }
+`
+
+export const MY_GGOODS = gql`
+  query {
+    ggoods: my_ggoods {
+      id
+      category
+      owner
+      serial
+      metadata
+    }
+  }
+`
+
+export const CONFIRM_SALE_WITH_PAYPAL = gql`
+  mutation($orderId: String!) {
+    confirm_sale_with_paypal(orderId: $orderId) {
+      success
     }
   }
 `

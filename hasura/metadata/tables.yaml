@@ -14,22 +14,11 @@
         column_mapping:
           email: email
   select_permissions:
-  - role: gamer
-    permission:
-      columns:
-      - address
-      - description
-      - email
-      - id
-      - name
-      - orgInfo
-      - phone
-      - state
-      filter: {}
   - role: guest
     permission:
       columns:
       - address
+      - created_at
       - description
       - email
       - email_verified
@@ -40,31 +29,44 @@
       - password
       - phone
       - state
+      - updated_at
       - verification_code
       filter: {}
   - role: organization
     permission:
       columns:
       - address
+      - created_at
       - description
       - email
+      - email_verified
       - id
+      - invitation_code
       - name
       - orgInfo
+      - password
       - phone
       - state
+      - updated_at
+      - verification_code
       filter: {}
   - role: user
     permission:
       columns:
       - address
+      - created_at
       - description
       - email
+      - email_verified
       - id
+      - invitation_code
       - name
       - orgInfo
+      - password
       - phone
       - state
+      - updated_at
+      - verification_code
       filter: {}
   update_permissions:
   - role: guest
@@ -78,7 +80,7 @@
     schema: public
     name: template
   select_permissions:
-  - role: guest
+  - role: organization
     permission:
       columns:
       - id
@@ -88,7 +90,9 @@
       - metadata
       - created_at
       - updated_at
-      filter: {}
+      filter:
+        account:
+          _eq: X-Hasura-User-Account
 - table:
     schema: public
     name: user

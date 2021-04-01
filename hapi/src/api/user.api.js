@@ -1,4 +1,4 @@
-const { hasuraUtils } = require('../utils')
+const { hasuraUtil } = require('../utils')
 
 const GET_ONE = `
   query ($where: user_bool_exp) {
@@ -63,7 +63,7 @@ const SET_SECRET = `
 `
 
 const getOne = async (where = {}) => {
-  const { user } = await hasuraUtils.request(GET_ONE, { where })
+  const { user } = await hasuraUtil.request(GET_ONE, { where })
 
   if (user && user.length > 0) return user[0]
 
@@ -71,23 +71,23 @@ const getOne = async (where = {}) => {
 }
 
 const insert = user => {
-  return hasuraUtils.request(INSERT, { user })
+  return hasuraUtil.request(INSERT, { user })
 }
 
 const setEmail = (where, email) => {
-  return hasuraUtils.request(SET_EMAIL, { where, email })
+  return hasuraUtil.request(SET_EMAIL, { where, email })
 }
 
 const setName = (where, name) => {
-  return hasuraUtils.request(SET_NAME, { where, name })
+  return hasuraUtil.request(SET_NAME, { where, name })
 }
 
 const setSecret = (where, secret) => {
-  return hasuraUtils.request(SET_SECRET, { where, secret })
+  return hasuraUtil.request(SET_SECRET, { where, secret })
 }
 
 const verifyEmail = where => {
-  return hasuraUtils.request(SET_EMAIL_VERIFIED, { where })
+  return hasuraUtil.request(SET_EMAIL_VERIFIED, { where })
 }
 
 module.exports = {

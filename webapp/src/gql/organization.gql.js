@@ -23,9 +23,19 @@ export const GET_ORGANIZATION_BY_ID = gql`
       name
       phone
       orgInfo
-      getAccount {
-        account
+    }
+  }
+`
+
+export const GET_ORGANIZATION_BY_ACCOUNT = gql`
+  query($orgInfo: jsonb!) {
+    organizations: preregister_organization(
+      where: {
+        _and: { orgInfo: { _contains: $orgInfo }, state: { _eq: "approved" } }
       }
+    ) {
+      id
+      name
     }
   }
 `

@@ -115,9 +115,9 @@ const GoodsFilter = ({ open, handlerOpen }) => {
               >
                 {t('subtitle1')}
               </Typography>
-              {AUTHOR_LIST.map(game => (
+              {AUTHOR_LIST.map((game, index) => (
                 <Chip
-                  key={game.name}
+                  key={index}
                   label={game.name}
                   clickable
                   className={classes.chip}

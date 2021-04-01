@@ -1,11 +1,12 @@
 const Joi = require('joi')
 
-const { paymentComplete } = require('../services')
+const { nftService } = require('../services')
 
 module.exports = {
   method: 'POST',
-  path: '/payment-transaction-complete',
-  handler: ({ payload: { input } }) => paymentComplete.newTransaction(input),
+  path: '/confirm-sale-with-paypal',
+  handler: ({ auth: { credentials }, payload: { input } }) =>
+    nftService.confirmSaleWithPaypal(credentials, input),
   options: {
     validate: {
       payload: Joi.object({
