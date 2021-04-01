@@ -50,7 +50,6 @@
     "asAOrganization": "As a Organization",
     "about": "About",
     "aboutPlaceholder": "About the Organization",
-    "notAccount": "No account yet? Register here.",
     "emailMessage": {
       "subjectVerificationCode": "gGoods Email Verification",
       "titleVerificationCode": "Email Verification",
@@ -68,7 +67,8 @@
     "demoCredentials": "Demo credentials",
     "invalidAccountOrPassword": "Invalid account or password",
     "loginWithGoogle": "Login with Google",
-    "logout": "Logout"
+    "logout": "Logout",
+    "notAccount": "No account yet? Register here."
   },
   "registerOrganization": {
     "accountapprove": "This account has been approved",

@@ -25,7 +25,6 @@ import {
 } from '../../gql'
 import { useSharedState } from '../../context/state.context'
 import LoginWithGoogle from './LoginWithGoogle'
-import Signup from '../../components/Signup'
 
 const useStyles = makeStyles(theme => ({
   alert: {
@@ -110,6 +109,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: 30,
     marginBottom: 10
   },
+  registerBoxModal: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
   btnLoginModal: {
     borderRadius: '4px',
     boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.24)',
@@ -122,6 +127,15 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: '1px',
     color: '#121212',
     padding: '10px'
+  },
+  registerTextModal: {
+    fontSize: '12px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: 1.33,
+    letterSpacing: '0.4px',
+    color: '#000000'
   },
   labelOption: {
     color: `${theme.palette.primary.main} !important`,
@@ -144,7 +158,7 @@ const LoginModal = () => {
   const [user, setUser] = useState({})
   const [
     { showLoginModal: open },
-    { cancelLogin, successLogin }
+    { signup, cancelLogin, successLogin }
   ] = useSharedState()
   const [errorMessage, setErrorMessage] = useState(null)
   const classes = useStyles()
@@ -357,7 +371,16 @@ const LoginModal = () => {
             </Box>
           </form>
           <Box className={classes.registerBox}>
-            <Signup isModal />
+            <Button
+              color="secondary"
+              className={classes.registerTextModal}
+              onClick={() => {
+                handleOpen()
+                signup()
+              }}
+            >
+              {t('notAccount')}
+            </Button>
           </Box>
         </Box>
       </Dialog>
