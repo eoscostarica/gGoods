@@ -58,7 +58,16 @@ describe ('gGoods unit tests', function(){
         }
       );
     } catch (err) {
-      assert.equal(err, "not valid symbol");
+      let errorMessage = get(err, "json.error.details[0].message");
+      errorMessage &&
+        (errorMessage = errorMessage
+          .replace("assertion failure with message:", "")
+          .trim());
+      assert.equal(
+        "eosio_assert_message_exception",
+        get(err, "json.error.name") || ""
+      );
+      assert.equal(errorMessage, "not valid symbol");
     }
   });
  
