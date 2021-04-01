@@ -8,6 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
+import { useTranslation } from 'react-i18next'
 
 import { mainConfig } from '../../config'
 
@@ -106,6 +107,7 @@ const CardAvatar = ({
   onClick
 }) => {
   const classes = useStyles()
+  const { t } = useTranslation()
 
   const handleOnClick = () => {
     onClick && onClick()
@@ -128,11 +130,13 @@ const CardAvatar = ({
           <Typography variant="subtitle2">{name}</Typography>
           {donation && units && (
             <Typography variant="subtitle2">
-              Donation ${donation} Units:{units}
+              {t('donation')} ${donation} {t('units')}:{units}
             </Typography>
           )}
           {donation && !units && (
-            <Typography variant="subtitle2">Donation ${donation}</Typography>
+            <Typography variant="subtitle2">
+              {t('donation')} ${donation}
+            </Typography>
           )}
         </Box>
       </CardActions>

@@ -30,31 +30,45 @@ const GOOD = {
 const relatedGoods = [
   {
     name: 'Name',
-    image: '/static/media/avatar.8d7f2dc7.png'
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
-    image: '/static/media/avatar.8d7f2dc7.png'
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
-    image: '/static/media/avatar.8d7f2dc7.png'
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
-    image: '/static/media/avatar.8d7f2dc7.png'
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
-    image: '/static/media/avatar.8d7f2dc7.png'
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
-    image: '/static/media/avatar.8d7f2dc7.png'
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
-    image: '/static/media/avatar.8d7f2dc7.png'
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   }
 ]
 
@@ -176,9 +190,13 @@ const GoodPage = () => {
         </Typography>
         <Box>
           <Grid container spacing={2}>
-            {relatedGoods.map((good, index) => (
+            {relatedGoods.map((ggood, index) => (
               <Grid item xs={6} md={3} lg={1} key={index}>
-                <CardAvatar name={good.name} image={good.image} />
+                <CardAvatar
+                  name={ggood.name}
+                  image={ggood.image}
+                  backgroundColor={ggood.backgroundColor}
+                />
               </Grid>
             ))}
           </Grid>

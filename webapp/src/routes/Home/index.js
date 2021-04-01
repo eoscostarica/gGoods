@@ -22,25 +22,46 @@ const useStyles = makeStyles(styles)
 
 const GOOD_LIST = [
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image:
+      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   }
 ]
 
@@ -85,15 +106,15 @@ const Home = () => {
         <Box className={classes.displayInline}>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
-            <Typography variant="p">Join now!</Typography>
+            <Typography>Join now!</Typography>
           </Box>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
-            <Typography variant="p">Browse for Goods</Typography>
+            <Typography>Browse for Goods</Typography>
           </Box>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
-            <Typography variant="p">Find a cause to help</Typography>
+            <Typography>Find a cause to help</Typography>
           </Box>
         </Box>
       </Box>
@@ -102,19 +123,19 @@ const Home = () => {
         <Box className={classes.displayInline}>
           <Box className={classes.orgWrapper}>
             <img alt="help" src={Help} />
-            <Typography variant="p">
+            <Typography>
               You can help by buying goods created by your choice of cause
             </Typography>
           </Box>
           <Box className={classes.orgWrapper}>
             <img alt="gift" src={Gift} />
-            <Typography variant="p">
+            <Typography>
               Natural rescue organizations create NFT Goods for free.
             </Typography>
           </Box>
           <Box className={classes.orgWrapper}>
             <img alt="organization" src={Organization} />
-            <Typography variant="p">
+            <Typography>
               Organizations can continue to operate and help preserve nature.{' '}
             </Typography>
           </Box>
@@ -142,9 +163,13 @@ const Home = () => {
       </Box>
       <Box className={classes.rowsBoxWrap}>
         <Grid container spacing={2}>
-          {GOOD_LIST.map(game => (
-            <Grid item xs={6} md={4} lg={1} key={game.name}>
-              <CardAvatar />
+          {GOOD_LIST.map((ggood, index) => (
+            <Grid item xs={6} md={4} lg={1} key={index}>
+              <CardAvatar
+                name={ggood.name}
+                image={ggood.image}
+                backgroundColor={ggood.backgroundColor}
+              />
             </Grid>
           ))}
         </Grid>
