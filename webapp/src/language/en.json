@@ -184,7 +184,8 @@
     "modalParagraph1": "Select your preferred payment method and buy this good. You can increase your donation to further help this cause.",
     "selectedGood": "Selected Good",
     "amount":"Amount to donate",
-    "sucessMessage": "Thanks for your donation"
+    "sucessMessage": "Thanks for your donation",
+    "donationFor": "Donation for"
   },
   "filterGoodsRoute": {
     "title": "Filter items",

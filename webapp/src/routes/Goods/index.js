@@ -27,7 +27,8 @@ const Goods = () => {
   const [ggoodsList, setGGoodsList] = useState()
   const [, { setState }] = useSharedState()
   const { loading, data: ggoods } = useQuery(GGOODS_ON_SALE, {
-    variables: { seller: '' }
+    variables: { seller: '' },
+    fetchPolicy: 'network-only'
   })
 
   const handleOnClickCard = ggoodOnSaleSelected => () => {

@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import Box from '@material-ui/core/Box'
+import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Slider from '@ant-design/react-slick'
@@ -14,7 +15,9 @@ import Help from '../../images/assets/help.png'
 import Bg from '../../images/assets/cardBg.jpg'
 import Bg1 from '../../images/assets/cardBg1.png'
 import Bg2 from '../../images/assets/cardBg2.jpg'
-import bgCanvas from '../../images/templates/bgs/1.png'
+import dogShelter from '../../images/assets/dogShelter.svg'
+import animalRescue from '../../images/assets/animalRescue.svg'
+import oceanProtector from '../../images/assets/oceanProtector.svg'
 
 import styles from './styles'
 
@@ -94,7 +97,7 @@ const Home = () => {
           />
         </div>
       </Slider>
-      <Box className={classes.rowsBox}>
+      <Box className={clsx(classes.rowsBox, classes.firstTitle)}>
         <Typography variant="h5">What can I do?</Typography>
         <Box className={classes.displayInline}>
           <Box className={classes.optionsWrapper}>
@@ -138,19 +141,19 @@ const Home = () => {
         <Typography variant="h5">Featured Organizations</Typography>
         <Box className={classes.cardInfoWrapper}>
           <CardInfo
-            primaryText="Local Shelter"
-            secondaryText="Cats and Dogs"
-            img={bgCanvas}
+            primaryText="Ocean Protectors"
+            secondaryText="Sea Wildlife"
+            img={oceanProtector}
           />
           <CardInfo
             primaryText="Animal Reserve"
             secondaryText="Tropicl Forest "
-            img={bgCanvas}
+            img={animalRescue}
           />
           <CardInfo
-            primaryText="Sea Protectors"
-            secondaryText="Marine Life"
-            img={bgCanvas}
+            primaryText="Dog Shelter"
+            secondaryText="Pet Rescue"
+            img={dogShelter}
           />
         </Box>
       </Box>

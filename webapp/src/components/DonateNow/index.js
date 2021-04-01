@@ -30,7 +30,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const DonateNow = ({ open, handlerOpen }) => {
+const DonateNow = ({ open, handlerOpen, organization }) => {
   const classes = useStyles()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
@@ -69,7 +69,13 @@ const DonateNow = ({ open, handlerOpen }) => {
       intent: 'CAPTURE',
       purchase_units: [
         {
-          description: 'donation for organization.name', // @todo: get this info from the organization
+          description: `${t('donationFor')} ${organization.name}`.substring(
+            0,
+            127
+          ),
+          soft_descriptorstring: `${t('donationFor')} ${
+            organization.name
+          }`.substring(0, 127),
           amount: {
             currency_code: currency,
             value: amount,
@@ -80,7 +86,9 @@ const DonateNow = ({ open, handlerOpen }) => {
           items: [
             {
               name: ggoodOnSaleSelected?.name,
-              description: ggoodOnSaleSelected?.description || 'ggood',
+              description: (
+                ggoodOnSaleSelected?.description || 'gGood'
+              ).substring(0, 127),
               sku: ggoodOnSaleSelected?.id,
               unit_amount: {
                 currency_code: currency,
@@ -91,9 +99,9 @@ const DonateNow = ({ open, handlerOpen }) => {
             }
           ],
           payee: {
-            email_address: 'sb-yeqgj5780647@business.example.com',
-            merchant_id: 'Z69NTV3EDWEC2'
-          } // @todo: get this info from the organization
+            email_address: organization.orgInfo?.paypal?.email,
+            merchant_id: organization.orgInfo?.paypal?.merchantId
+          }
         }
       ],
       application_context: {
@@ -241,7 +249,8 @@ const DonateNow = ({ open, handlerOpen }) => {
 
 DonateNow.propTypes = {
   open: PropTypes.bool,
-  handlerOpen: PropTypes.func
+  handlerOpen: PropTypes.func,
+  organization: PropTypes.any
 }
 
 export default DonateNow

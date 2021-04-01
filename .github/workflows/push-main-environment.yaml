@@ -126,6 +126,7 @@ jobs:
           HAPI_HASURA_URL: http://ggoods-hasura:8080/v1/graphql
           HAPI_HASURA_ADMIN_SECRET: ${{ secrets.HAPI_HASURA_ADMIN_SECRET }}
           HAPI_JWT_SECRET: ${{ secrets.HAPI_JWT_SECRET }}
+          HAPI_JWT_ALGORITHM: ${{ secrets.HAPI_JWT_ALGORITHM }}
           HAPI_JWT_ISS: ${{ secrets.HAPI_JWT_ISS }}
           HAPI_MAIL_HOST: ${{ secrets.HAPI_MAIL_HOST }}
           HAPI_MAIL_PORT: ${{ secrets.HAPI_MAIL_PORT }}
@@ -136,6 +137,9 @@ jobs:
           HAPI_DGOODS_ACCOUNT: ${{ secrets.HAPI_DGOODS_ACCOUNT }}
           HAPI_DGOODS_PASSWORD: ${{ secrets.HAPI_DGOODS_PASSWORD }}
           HAPI_DGOODS_TOKEN: ${{ secrets.HAPI_DGOODS_TOKEN }}
+          HAPI_PAYPAL_API: "${{ secrets.HAPI_PAYPAL_API }}"
+          HAPI_PAYPAL_CLIENT: "${{ secrets.HAPI_PAYPAL_CLIENT }}"
+          HAPI_PAYPAL_SECRET: "${{ secrets.HAPI_PAYPAL_SECRET }}"
 
           #webapp
           PORT: 80
