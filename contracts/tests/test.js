@@ -47,7 +47,7 @@ describe ('gGoods unit tests', function(){
               ],
               data: {
                 sym: "tckt",
-                verion: "1.0",
+                version: "1.0",
               },
             },
           ],
@@ -58,7 +58,7 @@ describe ('gGoods unit tests', function(){
         }
       );
     } catch (err) {
-      assert.equal(err, "Error: missing authority of consent2xxxx");
+      assert.equal(err, "not valid symbol");
     }
   });
  
