@@ -10,5 +10,10 @@ export default theme => ({
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(2)
     }
+  },
+  centerBox: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
