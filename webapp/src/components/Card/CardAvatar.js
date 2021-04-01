@@ -89,7 +89,7 @@ BodyCardAvatar.propTypes = {
   handlerViewPublish: PropTypes.func,
   handlerPublish: PropTypes.func,
   useLink: PropTypes.bool,
-  goodId: PropTypes.string
+  goodId: PropTypes.any
 }
 
 const CardAvatar = ({

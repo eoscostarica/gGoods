@@ -120,7 +120,7 @@ const PublishGood = ({ open, template, onClose }) => {
             onChange={handlePayloadChange('quantity')}
           />
           <TextField
-            label={t('suggestedPrice')}
+            label={t('suggestedDonation')}
             variant="filled"
             className={classes.textField}
             value={payload?.amount || ''}

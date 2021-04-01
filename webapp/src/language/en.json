@@ -18,7 +18,7 @@
     "password": "Password",
     "continue": "Continue",
     "takeHome": "Take me home",
-    "suggestedPrice": "Suggested Price",
+    "suggestedDonation": "Suggested Donation",
     "donation": "Donation",
     "units": "Units"
   },
@@ -149,7 +149,7 @@
   },
   "organizationRoute": {
     "objectives": "Objectives",
-    "history": "history",
+    "history": "History",
     "impact": "Impact",
     "information": "Information",
     "website": "Website",
@@ -176,11 +176,13 @@
     "filter": "FILTERS",
     "available": " GOODS AVAILABLE"
   },
-  "donateRoute": {
-    "title": "Donate Now!",
-    "paragraph1": "Select your preferred payment method and buy this good. You can increase your donation to further help this cause.",
+  "goodRoute": {
+    "by": "By",
+    "donateNow": "Donate Now",
+    "paragraph1": "We’re Grateful for any help you can provide!",
+    "modalTitle": "Donate Now!",
+    "modalParagraph1": "Select your preferred payment method and buy this good. You can increase your donation to further help this cause.",
     "selectedGood": "Selected Good",
-    "suggestedPrice": "Suggested Price",
     "amount":"Amount to donate",
     "sucessMessage": "Thanks for your donation"
   },

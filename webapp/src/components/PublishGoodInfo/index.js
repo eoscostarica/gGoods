@@ -127,7 +127,7 @@ const PublishGoodInfo = ({ open, ggood, onClose }) => {
                 style={{ fontWeight: 'bold' }}
                 gutterBottom
               >
-                {t('suggestedPrice')}
+                {t('suggestedDonation')}
               </Typography>
               <Box className={classes.sectionBox}>
                 <Chip

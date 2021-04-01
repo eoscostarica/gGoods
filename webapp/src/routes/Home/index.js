@@ -24,44 +24,37 @@ const GOOD_LIST = [
   {
     name: 'Name',
     backgroundColor: '#FA9F37',
-    image:
-      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
     backgroundColor: '#FA9F37',
-    image:
-      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
     backgroundColor: '#FA9F37',
-    image:
-      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
     backgroundColor: '#FA9F37',
-    image:
-      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
     backgroundColor: '#FA9F37',
-    image:
-      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
     backgroundColor: '#FA9F37',
-    image:
-      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
     name: 'Name',
     backgroundColor: '#FA9F37',
-    image:
-      'https://ipfs.smartholdem.io/ipfs/QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   }
 ]
 

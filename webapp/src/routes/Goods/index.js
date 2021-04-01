@@ -13,7 +13,6 @@ import { useHistory } from 'react-router-dom'
 import { CardAvatar } from '../../components/Card'
 import GoodsFilter from '../../components/GoodsFilter'
 import { GGOODS_ON_SALE } from '../../gql'
-import { mainConfig } from '../../config'
 import { useSharedState } from '../../context/state.context'
 
 import styles from './styles'
@@ -53,10 +52,12 @@ const Goods = () => {
         .map(item => ({
           id: item.id,
           name: `${item?.ggoods[0]?.metadata?.name} v${item?.ggoods[0]?.serial}`,
-          image: `${mainConfig.ipfsUrl}/ipfs/${item?.ggoods[0]?.metadata?.imageSmall}`,
+          image: item?.ggoods[0]?.metadata?.imageSmall,
           backgroundColor: item?.ggoods[0]?.metadata?.backgroundColor,
           amount: item.amount,
-          donable: item.donable
+          donable: item.donable,
+          issuer: item?.ggoods[0]?.issuer,
+          description: item?.ggoods[0]?.metadata?.description
         }))
     )
   }, [ggoods])

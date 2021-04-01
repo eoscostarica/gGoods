@@ -14,38 +14,25 @@
         column_mapping:
           email: email
   select_permissions:
-  - role: gamer
-    permission:
-      columns:
-      - address
-      - description
-      - email
-      - id
-      - name
-      - orgInfo
-      - phone
-      - state
-      filter: {}
   - role: guest
     permission:
       columns:
       - address
+      - created_at
       - description
       - email
-      - email_verified
       - id
-      - invitation_code
       - name
       - orgInfo
-      - password
       - phone
       - state
-      - verification_code
+      - updated_at
       filter: {}
   - role: organization
     permission:
       columns:
       - address
+      - created_at
       - description
       - email
       - id
@@ -53,11 +40,13 @@
       - orgInfo
       - phone
       - state
+      - updated_at
       filter: {}
   - role: user
     permission:
       columns:
       - address
+      - created_at
       - description
       - email
       - id
@@ -65,6 +54,7 @@
       - orgInfo
       - phone
       - state
+      - updated_at
       filter: {}
   update_permissions:
   - role: guest

@@ -34,7 +34,7 @@ const DonateNow = ({ open, handlerOpen }) => {
   const classes = useStyles()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-  const { t } = useTranslation('donateRoute')
+  const { t } = useTranslation('goodRoute')
   const history = useHistory()
   const [, { showMessage }] = useSharedState()
   const [amount, setAmount] = useState()
@@ -146,9 +146,9 @@ const DonateNow = ({ open, handlerOpen }) => {
         </Box>
         <Box className={classes.sectionBox}>
           <Typography variant="h6" gutterBottom>
-            {t('title')}
+            {t('modalTitle')}
           </Typography>
-          <Typography variant="body1">{t('paragraph1')}</Typography>
+          <Typography variant="body1">{t('modalParagraph1')}</Typography>
         </Box>
         <Box className={classes.sectionBox}>
           <Grid container justify="center">
@@ -177,7 +177,7 @@ const DonateNow = ({ open, handlerOpen }) => {
                 style={{ fontWeight: 'bold' }}
                 gutterBottom
               >
-                {t('suggestedPrice')}
+                {t('suggestedDonation')}
               </Typography>
               <Box className={classes.sectionBox}>
                 <Chip
