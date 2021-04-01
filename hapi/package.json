@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
     "watch": "nodemon --enable-source-maps src/index.js",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "lint:all": "eslint src/**/*.js"
   },
   "husky": {
     "hooks": {
