@@ -64,7 +64,7 @@ const SignupOrganization = ({
   isEmailValid,
   children
 }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('signup')
   const classes = useStyles()
   const [recaptchaValue, serRecaptchaValue] = useState('')
 
@@ -74,7 +74,7 @@ const SignupOrganization = ({
         {children}
         <TextField
           id="password"
-          label={t('signup.password')}
+          label={t('password')}
           type="password"
           fullWidth
           variant="outlined"
@@ -83,7 +83,7 @@ const SignupOrganization = ({
         />
         <TextField
           id="name"
-          label={t('signup.name')}
+          label={t('name')}
           variant="outlined"
           fullWidth
           className={classes.textField}
@@ -91,7 +91,7 @@ const SignupOrganization = ({
         />
         <TextField
           id="description"
-          label={t('common.description')}
+          label={t('description')}
           variant="outlined"
           fullWidth
           className={classes.textField}
@@ -99,7 +99,7 @@ const SignupOrganization = ({
         />
         <TextField
           id="address"
-          label={t('signup.address')}
+          label={t('address')}
           variant="outlined"
           fullWidth
           className={classes.textField}
@@ -107,7 +107,7 @@ const SignupOrganization = ({
         />
         <TextField
           id="phoneNumber"
-          label={t('signup.phoneNumber')}
+          label={t('phoneNumber')}
           variant="outlined"
           fullWidth
           className={classes.textField}
@@ -115,7 +115,7 @@ const SignupOrganization = ({
         />
         <TextField
           id="invitationCode"
-          label={t('signup.invitationCode')}
+          label={t('invitationCode')}
           variant="outlined"
           fullWidth
           className={classes.textField}
@@ -141,7 +141,7 @@ const SignupOrganization = ({
             color="secondary"
             onClick={onSubmit}
           >
-            {t('miscellaneous.continue')}
+            {t('continue')}
           </Button>
           {loading && <CircularProgress />}
         </Box>
