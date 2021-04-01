@@ -16,7 +16,7 @@ const useStyles = makeStyles(styles)
 const YourCollection = () => {
   const classes = useStyles()
   const { t } = useTranslation('collectionRoute')
-  const { loading, data } = useQuery(MY_GGOODS, {})
+  const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
 
   return (
     <Box className={classes.mainBox}>

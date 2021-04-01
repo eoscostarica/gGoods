@@ -5,10 +5,8 @@ const { nftService } = require('../services')
 module.exports = {
   method: 'POST',
   path: '/confirm-sale-with-paypal',
-  handler: ({ auth: { credentials }, payload: { input } }) => {
-    console.log('here')
-    return nftService.confirmSaleWithPaypal(credentials, input)
-  },
+  handler: ({ auth: { credentials }, payload: { input } }) =>
+    nftService.confirmSaleWithPaypal(credentials, input),
   options: {
     validate: {
       payload: Joi.object({

@@ -226,7 +226,9 @@ const Organization = () => {
                             name={item?.ggoods[0]?.metadata?.name}
                             donation={item?.amount}
                             image={item?.ggoods[0]?.metadata?.imageSmall}
-                            bgColor={item?.ggoods[0]?.metadata?.backgroundColor}
+                            backgroundColor={
+                              item?.ggoods[0]?.metadata?.backgroundColor
+                            }
                           />
                         </Grid>
                       ))}
