@@ -13,10 +13,8 @@ const create = async ({ role, email, emailContent, name, secret }) => {
   const account = await eosUtil.generateRandomAccountName(role.substring(0, 3))
   const { password, transaction } = await eosUtil.createAccount(account)
   const username = account
-  const { access_token: token } = jwtUtil.sign({ role, username, account })
   const { verification_code } = await verificationCodeApi.generate()
-
-  await userApi.insert({
+  const { insert_user_one: user } = await userApi.insert({
     role,
     username,
     account,
@@ -32,6 +30,14 @@ const create = async ({ role, email, emailContent, name, secret }) => {
   })
 
   await historyApi.insert(transaction)
+
+  const { access_token: token } = jwtUtil.sign({
+    role,
+    username,
+    account,
+    id: user.id
+  })
+
   try {
     mailApi.sendVerificationCode(
       email,
@@ -63,9 +69,7 @@ const createOrganization = async ({
   const account = await eosUtil.generateRandomAccountName(role.substring(0, 3))
   const { password, transaction } = await eosUtil.createAccount(account)
   const username = account
-  const { access_token: token } = jwtUtil.sign({ role, username, account })
-
-  await userApi.insert({
+  const { insert_user_one: user } = await userApi.insert({
     role,
     username,
     account,
@@ -81,6 +85,13 @@ const createOrganization = async ({
   })
 
   await historyApi.insert(transaction)
+
+  const { access_token: token } = jwtUtil.sign({
+    role,
+    username,
+    account,
+    id: user.id
+  })
 
   try {
     mailApi.sendConfirmMessage(

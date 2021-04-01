@@ -21,12 +21,16 @@
       - created_at
       - description
       - email
+      - email_verified
       - id
+      - invitation_code
       - name
       - orgInfo
+      - password
       - phone
       - state
       - updated_at
+      - verification_code
       filter: {}
   - role: organization
     permission:
@@ -35,12 +39,16 @@
       - created_at
       - description
       - email
+      - email_verified
       - id
+      - invitation_code
       - name
       - orgInfo
+      - password
       - phone
       - state
       - updated_at
+      - verification_code
       filter: {}
   - role: user
     permission:
@@ -49,12 +57,16 @@
       - created_at
       - description
       - email
+      - email_verified
       - id
+      - invitation_code
       - name
       - orgInfo
+      - password
       - phone
       - state
       - updated_at
+      - verification_code
       filter: {}
   update_permissions:
   - role: guest
