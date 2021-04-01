@@ -116,7 +116,7 @@ jobs:
           HASURA_GRAPHQL_JWT_SECRET: ${{ secrets.HASURA_GRAPHQL_JWT_SECRET }}
 
           # hapi
-          HAPI_SERVER_PORT: ${{ secrets.HAPI_SERVER_PORT }}
+          HAPI_SERVER_PORT: 9090
           HAPI_SERVER_ADDRESS: ${{ secrets.HAPI_SERVER_ADDRESS }}
           HAPI_EOS_API_ENDPOINT: http://jungle.eosio.cr
           HAPI_EOS_API_CHAIN_ID: 2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840
