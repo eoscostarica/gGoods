@@ -16,7 +16,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const CardOng = ({ name, category, description, img }) => {
+const CardOng = ({ name, category, description, img, id }) => {
   const classes = useStyles()
 
   return (
@@ -44,7 +44,7 @@ const CardOng = ({ name, category, description, img }) => {
       <CardActions className={classes.cardActionOngArea}>
         <LinkRouter
           style={{ textDecoration: 'none' }}
-          to={{ pathname: `/organization/ID` }}
+          to={{ pathname: `/organization/${id}` }}
         >
           <IconButton
             aria-label="open"
@@ -60,6 +60,7 @@ const CardOng = ({ name, category, description, img }) => {
 }
 
 CardOng.propTypes = {
+  id: PropTypes.number,
   name: PropTypes.string,
   category: PropTypes.string,
   description: PropTypes.string,

@@ -2,19 +2,19 @@ actions:
 - name: change_password
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/change-password
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/change-password'
   permissions:
   - role: guest
 - name: check_username
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/check-username
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/check-username'
   permissions:
   - role: guest
 - name: create_account
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/accounts
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/accounts'
   permissions:
   - role: gamer
   - role: guest
@@ -22,13 +22,13 @@ actions:
 - name: create_account_organization
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/create-account-organization
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/create-account-organization'
   permissions:
   - role: guest
 - name: create_pre_register_organization
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/pre-register
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/pre-register'
   permissions:
   - role: guest
 - name: create_template
@@ -41,7 +41,7 @@ actions:
 - name: credentials_recovery
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/credentials-recovery
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/credentials-recovery'
   permissions:
   - role: guest
 - name: goods_on_sale
@@ -71,7 +71,7 @@ actions:
 - name: verify_email
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/verify-email
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/verify-email'
   permissions:
   - role: guest
   - role: organization

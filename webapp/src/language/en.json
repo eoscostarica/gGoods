@@ -120,7 +120,7 @@
     },
     "credentialsRecovery": {
       "credentialsRecovery": "Credentials Recovery",
-      "emailError": "The email entered is not associated with any accoun",
+      "emailError": "The email entered is not associated with any account",
       "changePasswordInstructions": "To change your password, enter the email associated with your account, the current password and the new one",
       "changePassword": "Change Password",
       "currentPassword": "Current password",
@@ -132,19 +132,19 @@
     }
   },
   "routes": {
-    "/>title": "gGoods",
+    "/>title": "NFTs that enable communities to raise funds",
     "/>sidebar": "Home",
     "/>heading": "Welcome",
-    "/goods>title": "gGoods | gGoods",
+    "/goods>title": "NFT collectibles that support good causes | gGoods",
     "/goods>sidebar": "gGoods",
     "/goods>heading": "",
-    "/organizations>title": "Comunities | gGoods",
-    "/organizations>sidebar": "Comunities",
+    "/organizations>title": "Communities looking for funding | gGoods",
+    "/organizations>sidebar": "Communities",
     "/organizations>heading": "",
     "/your-collection>title": "Your collection | gGoods",
     "/your-collection>sidebar": "Your Collection",
     "/your-collection>heading": "",
-    "/games>title": "Games | gGoods",
+    "/games>title": "Apps and games for you to use your NFTs | gGoods",
     "/games>sidebar": "Games",
     "/games>heading": "",
     "/create-template>title": "Create NFT Template | gGoods",
@@ -159,7 +159,7 @@
     "/inventory>title": "Inventory | gGoods",
     "/inventory>sidebar": "Inventory",
     "/inventory>heading": "",
-    "/about>title": "About | gGoods",
+    "/about>title": "Leverage NFTs and ESOIO blockchain to support causes | gGoods",
     "/about>sidebar": "About",
     "/about>heading": "About",
     "/help>title": "Help | gGoods",
@@ -168,7 +168,7 @@
     "docs": "Docs",
     "community": "Community",
     "changelog": "Changelog",
-    "github": "Github Repository",
+    "github": "GitHub Repository",
     "telegram": "Telegram Channel"
   },
   "footer": {
@@ -189,6 +189,17 @@
     "title": "Organizations",
     "paragraph1": "Communities, NGOs and any other good causes that you might be interested in."
   },
+  "organizationRoute": {
+    "objectives": "Objectives",
+    "history": "history",
+    "impact": "Impact",
+    "information": "Information",
+    "website": "Website",
+    "location": "Location",
+    "contact": "Contact",
+    "ourGoods": "Our Goods",
+    "empty": "Organization without goods"
+  },
   "gamesRoute": {
     "title": "Games",
     "paragraph1": "Created so you can have fun with your goods."
@@ -196,7 +207,7 @@
   "selfieCam": {
     "title": "Selfie Cam",
     "subTitle": "Your Goods",
-    "paragraph1": "Select one of your Goods and take a selfie together, then share the pic to your social media and spread the word.",
+    "paragraph1": "Select one of your Goods and take a selfie together, then share the image to your social media and spread the word.",
     "share": "Share to Social",
     "save": "Save to Device",
     "cancel": "Cancel"
@@ -209,7 +220,7 @@
   },
   "donateRoute": {
     "title": "Donate Now!",
-    "paragraph1": "Select your prefered payment method and buy this good. You can increase your donation to further help this cause.",
+    "paragraph1": "Select your preferred payment method and buy this good. You can increase your donation to further help this cause.",
     "selectedGood": "Selected Good",
     "suggestedPrice": "Suggested Price"
   },
@@ -226,13 +237,13 @@
   "inventoryRoute": {
     "title": "Inventory",
     "paragraph1": "Create templates and publish Goods created by your organization.",
-    "uploadButton": "Upload Premade Template",
+    "uploadButton": "Upload Pre-made Template",
     "createButton": "Create a new Template",
     "emptyTemplate": "No templates or goods have been created yet.",
     "templatesTitle": "Templates",
     "templatesParagraph": "Select a template to publish a new set of Goods and make them available on the marketplace.",
     "goodsTitle": "Published Goods",
-    "goodsParagraph": "Select a Good to go or the Bio page or to unpublish it by burning it."
+    "goodsParagraph": "Select a Good to go or the bio page or to un-publish it by burning it."
   },
   "publishGood": {
     "title": "Publish Good",
@@ -264,13 +275,13 @@
     "whatIsblockchain": "What is blockchain?",
     "whatIsblockchainParagraph": "We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decentralized ledger that registers transactions within a network of various computers or nodes. Once a transaction is validated by the network and registered in the chain, it remains immutable and cannot be altered or hacked, improving transparency and trust. Read more",
     "whatIsEOSIO": "What is EOSIO?",
-    "whatIsEOSIOParagraph": "Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts.",
+    "whatIsEOSIOParagraph": "Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developer friendly tech that uses the C++ language to program smart contracts.",
     "whatAreNFT": "What are NFTs?",
     "whatAreNFTParagraph": "NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digital assets representing collectibles, digital artwork, tickets to an event, or in-game items. In gaming, NFTs enable users to collect assets that they can use as in-game items or trade with their peers.",
     "title3": "About the team",
     "title3Description": "gGoods was developed by a group of techies that wish to leverage NFTs and blockchain technology to impact the way people support causes. EOS Costa Rica and Edenia Labs lead the team. See who’s in the team in the Devpost profile.",
     "whosEOSCR": "Who’s EOS Costa Rica",
-    "whosEOSCRParagraph": "EOS Costa Rica develops blockchainbased enterprise solutions and opensource projects by deploying the EOSIO  protocol. The company also develops and manages blockchain infrastructure and nodes. Moreover, the team offers educational resources and training in blockchain topics for executives and new developers",
+    "whosEOSCRParagraph": "EOS Costa Rica develops blockchain based enterprise solutions and open-source projects by deploying the EOSIO  protocol. The company also develops and manages blockchain infrastructure and nodes. Moreover, the team offers educational resources and training in blockchain topics for executives and new developers",
     "whosEDENIALabs": "Who’s Edenia Labs",
     "whosEDENIALabsParagraph": "Edenia Labs incubates and accelerates projects that deploy technologies in industry 4.0, including artificial intelligence, blockchain, internet of things, drones, and cybersecurity. It is part of Sistemas Edenia Internacional, a company with over 30 years of experience developing innovative technologies."
   },
@@ -295,7 +306,7 @@
   },
   "ourGoodsRoute": {
     "title": "Goods",
-    "description": "Vitual goods designed to help good causes, buy or suscribe to help or just play.",
+    "description": "Virtual goods designed to help good causes, buy or subscribe to help or just play.",
     "empty": "There is not gGoods that match your filters"
   }
 }
