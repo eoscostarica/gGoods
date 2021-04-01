@@ -46,7 +46,7 @@ describe ('gGoods unit tests', function(){
                 },
               ],
               data: {
-                sym: "tckt",
+                symbol: "tckt",
                 version: "1.0",
               },
             },
