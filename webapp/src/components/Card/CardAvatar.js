@@ -16,13 +16,13 @@ import styles from './styles'
 const useStyles = makeStyles(styles)
 
 const BodyCardAvatar = ({
+  image,
   useLink,
   publish,
   viewPusblish,
   handlerPublish,
   goodId,
-  img,
-  bgColor,
+  backgroundColor,
   handlerViewPublish
 }) => {
   if (useLink)
@@ -35,10 +35,10 @@ const BodyCardAvatar = ({
           <CardActionArea onClick={handlerPublish}>
             <CardMedia
               style={{
-                backgroundColor: bgColor
+                backgroundColor
               }}
               component="img"
-              image={`${mainConfig.ipfsUrl}/ipfs/${img}`}
+              image={`${mainConfig.ipfsUrl}/ipfs/${image}`}
             />
           </CardActionArea>
         )}
@@ -46,10 +46,10 @@ const BodyCardAvatar = ({
           <CardActionArea onClick={handlerViewPublish}>
             <CardMedia
               style={{
-                backgroundColor: bgColor
+                backgroundColor
               }}
               component="img"
-              image={`${mainConfig.ipfsUrl}/ipfs/${img}`}
+              image={`${mainConfig.ipfsUrl}/ipfs/${image}`}
             />
           </CardActionArea>
         )}
@@ -57,10 +57,10 @@ const BodyCardAvatar = ({
           <CardActionArea>
             <CardMedia
               style={{
-                backgroundColor: bgColor
+                backgroundColor
               }}
               component="img"
-              image={`${mainConfig.ipfsUrl}/ipfs/${img}`}
+              image={`${mainConfig.ipfsUrl}/ipfs/${image}`}
             />
           </CardActionArea>
         )}
@@ -71,29 +71,31 @@ const BodyCardAvatar = ({
     <CardActionArea>
       <CardMedia
         style={{
-          backgroundColor: bgColor
+          backgroundColor
         }}
         component="img"
-        image={`${mainConfig.ipfsUrl}/ipfs/${img}`}
+        image={`${mainConfig.ipfsUrl}/ipfs/${image}`}
       />
     </CardActionArea>
   )
 }
 
 BodyCardAvatar.propTypes = {
+  image: PropTypes.string,
+  backgroundColor: PropTypes.string,
   viewPusblish: PropTypes.bool,
   publish: PropTypes.bool,
   handlerViewPublish: PropTypes.func,
   handlerPublish: PropTypes.func,
   useLink: PropTypes.bool,
-  goodId: PropTypes.string,
-  img: PropTypes.string,
-  bgColor: PropTypes.string
+  goodId: PropTypes.string
 }
 
 const CardAvatar = ({
   id,
   name,
+  image,
+  backgroundColor,
   donation,
   units,
   publish,
@@ -101,9 +103,7 @@ const CardAvatar = ({
   viewPusblish,
   handlerViewPublish,
   useLink,
-  onClick,
-  img,
-  bgColor
+  onClick
 }) => {
   const classes = useStyles()
 
@@ -115,13 +115,13 @@ const CardAvatar = ({
     <Card className={classes.cardAvatarRoot} onClick={handleOnClick}>
       <BodyCardAvatar
         goodId={id}
+        image={image}
+        backgroundColor={backgroundColor}
         useLink={useLink}
         publish={publish}
         viewPusblish={viewPusblish}
         handlerPublish={handlerPublish}
         handlerViewPublish={handlerViewPublish}
-        img={img}
-        bgColor={bgColor}
       />
       <CardActions>
         <Box>
@@ -141,8 +141,10 @@ const CardAvatar = ({
 }
 
 CardAvatar.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.any,
   name: PropTypes.string,
+  image: PropTypes.string,
+  backgroundColor: PropTypes.string,
   donation: PropTypes.string,
   units: PropTypes.number,
   publish: PropTypes.bool,
@@ -150,9 +152,7 @@ CardAvatar.propTypes = {
   viewPusblish: PropTypes.bool,
   handlerViewPublish: PropTypes.func,
   onClick: PropTypes.func,
-  useLink: PropTypes.bool,
-  img: PropTypes.string,
-  bgColor: PropTypes.string
+  useLink: PropTypes.bool
 }
 
 CardAvatar.defaultProp = {

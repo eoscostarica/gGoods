@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useQuery } from '@apollo/client'
 import { useParams } from 'react-router-dom'
@@ -16,6 +17,7 @@ import {
   GGOODS_ON_SALE,
   TEMPLATES_QUERY
 } from '../../gql'
+
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
@@ -223,7 +225,7 @@ const Organization = () => {
                           <CardAvatar
                             name={item?.ggoods[0]?.metadata?.name}
                             donation={item?.amount}
-                            img={item?.ggoods[0]?.metadata?.imageSmall}
+                            image={item?.ggoods[0]?.metadata?.imageSmall}
                             bgColor={item?.ggoods[0]?.metadata?.backgroundColor}
                           />
                         </Grid>

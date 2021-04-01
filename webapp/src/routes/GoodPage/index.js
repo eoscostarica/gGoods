@@ -5,13 +5,12 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
-import CardMedia from '@material-ui/core/CardMedia'
 import Chip from '@material-ui/core/Chip'
 import Hidden from '@material-ui/core/Hidden'
 
 import { CardAvatar } from '../../components/Card'
 import DonateNow from '../../components/DonateNow'
-import Img from '../../images/avatar.png'
+import { useSharedState } from '../../context/state.context'
 
 import styles from './styles'
 
@@ -30,31 +29,40 @@ const GOOD = {
 
 const relatedGoods = [
   {
-    name: 'Name'
+    name: 'Name',
+    image: '/static/media/avatar.8d7f2dc7.png'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    image: '/static/media/avatar.8d7f2dc7.png'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    image: '/static/media/avatar.8d7f2dc7.png'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    image: '/static/media/avatar.8d7f2dc7.png'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    image: '/static/media/avatar.8d7f2dc7.png'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    image: '/static/media/avatar.8d7f2dc7.png'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    image: '/static/media/avatar.8d7f2dc7.png'
   }
 ]
 
 const GoodPage = () => {
   const classes = useStyles()
   const [openPayModal, setOpenPayModal] = useState(false)
+  // @todo: load ggood info from api when it's not in the state
+  const [{ ggoodOnSaleSelected }] = useSharedState()
 
   const handlerSetOpenPayModal = () => {
     setOpenPayModal(!openPayModal)
@@ -97,7 +105,12 @@ const GoodPage = () => {
           </Hidden>
           <Grid item xs={12} md={4}>
             <Card>
-              <CardMedia component="img" image={Img} />
+              <CardAvatar
+                id={ggoodOnSaleSelected?.id}
+                name={ggoodOnSaleSelected?.name}
+                image={ggoodOnSaleSelected?.image}
+                backgroundColor={ggoodOnSaleSelected?.backgroundColor}
+              />
             </Card>
             <Box className={classes.priceBox}>
               <Typography variant="overline" style={{ fontWeight: 'bold' }}>
@@ -107,12 +120,7 @@ const GoodPage = () => {
                 <Grid item xs={6}>
                   <Box>
                     <Chip
-                      label="Basic"
-                      color="primary"
-                      className={classes.chip}
-                    />
-                    <Chip
-                      label="Basic"
+                      label={ggoodOnSaleSelected?.amount}
                       color="primary"
                       className={classes.chip}
                     />
@@ -168,9 +176,9 @@ const GoodPage = () => {
         </Typography>
         <Box>
           <Grid container spacing={2}>
-            {relatedGoods.map(good => (
-              <Grid item xs={6} md={3} lg={1} key={good.name}>
-                <CardAvatar />
+            {relatedGoods.map((good, index) => (
+              <Grid item xs={6} md={3} lg={1} key={index}>
+                <CardAvatar name={good.name} image={good.image} />
               </Grid>
             ))}
           </Grid>
