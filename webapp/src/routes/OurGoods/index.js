@@ -13,11 +13,10 @@ import { useQuery } from '@apollo/client'
 
 import { GGOODS_ON_SALE, TEMPLATES_QUERY } from '../../gql'
 import { mainConfig } from '../../config'
+import { useSharedState } from '../../context/state.context'
 
 import styles from './styles'
 
-// TODO: filter using account in hasura
-const account = 'animalrescue'
 const useStyles = makeStyles(styles)
 
 const OurGoods = () => {
@@ -25,12 +24,11 @@ const OurGoods = () => {
   const { t } = useTranslation('ourGoodsRoute')
   const [filters, setFilters] = useState()
   const [options, setOptions] = useState()
+  const [{ user }] = useSharedState()
   const { loading, data: ggoods } = useQuery(GGOODS_ON_SALE, {
-    variables: { seller: account }
+    variables: { seller: user?.account }
   })
-  const { data: templates } = useQuery(TEMPLATES_QUERY, {
-    variables: { account }
-  })
+  const { data: templates } = useQuery(TEMPLATES_QUERY)
 
   const handleToogleFilter = item => {
     if (!item) {
@@ -100,7 +98,7 @@ const OurGoods = () => {
 
       {loading && (
         <Grid item xs={12}>
-          <CircularProgress color="secondary" size={20} />
+          <CircularProgress size={20} />
         </Grid>
       )}
 

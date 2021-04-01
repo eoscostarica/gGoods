@@ -17,8 +17,6 @@ import ComboBox from '../../components/ComboBox'
 import styles from './styles'
 import { mainConfig } from '../../config'
 
-// TODO: filter using account in hasura
-const account = 'animalrescue'
 const useStyles = makeStyles(styles)
 const initialValue = {
   template: '',
@@ -31,9 +29,7 @@ const PutOnSale = () => {
   const classes = useStyles()
   const { t } = useTranslation('putOnSaleRoute')
   const [putOnSale, { loading }] = useMutation(PUT_ON_SALE_MUTATION)
-  const { data } = useQuery(TEMPLATES_QUERY, {
-    variables: { account }
-  })
+  const { data } = useQuery(TEMPLATES_QUERY)
   const [, { showMessage }] = useSharedState()
   const [payload, setPayload] = useState()
   const [template, setTemplate] = useState()
