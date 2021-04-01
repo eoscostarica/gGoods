@@ -36,6 +36,7 @@ export const GET_ORGANIZATION_BY_ACCOUNT = gql`
     ) {
       id
       name
+      orgInfo
     }
   }
 `

@@ -29,7 +29,8 @@ const Inventory = () => {
   const [selectedGGood, setSelectedGGood] = useState()
   const [{ user }] = useSharedState()
   const { loading: loadingGGoods, data: ggoods } = useQuery(GGOODS_ON_SALE, {
-    variables: { seller: user?.account }
+    variables: { seller: user?.account },
+    fetchPolicy: 'network-only'
   })
   const { loading: loadingTemplates, data: templates } = useQuery(
     TEMPLATES_QUERY
