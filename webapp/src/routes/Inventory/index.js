@@ -14,7 +14,6 @@ import PublishGood from '../../components/PublishGood'
 import PublishGoodInfo from '../../components/PublishGoodInfo'
 import { useSharedState } from '../../context/state.context'
 import { GGOODS_ON_SALE, TEMPLATES_QUERY } from '../../gql'
-import { mainConfig } from '../../config'
 
 import styles from './styles'
 
@@ -51,9 +50,12 @@ const Inventory = () => {
         .map(item => ({
           id: item.id,
           name: `${item?.ggoods[0]?.metadata?.name} v${item?.ggoods[0]?.serial}`,
-          image: `${mainConfig.ipfsUrl}/ipfs/${item?.ggoods[0]?.metadata?.imageSmall}`,
+          image: item?.ggoods[0]?.metadata?.imageSmall,
           backgroundColor: item?.ggoods[0]?.metadata?.backgroundColor,
-          amount: item.amount
+          amount: item.amount,
+          donable: item.donable,
+          issuer: item?.ggoods[0]?.issuer,
+          description: item?.ggoods[0]?.metadata?.description
         }))
     )
   }, [ggoods])
@@ -63,7 +65,7 @@ const Inventory = () => {
       (templates?.items || []).map(item => ({
         id: item.id,
         name: item?.metadata?.name,
-        image: `${mainConfig.ipfsUrl}/ipfs/${item?.metadata?.imageSmall}`,
+        image: item?.metadata?.imageSmall,
         backgroundColor: item?.metadata?.backgroundColor
       }))
     )
