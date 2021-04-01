@@ -17,12 +17,10 @@ const GoodPage = lazy(() => import('./GoodPage'))
 const Games = lazy(() => import('./Games'))
 const YourCollection = lazy(() => import('./YourCollection'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
-const PutOnSale = lazy(() => import('./PutOnSale'))
 const About = lazy(() => import('./About'))
 const Page404 = lazy(() => import('./Route404'))
 const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
-const OurGoods = lazy(() => import('./OurGoods'))
 const Inventory = lazy(() => import('./Inventory'))
 const SelfieCam = lazy(() => import('./SelfieCam'))
 
@@ -68,6 +66,13 @@ const routes = [
     roles: ['organization']
   },
   {
+    icon: <DashboardIcon />,
+    component: CreateTemplate,
+    path: '/create-template',
+    exact: true,
+    roles: ['organization']
+  },
+  {
     name: 'your-collection',
     icon: <InsertEmoticonIcon />,
     component: YourCollection,
@@ -80,28 +85,6 @@ const routes = [
     icon: <InfoIcon />,
     component: About,
     path: '/about',
-    exact: true
-  },
-  {
-    name: 'createTemplate',
-    icon: <DashboardIcon />,
-    component: CreateTemplate,
-    path: '/create-template',
-    exact: true,
-    roles: ['organization']
-  },
-  {
-    name: 'createTemplate',
-    icon: <DashboardIcon />,
-    component: PutOnSale,
-    path: '/put-on-sale',
-    exact: true,
-    roles: ['organization']
-  },
-  {
-    icon: <DashboardIcon />,
-    component: OurGoods,
-    path: '/our-goods',
     exact: true
   },
   {
