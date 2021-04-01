@@ -181,7 +181,11 @@ const GoodPage = () => {
           </Box>
         )}
       </Box>
-      <DonateNow open={openPayModal} handlerOpen={handlerSetOpenPayModal} />
+      <DonateNow
+        open={openPayModal}
+        handlerOpen={handlerSetOpenPayModal}
+        organization={organization}
+      />
     </Box>
   )
 }
