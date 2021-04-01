@@ -19,8 +19,6 @@ const fetch = require('node-fetch');                                    // node 
 const { TextEncoder, TextDecoder } = require('util');                   // node only; native TextEncoder/Decoder
 
 const contract_name="ggoodsggoods";
-const proxy_acc='eoscrprox111';
-const voter_acc='eoscrvoter11';
 
 const rateproducer_priv_key='5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3';
 const rateproducer_pub_key='EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV';
@@ -32,28 +30,36 @@ const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), te
 const get = require('lodash.get')
 var chai = require('chai'),assert = chai.assert;
 
-
-var bp_accts_25 = [
-                "eoscrprodo11","eoscrprodo12","eoscrprodo13","eoscrprodo14","eoscrprodo15",
-                "eoscrprodo21","eoscrprodo22","eoscrprodo23","eoscrprodo24","eoscrprodo25",
-                "eoscrprodo31","eoscrprodo32","eoscrprodo33","eoscrprodo34","eoscrprodo35",
-                "eoscrprodo41","eoscrprodo42","eoscrprodo43","eoscrprodo44","eoscrprodo45",
-                "eoscrprodo51","eoscrprodo52","eoscrprodo53","eoscrprodo54","eoscrprodo55"
-                 ];
-var bp_accts_21 = [
-                "eoscrprodo11","eoscrprodo12","eoscrprodo13","eoscrprodo14","eoscrprodo15",
-                "eoscrprodo21","eoscrprodo22","eoscrprodo23","eoscrprodo24","eoscrprodo25",
-                "eoscrprodo31","eoscrprodo32","eoscrprodo33","eoscrprodo34","eoscrprodo35",
-                "eoscrprodo41","eoscrprodo42","eoscrprodo43","eoscrprodo44","eoscrprodo45",
-                "eoscrprodo51"
-                 ];
-var bp_accts_10 = [
-                "eoscrprodo11","eoscrprodo12","eoscrprodo13","eoscrprodo14","eoscrprodo15",
-                "eoscrprodo21","eoscrprodo22","eoscrprodo23","eoscrprodo24","eoscrprodo25"
-                 ];
-
 describe ('gGoods unit tests', function(){
-
-
+  it("gGoods: testing setconfig with wrong symbol", async () => {
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: contract_name,
+              name: "setconfig",
+              authorization: [
+                {
+                  actor: contract_name,
+                  permission: "active",
+                },
+              ],
+              data: {
+                sym: "tckt",
+                verion: "1.0",
+              },
+            },
+          ],
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }
+      );
+    } catch (err) {
+      assert.equal(err, "Error: missing authority of consent2xxxx");
+    }
+  });
  
 });
