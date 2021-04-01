@@ -9,7 +9,10 @@ export default theme => ({
   },
   rowsBox: {
     padding: theme.spacing(2, 2, 0, 2),
-    marginTop: theme.spacing(2.5)
+    marginTop: theme.spacing(2)
+  },
+  firstTitle: {
+    marginTop: theme.spacing(3)
   },
   rowsBoxWrap: {
     padding: theme.spacing(2),
@@ -27,21 +30,23 @@ export default theme => ({
     }
   },
   optionsWrapper: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
+    display: 'flex',
+    alignItems: 'center',
     '&:hover': {
       cursor: 'pointer'
     },
     '& svg': {
       height: 12,
-      color: '#1565C0',
+      color: theme.palette.primary.main,
       marginRight: theme.spacing(1)
     },
-    '& span': {
+    '& .MuiTypography-body1': {
       fontSize: 14,
       lineHeight: '16px',
       letterSpacing: '1px',
       textTransform: 'uppercase',
-      color: '#1565C0'
+      color: theme.palette.primary.main
     }
   },
   orgWrapper: {
@@ -55,7 +60,7 @@ export default theme => ({
       width: 128,
       height: 128
     },
-    '& span': {
+    '& .MuiTypography-body1': {
       fontWeight: 'bold',
       fontSize: 20,
       lineHeight: '27px',
@@ -65,7 +70,7 @@ export default theme => ({
       width: '85%'
     },
     [theme.breakpoints.up('sm')]: {
-      '& span': {
+      '& .MuiTypography-body1': {
         width: '70%'
       }
     }
@@ -75,7 +80,7 @@ export default theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     '& button': {
-      color: '#1565C0',
+      color: theme.palette.primary.main,
       fontStyle: 'normal',
       fontWeight: 'bold',
       fontSize: 14,
@@ -86,6 +91,7 @@ export default theme => ({
   cardInfoWrapper: {
     display: 'flex',
     flexDirection: 'column',
+    marginTop: theme.spacing(1),
     [theme.breakpoints.up('sm')]: {
       flexWrap: 'wrap',
       flexDirection: 'row',
