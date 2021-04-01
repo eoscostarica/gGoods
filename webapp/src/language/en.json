@@ -17,7 +17,10 @@
     "account": "Account",
     "password": "Password",
     "continue": "Continue",
-    "takeHome": "Take me home"
+    "takeHome": "Take me home",
+    "suggestedPrice": "Suggested Price",
+    "donation": "Donation",
+    "units": "Units"
   },
   "signup": {
     "register": "Let's Start!",
@@ -218,7 +221,9 @@
     "title": "Publish Good",
     "paragraph1": "Publish a new set of Goods and make them available on the marketplace.",
     "amount": "Amount of Goods",
-    "createGood": "Create Good"
+    "createGood": "Create Good",
+    "allowDonation": "Accept bigger donations",
+    "successMessage": "New gGoods on sale:"
   },
   "publishGoodInfo": {
     "title": "Published Good Info",
