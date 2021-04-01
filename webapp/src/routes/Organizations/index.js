@@ -32,6 +32,7 @@ const Organizations = () => {
             <CircularProgress color="secondary" />
           </Box>
         )}
+
         <Grid container spacing={2}>
           {!loading &&
             organizationResults &&
