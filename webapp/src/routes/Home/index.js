@@ -159,7 +159,9 @@ const Home = () => {
             </Grid>
           </Box>
           <Box className={classes.browseGoods}>
-            <Button size="small">Browse goods</Button>
+            <Button size="small" onClick={handleNavigate('/goods')}>
+              Browse goods
+            </Button>
           </Box>
         </>
       )}

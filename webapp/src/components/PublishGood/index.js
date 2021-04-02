@@ -83,8 +83,6 @@ const PublishGood = ({ open, template, onClose }) => {
             ))}
           </>
         )
-
-        // `${t('successMessage')} ${response.sale.assets.join(',')}`
       })
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
