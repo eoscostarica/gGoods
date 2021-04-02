@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
+import Box from '@material-ui/core/Box'
 import PropTypes from 'prop-types'
 import ReactCardFlip from 'react-card-flip'
 
@@ -11,17 +12,17 @@ const Card = ({ image, isCardCompared, selectCard, guessedRight }) => {
   const classes = useStyles()
 
   return (
-    <div className={classes.card} onClick={selectCard}>
+    <Box className={classes.card} onClick={selectCard}>
       <ReactCardFlip
         isFlipped={isCardCompared || guessedRight}
         flipDirection="vertical"
       >
-        <div className={classes.cover}></div>
-        <div className={classes.content}>
+        <Box className={classes.cover}></Box>
+        <Box className={classes.content}>
           <img src={image} alt="memory-img" />
-        </div>
+        </Box>
       </ReactCardFlip>
-    </div>
+    </Box>
   )
 }
 

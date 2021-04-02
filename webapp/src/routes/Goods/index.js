@@ -7,10 +7,10 @@ import Grid from '@material-ui/core/Grid'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import Button from '@material-ui/core/Button'
 import { useQuery } from '@apollo/client'
-import CircularProgress from '@material-ui/core/CircularProgress'
+// import CircularProgress from '@material-ui/core/CircularProgress'
 import { useHistory } from 'react-router-dom'
 
-import { CardAvatar } from '../../components/Card'
+import { CardAvatar, CardAvatarSkeleton } from '../../components/Card'
 import GoodsFilter from '../../components/GoodsFilter'
 import { GGOODS_ON_SALE } from '../../gql'
 import { useSharedState } from '../../context/state.context'
@@ -83,7 +83,21 @@ const Goods = () => {
           {t('filter')}
         </Button>
       </Box>
-      {loading && <CircularProgress />}
+      {loading && (
+        <Box>
+          <Grid container spacing={2}>
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
+            </Grid>
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
+            </Grid>
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
+            </Grid>
+          </Grid>
+        </Box>
+      )}
       <Box>
         <Grid container spacing={2}>
           {ggoodsList?.map((item, index) => (

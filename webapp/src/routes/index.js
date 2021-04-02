@@ -24,6 +24,7 @@ const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Inventory = lazy(() => import('./Inventory'))
 const SelfieCam = lazy(() => import('./SelfieCam'))
+const Memory = lazy(() => import('./Memory'))
 
 const routes = [
   {
@@ -100,6 +101,11 @@ const routes = [
   {
     component: SelfieCam,
     path: '/games/selfie-cam',
+    exact: true
+  },
+  {
+    component: Memory,
+    path: '/games/memory',
     exact: true
   },
   {
