@@ -13,10 +13,10 @@ import { DropzoneArea } from 'material-ui-dropzone'
 import { SketchPicker } from 'react-color'
 
 import { CREATE_TEMPLATE_MUTATION } from '../../gql'
-import { ipfs, setData } from '../../utils'
+import { ipfs, setData, getLastChars } from '../../utils'
 import { useSharedState } from '../../context/state.context'
 import AvatarMaker from '../../components/AvatarMaker'
-// import { baselist } from '../../images/templates/templatelist'
+import { mainConfig } from '../../config'
 
 import styles from './styles'
 
@@ -78,8 +78,25 @@ const CreateTemplate = () => {
           ...payload
         }
       })
-      setPayload({ ...initialValue })
-      showMessage({ content: `${t('successMessage')} ${data.template.trxid}` })
+      setPayload(initialValue)
+      showMessage({
+        type: 'success',
+        content: (
+          <>
+            {t('successMessage')}{' '}
+            <a
+              href={mainConfig.blockExplorer.replace(
+                '{transaction}',
+                data.template.trxid
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {getLastChars(data.template.trxid)}
+            </a>
+          </>
+        )
+      })
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
     }
