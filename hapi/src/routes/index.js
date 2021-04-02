@@ -1,5 +1,6 @@
 const confirmSaleWithPaypalRoute = require('./confirm-sale-with-paypal.route')
 const createTemplateRoute = require('./create-template.route')
+const ggoodOnSaleRoute = require('./ggood-on-sale.route')
 const ggoodsOnSaleRoute = require('./ggoods-on-sale.route')
 const healthzRoute = require('./healthz.route')
 const myGGoodsRoute = require('./my-ggoods.route')
@@ -15,6 +16,7 @@ const changePassword = require('./change-password/change-password.route')
 module.exports = [
   confirmSaleWithPaypalRoute,
   createTemplateRoute,
+  ggoodOnSaleRoute,
   ggoodsOnSaleRoute,
   healthzRoute,
   myGGoodsRoute,

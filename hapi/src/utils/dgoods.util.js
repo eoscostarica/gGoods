@@ -214,6 +214,20 @@ const asksTableRows = async ({ seller, limit = 100 }) => {
   return rows
 }
 
+const asksTableRowById = async id => {
+  const { rows } = await eosUtil.getTableRows({
+    limit: 1,
+    json: true,
+    code: eosConfig.dgoodsAccount,
+    scope: eosConfig.dgoodsAccount,
+    table: 'asks',
+    lower_bound: id,
+    upper_bound: id
+  })
+
+  return rows?.length ? rows[0] : null
+}
+
 const dgoodTableRowsByOwner = async ({ owner, limit = 100 }) => {
   if (!owner) {
     return []

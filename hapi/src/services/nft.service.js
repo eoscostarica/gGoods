@@ -154,6 +154,49 @@ const ggoodsOnSale = async (payload = {}) => {
 }
 
 const myGGoods = async user => {
+const ggoodOnSale = async id => {
+  try {
+    const item = await dgoodsUtil.asksTableRowById(id)
+
+    if (!item) {
+      return {}
+    }
+
+    const ggoodInfo = await dgoodsUtil.dgoodTableRowById(item.batch_id)
+    const statsInfo = await dgoodsUtil.dgoodstatsTableRowByCategoryAndName({
+      category: ggoodInfo.category,
+      name: ggoodInfo.token_name
+    })
+    let metadata = {}
+
+    try {
+      const { data } = await axiosUtil.get(
+        `${statsInfo.base_uri}/${ggoodInfo.relative_uri}`
+      )
+      metadata = data
+    } catch (error) {}
+
+    if (!metadata?.imageSmall) {
+      return {}
+    }
+
+    return {
+      metadata,
+      id: item.batch_id,
+      issuer: statsInfo.issuer,
+      owner: ggoodInfo.owner,
+      serial: ggoodInfo.serial_number,
+      seller: item.seller,
+      amount: item.amount,
+      donable: !!item.is_donable,
+      expiration: item.expiration
+    }
+  } catch (error) {
+    throw new Boom.Boom(error.message, {
+      statusCode: BAD_REQUEST
+    })
+  }
+}
   try {
     const items = await dgoodsUtil.dgoodTableRowsByOwner({
       owner: user.account
@@ -225,4 +268,5 @@ module.exports = {
   ggoodsOnSale,
   myGGoods,
   confirmSaleWithPaypal
+  ggoodOnSale,
 }
