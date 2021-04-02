@@ -8,43 +8,31 @@ import { useQuery } from '@apollo/client'
 import styles from './styles'
 import { MY_GGOODS } from '../../gql'
 import Carousel from '../../components/Carousel'
-import { mainConfig } from '../../config'
 
 const useStyles = makeStyles(styles)
 
 const YourCollection = () => {
   const classes = useStyles()
   const { t } = useTranslation('collectionRoute')
-  const [ggoods, setGgoods] = useState()
   const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
-
-  useEffect(() => {
-    if (data?.ggoods) {
-      setGgoods(
-        data.ggoods
-          ?.filter(item => !!item?.metadata?.imageSmall)
-          .map(item => ({
-            id: `${item?.id}`,
-            image: `${mainConfig.ipfsUrl}/ipfs/${item?.metadata?.imageSmall}`,
-            backgroundColor: item?.metadata?.backgroundColor,
-            description: item?.metadata?.description,
-            name: item?.metadata?.name
-          }))
-      )
-    }
-  }, [loading])
-
-  console.log({ ggoods })
 
   return (
     <Box className={classes.mainCollectionBox}>
       <Typography variant="h4" gutterBottom>
         {t('title')}
       </Typography>
-      <Typography variant="body1">{t('paragraph1')}</Typography>
-      <Box>
-        <Carousel isLoading={loading} items={ggoods || []} />
-      </Box>
+      {loading && <CircularProgress />}
+      {!loading && !data?.ggoods?.length && (
+        <Typography variant="body1">{t('emptyMessage')}</Typography>
+      )}
+      {!loading && data?.ggoods?.length && (
+        <Typography variant="body1">{t('paragraph1')}</Typography>
+      )}
+      {data?.ggoods?.length && (
+        <Box>
+          <Carousel isLoading={loading} items={data?.ggoods || []} />
+        </Box>
+      )}
     </Box>
   )
 }

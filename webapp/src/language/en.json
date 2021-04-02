@@ -195,7 +195,8 @@
   },
   "collectionRoute": {
     "title": "My collection",
-    "paragraph1": "Goods you’ve bought previously and active subscriptions"
+    "paragraph1": "gGoods you’ve bought previously and active subscriptions",
+    "emptyMessage": "You don't have gGoods yet"
   },
   "inventoryRoute": {
     "title": "Inventory",
