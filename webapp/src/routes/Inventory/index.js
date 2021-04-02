@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
@@ -23,8 +23,6 @@ const Inventory = () => {
   const classes = useStyles()
   const { t } = useTranslation('inventoryRoute')
   const history = useHistory()
-  const [ggoodsList, setGGoodsList] = useState()
-  const [templatesList, setTemplatesList] = useState()
   const [selectedTemplate, setSelectedTemplate] = useState()
   const [selectedGGood, setSelectedGGood] = useState()
   const [{ user }] = useSharedState()
@@ -44,34 +42,6 @@ const Inventory = () => {
     setSelectedTemplate(template)
   }
 
-  useEffect(() => {
-    setGGoodsList(
-      (ggoods?.items || [])
-        ?.filter(item => !!item?.ggoods[0]?.metadata?.imageSmall)
-        .map(item => ({
-          id: item.id,
-          name: `${item?.ggoods[0]?.metadata?.name} v${item?.ggoods[0]?.serial}`,
-          image: item?.ggoods[0]?.metadata?.imageSmall,
-          backgroundColor: item?.ggoods[0]?.metadata?.backgroundColor,
-          amount: item.amount,
-          donable: item.donable,
-          issuer: item?.ggoods[0]?.issuer,
-          description: item?.ggoods[0]?.metadata?.description
-        }))
-    )
-  }, [ggoods])
-
-  useEffect(() => {
-    setTemplatesList(
-      (templates?.items || []).map(item => ({
-        id: item.id,
-        name: item?.metadata?.name,
-        image: item?.metadata?.imageSmall,
-        backgroundColor: item?.metadata?.backgroundColor
-      }))
-    )
-  }, [templates])
-
   return (
     <Box className={classes.mainBox}>
       <Box className={classes.headerBox}>
@@ -87,7 +57,7 @@ const Inventory = () => {
             <Button
               variant="contained"
               color="primary"
-              className={classes.MainButton}
+              className={classes.mainButton}
               onClick={() => history.push('/create-template')}
             >
               {t('uploadButton')}
@@ -97,7 +67,7 @@ const Inventory = () => {
             <Button
               variant="contained"
               color="secondary"
-              className={classes.MainButton}
+              className={classes.mainButton}
               onClick={() => history.push('/create-template')}
             >
               {t('createButton')}
@@ -106,82 +76,83 @@ const Inventory = () => {
         </Grid>
       </Box>
 
-      {loadingTemplates && <CircularProgress />}
-      {!loadingTemplates && templatesList?.length === 0 && (
+      <Box className={classes.sectionBox}>
         <Box className={classes.sectionBox}>
-          <Typography
-            variant="overline"
-            align="center"
-            className={classes.overlineTag}
-          >
-            {t('emptyTemplate')}
+          <Typography variant="h6" gutterBottom>
+            {t('templatesTitle')} ({templates?.items.length})
           </Typography>
-        </Box>
-      )}
-      {templatesList?.length > 0 && (
-        <Box className={classes.sectionBox}>
-          <Box className={classes.sectionBox}>
-            <Typography variant="h6" gutterBottom>
-              {t('templatesTitle')} ({templatesList.length})
-            </Typography>
+          {loadingTemplates && <CircularProgress />}
+          {!loadingTemplates && !!templates?.items?.length && (
             <Typography variant="body1">{t('templatesParagraph')}</Typography>
-          </Box>
-          <Grid container spacing={2}>
-            {templatesList.map((item, index) => (
-              <Grid item xs={6} md={3} lg={2} key={index}>
-                <CardAvatar
-                  name={item.name}
-                  image={item.image}
-                  backgroundColor={item.backgroundColor}
-                  onClick={handleOnClickTemplate(item)}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      )}
-
-      {loadingGGoods && <CircularProgress />}
-      {!loadingGGoods && ggoodsList?.length === 0 && (
-        <Box className={classes.sectionBox}>
-          <Typography
-            variant="overline"
-            align="center"
-            className={classes.overlineTag}
-          >
-            {t('emptyTemplate')}
-          </Typography>
-        </Box>
-      )}
-      {ggoodsList?.length > 0 && (
-        <Box className={classes.sectionBox}>
-          <Box className={classes.sectionBox}>
-            <Typography variant="h6" gutterBottom>
-              {t('goodsTitle')} ({ggoodsList.length})
+          )}
+          {!loadingTemplates && !templates?.items?.length && (
+            <Typography
+              variant="overline"
+              align="center"
+              className={classes.overlineTag}
+            >
+              {t('emptyTemplates')}
             </Typography>
-            <Typography variant="body1">{t('goodsParagraph')}</Typography>
-          </Box>
+          )}
+        </Box>
+        {templates?.items?.length > 0 && (
           <Grid container spacing={2}>
-            {ggoodsList.map((item, index) => (
-              <Grid item xs={6} md={3} lg={2} key={index}>
+            {templates?.items.map(template => (
+              <Grid item xs={6} md={3} lg={2} key={template.id}>
                 <CardAvatar
-                  name={item.name}
-                  image={item.image}
-                  backgroundColor={item.backgroundColor}
-                  donation={item.amount}
-                  onClick={handleOnClickGGood(item)}
+                  name={template.metadata.name}
+                  image={template.metadata.imageSmall}
+                  backgroundColor={template.metadata.backgroundColor}
+                  onClick={handleOnClickTemplate(template)}
                 />
               </Grid>
             ))}
           </Grid>
+        )}
+      </Box>
+
+      <Box className={classes.sectionBox}>
+        <Box className={classes.sectionBox}>
+          <Typography variant="h6" gutterBottom>
+            {t('ggoodsTitle')} ({ggoods?.items.length})
+          </Typography>
+          {loadingGGoods && <CircularProgress />}
+          {!loadingGGoods && !!ggoods?.items?.length && (
+            <Typography variant="body1">{t('ggoodsParagraph')}</Typography>
+          )}
+          {!loadingGGoods && !ggoods?.items?.length && (
+            <Typography
+              variant="overline"
+              align="center"
+              className={classes.overlineTag}
+            >
+              {t('emptyGGoods')}
+            </Typography>
+          )}
         </Box>
-      )}
+        {ggoods?.items?.length > 0 && (
+          <Grid container spacing={2}>
+            {ggoods?.items.map(ggood => (
+              <Grid item xs={6} md={3} lg={2} key={ggood.id}>
+                <CardAvatar
+                  name={ggood.metadata.name}
+                  image={ggood.metadata.imageSmall}
+                  backgroundColor={ggood.metadata.backgroundColor}
+                  donation={ggood.amount}
+                  onClick={handleOnClickGGood(ggood)}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Box>
 
       <PublishGood
         open={!!selectedTemplate}
         onClose={() => setSelectedTemplate(null)}
         template={selectedTemplate}
       />
+
       <PublishGoodInfo
         open={!!selectedGGood}
         onClose={() => setSelectedGGood(null)}

@@ -20,14 +20,14 @@ export const PUT_ON_SALE_MUTATION = gql`
     $donable: Boolean
     $memo: String
   ) {
-    sale: put_on_sale(
+    ggoods: put_on_sale(
       template: $template
       quantity: $quantity
       amount: $amount
       donable: $donable
       memo: $memo
     ) {
-      assets
+      items: ggoods
     }
   }
 `

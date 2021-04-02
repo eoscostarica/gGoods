@@ -92,14 +92,18 @@ const putOnSale = async (user, payload) => {
       )
       const id = inlineTraces.act.data.dgood_id
 
-      await dgoodsUtil.listsalenft(user.account, password, {
-        assets: [id],
-        amount: payload.amount,
-        donable: payload.donable
-      })
+      const listsalenftTransaction = await dgoodsUtil.listsalenft(
+        user.account,
+        password,
+        {
+          assets: [id],
+          amount: payload.amount,
+          donable: payload.donable
+        }
+      )
       ggoods.push({
         id,
-        trxid: transaction.transaction_id
+        trxid: listsalenftTransaction.transaction_id
       })
     }
 

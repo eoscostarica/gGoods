@@ -54,7 +54,6 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
           orderId: data.orderID
         }
       })
-      console.log(ggoods)
       showMessage({
         type: 'success',
         content: (
@@ -71,7 +70,7 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
                 rel="noopener noreferrer"
               >
                 {getLastChars(ggood.trxid)}
-                {index < ggoods.length - 1 ? ' ,' : ''}
+                {index < ggoods.length - 1 ? ', ' : ''}
               </a>
             ))}
           </>
