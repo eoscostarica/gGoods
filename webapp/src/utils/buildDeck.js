@@ -8,7 +8,7 @@ export const buildDeck = options => {
   let data = []
   const cards = []
 
-  if (options.length && options.length < 10) {
+  if (!options.length && options.length < 10) {
     const splitedData = bglist.slice(0, 10 - options.length)
 
     data = [...options, ...splitedData]

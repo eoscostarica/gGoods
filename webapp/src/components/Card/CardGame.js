@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { Link as LinkRouter } from 'react-router-dom'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -18,30 +19,34 @@ const CardGame = ({ name, description, img, pathname }) => {
   const classes = useStyles()
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia className={classes.cardOngMedia} image={img} title={name} />
-        <CardContent>
-          <Typography
-            className={classes.cardOngTitle}
-            variant="h5"
-            component="h2"
-          >
-            {name}
-          </Typography>
-          <Box className={classes.cardOngDescriptionBox}>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {description}
+    <LinkRouter style={{ textDecoration: 'none' }} to={{ pathname }}>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.cardOngMedia}
+            image={img}
+            title={name}
+          />
+          <CardContent>
+            <Typography
+              className={classes.cardOngTitle}
+              variant="h5"
+              component="h2"
+            >
+              {name}
             </Typography>
-          </Box>
-        </CardContent>
-      </CardActionArea>
-      <CardActions className={classes.cardActionOngArea}>
-        <LinkRouter style={{ textDecoration: 'none' }} to={{ pathname }}>
-          Play game
-        </LinkRouter>
-      </CardActions>
-    </Card>
+            <Box className={classes.cardOngDescriptionBox}>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {description}
+              </Typography>
+            </Box>
+          </CardContent>
+        </CardActionArea>
+        <CardActions className={classes.cardActionOngArea}>
+          <ArrowForwardIcon color="primary" />
+        </CardActions>
+      </Card>
+    </LinkRouter>
   )
 }
 

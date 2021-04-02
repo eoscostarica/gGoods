@@ -1,4 +1,5 @@
 import React from 'react'
+import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 
@@ -12,7 +13,7 @@ const Board = ({ deck, pairSelected, selectCard }) => {
   const classes = useStyles()
 
   return (
-    <div className={classes.board}>
+    <Box className={classes.board}>
       {(deck || []).map((card, index) => {
         const isCardCompared = pairSelected.indexOf(card) > -1
 
@@ -26,7 +27,7 @@ const Board = ({ deck, pairSelected, selectCard }) => {
           />
         )
       })}
-    </div>
+    </Box>
   )
 }
 

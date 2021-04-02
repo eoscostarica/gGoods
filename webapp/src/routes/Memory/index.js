@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/styles'
 
 import { buildDeck } from '../../utils'
 
-import Header from './Header'
+import MemoryHeader from './MemoryHeader'
 import Board from './Board'
 import styles from './styles'
 
@@ -72,13 +73,11 @@ const Memory = ({ customOptions = [] }) => {
     resetGame()
   }, [])
 
-  // console.log({ deck })
-
   return (
-    <div className={classes.app}>
-      <Header attempts={attempts} resetGame={resetGame} />
+    <Box className={classes.memoryGame}>
+      <MemoryHeader attempts={attempts} resetGame={resetGame} />
       <Board deck={deck} pairSelected={pairSelected} selectCard={selectCard} />
-    </div>
+    </Box>
   )
 }
 
