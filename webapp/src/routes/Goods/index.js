@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -13,7 +13,6 @@ import { useHistory } from 'react-router-dom'
 import { CardAvatar, CardAvatarSkeleton } from '../../components/Card'
 import GoodsFilter from '../../components/GoodsFilter'
 import { GGOODS_ON_SALE } from '../../gql'
-import { useSharedState } from '../../context/state.context'
 
 import styles from './styles'
 
@@ -24,18 +23,13 @@ const Goods = () => {
   const { t } = useTranslation('goodsRoute')
   const history = useHistory()
   const [openFilter, setopenFilter] = useState(false)
-  const [ggoodsList, setGGoodsList] = useState()
-  const [, { setState }] = useSharedState()
   const { loading, data: ggoods } = useQuery(GGOODS_ON_SALE, {
     variables: { seller: '' },
     fetchPolicy: 'network-only'
   })
 
-  const handleOnClickCard = ggoodOnSaleSelected => () => {
-    setState({
-      ggoodOnSaleSelected
-    })
-    history.push(`/good/${ggoodOnSaleSelected.id}`)
+  const handleOnClickCard = id => () => {
+    history.push(`/good/${id}`)
   }
 
   const handlerSetOpenFilter = () => {
@@ -45,23 +39,6 @@ const Goods = () => {
   const filter = () => {
     setopenFilter(true)
   }
-
-  useEffect(() => {
-    setGGoodsList(
-      (ggoods?.items || [])
-        ?.filter(item => !!item?.ggoods[0]?.metadata?.imageSmall)
-        .map(item => ({
-          id: item.id,
-          name: `${item?.ggoods[0]?.metadata?.name} v${item?.ggoods[0]?.serial}`,
-          image: item?.ggoods[0]?.metadata?.imageSmall,
-          backgroundColor: item?.ggoods[0]?.metadata?.backgroundColor,
-          amount: item.amount,
-          donable: item.donable,
-          issuer: item?.ggoods[0]?.issuer,
-          description: item?.ggoods[0]?.metadata?.description
-        }))
-    )
-  }, [ggoods])
 
   return (
     <Box className={classes.mainBox}>
@@ -76,7 +53,7 @@ const Goods = () => {
           style={{ fontWeight: 'bold' }}
           className={classes.available}
         >
-          {ggoodsList?.length}
+          {ggoods?.items?.length}
           {t('available')}
         </Typography>
         <Button startIcon={<FilterListIcon />} onClick={filter}>
@@ -100,15 +77,15 @@ const Goods = () => {
       )}
       <Box>
         <Grid container spacing={2}>
-          {ggoodsList?.map((item, index) => (
+          {ggoods?.items?.map((item, index) => (
             <Grid item xs={6} md={3} lg={2} key={index}>
               <CardAvatar
                 id={item.id}
-                name={item.name}
-                image={item.image}
-                backgroundColor={item.backgroundColor}
+                name={item.metadata.name}
+                image={item.metadata.imageSmall}
+                backgroundColor={item.metadata.backgroundColor}
                 donation={item.amount}
-                onClick={handleOnClickCard(item)}
+                onClick={handleOnClickCard(item.id)}
               />
             </Grid>
           ))}
