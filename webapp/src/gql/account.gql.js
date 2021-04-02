@@ -6,14 +6,14 @@ export const CREATE_ACCOUNT_MUTATION = gql`
     $email: String!
     $emailContent: jsonb!
     $name: String!
-    $secret: String!
+    $passwordPlainText: String!
   ) {
     create_account(
       role: $role
       email: $email
       emailContent: $emailContent
       name: $name
-      secret: $secret
+      passwordPlainText: $passwordPlainText
     ) {
       account
       token

@@ -250,29 +250,18 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   const handleCreateAccount = () => {
     const { email, secret } = user
     const name = 'My profile'
-    const bcrypt = require('bcryptjs')
-    const saltRounds = 10
-
-    bcrypt.hash(secret, saltRounds, (err, hash) => {
-      if (!err) {
-        try {
-          createAccount({
-            variables: {
-              role,
-              email,
-              emailContent: {
-                subject: t('emailMessage.subjectVerificationCode'),
-                title: t('emailMessage.titleVerificationCode'),
-                message: t('emailMessage.messageVerificationCode'),
-                button: t('emailMessage.verifyButton')
-              },
-              name,
-              secret: hash
-            }
-          })
-        } catch (err) {
-          console.log('ERROR', err)
-        }
+    createAccount({
+      variables: {
+        role,
+        email,
+        emailContent: {
+          subject: t('emailMessage.subjectVerificationCode'),
+          title: t('emailMessage.titleVerificationCode'),
+          message: t('emailMessage.messageVerificationCode'),
+          button: t('emailMessage.verifyButton')
+        },
+        name,
+        passwordPlainText: secret
       }
     })
   }
@@ -282,29 +271,18 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       const { data } = await checkEmail({ email: email })
 
       if (data.user.length === 0) {
-        const bcrypt = require('bcryptjs')
-        const saltRounds = 10
-
-        bcrypt.hash(secret, saltRounds, (err, hash) => {
-          if (!err) {
-            try {
-              createAccount({
-                variables: {
-                  role,
-                  email,
-                  emailContent: {
-                    subject: t('emailMessage.subjectVerificationCode'),
-                    title: t('emailMessage.titleVerificationCode'),
-                    message: t('emailMessage.messageVerificationCode'),
-                    button: t('emailMessage.verifyButton')
-                  },
-                  name,
-                  secret: hash
-                }
-              })
-            } catch (err) {
-              console.log('ERROR ')
-            }
+        createAccount({
+          variables: {
+            role,
+            email,
+            emailContent: {
+              subject: t('emailMessage.subjectVerificationCode'),
+              title: t('emailMessage.titleVerificationCode'),
+              message: t('emailMessage.messageVerificationCode'),
+              button: t('emailMessage.verifyButton')
+            },
+            name,
+            passwordPlainText: secret
           }
         })
       } else {

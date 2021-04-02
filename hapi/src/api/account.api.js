@@ -1,5 +1,5 @@
 const { eosConfig } = require('../config')
-const { eosUtil, jwtUtil } = require('../utils')
+const { eosUtil, jwtUtil, bcryptjs } = require('../utils')
 
 const historyApi = require('./history.api')
 const userApi = require('./user.api')
@@ -9,11 +9,20 @@ const verificationCodeApi = require('./verification-code.api')
 const mailApi = require('../utils/mail')
 const MAIL_APPROVE_ORGANIZATION = eosConfig.mailApproveOrganization
 
-const create = async ({ role, email, emailContent, name, secret }) => {
+const create = async ({
+  role,
+  email,
+  emailContent,
+  name,
+  passwordPlainText
+}) => {
   const account = await eosUtil.generateRandomAccountName(role.substring(0, 3))
   const { password, transaction } = await eosUtil.createAccount(account)
   const username = account
   const { verification_code } = await verificationCodeApi.generate()
+
+  const secret = await bcryptjs.hash(passwordPlainText)
+
   const { insert_user_one: user } = await userApi.insert({
     role,
     username,
