@@ -4,7 +4,7 @@
 	</a>
 </p>
 
-# NFTs for NGOs: enabling communities to raise funds
+# NFTs that enable communities to raise funds
 
 <p align="center">
 	<a href="https://git.io/col">
@@ -54,7 +54,8 @@ The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://
 - In-app / in-game use cases:  We wanted to show the functionality of gGoods in different in-app use cases but struggled to balance the level of effort without sacrificing the concept.
 - Focus on gaming:  We started with a specific focus on gaming but realized that gGoods were a new way for anyone to interact with a cause they care about and a new way for communities to crowdfund. 
 - Displaying NFTs:  We struggled to find the right balance between displaying the technical aspects of an NFT and the wide marketing opportunities.  We chose a “trophy case” type display to make NFTs more approachable.  
-- Accomplishments that we are proud of
+
+### Accomplishments that we are proud of
 - Researching all the different NFT standards in EOSIO and other blockchains to determine the right features for gGoods. 
 - Integrating payment gateways like Google Pay and Paypal for the purchase of NFTs
 - Integrating Augmented Reality and progressive web applications into the gGoods in-app usage “selfie cam”.

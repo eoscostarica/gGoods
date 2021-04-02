@@ -1,10 +1,10 @@
 import React, { lazy } from 'react'
 import AppsIcon from '@material-ui/icons/Apps'
 import HomeIcon from '@material-ui/icons/Home'
-import FilterVintageIcon from '@material-ui/icons/FilterVintage'
-import SportsEsportsIcon from '@material-ui/icons/SportsEsports'
+import PublicIcon from '@material-ui/icons/Public'
+import GamesIcon from '@material-ui/icons/Games'
 import InfoIcon from '@material-ui/icons/Info'
-import CollectionsBookmarkOutlinedIcon from '@material-ui/icons/CollectionsBookmarkOutlined'
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -41,7 +41,7 @@ const routes = [
   },
   {
     name: 'organizations',
-    icon: <FilterVintageIcon />,
+    icon: <PublicIcon />,
     component: Organizations,
     path: '/organizations',
     exact: true
@@ -51,35 +51,61 @@ const routes = [
     component: Organization
   },
   {
-    name: 'goods',
+    name: 'gGoods',
     icon: <AppsIcon />,
     component: Goods,
     path: '/goods',
     exact: true
   },
   {
-    name: 'PayPal',
+    name: 'games',
+    icon: <GamesIcon />,
+    component: Games,
+    path: '/games',
+    exact: true
+  },
+  {
+    name: 'Inventory',
+    icon: <InsertEmoticonIcon />,
+    component: Inventory,
+    path: '/inventory',
+    exact: true,
+    roles: ['organization']
+  },
+  {
+    name: 'your-collection',
+    icon: <InsertEmoticonIcon />,
+    component: YourCollection,
+    path: '/your-collection',
+    exact: true,
+    roles: ['gamer', 'user']
+  },
+  {
+    name: 'about',
+    icon: <InfoIcon />,
+    component: About,
+    path: '/about',
+    exact: true
+  },
+  {
     icon: <AppsIcon />,
     component: Paypal,
     path: '/paypal-integration',
     exact: true
   },
   {
-    name: 'createTemplate',
     icon: <DashboardIcon />,
     component: CreateTemplate,
     path: '/create-template',
     exact: true
   },
   {
-    name: 'putOnSale',
     icon: <DashboardIcon />,
     component: PutOnSale,
     path: '/put-on-sale',
     exact: true
   },
   {
-    name: 'ourGoods',
     icon: <DashboardIcon />,
     component: OurGoods,
     path: '/our-goods'
@@ -92,34 +118,12 @@ const routes = [
     exact: true
   },
   {
-    header: 'docs',
-    name: 'about',
-    icon: <InfoIcon />,
-    component: About,
-    path: '/about',
-    exact: true
-  },
-  {
     path: '/good/:id',
     component: GoodPage
   },
   {
-    name: 'games',
-    icon: <SportsEsportsIcon />,
-    component: Games,
-    path: '/games',
-    exact: true
-  },
-  {
     component: SelfieCam,
     path: '/games/selfie-cam',
-    exact: true
-  },
-  {
-    name: 'your-collection',
-    icon: <CollectionsBookmarkOutlinedIcon />,
-    component: YourCollection,
-    path: '/your-collection',
     exact: true
   },
   {
@@ -130,13 +134,6 @@ const routes = [
   {
     component: RegisterOrganization,
     path: '/register-organization/:code',
-    exact: true
-  },
-  {
-    name: 'Inventory',
-    icon: <CollectionsBookmarkOutlinedIcon />,
-    component: Inventory,
-    path: '/inventory',
     exact: true
   },
   {
