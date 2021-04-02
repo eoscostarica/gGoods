@@ -49,10 +49,10 @@ actions:
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/credentials-recovery'
   permissions:
   - role: guest
-- name: goods_on_sale
+- name: ggoods_on_sale
   definition:
     kind: ""
-    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/nft-on-sale'
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/ggoods-on-sale'
     forward_client_headers: true
   permissions:
   - role: guest
@@ -99,9 +99,9 @@ custom_types:
   - name: payment_transaction_complete_output
   - name: CreateTemplateOutput
   - name: PutOnSaleOutput
-  - name: GoodsOnSaleOutput
   - name: credentials_recovery_output
   - name: change_password_output
   - name: my_ggoods_output
   - name: confirm_sale_with_paypal_output
+  - name: ggoods_on_sale_output
   scalars: []

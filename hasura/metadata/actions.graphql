@@ -77,9 +77,10 @@ type Mutation {
 
 
 type Query {
-  goods_on_sale (
+  ggoods_on_sale (
     seller: String
-  ): [GoodsOnSaleOutput]
+    limit: Int
+  ): [ggoods_on_sale_output]
 }
 
 
@@ -156,15 +157,6 @@ type PutOnSaleOutput {
   assets : [String]
 }
 
-type GoodsOnSaleOutput {
-  id : String!
-  seller : String!
-  amount : String!
-  donable : Boolean!
-  expiration : String!
-  ggoods : jsonb
-}
-
 type credentials_recovery_output {
   success : Boolean!
 }
@@ -183,5 +175,17 @@ type my_ggoods_output {
 
 type confirm_sale_with_paypal_output {
   success : Boolean!
+}
+
+type ggoods_on_sale_output {
+  id : Int!
+  issuer : String!
+  owner : String!
+  seller : String!
+  serial : String!
+  amount : String!
+  donable : Boolean!
+  expiration : String!
+  metadata : jsonb!
 }
 

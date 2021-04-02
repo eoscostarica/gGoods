@@ -73,6 +73,7 @@ const putOnSale = async (user, payload) => {
       const { path: relativeUri } = await ipfsUtil.add(
         JSON.stringify({
           ...template.metadata,
+          category: template.category,
           createdAt: new Date()
         })
       )
@@ -109,50 +110,42 @@ const putOnSale = async (user, payload) => {
   }
 }
 
-const nftOnSale = async (payload = {}) => {
+const ggoodsOnSale = async (payload = {}) => {
   try {
     const items = await dgoodsUtil.asksTableRows(payload)
     const newItems = await Promise.all(
       items.map(async item => {
-        const ggoods = await Promise.all(
-          item.dgood_ids.map(async ggoodId => {
-            const ggoodInfo = await dgoodsUtil.dgoodTableRow({ id: ggoodId })
-            const statsInfo = await dgoodsUtil.dgoodstatsTableRow({
-              category: ggoodInfo.category,
-              name: ggoodInfo.token_name
-            })
-            let metadata = {}
+        const ggoodInfo = await dgoodsUtil.dgoodTableRow({
+          id: item.batch_id
+        })
+        const statsInfo = await dgoodsUtil.dgoodstatsTableRow({
+          category: ggoodInfo.category,
+          name: ggoodInfo.token_name
+        })
+        let metadata = {}
 
-            try {
-              const { data } = await axiosUtil.get(
-                `${statsInfo.base_uri}/${ggoodInfo.relative_uri}`
-              )
-              metadata = data
-            } catch (error) {}
-
-            return {
-              metadata,
-              id: ggoodInfo.id,
-              category: ggoodInfo.category,
-              issuer: statsInfo.issuer,
-              owner: ggoodInfo.owner,
-              serial: ggoodInfo.serial_number
-            }
-          })
-        )
+        try {
+          const { data } = await axiosUtil.get(
+            `${statsInfo.base_uri}/${ggoodInfo.relative_uri}`
+          )
+          metadata = data
+        } catch (error) {}
 
         return {
-          ggoods,
+          metadata,
           id: item.batch_id,
+          issuer: statsInfo.issuer,
+          owner: ggoodInfo.owner,
+          serial: ggoodInfo.serial_number,
           seller: item.seller,
           amount: item.amount,
-          donable: item.is_donable,
+          donable: !!item.is_donable,
           expiration: item.expiration
         }
       })
     )
 
-    return newItems
+    return newItems.filter(item => !!item.metadata?.imageSmall)
   } catch (error) {
     throw new Boom.Boom(error.message, {
       statusCode: BAD_REQUEST
@@ -220,7 +213,6 @@ const confirmSaleWithPaypal = async (user, payload) => {
 
     return { success: true }
   } catch (error) {
-    console.log(error)
     throw new Boom.Boom(error.message, {
       statusCode: BAD_REQUEST
     })
@@ -230,7 +222,7 @@ const confirmSaleWithPaypal = async (user, payload) => {
 module.exports = {
   createTemplate,
   putOnSale,
-  nftOnSale,
+  ggoodsOnSale,
   myGGoods,
   confirmSaleWithPaypal
 }
