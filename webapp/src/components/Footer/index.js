@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/styles'
 
-import Discord from '../../images/assets/discord.svg'
+import TelegramIcon from '@material-ui/icons/Telegram'
 import Github from '../../images/assets/github.svg'
 import EOSCRLogo from '../../images/assets/eoscr-logo.svg'
 
@@ -23,18 +23,18 @@ const Footer = () => {
       <Grid container item xs={12} className={classes.gridContent}>
         <List className={classes.iconsList}>
           <ListItem className={classes.listItem}>
-            <ListItemText
-              primary={
-                <a href="" target="_blank" rel="noopener noreferrer">
-                  <img src={Discord} alt="discord" />
-                </a>
-              }
-            />
+            <a href="https://t.me/eoscr">
+              <TelegramIcon className={classes.icon} />
+            </a>
           </ListItem>
           <ListItem className={classes.listItem}>
             <ListItemText
               primary={
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/eoscostarica/gGoods"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img src={Github} alt="github" />
                 </a>
               }
