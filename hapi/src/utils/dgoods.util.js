@@ -248,7 +248,7 @@ const dgoodTableRowsByOwner = async ({ owner, limit = 100 }) => {
   return rows
 }
 
-const dgoodTableRow = async ({ id }) => {
+const dgoodTableRowById = async id => {
   let filter = {
     limit: 1,
     json: true,
@@ -270,9 +270,9 @@ const dgoodTableRow = async ({ id }) => {
   return rows[0]
 }
 
-const dgoodstatsTableRow = async ({ category, name, limit = 1 }) => {
+const dgoodstatsTableRowByCategoryAndName = async ({ category, name }) => {
   let filter = {
-    limit,
+    limit: 1,
     json: true,
     code: eosConfig.dgoodsAccount,
     scope: category,
@@ -298,7 +298,8 @@ module.exports = {
   listsalenft,
   confirmsale,
   asksTableRows,
-  dgoodTableRow,
-  dgoodstatsTableRow,
-  dgoodTableRowsByOwner
+  asksTableRowById,
+  dgoodTableRowsByOwner,
+  dgoodTableRowById,
+  dgoodstatsTableRowByCategoryAndName
 }

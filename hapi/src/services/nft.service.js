@@ -67,7 +67,7 @@ const putOnSale = async (user, payload) => {
   try {
     const password = await vaultService.getSecret(user.account)
     const template = await getTemplate(payload.template)
-    const assets = []
+    const ggoods = []
 
     for (let index = 0; index < payload.quantity; index++) {
       const { path: relativeUri } = await ipfsUtil.add(
@@ -97,11 +97,14 @@ const putOnSale = async (user, payload) => {
         amount: payload.amount,
         donable: payload.donable
       })
-      assets.push(id)
+      ggoods.push({
+        id,
+        trxid: transaction.transaction_id
+      })
     }
 
     return {
-      assets
+      ggoods
     }
   } catch (error) {
     throw new Boom.Boom(error.message, {
@@ -110,15 +113,52 @@ const putOnSale = async (user, payload) => {
   }
 }
 
+const confirmSaleWithPaypal = async (user, payload) => {
+  try {
+    const ggoods = []
+    const order = await paypalUtil.getOrder(payload.orderId)
+
+    for (let i = 0; i < order.purchase_units.length; i++) {
+      const purchaseUnit = order.purchase_units[i]
+
+      for (let j = 0; j < purchaseUnit.items.length; j++) {
+        const item = purchaseUnit.items[j]
+        const ggoodInfo = await dgoodsUtil.dgoodTableRowById(item.sku)
+        const password = await vaultService.getSecret(ggoodInfo.owner)
+        const transaction = await dgoodsUtil.confirmsale(
+          ggoodInfo.owner,
+          password,
+          {
+            newowner: user.account,
+            quantity: `${item.unit_amount.value} ${item.unit_amount.currency_code}`,
+            id: item.sku
+          }
+        )
+        ggoods.push({
+          id: item.sku,
+          trxid: transaction.transaction_id
+        })
+      }
+    }
+
+    return {
+      ggoods
+    }
+  } catch (error) {
+    throw new Boom.Boom(error.message, {
+      statusCode: BAD_REQUEST
+    })
+  }
+}
+
+// @todo: enabled pagination
 const ggoodsOnSale = async (payload = {}) => {
   try {
     const items = await dgoodsUtil.asksTableRows(payload)
     const newItems = await Promise.all(
       items.map(async item => {
-        const ggoodInfo = await dgoodsUtil.dgoodTableRow({
-          id: item.batch_id
-        })
-        const statsInfo = await dgoodsUtil.dgoodstatsTableRow({
+        const ggoodInfo = await dgoodsUtil.dgoodTableRowById(item.batch_id)
+        const statsInfo = await dgoodsUtil.dgoodstatsTableRowByCategoryAndName({
           category: ggoodInfo.category,
           name: ggoodInfo.token_name
         })
@@ -153,7 +193,6 @@ const ggoodsOnSale = async (payload = {}) => {
   }
 }
 
-const myGGoods = async user => {
 const ggoodOnSale = async id => {
   try {
     const item = await dgoodsUtil.asksTableRowById(id)
@@ -197,19 +236,24 @@ const ggoodOnSale = async id => {
     })
   }
 }
+
+// @todo: enabled pagination
+const myGGoods = async (user, payload) => {
   try {
     const items = await dgoodsUtil.dgoodTableRowsByOwner({
-      owner: user.account
+      owner: user.account,
+      limit: payload.limit
     })
     const newItems = await Promise.all(
       items.map(async ggoodInfo => {
         let metadata = {}
 
+        const statsInfo = await dgoodsUtil.dgoodstatsTableRowByCategoryAndName({
+          category: ggoodInfo.category,
+          name: ggoodInfo.token_name
+        })
+
         try {
-          const statsInfo = await dgoodsUtil.dgoodstatsTableRow({
-            category: ggoodInfo.category,
-            name: ggoodInfo.token_name
-          })
           const { data } = await axiosUtil.get(
             `${statsInfo.base_uri}/${ggoodInfo.relative_uri}`
           )
@@ -220,41 +264,14 @@ const ggoodOnSale = async id => {
         return {
           metadata,
           id: ggoodInfo.id,
-          category: ggoodInfo.category,
+          issuer: statsInfo.issuer,
           owner: ggoodInfo.owner,
           serial: ggoodInfo.serial_number
         }
       })
     )
 
-    return newItems
-  } catch (error) {
-    throw new Boom.Boom(error.message, {
-      statusCode: BAD_REQUEST
-    })
-  }
-}
-
-const confirmSaleWithPaypal = async (user, payload) => {
-  try {
-    const order = await paypalUtil.getOrder(payload.orderId)
-
-    for (let i = 0; i < order.purchase_units.length; i++) {
-      const purchaseUnit = order.purchase_units[i]
-
-      for (let j = 0; j < purchaseUnit.items.length; j++) {
-        const item = purchaseUnit.items[j]
-        const ggoodInfo = await dgoodsUtil.dgoodTableRow({ id: item.sku })
-        const password = await vaultService.getSecret(ggoodInfo.owner)
-        await dgoodsUtil.confirmsale(ggoodInfo.owner, password, {
-          newowner: user.account,
-          quantity: `${item.unit_amount.value} ${item.unit_amount.currency_code}`,
-          id: item.sku
-        })
-      }
-    }
-
-    return { success: true }
+    return newItems.filter(item => !!item.metadata?.imageSmall)
   } catch (error) {
     throw new Boom.Boom(error.message, {
       statusCode: BAD_REQUEST
@@ -265,8 +282,8 @@ const confirmSaleWithPaypal = async (user, payload) => {
 module.exports = {
   createTemplate,
   putOnSale,
+  confirmSaleWithPaypal,
   ggoodsOnSale,
-  myGGoods,
-  confirmSaleWithPaypal
   ggoodOnSale,
+  myGGoods
 }
