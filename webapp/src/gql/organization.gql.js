@@ -11,6 +11,21 @@ export const GET_ORGANIZATIONS = gql`
   }
 `
 
+export const GET_FEATURED_ORGANIZATIONS = gql`
+  query {
+    organizations: preregister_organization(
+      order_by: { created_at: asc }
+      where: { state: { _eq: "approved" } }
+      limit: 3
+    ) {
+      description
+      id
+      name
+      orgInfo
+    }
+  }
+`
+
 export const GET_ORGANIZATION_BY_ID = gql`
   query($id: Int!) {
     preregister_organization(

@@ -6,7 +6,15 @@ import Button from '@material-ui/core/Button'
 import Slider from '@ant-design/react-slick'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
+import { useQuery } from '@apollo/client'
+import Grid from '@material-ui/core/Grid'
+import { useHistory } from 'react-router-dom'
 
+import {
+  GET_FEATURED_ORGANIZATIONS,
+  GET_FEATURED_GGOODS_ON_SALE
+} from '../../gql'
+import { useSharedState } from '../../context/state.context'
 import { CardImage, CardInfo, CardAvatar } from '../../components/Card'
 import Gift from '../../images/assets/gift.png'
 import Organization from '../../images/assets/organization.png'
@@ -14,61 +22,37 @@ import Help from '../../images/assets/help.png'
 import Bg from '../../images/assets/cardBg.jpg'
 import Bg1 from '../../images/assets/cardBg1.png'
 import Bg2 from '../../images/assets/cardBg2.jpg'
-import dogShelter from '../../images/assets/dogShelter.svg'
-import animalRescue from '../../images/assets/animalRescue.svg'
-import oceanProtector from '../../images/assets/oceanProtector.svg'
 
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
-
-const GOOD_LIST = [
-  {
-    name: 'Name',
-    backgroundColor: '#FA9F37',
-    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
-  },
-  {
-    name: 'Name',
-    backgroundColor: '#FA9F37',
-    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
-  },
-  {
-    name: 'Name',
-    backgroundColor: '#FA9F37',
-    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
-  },
-  {
-    name: 'Name',
-    backgroundColor: '#FA9F37',
-    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
-  },
-  {
-    name: 'Name',
-    backgroundColor: '#FA9F37',
-    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
-  },
-  {
-    name: 'Name',
-    backgroundColor: '#FA9F37',
-    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
-  },
-  {
-    name: 'Name',
-    backgroundColor: '#FA9F37',
-    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
-  }
-]
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false
+}
 
 const Home = () => {
   const classes = useStyles()
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false
+  const history = useHistory()
+  const { data } = useQuery(GET_FEATURED_ORGANIZATIONS, {})
+  const { data: ggoods } = useQuery(GET_FEATURED_GGOODS_ON_SALE, {})
+  const [state, { login }] = useSharedState()
+
+  const handleOnClickJoinNow = () => {
+    if (state.user) {
+      history.push('/about')
+      return
+    }
+
+    login()
+  }
+
+  const handleNavigate = url => () => {
+    history.push(url)
   }
 
   return (
@@ -99,15 +83,24 @@ const Home = () => {
       <Box className={clsx(classes.rowsBox, classes.firstTitle)}>
         <Typography variant="h5">Get Started with gGoods</Typography>
         <Box className={classes.displayInline}>
-          <Box className={classes.optionsWrapper}>
+          <Box
+            className={classes.optionsWrapper}
+            onClick={handleOnClickJoinNow}
+          >
             <ArrowForwardIosIcon />
             <Typography>Join now!</Typography>
           </Box>
-          <Box className={classes.optionsWrapper}>
+          <Box
+            className={classes.optionsWrapper}
+            onClick={handleNavigate('/goods')}
+          >
             <ArrowForwardIosIcon />
             <Typography>Browse Goods for sale</Typography>
           </Box>
-          <Box className={classes.optionsWrapper}>
+          <Box
+            className={classes.optionsWrapper}
+            onClick={handleNavigate('/organizations')}
+          >
             <ArrowForwardIosIcon />
             <Typography>Find a cause to help</Typography>
           </Box>
@@ -130,42 +123,46 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      <Box className={classes.rowsBox}>
-        <Typography variant="h5">Featured Organizations</Typography>
-        <Box className={classes.cardInfoWrapper}>
-          <CardInfo
-            primaryText="Ocean Protectors"
-            secondaryText="Sea Wildlife"
-            img={oceanProtector}
-          />
-          <CardInfo
-            primaryText="Animal Reserve"
-            secondaryText="Tropicl Forest "
-            img={animalRescue}
-          />
-          <CardInfo
-            primaryText="Dog Shelter"
-            secondaryText="Pet Rescue"
-            img={dogShelter}
-          />
+      {data?.organizations?.length && (
+        <Box className={classes.rowsBox}>
+          <Typography variant="h5">Featured Organizations</Typography>
+          <Box className={classes.cardInfoWrapper}>
+            {data?.organizations?.map(organization => (
+              <CardInfo
+                key={organization.id}
+                primaryText={organization.name}
+                secondaryText={organization.orgInfo?.category}
+                img={organization.orgInfo?.logo}
+                onClick={handleNavigate(`organization/${organization.id}`)}
+              />
+            ))}
+          </Box>
         </Box>
-      </Box>
-      <Box className={classes.rowsBox}>
-        <Typography variant="h5">Featured Goods</Typography>
-      </Box>
-      <Box className={classes.rowsBoxWrap}>
-        {GOOD_LIST.map((ggood, index) => (
-          <CardAvatar
-            key={`${index}-${ggood.backgroundColor}`}
-            name={ggood.name}
-            image={ggood.image}
-            backgroundColor={ggood.backgroundColor}
-          />
-        ))}
-      </Box>
-      <Box className={classes.browseGoods}>
-        <Button size="small">Browse goods for sale</Button>
-      </Box>
+      )}
+      {!!ggoods?.items?.length && (
+        <>
+          <Box className={classes.rowsBox}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Typography variant="h5">Featured gGoods</Typography>
+              </Grid>
+              {ggoods?.items?.map(ggood => (
+                <Grid item xs={6} md={4} lg={1} key={ggood.id}>
+                  <CardAvatar
+                    name={ggood.metadata.name}
+                    image={ggood.metadata.imageSmall}
+                    backgroundColor={ggood.metadata.backgroundColor}
+                    onClick={handleNavigate(`/good/${ggood.id}`)}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+          <Box className={classes.browseGoods}>
+            <Button size="small">Browse goods</Button>
+          </Box>
+        </>
+      )}
     </Box>
   )
 }

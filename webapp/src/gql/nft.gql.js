@@ -56,6 +56,22 @@ export const GGOODS_ON_SALE = gql`
   }
 `
 
+export const GET_FEATURED_GGOODS_ON_SALE = gql`
+  query {
+    items: ggoods_on_sale(limit: 4) {
+      id
+      issuer
+      owner
+      serial
+      seller
+      amount
+      donable
+      expiration
+      metadata
+    }
+  }
+`
+
 export const MY_GGOODS = gql`
   query {
     ggoods: my_ggoods {
