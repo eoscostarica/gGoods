@@ -17,6 +17,7 @@ actions:
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/confirm-sale-with-paypal'
     forward_client_headers: true
   permissions:
+  - role: organization
   - role: user
 - name: create_account
   definition:
@@ -49,6 +50,15 @@ actions:
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/credentials-recovery'
   permissions:
   - role: guest
+- name: ggood_on_sale
+  definition:
+    kind: ""
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/ggood-on-sale'
+    forward_client_headers: true
+  permissions:
+  - role: guest
+  - role: organization
+  - role: user
 - name: ggoods_on_sale
   definition:
     kind: ""
@@ -70,6 +80,7 @@ actions:
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/my-ggoods'
     forward_client_headers: true
   permissions:
+  - role: organization
   - role: user
 - name: put_on_sale
   definition:
@@ -97,11 +108,12 @@ custom_types:
   - name: login_output
   - name: verify_email_output
   - name: payment_transaction_complete_output
-  - name: CreateTemplateOutput
-  - name: PutOnSaleOutput
   - name: credentials_recovery_output
   - name: change_password_output
   - name: my_ggoods_output
   - name: confirm_sale_with_paypal_output
   - name: ggoods_on_sale_output
+  - name: ggood_on_sale_output
+  - name: put_on_sale_output
+  - name: create_template_output
   scalars: []
