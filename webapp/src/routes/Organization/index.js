@@ -4,14 +4,13 @@ import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { useQuery } from '@apollo/client'
-import { useParams } from 'react-router-dom'
+import { useLazyQuery } from '@apollo/client'
+import { useParams, useHistory } from 'react-router-dom'
 import Hidden from '@material-ui/core/Hidden'
 
 import { CardAvatar } from '../../components/Card'
-import { GET_ORGANIZATION_BY_ID, GGOODS_ON_SALE } from '../../gql'
+import { GET_ORGANIZATIONS_BY_ID, GGOODS_ON_SALE } from '../../gql'
 
 import styles from './styles'
 
@@ -19,48 +18,39 @@ const useStyles = makeStyles(styles)
 
 const Organization = () => {
   const classes = useStyles()
+  const history = useHistory()
   const { id } = useParams()
   const { t } = useTranslation('organizationRoute')
-  const [ggoodsList, setGGoodsList] = useState()
-  const [account, setAccount] = useState()
   const [organization, setOrganization] = useState()
-  const { loading, data: organizationResults } = useQuery(
-    GET_ORGANIZATION_BY_ID,
-    {
+  const [loadOrganizations, { loading, data: organizations }] = useLazyQuery(
+    GET_ORGANIZATIONS_BY_ID
+  )
+  const [loadGGoods, { loading: loadingGoods, data: ggoods }] = useLazyQuery(
+    GGOODS_ON_SALE
+  )
+
+  const handleNavigate = url => () => {
+    history.push(url)
+  }
+
+  useEffect(() => {
+    loadOrganizations({
       variables: {
         id: id
       }
-    }
-  )
-  const { loading: loadingGoods, data: ggoods } = useQuery(GGOODS_ON_SALE, {
-    variables: { seller: account }
-  })
+    })
+  }, [id])
 
   useEffect(() => {
-    if (organizationResults) {
-      setOrganization(organizationResults.preregister_organization[0])
-      setAccount(
-        organizationResults.preregister_organization[0].orgInfo.account
-      )
+    if (!organizations?.items?.length) {
+      return
     }
-  }, [organizationResults])
 
-  useEffect(() => {
-    setGGoodsList(
-      (ggoods?.items || [])
-        ?.filter(item => !!item?.ggoods[0]?.metadata?.imageSmall)
-        .map(item => ({
-          id: item.id,
-          name: `${item?.ggoods[0]?.metadata?.name} v${item?.ggoods[0]?.serial}`,
-          image: item?.ggoods[0]?.metadata?.imageSmall,
-          backgroundColor: item?.ggoods[0]?.metadata?.backgroundColor,
-          amount: item.amount,
-          donable: item.donable,
-          issuer: item?.ggoods[0]?.issuer,
-          description: item?.ggoods[0]?.metadata?.description
-        }))
-    )
-  }, [ggoods])
+    setOrganization(organizations.items[0])
+    loadGGoods({
+      variables: { seller: organizations.items[0].orgInfo.account }
+    })
+  }, [organizations])
 
   return (
     <Box>
@@ -161,20 +151,20 @@ const Organization = () => {
                     <CircularProgress color="secondary" />
                   </Box>
                 )}
-                {!loadingGoods && !ggoodsList?.length && (
+                {!loadingGoods && !ggoods?.items?.length && (
                   <Box>
-                    <Typography variant="body1">{t('empty')}</Typography>
+                    <Typography variant="body1">{t('emptyMessage')}</Typography>
                   </Box>
                 )}
                 {!loadingGoods && (
                   <Grid container spacing={2}>
-                    {ggoodsList?.map((item, index) => (
+                    {ggoods?.items?.map((ggood, index) => (
                       <Grid item xs={6} md={3} lg={2} key={index}>
                         <CardAvatar
-                          id={item.id}
-                          name={item.name}
-                          image={item.image}
-                          backgroundColor={item.backgroundColor}
+                          name={ggood.metadata.name}
+                          image={ggood.metadata.imageSmall}
+                          backgroundColor={ggood.metadata.backgroundColor}
+                          onClick={handleNavigate(`/good/${ggood.id}`)}
                         />
                       </Grid>
                     ))}

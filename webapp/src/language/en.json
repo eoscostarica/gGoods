@@ -156,7 +156,7 @@
     "location": "Location",
     "contact": "Contact",
     "ourGoods": "Our Goods",
-    "empty": "Organization has not created any goods"
+    "emptyMessage": "Organization has not created any gGoods"
   },
   "gamesRoute": {
     "title": "Games",

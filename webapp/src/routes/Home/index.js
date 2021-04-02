@@ -38,7 +38,7 @@ const settings = {
 const Home = () => {
   const classes = useStyles()
   const history = useHistory()
-  const { data } = useQuery(GET_FEATURED_ORGANIZATIONS, {})
+  const { data: organizations } = useQuery(GET_FEATURED_ORGANIZATIONS, {})
   const { data: ggoods } = useQuery(GET_FEATURED_GGOODS_ON_SALE, {})
   const [state, { login }] = useSharedState()
 
@@ -123,11 +123,11 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      {data?.organizations?.length && (
+      {!!organizations?.items?.length && (
         <Box className={classes.rowsBox}>
           <Typography variant="h5">Featured Organizations</Typography>
           <Box className={classes.cardInfoWrapper}>
-            {data?.organizations?.map(organization => (
+            {organizations?.items?.map(organization => (
               <CardInfo
                 key={organization.id}
                 primaryText={organization.name}

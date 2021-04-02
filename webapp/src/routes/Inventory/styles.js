@@ -8,7 +8,7 @@ export default theme => ({
   headerBox: {
     paddingBottom: theme.spacing(2)
   },
-  MainButton: {
+  mainButton: {
     borderRadius: '50px',
     width: '100%',
     fontWeight: 'normal',
@@ -19,6 +19,7 @@ export default theme => ({
     paddingBottom: theme.spacing(2)
   },
   overlineTag: {
-    width: '100%'
+    width: '100%',
+    display: 'block'
   }
 })
