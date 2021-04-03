@@ -17,6 +17,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import Popover from '@material-ui/core/Popover'
+import Paper from '@material-ui/core/Paper'
 
 import {
   LOGIN_MUTATION,
@@ -136,6 +138,9 @@ const useStyles = makeStyles(theme => ({
   registerBtnSideBar: {
     display: 'flex',
     alignItems: 'center'
+  },
+  sampleCredentials: {
+    padding: theme.spacing(3)
   }
 }))
 
@@ -147,6 +152,7 @@ const LoginModal = () => {
     { cancelLogin, successLogin }
   ] = useSharedState()
   const [errorMessage, setErrorMessage] = useState(null)
+  const [anchorEl, setAnchorEl] = useState(null)
   const classes = useStyles()
   const theme = useTheme()
   const [
@@ -249,6 +255,15 @@ const LoginModal = () => {
       handleLogin()
     }
   }
+
+  const handleSampleCredentialsClick = event => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleSampleCredentialsClose = () => {
+    setAnchorEl(null)
+  }
+
   return (
     <>
       <Dialog
@@ -352,6 +367,84 @@ const LoginModal = () => {
             <Box className={classes.centerBox}>
               {loading && <CircularProgress />}
             </Box>
+            <Box className={classes.centerBox}>
+              <Button
+                className={classes.btnLogin}
+                variant="contained"
+                color="secondary"
+                onClick={handleSampleCredentialsClick}
+              >
+                Users for demo
+              </Button>
+            </Box>
+            <Popover
+              open={!!anchorEl}
+              anchorEl={anchorEl}
+              onClose={handleSampleCredentialsClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center'
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center'
+              }}
+
+              // anchorOrigin={{
+              //   vertical: 'bottom',
+              //   horizontal: 'center'
+              // }}
+              // transformOrigin={{
+              //   vertical: 'top',
+              //   horizontal: 'center'
+              // }}
+            >
+              <Paper elevation={3} className={classes.sampleCredentials}>
+                <dl>
+                  <dt>
+                    <Typography variant="h6">Authors</Typography>
+                  </dt>
+                  <dd>
+                    <Typography variant="body1">
+                      username: animalrescue
+                    </Typography>
+                  </dd>
+                  <dd>
+                    <Typography variant="body1">
+                      password: organization
+                    </Typography>
+                  </dd>
+
+                  <dt>
+                    <Typography variant="h6">Buyers</Typography>
+                  </dt>
+                  <dd>
+                    <Typography variant="body1">
+                      username: iamthebestgg
+                    </Typography>
+                  </dd>
+                  <dd>
+                    <Typography variant="body1">password: user</Typography>
+                  </dd>
+
+                  <dt>
+                    <Typography variant="h6">PayPal</Typography>
+                  </dt>
+                  <dd>
+                    <Typography variant="body1">
+                      username: sb-piss85762653@personal.example.com
+                    </Typography>
+                  </dd>
+                  <dd>
+                    <Typography variant="body1">password: +SW$pt8-</Typography>
+                  </dd>
+                </dl>
+              </Paper>
+
+              {/* <Typography>
+                -- animalrescue/organization -- iamthebestgg/user
+              </Typography> */}
+            </Popover>
             <Box className={classes.centerBox}>
               <LoginWithGoogle onSubmit={handleLoginWithAuth} />
             </Box>
