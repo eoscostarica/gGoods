@@ -24,7 +24,7 @@
 	</a>
 </p>
 
-# Table of Contents
+# [gGoods.io](https://ggoods.io)
 - [About gGoods](#nfts-that-enable-communities-to-raise-funds)
 - [About the technology](#about-the-technology)
 - [How we built gGoods](#how-we-built-ggoods)
@@ -43,7 +43,7 @@
 - [License](#license)
 - [Contributing](#contributing)
 
-[gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donors as collectibles that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
+gGoods is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donors as collectibles that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc. Visit [gGoods.io](https://ggoods.io) and try it out!
 
 ## Why gGoods?
 
@@ -116,7 +116,7 @@ Find out more about the following topics on [gitHub discussions](https://github.
 ### [What’s next for gGoods?](https://github.com/eoscostarica/gGoods/discussions/223)
 
 ### [Project management](https://github.com/eoscostarica/gGoods/projects/1)
-We use a Kanban-style board for planning and prioritizing work. [Go to gGoods Project Board](https://github.com/eoscostarica/gGoods/projects/1).
+We use a Kanban-style board for planning and prioritizing work. Check out our [Agile Project Board](https://github.com/eoscostarica/gGoods/projects/1).
 
 ## Installation
 
