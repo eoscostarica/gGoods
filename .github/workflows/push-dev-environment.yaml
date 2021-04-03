@@ -127,6 +127,7 @@ jobs:
           HAPI_DGOODS_ACCOUNT: ${{ secrets.HAPI_DGOODS_ACCOUNT }}
           HAPI_DGOODS_PASSWORD: ${{ secrets.HAPI_DGOODS_PASSWORD }}
           HAPI_DGOODS_TOKEN: ${{ secrets.HAPI_DGOODS_TOKEN }}
+          HAPI_DGOODS_CURRENCY: ${{ secrets.HAPI_DGOODS_CURRENCY }}
           HAPI_PAYPAL_API: "${secrets.HAPI_PAYPAL_API}"
           HAPI_PAYPAL_CLIENT: "${secrets.HAPI_PAYPAL_CLIENT}"
           HAPI_PAYPAL_SECRET: "${secrets.HAPI_PAYPAL_SECRET}"
