@@ -5,15 +5,18 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
 import { useMutation } from '@apollo/client'
+import { DropzoneArea } from 'material-ui-dropzone'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import { SketchPicker } from 'react-color'
 import { useHistory } from 'react-router-dom'
 
-import { ipfs, setData, getLastChars, dataURLtoFile } from '../../utils'
-import { useSharedState } from '../../context/state.context'
-import AvatarMaker from '../../components/AvatarMaker'
 import ComboBox from '../../components/ComboBox'
 import { CREATE_TEMPLATE_MUTATION } from '../../gql'
+import { ipfs, setData, getLastChars } from '../../utils'
+import { useSharedState } from '../../context/state.context'
+
 import { mainConfig } from '../../config'
 
 import styles from './styles'
@@ -33,28 +36,29 @@ const initialValue = {
   }
 }
 
-const CreateTemplate = () => {
+const CreateCustomTemplate = () => {
   const classes = useStyles()
   const history = useHistory()
-  const { t } = useTranslation('createTemplateRoute')
+  const { t } = useTranslation('createCustomTemplateRoute')
   const [createTemplate, { loading }] = useMutation(CREATE_TEMPLATE_MUTATION)
   const [, { showMessage }] = useSharedState()
   const [payload, setPayload] = useState()
-  const [canvas, setCanvas] = useState()
 
-  const handleFileUpload = async () => {
-    const dataUrl = canvas?.toDataURL({ format: 'png' })
-
-    if (!dataUrl) {
+  const handleFileUpload = field => async files => {
+    if (!files?.length) {
       return
     }
 
+    const formData = new FormData()
+    formData.append('file_name', files[0])
+
     try {
       const { path } = await ipfs.add({
-        content: dataURLtoFile(dataUrl, 'file.png')
+        content: files[0]
       })
 
-      return path
+      setPayload(prev => setData(prev, field, path))
+      showMessage({ content: t('successUploadImage') })
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
     }
@@ -65,17 +69,10 @@ const CreateTemplate = () => {
   }
 
   const handleSubmit = async () => {
-    const image = await handleFileUpload()
-
     try {
       const { data } = await createTemplate({
         variables: {
-          ...payload,
-          metadata: {
-            ...payload.metadata,
-            imageSmall: image,
-            imageLarge: image
-          }
+          ...payload
         }
       })
       setPayload(initialValue)
@@ -112,11 +109,7 @@ const CreateTemplate = () => {
       <form className={classes.root} noValidate autoComplete="off">
         <Grid container justify="center" alignItems="center" spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="body1">{t('paragraph1')}</Typography>
-          </Grid>
-
-          <Grid item xs={12}>
-            <Typography variant="body1">{t('paragraph2')}</Typography>
+            <Typography variant="body1">{t('paragraph')}</Typography>
           </Grid>
 
           <Grid item xs={12}>
@@ -135,15 +128,52 @@ const CreateTemplate = () => {
           </Grid>
 
           <Grid item xs={12}>
-            <AvatarMaker
-              onGetDataUrl={setCanvas}
-              color={payload?.metadata?.backgroundColor}
-              onChangeColor={color =>
-                handlePayloadChange('metadata.backgroundColor')({
-                  target: { value: color.hex }
-                })
-              }
+            <DropzoneArea
+              filesLimit={1}
+              showAlerts={false}
+              onChange={handleFileUpload('metadata.imageSmall')}
+              acceptedFiles={['image/*']}
+              dropzoneText={t('smallImage')}
+              previewGridProps={{
+                container: {
+                  style: {
+                    backgroundColor: payload?.metadata?.backgroundColor
+                  }
+                }
+              }}
             />
+          </Grid>
+
+          <Grid item xs={12}>
+            <DropzoneArea
+              filesLimit={1}
+              showAlerts={false}
+              onChange={handleFileUpload('metadata.imageLarge')}
+              acceptedFiles={['image/*']}
+              dropzoneText={t('largeImage')}
+              previewGridProps={{
+                container: {
+                  style: {
+                    backgroundColor: payload?.metadata?.backgroundColor
+                  }
+                }
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Box className={classes.colorPickerWrapper}>
+              <Typography variant="h5">{t('backgroundColor')}</Typography>
+              <SketchPicker
+                className={classes.colorPicker}
+                color={payload?.metadata?.backgroundColor}
+                onChangeComplete={color =>
+                  handlePayloadChange('metadata.backgroundColor')({
+                    target: { value: color.hex }
+                  })
+                }
+              />
+            </Box>
           </Grid>
 
           <Grid item xs={12}>
@@ -187,4 +217,4 @@ const CreateTemplate = () => {
   )
 }
 
-export default CreateTemplate
+export default CreateCustomTemplate

@@ -16,7 +16,7 @@ const useStyles = makeStyles(styles)
 const Organizations = () => {
   const classes = useStyles()
   const { t } = useTranslation('organizationsRoute')
-  const { loading, data: organizationResults } = useQuery(GET_ORGANIZATIONS, {})
+  const { loading, data: organizations } = useQuery(GET_ORGANIZATIONS, {})
 
   return (
     <Box className={classes.mainBox}>
@@ -35,15 +35,15 @@ const Organizations = () => {
 
         <Grid container spacing={2}>
           {!loading &&
-            organizationResults &&
-            organizationResults.preregister_organization.map(org => (
-              <Grid item xs={12} md={6} lg={3} key={org.id}>
+            organizations?.items?.length &&
+            organizations.items.map(organization => (
+              <Grid item xs={12} md={6} lg={3} key={organization.id}>
                 <CardOng
-                  id={org.id}
-                  name={org.name}
-                  category={org.category}
-                  description={org.description}
-                  img={org.orgInfo.image}
+                  id={organization.id}
+                  name={organization.name}
+                  category={organization.category}
+                  description={organization.description}
+                  img={organization.orgInfo.image}
                 />
               </Grid>
             ))}

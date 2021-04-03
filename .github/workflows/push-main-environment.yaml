@@ -81,6 +81,7 @@ jobs:
           REACT_APP_IPFS_URL: ${{ secrets.REACT_APP_IPFS_URL }}
           REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
           REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY }}
+          REACT_APP_BLOCK_EXPLORER: ${{ secrets.REACT_APP_BLOCK_EXPLORER }}
 
           # hasura
           HASURA_GRAPHQL_DATABASE_URL: ${{ secrets.HASURA_GRAPHQL_DATABASE_URL }}
@@ -157,6 +158,7 @@ jobs:
           REACT_APP_IPFS_URL: ${{ secrets.REACT_APP_IPFS_URL }}
           REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
           REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY }}
+          REACT_APP_BLOCK_EXPLORER: ${{ secrets.REACT_APP_BLOCK_EXPLORER }}
 
       - name: Deploy kubernetes files
         run: |
