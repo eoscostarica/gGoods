@@ -7,7 +7,6 @@ import Slider from '@ant-design/react-slick'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
 import { useQuery } from '@apollo/client'
-import Grid from '@material-ui/core/Grid'
 import { useHistory } from 'react-router-dom'
 
 import {
@@ -142,21 +141,18 @@ const Home = () => {
       {!!ggoods?.items?.length && (
         <>
           <Box className={classes.rowsBox}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <Typography variant="h5">Featured gGoods</Typography>
-              </Grid>
-              {ggoods?.items?.map(ggood => (
-                <Grid item xs={6} md={4} lg={1} key={ggood.id}>
-                  <CardAvatar
-                    name={ggood.metadata.name}
-                    image={ggood.metadata.imageSmall}
-                    backgroundColor={ggood.metadata.backgroundColor}
-                    onClick={handleNavigate(`/good/${ggood.id}`)}
-                  />
-                </Grid>
-              ))}
-            </Grid>
+            <Typography variant="h5">Featured Goods</Typography>
+          </Box>
+          <Box className={classes.rowsBoxWrap}>
+            {ggoods?.items?.map(ggood => (
+              <CardAvatar
+                key={ggood.id}
+                name={ggood.metadata.name}
+                image={ggood.metadata.imageSmall}
+                backgroundColor={ggood.metadata.backgroundColor}
+                onClick={handleNavigate(`/good/${ggood.id}`)}
+              />
+            ))}
           </Box>
           <Box className={classes.browseGoods}>
             <Button size="small" onClick={handleNavigate('/goods')}>
