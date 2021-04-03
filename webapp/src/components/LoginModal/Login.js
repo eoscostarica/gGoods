@@ -374,7 +374,7 @@ const LoginModal = () => {
                 color="secondary"
                 onClick={handleSampleCredentialsClick}
               >
-                Users for demo
+                Log in using a pre-registered demo account
               </Button>
             </Box>
             <Popover
@@ -389,20 +389,11 @@ const LoginModal = () => {
                 vertical: 'top',
                 horizontal: 'center'
               }}
-
-              // anchorOrigin={{
-              //   vertical: 'bottom',
-              //   horizontal: 'center'
-              // }}
-              // transformOrigin={{
-              //   vertical: 'top',
-              //   horizontal: 'center'
-              // }}
             >
               <Paper elevation={3} className={classes.sampleCredentials}>
                 <dl>
                   <dt>
-                    <Typography variant="h6">Authors</Typography>
+                    <Typography variant="h6">Organization User</Typography>
                   </dt>
                   <dd>
                     <Typography variant="body1">
@@ -416,7 +407,7 @@ const LoginModal = () => {
                   </dd>
 
                   <dt>
-                    <Typography variant="h6">Buyers</Typography>
+                    <Typography variant="h6">Regular User</Typography>
                   </dt>
                   <dd>
                     <Typography variant="body1">
@@ -426,24 +417,8 @@ const LoginModal = () => {
                   <dd>
                     <Typography variant="body1">password: user</Typography>
                   </dd>
-
-                  <dt>
-                    <Typography variant="h6">PayPal</Typography>
-                  </dt>
-                  <dd>
-                    <Typography variant="body1">
-                      username: sb-piss85762653@personal.example.com
-                    </Typography>
-                  </dd>
-                  <dd>
-                    <Typography variant="body1">password: +SW$pt8-</Typography>
-                  </dd>
                 </dl>
               </Paper>
-
-              {/* <Typography>
-                -- animalrescue/organization -- iamthebestgg/user
-              </Typography> */}
             </Popover>
             <Box className={classes.centerBox}>
               <LoginWithGoogle onSubmit={handleLoginWithAuth} />
