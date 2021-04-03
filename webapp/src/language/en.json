@@ -9,8 +9,6 @@
     "name": "Name",
     "type": "Type",
     "description": "Description",
-    "smallImage": "Small Image",
-    "largeImage": "Large Image",
     "confirm": "Confirm",
     "all": "All",
     "email": "Email",
@@ -202,8 +200,8 @@
   "inventoryRoute": {
     "title": "Inventory",
     "paragraph1": "Create templates and publish Goods created by your organization.",
-    "uploadButton": "Upload Pre-made Template",
-    "createButton": "Create a new Template",
+    "uploadButton": "Upload Your Custom Template",
+    "createButton": "Use The Template Maker",
     "emptyTemplates": "No templates have been created yet.",
     "emptyGGoods": "No gGoods have been published yet.",
     "templatesTitle": "Templates",
@@ -263,6 +261,16 @@
     "avatarMaker": "Avatar Maker",
     "myOwnDesign": "My Own Design",
     "successMessage": "Success transaction:"
+  },
+  "createCustomTemplateRoute": {
+    "paragraph": "You can upload previously created design to represent the cause that you will be crowdfunding. Be sure that you have permission to use these images.",
+    "smallImage": "Pick a small image (150 x 150)",
+    "largeImage": "Pick a large image (1024 x 1024)",
+    "backgroundColor": "Pick a background color",
+    "name": "Name your gGood",
+    "description": "Describe your gGood",
+    "successUploadImage": "Uploaded image",
+    "successMessage": "Your new custom template it's ready to use"
   },
   "donationSuccesfulRoute": {
     "title": "Donation Succesful!",

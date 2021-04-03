@@ -8,3 +8,4 @@ export const ipfsUrl = process.env.REACT_APP_IPFS_URL
 export const footerLinks = JSON.parse(
   process.env.REACT_APP_FOOTER_LINKS || '[]'
 )
+export const categories = ['Animal']
