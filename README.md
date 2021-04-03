@@ -61,6 +61,9 @@ Find out more about the following topics on [gitHub discussions](https://github.
 
 ### [What’s next for gGoods?](https://github.com/eoscostarica/gGoods/discussions/223)
 
+### Project management
+We use a Kanban-style board for planning and prioritizing work. [Go to gGoods Project Board](https://github.com/eoscostarica/gGoods/projects/1).
+
 # About the technology
 
 ## What is blockchain?
