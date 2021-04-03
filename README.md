@@ -27,7 +27,7 @@
 # Table of Contents
 - [About gGoods](#nfts-that-enable-communities-to-raise-funds)
 - [About the technology](#about-the-technology)
-- [How we built gGoods](#how-did-we-build-ggoods-)
+- [How we built gGoods](#how-we-built-ggoods)
   * [Project Board and Discussions Topics](#project-board-and-discussions-topics)
   * [Installation](#installation)
   * [File Structure](#file-structure)
@@ -37,9 +37,9 @@
     + [EOSIO Smart Contract](#eosio-smart-contract)
     + [EOSIO KEOSD Wallet Service](#eosio-keosd-wallet-service)
     + [Web Application](#web-application)
-      - [Hasura GraphQL Server](#hasura-graphql-server)
-      - [Hapi REST Server](#hapi-rest-server)
-    + [Interplanetary File System (IPFS)](#interplanetary-file-system--ipfs-)
+    + [Hasura GraphQL Server](#hasura-graphql-server)
+    + [Hapi REST Server](#hapi-rest-server)
+    + [Interplanetary File System - IPFS](#interplanetary-file-system---ipfs)
 - [License](#license)
 - [Contributing](#contributing)
 
@@ -85,7 +85,7 @@ NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digi
 
 [Read more on NFTs](https://medium.com/dgoods/introducing-dgoods-7204a90193f4)
 
-# How did we build gGoods?
+# How we built gGoods
 
 This project features the following tech stack:
 
@@ -195,16 +195,16 @@ gGoods allows for users to purchase NFTs using traditional payment and authentic
 
 This FullStack Template uses [React.js](https://reactjs.org) as a Frontend Library which together with other tools like [Apollo Client](https://www.apollographql.com/docs/react/), [GraphQL](https://graphql.org/) and [Material UI](https://material-ui.com/) brings a robust solution for building Single Page Applications out of the box.
 
-#### Hasura GraphQL Server
+### Hasura GraphQL Server
 
 [Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allows us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
 Hasura also enables custom REST handling capabilities with the possibility to integrate a custom REST server, that way we can extend the base CRUD functionalities and build custom business logic.
 
-#### Hapi REST Server
+### Hapi REST Server
 
 We need to handle REST custom requests coming from the Hasura GraphQL server. For this, we use [hapi.dev](https://hapi.dev/), which is a simple and easy-to-use backend framework.
 
-### Interplanetary File System (IPFS)
+### Interplanetary File System - IPFS
 
 We use IPFS to store the assets that are displayed in the Web Application. IPFS is a decentralized storage that uses blockchain technology to provide auditability and availability of the assets. IPFS can be configured to setup your own node and validate the data, but this time we are using the public IPFS access, i.e. public endpoints.
 
