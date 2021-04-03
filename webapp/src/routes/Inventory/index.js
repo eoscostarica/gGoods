@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import { useQuery } from '@apollo/client'
+import { useQuery, useLazyQuery } from '@apollo/client'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useHistory } from 'react-router-dom'
 
@@ -26,12 +26,18 @@ const Inventory = () => {
   const [selectedTemplate, setSelectedTemplate] = useState()
   const [selectedGGood, setSelectedGGood] = useState()
   const [{ user }] = useSharedState()
-  const { loading: loadingGGoods, data: ggoods } = useQuery(GGOODS_ON_SALE, {
-    variables: { seller: user?.account },
-    fetchPolicy: 'network-only'
-  })
+  const [loadGGoods, { loading: loadingGGoods, data: ggoods }] = useLazyQuery(
+    GGOODS_ON_SALE,
+    {
+      variables: { seller: user?.account },
+      fetchPolicy: 'network-only'
+    }
+  )
   const { loading: loadingTemplates, data: templates } = useQuery(
-    TEMPLATES_QUERY
+    TEMPLATES_QUERY,
+    {
+      fetchPolicy: 'network-only'
+    }
   )
 
   const handleOnClickGGood = ggood => () => {
@@ -41,6 +47,15 @@ const Inventory = () => {
   const handleOnClickTemplate = template => () => {
     setSelectedTemplate(template)
   }
+
+  const handleOnClose = () => {
+    setSelectedTemplate(null)
+    loadGGoods()
+  }
+
+  useEffect(() => {
+    loadGGoods()
+  }, [])
 
   return (
     <Box className={classes.mainBox}>
@@ -58,7 +73,7 @@ const Inventory = () => {
               variant="contained"
               color="primary"
               className={classes.mainButton}
-              onClick={() => history.push('/create-template')}
+              onClick={() => history.push('/create-custom-template')}
             >
               {t('uploadButton')}
             </Button>
@@ -149,7 +164,7 @@ const Inventory = () => {
 
       <PublishGood
         open={!!selectedTemplate}
-        onClose={() => setSelectedTemplate(null)}
+        onClose={handleOnClose}
         template={selectedTemplate}
       />
 
