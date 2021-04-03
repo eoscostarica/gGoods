@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Slider from '@ant-design/react-slick'
-import Grid from '@material-ui/core/Grid'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
 
@@ -157,18 +156,18 @@ const Home = () => {
           />
         </Box>
       </Box>
+      <Box className={classes.rowsBox}>
+        <Typography variant="h5">Featured Goods</Typography>
+      </Box>
       <Box className={classes.rowsBoxWrap}>
-        <Grid container spacing={2}>
-          {GOOD_LIST.map((ggood, index) => (
-            <Grid item xs={6} md={4} lg={1} key={index}>
-              <CardAvatar
-                name={ggood.name}
-                image={ggood.image}
-                backgroundColor={ggood.backgroundColor}
-              />
-            </Grid>
-          ))}
-        </Grid>
+        {GOOD_LIST.map((ggood, index) => (
+          <CardAvatar
+            key={`${index}-${ggood.backgroundColor}`}
+            name={ggood.name}
+            image={ggood.image}
+            backgroundColor={ggood.backgroundColor}
+          />
+        ))}
       </Box>
       <Box className={classes.browseGoods}>
         <Button size="small">Browse goods</Button>

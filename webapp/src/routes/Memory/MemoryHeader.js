@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/styles'
 
 import styles from './styles'
@@ -10,15 +13,12 @@ const Header = ({ attempts, resetGame }) => {
   const classes = useStyles()
 
   return (
-    <header>
-      <div className={classes.title}>React-Memory</div>
-      <div>
-        <button className={classes.resetBtn} onClick={resetGame}>
-          reset
-        </button>
-      </div>
-      <div className={classes.title}>Attempts: {attempts}</div>
-    </header>
+    <Box className={classes.header}>
+      <Button variant="contained" onClick={resetGame}>
+        reset
+      </Button>
+      <Typography className={classes.title}>Attempts: {attempts}</Typography>
+    </Box>
   )
 }
 
