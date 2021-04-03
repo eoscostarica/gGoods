@@ -24,11 +24,7 @@
 	</a>
 </p>
 
-<<<<<<< HEAD
 # [gGoods.io](https://ggoods.io)
-=======
-# Table of Contents
->>>>>>> main
 - [About gGoods](#nfts-that-enable-communities-to-raise-funds)
 - [About the technology](#about-the-technology)
 - [How we built gGoods](#how-we-built-ggoods)
