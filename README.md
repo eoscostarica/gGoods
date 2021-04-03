@@ -49,38 +49,20 @@ gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https:/
 ## About the hackathon
 The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world. The judging committee included Google, Galaxy Interactive and Mythical Games. 
 
-### Challenges we ran into
-- Payment gateways:  We wanted the payment gateway to be easy to use for a community not familiar with cryptocurrencies while also allowing interesting feature sets like perpetual revenue streams built in the smart contract standard
-- In-app / in-game use cases:  We wanted to show the functionality of gGoods in different in-app use cases but struggled to balance the level of effort without sacrificing the concept.
-- Focus on gaming:  We started with a specific focus on gaming but realized that gGoods were a new way for anyone to interact with a cause they care about and a new way for communities to crowdfund. 
-- Displaying NFTs:  We struggled to find the right balance between displaying the technical aspects of an NFT and the wide marketing opportunities.  We chose a “trophy case” type display to make NFTs more approachable.  
+## Project Board and Discussions Topics 
 
-### Accomplishments that we are proud of
-- Researching all the different NFT standards in EOSIO and other blockchains to determine the right features for gGoods. 
-- Integrating payment gateways like Google Pay and Paypal for the purchase of NFTs
-- Integrating Augmented Reality and progressive web applications into the gGoods in-app usage “selfie cam”.
-- Making the purchase of an NFT as easy as donating to an NGO. 
-- Using blockchain technology to encourage anyone to donate their time, creativity and uniqueness to a cause they support.  Not just money.  
+Find out more about the following topics on [gitHub discussions](https://github.com/eoscostarica/gGoods/discussions)
 
-### What we learned
-- NFTs can be a new platform for crowdfunding
-- NGOs and communities are looking for new ways to engage with their supporters and raise funds
-- People are looking for new ways to support causes they care about through an experience that doesn't involve physical travel or just a monetary donation
-- NFTs can be more impactful if they are not just collectible art.  By using them as in-app assets, they become a badge of honor, a representation of the user and a fun digital asset. 
+### [Challenges we ran into](https://github.com/eoscostarica/gGoods/discussions/197) 
 
-### What’s next for gGoods?
-- New avatar categories:  Humans, Robots, Zombies, Objects, etc
-- Improve Security
-- Dark Mode and other UI enhancements
-- Language Translations
-- 3D preview of the assets
-- Subscription payments through Google Pay and other payment gateways
-- Displaying the ricardian contract component of the NFT contract
-- Royalty payments to the community in perpetuity for secondary market sales
-- Allowing secondary market sales
-- Allowing “My Own NFT Design”
-- Ability to create an NFT on behalf of an organization
-- NFT filters and categories
+### [Accomplishments that we are proud of](https://github.com/eoscostarica/gGoods/discussions/199)
+
+### [What we learned](https://github.com/eoscostarica/gGoods/discussions/200)
+
+### [What’s next for gGoods?](https://github.com/eoscostarica/gGoods/discussions/223)
+
+### [Project management](https://github.com/eoscostarica/gGoods/projects/1)
+We use a Kanban-style board for planning and prioritizing work. [Go to gGoods Project Board](https://github.com/eoscostarica/gGoods/projects/1).
 
 # About the technology
 
@@ -104,7 +86,8 @@ NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digi
 This project features the following tech stack:
 
 - **[Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine)**
-- **[EOSIO](https://eos.io)** ([Jungle testnet](https://jungle3.bloks.io/account/ggoodsggoods))
+- **[EOSIO Smart Contracts](https://eos.io)** ([Jungle testnet](https://jungle3.bloks.io/account/ggoodsggoods))
+- **[Keosd Wallet Service](https://developers.eos.io/manuals/eos/v2.0/keosd/index)**
 - **[dGoods](https://github.com/MythicalGames/dgoods)** (We forked the dGoods Smart Contracts)
 - **[IPFS](https://ipfs.io/)** 
 - **[React JS](https://reactjs.org/)**
@@ -175,11 +158,23 @@ Within the repo you'll find the following directories:
 
 ## Tech Stack Description
 
+### Google Kubernetes Engine Cluster
+
+We built gGood taking into consideration scalability and high availability of the services for this reason we use [Kubernetes](https://kubernetes.io/) powered by GKE on [Google Cloud](https://cloud.google.com/) with auto-scaling policies set to meet the most demanding audiences.
+
+### EOSIO Smart Contract 
+
+We forked the dGoogds token standard smart contracts form https://github.com/MythicalGames/dgoods 
+
+The smart contract used by gGoods is deployed on the jungle3 testnet as `[ggoodsggoods](https://jungle3.bloks.io/account/ggoodsggoods)`.
+
+### EOSIO KEOSD Wallet Service
+
+gGoods allows for users to purchase NFTs using traditional payment and authentication methods such as Google. We believe this provides the best user experience and lowers barriers for adoption. To accomplish this we are using the native EOSIO KEOS wallet service to store user's private keys and sign transactions for them. We plan to enable client side wallets soon.
+
 ### Web Application
 
 This FullStack Template uses [React.js](https://reactjs.org) as a Frontend Library which together with other tools like [Apollo Client](https://www.apollographql.com/docs/react/), [GraphQL](https://graphql.org/) and [Material UI](https://material-ui.com/) brings a robust solution for building Single Page Applications out of the box.
-
-### Backend
 
 #### Hasura GraphQL Server
 
@@ -190,17 +185,10 @@ Hasura also enables custom REST handling capabilities with the possibility to in
 
 We need to handle REST custom requests coming from the Hasura GraphQL server. For this, we use [hapi.dev](https://hapi.dev/), which is a simple and easy-to-use backend framework.
 
-### EOSIO Blockchain Technology Integration
-
-As a company that delivers EOSIO blockchain-based solutions, we build a template which contains EOSIO integration, specifically [eosjs](https://github.com/EOSIO/eosjs). This allow us to iterate quickly over the more challenging features of our projects.
-
 ### Interplanetary File System (IPFS)
 
 We use IPFS to store the assets that are displayed in the Web Application. IPFS is a decentralized storage that uses blockchain technology to provide auditability and availability of the assets. IPFS can be configured to setup your own node and validate the data, but this time we are using the public IPFS access, i.e. public endpoints.
 
-### Google Kubernetes Engine Cluster
-
-At EOS Costa Rica, we build software taking into consideration a high availability of the services that can integrate it. For this, we use [Kubernetes](https://kubernetes.io/), that allows us to isolate modules in order to reduce the risk of the system collapsing. In the image above, you can take a look at our representation of the architecture we consider is more suitable to our purposes.
 
 # Version
 
