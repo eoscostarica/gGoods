@@ -166,7 +166,7 @@ We built gGood taking into consideration scalability and high availability of th
 
 We forked the dGoogds token standard smart contracts form https://github.com/MythicalGames/dgoods 
 
-The smart contract used by gGoods is deployed on the jungle3 testnet as `[ggoodsggoods](https://jungle3.bloks.io/account/ggoodsggoods)`.
+The smart contract used by gGoods is deployed on the jungle3 testnet as [**`ggoodsggoods`**](https://jungle3.bloks.io/account/ggoodsggoods).
 
 ### EOSIO KEOSD Wallet Service
 
