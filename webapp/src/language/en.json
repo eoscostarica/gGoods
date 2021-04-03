@@ -108,16 +108,16 @@
     "/>sidebar": "Home",
     "/>heading": "Welcome",
     "/goods>title": "NFT collectibles that support good causes | gGoods",
-    "/goods>sidebar": "gGoods",
+    "/goods>sidebar": "gGoods Marketplace",
     "/goods>heading": "",
     "/organizations>title": "Communities looking for funding | gGoods",
-    "/organizations>sidebar": "Communities",
+    "/organizations>sidebar": "Organizations",
     "/organizations>heading": "",
     "/your-collection>title": "Your collection | gGoods",
     "/your-collection>sidebar": "Your Collection",
     "/your-collection>heading": "",
     "/games>title": "Apps and games for you to use your NFTs | gGoods",
-    "/games>sidebar": "Games",
+    "/games>sidebar": "Games and Apps",
     "/games>heading": "",
     "/inventory>title": "Inventory | gGoods",
     "/inventory>sidebar": "Inventory",
@@ -145,7 +145,7 @@
   },
   "organizationsRoute": {
     "title": "Organizations",
-    "paragraph1": "Communities, NGOs and any other good causes that you might be interested in."
+    "paragraph1": "Communities, NGOs and any other good causes that you might be interested in supporting."
   },
   "organizationRoute": {
     "objectives": "Objectives",
@@ -156,11 +156,11 @@
     "location": "Location",
     "contact": "Contact",
     "ourGoods": "Our Goods",
-    "empty": "Organization without goods"
+    "empty": "Organization has not created any goods"
   },
   "gamesRoute": {
     "title": "Games",
-    "paragraph1": "Created so you can have fun with your goods."
+    "paragraph1": "Created so you can have fun with your digital assets."
   },
   "selfieCam": {
     "title": "Selfie Cam",
@@ -231,7 +231,7 @@
     "whygGoods": "Why gGoods?",
     "whygGoodsParagraph": "gGoods is an open-source NFT standard that lets organizations create their own NFT to seek funding. Creating an NFT is easy and straightforward, such as creating an avatar or sticker. The NFT represents a cause for the donor to collect",
     "behindgGoogs": "Who’s behind gGoods?",
-    "behindgGoogsParagraph": "gGoods is developed by a group of Costa Rican techies and led by Edenia Labs and EOS Costa Rica. It was our submission to the 2021 Beyond Blockchain EOSIO Hackathon organized by block.one",
+    "behindgGoogsParagraph": "gGoods is developed by a group of Costa Rican techies and led by Edenia Labs and EOS Costa Rica. It was our submission to the 2021 Beyond Blockchain EOSIO Hackathon organized by block.one, Google, Galaxy Interactive and Mythical Games.",
     "aboutHack": "About the hackathon",
     "aboutHackParagraph": "The 2021 Beyond Blockchain EOSIO Hackathon was organized by block.one, a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world.",
     "title2": "About the technology",
@@ -249,7 +249,7 @@
     "whosEDENIALabsParagraph": "Edenia Labs incubates and accelerates projects that deploy technologies in industry 4.0, including artificial intelligence, blockchain, internet of things, drones, and cybersecurity. It is part of Sistemas Edenia Internacional, a company with over 30 years of experience developing innovative technologies."
   },
   "helpRoute": {
-    "title": "Thank you for using our product!",
+    "title": "Thank you for using gGoods!",
     "paragraph": "This project is still work in progress. Please feel free to leave upgrade suggestions, log bugs, or use the code yourself. You can also find us on Telegram or visit our website.",
     "githubEOSCR": "GitHub EOS Costa Rica",
     "telegramChannel": "Telegram Channel",
