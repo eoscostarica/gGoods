@@ -47,7 +47,7 @@ const FabricCanvas = ({ activeProperty, onGetDataUrl }) => {
       preserveObjectStacking: true,
       height: 375,
       width: isMobile ? 310 : 400,
-      backgroundColor: 'red'
+      backgroundColor: '#CFCFCF'
     })
 
   useEffect(() => {

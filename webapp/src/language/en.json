@@ -257,10 +257,11 @@
     "websiteEOSCR": "Website EOS Costa Rica"
   },
   "createTemplateRoute": {
-    "successUploadImage": "Success upload image",
-    "avatarMaker": "Avatar Maker",
-    "myOwnDesign": "My Own Design",
-    "successMessage": "Success transaction:"
+    "paragraph1": "This tool will help you create a simple template that will represent your cause. You can publish as many gGoods as you need with this template.",
+    "paragraph2": "First select a category that fits your cause.",
+    "name": "Name your gGood",
+    "description": "Describe your gGood",
+    "successMessage": "Your template it's ready to use"
   },
   "createCustomTemplateRoute": {
     "paragraph": "You can upload previously created design to represent the cause that you will be crowdfunding. Be sure that you have permission to use these images.",
