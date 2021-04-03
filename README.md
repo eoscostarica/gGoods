@@ -24,6 +24,25 @@
 	</a>
 </p>
 
+# Table of Contents
+- [About gGoods](#nfts-that-enable-communities-to-raise-funds)
+- [About the technology](#about-the-technology)
+- [How we built gGoods](#how-we-built-ggoods)
+  * [Project Board and Discussions Topics](#project-board-and-discussions-topics)
+  * [Installation](#installation)
+  * [File Structure](#file-structure)
+  * [Infrastructure Diagram](#infrastructure-diagram)
+  * [Tech Stack Description](#tech-stack-description)
+    + [Google Kubernetes Engine Cluster](#google-kubernetes-engine-cluster)
+    + [EOSIO Smart Contract](#eosio-smart-contract)
+    + [EOSIO KEOSD Wallet Service](#eosio-keosd-wallet-service)
+    + [Web Application](#web-application)
+    + [Hasura GraphQL Server](#hasura-graphql-server)
+    + [Hapi REST Server](#hapi-rest-server)
+    + [Interplanetary File System - IPFS](#interplanetary-file-system---ipfs)
+- [License](#license)
+- [Contributing](#contributing)
+
 [gGoods](https://ggoods.io) is an open-source NFT standard that enables organizations and communities to create their own NFTs to raise funds. Creating an NFT is easy and straightforward using our avatar creator. The NFTs are then purchased by donors as collectibles that not only support a cause but can be integrated into countless applications such as games, emojis, chat stickers, avatars etc.
 
 ## Why gGoods?
@@ -49,21 +68,6 @@ gGoods was created by a group of Costa Rican techies at [EOS Costa Rica](https:/
 ## About the hackathon
 The 2021 Beyond Blockchain EOSIO Hackathon was organized by [block.one](https://block.one/), a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world. The judging committee included Google, Galaxy Interactive and Mythical Games. 
 
-## Project Board and Discussions Topics 
-
-Find out more about the following topics on [gitHub discussions](https://github.com/eoscostarica/gGoods/discussions)
-
-### [Challenges we ran into](https://github.com/eoscostarica/gGoods/discussions/197) 
-
-### [Accomplishments that we are proud of](https://github.com/eoscostarica/gGoods/discussions/199)
-
-### [What we learned](https://github.com/eoscostarica/gGoods/discussions/200)
-
-### [What’s next for gGoods?](https://github.com/eoscostarica/gGoods/discussions/223)
-
-### [Project management](https://github.com/eoscostarica/gGoods/projects/1)
-We use a Kanban-style board for planning and prioritizing work. [Go to gGoods Project Board](https://github.com/eoscostarica/gGoods/projects/1).
-
 # About the technology
 
 ## What is blockchain?
@@ -81,7 +85,7 @@ NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digi
 
 [Read more on NFTs](https://medium.com/dgoods/introducing-dgoods-7204a90193f4)
 
-# How did we build gGoods?
+# How we built gGoods
 
 This project features the following tech stack:
 
@@ -99,9 +103,24 @@ This project features the following tech stack:
 
 We built this project using our own [EOSIO project boilerplate](https://github.com/eoscostarica/full-stack-boilerplate), a highly scalable skeleton including best practices. This fullstack monorepo contains our front end and backend boilerplates.
 
+## Project Board and Discussions Topics 
+
+Find out more about the following topics on [gitHub discussions](https://github.com/eoscostarica/gGoods/discussions)
+
+### [Challenges we ran into](https://github.com/eoscostarica/gGoods/discussions/197) 
+
+### [Accomplishments that we are proud of](https://github.com/eoscostarica/gGoods/discussions/199)
+
+### [What we learned](https://github.com/eoscostarica/gGoods/discussions/200)
+
+### [What’s next for gGoods?](https://github.com/eoscostarica/gGoods/discussions/223)
+
+### [Project management](https://github.com/eoscostarica/gGoods/projects/1)
+We use a Kanban-style board for planning and prioritizing work. [Go to gGoods Project Board](https://github.com/eoscostarica/gGoods/projects/1).
+
 ## Installation
 
-## Before you Start
+### Before you Start
 
 Somethings you need before getting started:
 
@@ -110,7 +129,7 @@ Somethings you need before getting started:
 - [docker](https://www.docker.com/)
 - [docker-compose](https://docs.docker.com/compose/)
 
-## First Time
+### First Time
 
 Copy the `.env.example` then update the environment variables according to your needs.
 
@@ -118,7 +137,7 @@ Copy the `.env.example` then update the environment variables according to your 
 cp .env.example .env
 ```
 
-## Quick Start
+### Quick Start
 
 1.  Clone this repo using `git clone --depth=1 https://github.com/eoscostarica/Ggoods.git <YOUR_PROJECT_NAME>`.
 2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
@@ -176,16 +195,16 @@ gGoods allows for users to purchase NFTs using traditional payment and authentic
 
 This FullStack Template uses [React.js](https://reactjs.org) as a Frontend Library which together with other tools like [Apollo Client](https://www.apollographql.com/docs/react/), [GraphQL](https://graphql.org/) and [Material UI](https://material-ui.com/) brings a robust solution for building Single Page Applications out of the box.
 
-#### Hasura GraphQL Server
+### Hasura GraphQL Server
 
 [Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allows us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
 Hasura also enables custom REST handling capabilities with the possibility to integrate a custom REST server, that way we can extend the base CRUD functionalities and build custom business logic.
 
-#### Hapi REST Server
+### Hapi REST Server
 
 We need to handle REST custom requests coming from the Hasura GraphQL server. For this, we use [hapi.dev](https://hapi.dev/), which is a simple and easy-to-use backend framework.
 
-### Interplanetary File System (IPFS)
+### Interplanetary File System - IPFS
 
 We use IPFS to store the assets that are displayed in the Web Application. IPFS is a decentralized storage that uses blockchain technology to provide auditability and availability of the assets. IPFS can be configured to setup your own node and validate the data, but this time we are using the public IPFS access, i.e. public endpoints.
 
