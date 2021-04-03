@@ -136,6 +136,9 @@ const useStyles = makeStyles(theme => ({
   registerBtnSideBar: {
     display: 'flex',
     alignItems: 'center'
+  },
+  sampleCredentials: {
+    padding: theme.spacing(3)
   }
 }))
 
@@ -249,6 +252,7 @@ const LoginModal = () => {
       handleLogin()
     }
   }
+
   return (
     <>
       <Dialog
@@ -355,6 +359,30 @@ const LoginModal = () => {
             <Box className={classes.centerBox}>
               <LoginWithGoogle onSubmit={handleLoginWithAuth} />
             </Box>
+            <Typography variant="h5">
+              Log in using a pre-registered demo account
+            </Typography>
+            <dl>
+              <dt>
+                <Typography variant="h6">Organization User</Typography>
+              </dt>
+              <dd>
+                <Typography variant="body1">username: animalrescue</Typography>
+              </dd>
+              <dd>
+                <Typography variant="body1">password: organization</Typography>
+              </dd>
+
+              <dt>
+                <Typography variant="h6">Regular User</Typography>
+              </dt>
+              <dd>
+                <Typography variant="body1">username: iamthebestgg</Typography>
+              </dd>
+              <dd>
+                <Typography variant="body1">password: user</Typography>
+              </dd>
+            </dl>
           </form>
           <Box className={classes.registerBox}>
             <Signup isModal />
