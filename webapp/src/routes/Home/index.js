@@ -76,28 +76,28 @@ const Home = () => {
       <Slider {...settings}>
         <div>
           <CardImage
-            primaryText="Fun with your goods"
-            secondaryText="Games are now able to use your NFTs"
+            primaryText="Play your heart out"
+            secondaryText="Play games that integrate your NFTs"
             img={Bg}
           />
         </div>
         <div>
           <CardImage
-            primaryText="Digital goods for good!"
-            secondaryText="NFTs designed to help good causes"
+            primaryText="NFTs for good!"
+            secondaryText="Digital goods designed to help good causes"
             img={Bg1}
           />
         </div>
         <div>
           <CardImage
-            primaryText="Help local shelters"
-            secondaryText="or animal rescues around the world"
+            primaryText="App ready NFTs"
+            secondaryText="Create for your cause and engage with your goods"
             img={Bg2}
           />
         </div>
       </Slider>
       <Box className={clsx(classes.rowsBox, classes.firstTitle)}>
-        <Typography variant="h5">What can I do?</Typography>
+        <Typography variant="h5">Get Started with gGoods</Typography>
         <Box className={classes.displayInline}>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
@@ -105,7 +105,7 @@ const Home = () => {
           </Box>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
-            <Typography>Browse for Goods</Typography>
+            <Typography>Browse Goods for sale</Typography>
           </Box>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
@@ -114,25 +114,19 @@ const Home = () => {
         </Box>
       </Box>
       <Box className={classes.rowsBox}>
-        <Typography variant="h5">But how does it work?</Typography>
+        <Typography variant="h5">How does it work?</Typography>
         <Box className={classes.displayInline}>
           <Box className={classes.orgWrapper}>
             <img alt="help" src={Help} />
-            <Typography>
-              You can help by buying goods created by your choice of cause
-            </Typography>
-          </Box>
-          <Box className={classes.orgWrapper}>
-            <img alt="gift" src={Gift} />
-            <Typography>
-              Natural rescue organizations create NFT Goods for free.
-            </Typography>
+            <Typography>Buy NFTs to support your favorite causes</Typography>
           </Box>
           <Box className={classes.orgWrapper}>
             <img alt="organization" src={Organization} />
-            <Typography>
-              Organizations can continue to operate and help preserve nature.{' '}
-            </Typography>
+            <Typography>Collect and use gGoods as in-app items</Typography>
+          </Box>
+          <Box className={classes.orgWrapper}>
+            <img alt="gift" src={Gift} />
+            <Typography>Help your NGO or community fundraise</Typography>
           </Box>
         </Box>
       </Box>
@@ -170,7 +164,7 @@ const Home = () => {
         ))}
       </Box>
       <Box className={classes.browseGoods}>
-        <Button size="small">Browse goods</Button>
+        <Button size="small">Browse goods for sale</Button>
       </Box>
     </Box>
   )

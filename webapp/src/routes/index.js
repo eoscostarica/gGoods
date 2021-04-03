@@ -35,13 +35,6 @@ const routes = [
     exact: true
   },
   {
-    name: 'organizations',
-    icon: <PublicIcon />,
-    component: Organizations,
-    path: '/organizations',
-    exact: true
-  },
-  {
     path: '/organization/:id',
     component: Organization
   },
@@ -90,7 +83,13 @@ const routes = [
     exact: true,
     roles: ['organization']
   },
-
+  {
+    name: 'organizations',
+    icon: <PublicIcon />,
+    component: Organizations,
+    path: '/organizations',
+    exact: true
+  },
   {
     name: 'about',
     icon: <InfoIcon />,
