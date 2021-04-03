@@ -4,16 +4,16 @@ const { nftService } = require('../services')
 
 module.exports = {
   method: 'POST',
-  path: '/my-ggoods',
-  handler: ({ auth: { credentials }, payload: { input } }) =>
-    nftService.myGGoods(credentials, input),
+  path: '/ggood-on-sale',
+  handler: ({ payload: { input } }) => nftService.ggoodOnSale(input.id),
   options: {
     validate: {
       payload: Joi.object({
         input: Joi.object({
-          limit: Joi.number().optional().default(100)
+          id: Joi.number().required()
         }).optional()
       }).options({ stripUnknown: true })
-    }
+    },
+    auth: false
   }
 }

@@ -22,15 +22,16 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import { useHistory } from 'react-router-dom'
 
 import { CardAvatar } from '../Card'
-import { paypalClientId } from '../../config/paypal.config'
 import { CONFIRM_SALE_WITH_PAYPAL } from '../../gql'
 import { useSharedState } from '../../context/state.context'
+import { paypalConfig, mainConfig } from '../../config'
+import { getLastChars } from '../../utils'
 
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const DonateNow = ({ open, handlerOpen, organization }) => {
+const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
   const classes = useStyles()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
@@ -41,16 +42,40 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
   const [confirmSaleWithPaypal, { loading }] = useMutation(
     CONFIRM_SALE_WITH_PAYPAL
   )
-  const [{ ggoodOnSaleSelected }] = useSharedState()
 
   const handleOnSucces = async (details, data) => {
     try {
-      await confirmSaleWithPaypal({
+      const {
+        data: {
+          ggoods: { items: ggoods }
+        }
+      } = await confirmSaleWithPaypal({
         variables: {
           orderId: data.orderID
         }
       })
-      showMessage({ type: 'success', content: t('sucessMessage') })
+      showMessage({
+        type: 'success',
+        content: (
+          <>
+            {t('sucessMessage')}{' '}
+            {ggoods.map((ggood, index) => (
+              <a
+                key={ggood.id}
+                href={mainConfig.blockExplorer.replace(
+                  '{transaction}',
+                  ggood.trxid
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {getLastChars(ggood.trxid)}
+                {index < ggoods.length - 1 ? ', ' : ''}
+              </a>
+            ))}
+          </>
+        )
+      })
       handlerOpen(false)
       history.push('/donation-succesful')
     } catch (error) {
@@ -63,7 +88,7 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
   }
 
   const handleOnCreateOrder = (data, actions) => {
-    const [, currency] = ggoodOnSaleSelected?.amount.split(' ')
+    const [, currency] = ggood?.amount.split(' ')
 
     return actions.order.create({
       intent: 'CAPTURE',
@@ -85,11 +110,12 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
           },
           items: [
             {
-              name: ggoodOnSaleSelected?.name,
-              description: (
-                ggoodOnSaleSelected?.description || 'gGood'
-              ).substring(0, 127),
-              sku: ggoodOnSaleSelected?.id,
+              name: ggood?.metadata.name,
+              description: (ggood?.metadata.description || 'gGood').substring(
+                0,
+                127
+              ),
+              sku: ggood?.id,
               unit_amount: {
                 currency_code: currency,
                 value: amount
@@ -112,7 +138,7 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
   }
 
   const handleOnChangeAmount = event => {
-    const [amount] = (ggoodOnSaleSelected?.amount || '').split(' ')
+    const [amount] = (ggood?.amount || '').split(' ')
 
     if (parseFloat(event.target.value || 0) < parseFloat(amount)) {
       return
@@ -122,9 +148,9 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
   }
 
   useEffect(() => {
-    const [amount] = (ggoodOnSaleSelected?.amount || '').split(' ')
+    const [amount] = (ggood?.amount || '').split(' ')
     setAmount(amount)
-  }, [ggoodOnSaleSelected])
+  }, [ggood])
 
   return (
     <Dialog
@@ -169,10 +195,9 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
                 {t('selectedGood')}
               </Typography>
               <CardAvatar
-                id={ggoodOnSaleSelected?.id}
-                name={ggoodOnSaleSelected?.name}
-                image={ggoodOnSaleSelected?.image}
-                backgroundColor={ggoodOnSaleSelected?.backgroundColor}
+                name={ggood?.metadata.name}
+                image={ggood?.metadata.imageSmall}
+                backgroundColor={ggood?.metadata.backgroundColor}
               />
             </Grid>
           </Grid>
@@ -189,12 +214,12 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
               </Typography>
               <Box className={classes.sectionBox}>
                 <Chip
-                  label={ggoodOnSaleSelected?.amount}
+                  label={ggood?.amount}
                   color="primary"
                   className={classes.chip}
                 />
               </Box>
-              {!!ggoodOnSaleSelected?.donable && (
+              {!!ggood?.donable && (
                 <FormControl fullWidth variant="filled">
                   <InputLabel htmlFor="filled-adornment-amount">
                     {t('amount')}
@@ -232,7 +257,7 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
                 </Button>
                 <PayPalButton
                   options={{
-                    clientId: paypalClientId
+                    clientId: paypalConfig.clientId
                   }}
                   createOrder={handleOnCreateOrder}
                   onSuccess={handleOnSucces}
@@ -250,7 +275,8 @@ const DonateNow = ({ open, handlerOpen, organization }) => {
 DonateNow.propTypes = {
   open: PropTypes.bool,
   handlerOpen: PropTypes.func,
-  organization: PropTypes.any
+  organization: PropTypes.any,
+  ggood: PropTypes.any
 }
 
 export default DonateNow

@@ -79,6 +79,7 @@ export default theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    padding: theme.spacing(2),
     '& button': {
       color: theme.palette.primary.main,
       fontStyle: 'normal',

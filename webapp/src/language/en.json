@@ -9,8 +9,6 @@
     "name": "Name",
     "type": "Type",
     "description": "Description",
-    "smallImage": "Small Image",
-    "largeImage": "Large Image",
     "confirm": "Confirm",
     "all": "All",
     "email": "Email",
@@ -156,7 +154,7 @@
     "location": "Location",
     "contact": "Contact",
     "ourGoods": "Our Goods",
-    "empty": "Organization has not created any goods"
+    "emptyMessage": "Organization has not created any gGoods"
   },
   "gamesRoute": {
     "title": "Games",
@@ -184,8 +182,9 @@
     "modalParagraph1": "Select your preferred payment method and buy this good. You can increase your donation to further help this cause.",
     "selectedGood": "Selected Good",
     "amount":"Amount to donate",
+    "donationFor": "Donation for",
     "sucessMessage": "Thanks for your donation",
-    "donationFor": "Donation for"
+    "emptyMessage": "gGood not exist or no longer available for sale"
   },
   "filterGoodsRoute": {
     "title": "Filter items",
@@ -195,18 +194,20 @@
   },
   "collectionRoute": {
     "title": "My collection",
-    "paragraph1": "Goods you’ve bought previously and active subscriptions"
+    "paragraph1": "gGoods you’ve bought previously and active subscriptions",
+    "emptyMessage": "You don't have gGoods yet"
   },
   "inventoryRoute": {
     "title": "Inventory",
     "paragraph1": "Create templates and publish Goods created by your organization.",
-    "uploadButton": "Upload Pre-made Template",
-    "createButton": "Create a new Template",
-    "emptyTemplate": "No templates or goods have been created yet.",
+    "uploadButton": "Upload Your Custom Template",
+    "createButton": "Use The Template Maker",
+    "emptyTemplates": "No templates have been created yet.",
+    "emptyGGoods": "No gGoods have been published yet.",
     "templatesTitle": "Templates",
     "templatesParagraph": "Select a template to publish a new set of Goods and make them available on the marketplace.",
-    "goodsTitle": "Published Goods",
-    "goodsParagraph": "Select a Good to go or the bio page or to un-publish it by burning it."
+    "ggoodsTitle": "Published Goods",
+    "ggoodsParagraph": "Select a gGood to see its profile or to unpublish it."
   },
   "publishGood": {
     "title": "Publish Good",
@@ -256,10 +257,21 @@
     "websiteEOSCR": "Website EOS Costa Rica"
   },
   "createTemplateRoute": {
-    "successUploadImage": "Success upload image",
-    "avatarMaker": "Avatar Maker",
-    "myOwnDesign": "My Own Design",
-    "successMessage": "Success transaction:"
+    "paragraph1": "This tool will help you create a simple template that will represent your cause. You can publish as many gGoods as you need with this template.",
+    "paragraph2": "First select a category that fits your cause.",
+    "name": "Name your gGood",
+    "description": "Describe your gGood",
+    "successMessage": "Your template it's ready to use"
+  },
+  "createCustomTemplateRoute": {
+    "paragraph": "You can upload previously created design to represent the cause that you will be crowdfunding. Be sure that you have permission to use these images.",
+    "smallImage": "Pick a small image (150 x 150)",
+    "largeImage": "Pick a large image (1024 x 1024)",
+    "backgroundColor": "Pick a background color",
+    "name": "Name your gGood",
+    "description": "Describe your gGood",
+    "successUploadImage": "Uploaded image",
+    "successMessage": "Your new custom template it's ready to use"
   },
   "donationSuccesfulRoute": {
     "title": "Donation Succesful!",

@@ -46,11 +46,10 @@ TabPanel.propTypes = {
   classes: PropTypes.any
 }
 
-const AvatarMaker = ({ onGetDataUrl }) => {
+const AvatarMaker = ({ onGetDataUrl, color, onChangeColor }) => {
   const classes = useStyles()
   const [activeProperty, setActiveProperty] = useState(null)
   const [value, setValue] = useState()
-  const [color, setColor] = useState()
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -81,6 +80,14 @@ const AvatarMaker = ({ onGetDataUrl }) => {
   useEffect(() => {
     setValue(0)
   }, [])
+
+  useEffect(() => {
+    if (!color) {
+      return
+    }
+
+    addCanvasBgColor(color)
+  }, [color])
 
   return (
     <Box className={classes.boxAvatar}>
@@ -178,10 +185,7 @@ const AvatarMaker = ({ onGetDataUrl }) => {
           <SketchPicker
             className={classes.colorPicker}
             color={color}
-            onChangeComplete={color => {
-              setColor(color.hex)
-              addCanvasBgColor(color.hex)
-            }}
+            onChangeComplete={onChangeColor}
           />
         </TabPanel>
       </Grid>
@@ -190,7 +194,9 @@ const AvatarMaker = ({ onGetDataUrl }) => {
 }
 
 AvatarMaker.propTypes = {
-  onGetDataUrl: PropTypes.func
+  onGetDataUrl: PropTypes.func,
+  color: PropTypes.string,
+  onChangeColor: PropTypes.func
 }
 
 AvatarMaker.defaultProp = {

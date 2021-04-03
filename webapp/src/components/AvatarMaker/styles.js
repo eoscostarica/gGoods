@@ -40,6 +40,7 @@ export default theme => ({
     flexWrap: 'nowrap',
     overflowX: 'scroll',
     [theme.breakpoints.up('sm')]: {
+      justifyContent: 'center',
       flexWrap: 'wrap'
     }
   },

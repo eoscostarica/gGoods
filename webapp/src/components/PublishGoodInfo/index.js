@@ -112,9 +112,9 @@ const PublishGoodInfo = ({ open, ggood, onClose }) => {
           <Grid container justify="center">
             <Grid item xs={6}>
               <CardAvatar
-                name={ggood?.name}
-                image={ggood?.image}
-                backgroundColor={ggood?.backgroundColor}
+                name={ggood?.metadata?.name}
+                image={ggood?.metadata?.imageSmall}
+                backgroundColor={ggood?.metadata?.backgroundColor}
               />
             </Grid>
           </Grid>
