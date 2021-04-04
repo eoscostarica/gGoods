@@ -38,43 +38,57 @@ const PublishGoodInfo = ({ open, ggood, onClose }) => {
     setDeleteModal(true)
   }
 
-  const DeleteConfirmation = () => {
-    return (
-      <Dialog
-        open={deleteModal}
-        onClose={closeDeleteModal}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500
-        }}
-      >
-        <Card className={classes.cardRoot}>
-          <CardContent>
-            <Typography variant="h5" gutterBottom>
-              {t('deleteTitle')}
-            </Typography>
-            <Typography variant="body2">{t('deleteBody')}</Typography>
-          </CardContent>
-          <Divider />
-          <CardActions>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <Button color="primary" className={classes.awnserButton}>
-                  {t('yes')}
-                </Button>
-              </Grid>
-              <Grid item xs={6}>
-                <Button color="primary" className={classes.awnserButton}>
-                  {t('no')}
-                </Button>
-              </Grid>
-            </Grid>
-          </CardActions>
-        </Card>
-      </Dialog>
-    )
+  const handleOnClickYes = () => {
+    closeDeleteModal()
+    alert(t('comingsoon'))
   }
+  const handleOnClickNo = () => {
+    closeDeleteModal()
+  }
+
+  const DeleteConfirmation = () => (
+    <Dialog
+      open={deleteModal}
+      onClose={closeDeleteModal}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500
+      }}
+    >
+      <Card className={classes.cardRoot}>
+        <CardContent>
+          <Typography variant="h5" gutterBottom>
+            {t('deleteTitle')}
+          </Typography>
+          <Typography variant="body2">{t('deleteBody')}</Typography>
+        </CardContent>
+        <Divider />
+        <CardActions>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Button
+                color="primary"
+                className={classes.awnserButton}
+                onClick={handleOnClickYes}
+              >
+                {t('yes')}
+              </Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                color="primary"
+                className={classes.awnserButton}
+                onClick={handleOnClickNo}
+              >
+                {t('no')}
+              </Button>
+            </Grid>
+          </Grid>
+        </CardActions>
+      </Card>
+    </Dialog>
+  )
 
   return (
     <Dialog
@@ -139,22 +153,6 @@ const PublishGoodInfo = ({ open, ggood, onClose }) => {
             </Grid>
           </Grid>
         </Box>
-        <Box className={classes.sectionBoxDouble}>
-          <Grid container justify="center">
-            <Grid item xs={6}>
-              <Typography
-                variant="subtitle2"
-                style={{ fontWeight: 'bold' }}
-                gutterBottom
-              >
-                {t('availableNow')}
-              </Typography>
-              <Box className={classes.sectionBox}>
-                <Chip label="Basic" color="primary" className={classes.chip} />
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
         <Box className={classes.sectionBox}>
           <Typography variant="body1" gutterBottom>
             {t('deleteMessage')}
@@ -164,7 +162,7 @@ const PublishGoodInfo = ({ open, ggood, onClose }) => {
             startIcon={<DeleteIcon />}
             onClick={openDeleteModal}
           >
-            Delete
+            {t('delete')}
           </Button>
         </Box>
       </Box>

@@ -77,7 +77,7 @@ const Goods = () => {
       <Box>
         <Grid container spacing={2}>
           {ggoods?.items?.map((item, index) => (
-            <Grid item xs={6} md={3} lg={2} key={index}>
+            <Grid item xs={6} sm={4} md={3} lg={2} key={index}>
               <CardAvatar
                 id={item.id}
                 name={item.metadata.name}

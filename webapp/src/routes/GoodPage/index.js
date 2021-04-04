@@ -4,13 +4,12 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import Card from '@material-ui/core/Card'
 import Chip from '@material-ui/core/Chip'
 import Hidden from '@material-ui/core/Hidden'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useLazyQuery } from '@apollo/client'
 import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 import { CardAvatar } from '../../components/Card'
 import DonateNow from '../../components/DonateNow'
@@ -26,6 +25,7 @@ const useStyles = makeStyles(styles)
 
 const GoodPage = () => {
   const classes = useStyles()
+  const history = useHistory()
   const [openPayModal, setOpenPayModal] = useState(false)
   const [organization, setOrganization] = useState()
   const { t } = useTranslation('goodRoute')
@@ -38,6 +38,10 @@ const GoodPage = () => {
 
   const handlerSetOpenPayModal = () => {
     setOpenPayModal(!openPayModal)
+  }
+
+  const handleOnClickGGood = ({ id }) => {
+    history.push(`/good/${id}`)
   }
 
   const buyNFT = () => {
@@ -120,13 +124,11 @@ const GoodPage = () => {
                   </Typography>
                 </Grid>
               </Hidden>
-              <Grid item xs={12} md={5}>
-                <Card>
-                  <CardAvatar
-                    image={ggood?.item?.metadata?.imageSmall}
-                    backgroundColor={ggood?.item?.metadata?.backgroundColor}
-                  />
-                </Card>
+              <Grid item xs={12} md={5} className={classes.card}>
+                <CardAvatar
+                  image={ggood?.item?.metadata?.imageSmall}
+                  backgroundColor={ggood?.item?.metadata?.backgroundColor}
+                />
                 <Box className={classes.priceBox}>
                   <Typography variant="overline">
                     {t('suggestedDonation')}
@@ -191,9 +193,11 @@ const GoodPage = () => {
               {ggoods?.items?.map((item, index) => (
                 <Grid item xs={6} md={3} lg={2} key={index}>
                   <CardAvatar
+                    id={item.id}
                     name={item.metadata.name}
                     image={item.metadata.imageSmall}
                     backgroundColor={item.metadata.backgroundColor}
+                    onClick={handleOnClickGGood}
                   />
                 </Grid>
               ))}
