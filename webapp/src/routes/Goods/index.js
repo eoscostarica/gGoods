@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import Button from '@material-ui/core/Button'
 import { useQuery } from '@apollo/client'
-// import CircularProgress from '@material-ui/core/CircularProgress'
 import { useHistory } from 'react-router-dom'
 
 import { CardAvatar, CardAvatarSkeleton } from '../../components/Card'

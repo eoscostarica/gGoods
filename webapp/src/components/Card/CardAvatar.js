@@ -110,7 +110,7 @@ const CardAvatar = ({
   const { t } = useTranslation()
 
   const handleOnClick = () => {
-    onClick && onClick()
+    onClick && onClick({ id, name, image, backgroundColor })
   }
 
   return (
