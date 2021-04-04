@@ -26,6 +26,7 @@ import LogoHorizontal from '../../images/logos/ggoods-logo.svg'
 
 import styles from './styles'
 import LoginModal from '../../components/LoginModal'
+import Signup from '../../components/Signup'
 
 const useStyles = makeStyles(styles)
 
@@ -208,6 +209,7 @@ const Header = memo(({ onDrawerToggle }) => {
             />
           )}
           <LoginModal isNavBar />
+          <Signup />
           {enableLanguageSelector && (
             <LanguageButton
               current={currentLanguaje}
