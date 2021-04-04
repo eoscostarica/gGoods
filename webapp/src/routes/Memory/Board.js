@@ -4,26 +4,28 @@ import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 
 import Card from './Card'
-
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const Board = ({ deck, pairSelected, selectCard }) => {
+const Board = ({ deck, pair, onClickCard }) => {
   const classes = useStyles()
 
   return (
     <Box className={classes.board}>
-      {(deck || []).map((card, index) => {
-        const isCardCompared = pairSelected.indexOf(card) > -1
+      {deck.map((card, index) => {
+        const isOpen = pair.a === index || pair.b === index
 
         return (
           <Card
             key={index}
+            index={index}
+            name={card.name}
             image={card.image}
-            isCardCompared={isCardCompared}
-            selectCard={() => selectCard(card)}
-            guessedRight={card.guessedRight}
+            backgroundColor={card.backgroundColor}
+            isOpen={isOpen}
+            isGuessedRight={card.isGuessedRight}
+            onClickCard={onClickCard}
           />
         )
       })}
@@ -33,8 +35,8 @@ const Board = ({ deck, pairSelected, selectCard }) => {
 
 Board.propTypes = {
   deck: PropTypes.array,
-  pairSelected: PropTypes.array,
-  selectCard: PropTypes.func
+  pair: PropTypes.object,
+  onClickCard: PropTypes.func
 }
 
 export default Board

@@ -20,6 +20,7 @@ import 'react-html5-camera-photo/build/css/index.css'
 import { mainConfig } from '../../config'
 import { CardAvatar, CardAvatarSkeleton } from '../../components/Card'
 import { MY_GGOODS } from '../../gql'
+import { getUniqueGGoodsByName } from '../../utils'
 
 import styles from './styles'
 
@@ -49,13 +50,11 @@ const SelfieCam = () => {
   const [selfie, setSelfie] = useState()
   const [open, setOpen] = useState(false)
   const [ggoodsSelected, setGgoodsSelected] = useState()
-  const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
-  /* eslint-disable no-unused-vars */
-  const [image, takeScreenShot] = useScreenshot({
+  const { loading, data } = useQuery(MY_GGOODS)
+  const [, takeScreenShot] = useScreenshot({
     type: 'image/jpeg',
     quality: 1.0
   })
-  /* eslint-enable no-unused-vars */
 
   const handleCancel = () => {
     setSelfie(null)
@@ -113,7 +112,7 @@ const SelfieCam = () => {
         )}
 
         <Grid container spacing={2}>
-          {data?.ggoods?.map((item, index) => (
+          {getUniqueGGoodsByName(data?.ggoods || []).map((item, index) => (
             <Grid item xs={6} md={3} lg={2} key={index}>
               <CardAvatar
                 id={item.id}
