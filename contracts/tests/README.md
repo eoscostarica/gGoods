@@ -22,7 +22,14 @@ Sets of tests were tested on bare-metal environment using CentOS 8.3
 3) Once the repository is enabled, install Yarn:
 
 ```$ sudo dnf install yarn```
- 
+
+4) Reset the smart contract with the follow commands
+
+```cleos set code --clear ggoodsggoods```
+
+```cleos set contract ggoodsggoods ../ggoodsggoods ggoodsggoods.wasm ggoodsggoods.abi -p ggoodsggoods@active```
+
+5) Accounts ggoods.acct1, ggoods.acct2 must exits in the blockchain
 ## How to Run tests
 
  ```yarn add eosjs```
