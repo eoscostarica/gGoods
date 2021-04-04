@@ -23,7 +23,6 @@ export default theme => ({
     borderTopRightRadius: 8,
     height: 310,
     width: 310,
-    backgroundColor: '#CFCFCF',
     [theme.breakpoints.up('sm')]: {
       height: 375,
       width: 400

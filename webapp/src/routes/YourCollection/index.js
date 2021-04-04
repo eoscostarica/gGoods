@@ -26,10 +26,10 @@ const YourCollection = () => {
       {!loading && !data?.ggoods?.length && (
         <Typography variant="body1">{t('emptyMessage')}</Typography>
       )}
-      {!loading && data?.ggoods?.length && (
+      {!loading && !!data?.ggoods?.length && (
         <Typography variant="body1">{t('paragraph1')}</Typography>
       )}
-      {data?.ggoods?.length && (
+      {!!data?.ggoods?.length && (
         <Box>
           <Carousel isLoading={loading} items={data?.ggoods || []} />
         </Box>
