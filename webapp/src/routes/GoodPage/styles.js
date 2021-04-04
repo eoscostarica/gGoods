@@ -26,5 +26,13 @@ export default theme => ({
     top: 0,
     right: 0,
     borderRadius: 50
+  },
+  card: {
+    '& .MuiCard-root': {
+      width: '100%'
+    },
+    '& .MuiCardActions-root': {
+      padding: 0
+    }
   }
 })
