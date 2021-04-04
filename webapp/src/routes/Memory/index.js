@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/styles'
+import { useQuery } from '@apollo/client'
+import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
-import { buildDeck } from '../../utils'
+import { buildDeck, getUniqueGGoodsByName } from '../../utils'
+import { MY_GGOODS } from '../../gql'
 
 import MemoryHeader from './MemoryHeader'
 import Board from './Board'
@@ -11,78 +15,105 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const Memory = ({ customOptions = [] }) => {
+const Memory = () => {
   const classes = useStyles()
+  const { t } = useTranslation('memoryRoute')
   const [deck, setDeck] = useState()
-  const [pairSelected, setPairSelected] = useState()
-  const [pairCompared, setPairCompared] = useState()
+  const [pair, setPair] = useState()
   const [attempts, setAttempts] = useState()
+  const { loading, data } = useQuery(MY_GGOODS)
 
-  const selectCard = card => {
-    if (pairCompared || pairSelected.indexOf(card) > -1 || card.guessedRight) {
-      return
+  const handleOnClickCard = index => {
+    const newPair = {
+      ...pair,
+      [typeof pair.a === 'undefined' ? 'a' : 'b']: index
     }
 
-    const newPairSelected = [...pairSelected, card]
-
-    setPairSelected(newPairSelected)
-
-    if (newPairSelected.length === 2) {
-      comparePair(newPairSelected)
-    }
+    setPair(newPair)
+    comparePair(newPair)
   }
 
   const comparePair = pair => {
-    setPairCompared(true)
+    if (typeof pair.a === 'undefined' || typeof pair.b === 'undefined') {
+      return
+    }
+
+    const firstCard = deck[pair.a]
+    const secondCard = deck[pair.b]
 
     setTimeout(() => {
-      const [firstCard, secondCard] = pair
-      let newDeck = deck
+      setAttempts(attempts + 1)
+      setPair({})
 
-      if (firstCard.image === secondCard.image) {
-        newDeck = newDeck.map(card => {
-          if (card.image !== firstCard.image) return card
-
-          return { ...card, guessedRight: true }
-        })
+      if (firstCard.id !== secondCard.id) {
+        return
       }
 
-      verifyGame(deck)
+      const newDeck = deck.map((card, index) => {
+        if (index !== pair.a && index !== pair.b) {
+          return card
+        }
 
+        return { ...card, isGuessedRight: true }
+      })
+      console.log(newDeck)
       setDeck(newDeck)
-      setPairSelected([])
-      setPairCompared(false)
-      setAttempts(attempts + 1)
+      verifyGame(newDeck)
     }, 1000)
   }
 
   const verifyGame = deck => {
-    if (deck.filter(card => !card.guessedRight).length === 0) {
-      console.log(`Win with ${attempts} attempts!`)
+    if (deck.filter(card => !card.isGuessedRight).length > 0) {
+      return
     }
+
+    alert(t('winMessage'))
+    handleOnResetGame()
   }
 
-  const resetGame = () => {
-    setDeck(buildDeck(customOptions))
-    setPairSelected([])
-    setPairCompared(false)
+  const handleOnResetGame = () => {
     setAttempts(0)
+    setPair({})
+    setDeck(
+      buildDeck(
+        getUniqueGGoodsByName(data?.ggoods).map(ggood => ({
+          id: ggood.id,
+          name: ggood.metadata.name,
+          image: `${ggood.metadata.imageSmall}`,
+          backgroundColor: ggood.metadata.backgroundColor
+        }))
+      )
+    )
   }
 
   useEffect(() => {
-    resetGame()
-  }, [])
+    if (!data?.ggoods?.length) {
+      return
+    }
+
+    handleOnResetGame()
+  }, [data?.ggoods])
 
   return (
     <Box className={classes.memoryGame}>
-      <MemoryHeader attempts={attempts} resetGame={resetGame} />
-      <Board deck={deck} pairSelected={pairSelected} selectCard={selectCard} />
+      {loading && <CircularProgress />}
+      {!loading && !data?.ggoods?.length && (
+        <Typography variant="body1">{t('emptyMessage')}</Typography>
+      )}
+      {deck?.length && (
+        <>
+          <MemoryHeader
+            t={t}
+            attempts={attempts}
+            onResetGame={handleOnResetGame}
+          />
+          <Board deck={deck} pair={pair} onClickCard={handleOnClickCard} />
+        </>
+      )}
     </Box>
   )
 }
 
-Memory.propTypes = {
-  customOptions: PropTypes.array
-}
+Memory.propTypes = {}
 
 export default Memory

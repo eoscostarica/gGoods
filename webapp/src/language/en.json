@@ -18,7 +18,8 @@
     "takeHome": "Take me home",
     "suggestedDonation": "Suggested Donation",
     "donation": "Donation",
-    "units": "Units"
+    "units": "Units",
+    "reset": "Reset"
   },
   "signup": {
     "register": "Let's Start!",
@@ -276,5 +277,10 @@
   "donationSuccesfulRoute": {
     "title": "Donation Successful!",
     "paragraph1": "We want to thank you for kindly donating towards this cause. We’re working towards empowering local communities and educating people towards the importance of wildlife preservation. Your funds will be dedicated 100% towards the specific cause listed for the good you just sponsored. "
+  },
+  "memoryRoute": {
+    "attempts": "Attempts",
+    "emptyMessage": "You don't have available gGoods yet",
+    "winMessage": "You won!"
   }
 }

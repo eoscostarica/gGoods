@@ -1,43 +1,40 @@
 export default theme => ({
   card: {
-    width: 68,
-    height: 68,
-    margin: theme.spacing(1),
-    [theme.breakpoints.up('sm')]: {
-      width: 125,
-      height: 125
-    }
+    margin: theme.spacing(1)
   },
   cover: {
-    width: 68,
-    height: 68,
+    width: 128,
+    height: 165,
     backgroundColor: '#a5a1a4',
     [theme.breakpoints.up('sm')]: {
-      width: 125,
-      height: 125
+      width: 126,
+      height: 163
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 167,
+      height: 204
     }
   },
   content: {
-    width: 68,
-    height: 68,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgb(3, 220, 244)',
-    '& img': {
-      width: 68,
-      height: 68
+    '& .MuiCard-root': {
+      width: 128,
+      height: 165
     },
     [theme.breakpoints.up('sm')]: {
-      width: 125,
-      height: 125,
-      '& img': {
-        width: 125,
-        height: 125
+      '& .MuiCard-root': {
+        width: 126,
+        height: 163
+      }
+    },
+    [theme.breakpoints.up('md')]: {
+      '& .MuiCard-root': {
+        width: 167,
+        height: 204
       }
     }
   },
   header: {
+    padding: theme.spacing(1),
     height: 50,
     display: 'flex',
     justifyContent: 'space-between',
@@ -48,19 +45,15 @@ export default theme => ({
     padding: 10,
     color: '#00'
   },
-  resetBtn: {
-    left: 12,
-    top: 58
-  },
   board: {
     display: 'flex',
     flexWrap: 'wrap',
     width: '100%',
-    maxWidth: 700,
+    maxWidth: 780,
     margin: '0 auto',
-    justifyContent: 'flex-start',
-    [theme.breakpoints.up('sm')]: {
-      justifyContent: 'space-around'
+    justifyContent: 'center',
+    [theme.breakpoints.up('md')]: {
+      maxWidth: 1024
     }
   },
   memoryGame: {

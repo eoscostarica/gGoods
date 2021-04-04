@@ -9,22 +9,25 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const Header = ({ attempts, resetGame }) => {
+const Header = ({ t, attempts, onResetGame }) => {
   const classes = useStyles()
 
   return (
     <Box className={classes.header}>
-      <Button variant="contained" onClick={resetGame}>
-        reset
+      <Button variant="contained" onClick={onResetGame}>
+        {t('reset')}
       </Button>
-      <Typography className={classes.title}>Attempts: {attempts}</Typography>
+      <Typography className={classes.title}>
+        {t('attempts')}: {attempts}
+      </Typography>
     </Box>
   )
 }
 
 Header.propTypes = {
+  t: PropTypes.func,
   attempts: PropTypes.number,
-  resetGame: PropTypes.func
+  onResetGame: PropTypes.func
 }
 
 export default Header
