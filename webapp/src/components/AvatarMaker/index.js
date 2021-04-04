@@ -13,6 +13,7 @@ import {
   decolist,
   mouthlist,
   baselist,
+  defaultBase,
   eyeslist
 } from '../../images/templates/templatelist'
 
@@ -54,40 +55,27 @@ const AvatarMaker = ({ onGetDataUrl, color, onChangeColor }) => {
     setValue(newValue)
   }
 
-  const resetAvatarCreator = (element, props) =>
+  const resetAvatarCreator = () =>
     setActiveProperty({
-      backgroundColor: '#CFCFCF',
-      base: baselist[0]
+      base: defaultBase
     })
 
   const addToCanvas = (name, url) => {
     setActiveProperty({ ...activeProperty, [name]: url })
   }
 
-  const addCanvasBgColor = backgroundColor => {
-    setActiveProperty({ ...activeProperty, backgroundColor })
-  }
-
   useEffect(() => {
     setValue(0)
     setActiveProperty({
-      backgroundColor: '#CFCFCF',
-      base: baselist[0]
+      base: defaultBase
     })
   }, [])
-
-  useEffect(() => {
-    if (!color) {
-      return
-    }
-
-    addCanvasBgColor(color)
-  }, [color])
 
   return (
     <Box className={classes.boxAvatar}>
       <Grid>
         <PreviewCanvas
+          backgroundColor={color}
           activeProperty={activeProperty}
           onGetDataUrl={onGetDataUrl}
           onResetCanvas={resetAvatarCreator}
