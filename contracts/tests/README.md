@@ -1,12 +1,13 @@
 <p align="center">
 	<a href="https://ggoods.io">
-		<img height="180" src="../../docs/ggoods-logo.svg" >
+		<img height="509" src="../../docs/ggoods-logo.svg" >
 	</a>
 </p>
 
 # gGoods unit tests
 The follow tests were design to test the smart contract's actions.
-Sets of tests were tested on bare-metal environment using CentOS 8.3 
+
+<img src="../../docs/test.png">
 
 ## Prerequisites
 1) If Node.js is not installed on your system, install the Node.js package by typing:
@@ -23,13 +24,7 @@ Sets of tests were tested on bare-metal environment using CentOS 8.3
 
 ```$ sudo dnf install yarn```
 
-4) Reset the smart contract with the follow commands
-
-```cleos set code --clear ggoodsggoods```
-
-```cleos set contract ggoodsggoods ../ggoodsggoods ggoodsggoods.wasm ggoodsggoods.abi -p ggoodsggoods@active```
-
-5) Accounts ggoods.acct1, ggoods.acct2 must exits in the blockchain
+4) Accounts ggoods.acct1, ggoods.acct2 must exits in the blockchain
 ## How to Run tests
 
  ```yarn add eosjs```
