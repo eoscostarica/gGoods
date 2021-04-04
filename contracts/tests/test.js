@@ -127,7 +127,6 @@ describe ('gGoods unit tests', function(){
       assert.equal(errorMessage, "singleton does not exist");
     }
   });
-  
 
   it("gGoods: testing action SETCONFIG ", async () => {
     try {
@@ -506,7 +505,7 @@ describe ('gGoods unit tests', function(){
     }
   });
 
-  it("gGoods: testing action CREATE NFT ", async () => {
+  it("gGoods: testing action CREATE not transferable NFT ", async () => {
     try {
       const result = await api.transact(
         {
@@ -590,7 +589,6 @@ describe ('gGoods unit tests', function(){
       assert.equal(errorMessage, "to account does not exist");
     }
   });
-  
 
   it("gGoods: testing action ISSUE with wrong category", async () => {
     try {
@@ -702,7 +700,7 @@ describe ('gGoods unit tests', function(){
                 token_name: "ticket1",
                 quantity: "1 TCKT",
                 relative_uri: "www.eoscostaria.io",
-                memo: "sell by eoscostaruca",
+                memo: "issued by eoscostaruca",
               },
             },
           ],
@@ -734,7 +732,7 @@ describe ('gGoods unit tests', function(){
               data: {
                 from: "ggoods.acct1",
                 to: "ggoods.acct2",
-                catetogory: "concert1",
+                category: "concert1",
                 dgood_ids: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
                 memo: "sell by eoscostaruca",
               },
@@ -778,7 +776,7 @@ describe ('gGoods unit tests', function(){
               data: {
                 from: "ggoods.acct1",
                 to: "ggoods.acct1",
-                catetogory: "concert1",
+                category: "concert1",
                 dgood_ids: [1],
                 memo: "sell by eoscostaruca",
               },
@@ -805,7 +803,7 @@ describe ('gGoods unit tests', function(){
     }
   });
 
-  it("gGoods: testing action TRANFERNFT ", async () => {
+  it("gGoods: testing action TRANFERNFT no owner ", async () => {
     try {
       const result = await api.transact(
         {
@@ -822,7 +820,7 @@ describe ('gGoods unit tests', function(){
               data: {
                 from: "ggoodsggoods",
                 to: "ggoods.acct1",
-                catetogory: "concert1",
+                category: "concert1",
                 dgood_ids: [1],
                 memo: "sell by eoscostaruca",
               },
@@ -835,9 +833,252 @@ describe ('gGoods unit tests', function(){
         }
       );
     } catch (err) {
-      console.log("\n action TRANFERNFT caught exception: " + err);
+      let errorMessage = get(err, "json.error.details[0].message");
+      errorMessage &&
+        (errorMessage = errorMessage
+          .replace("assertion failure with message:", "")
+          .trim());
+      assert.equal(
+        "eosio_assert_message_exception",
+        get(err, "json.error.name") || ""
+      );
+      assert.equal(errorMessage, "must be token owner");
     }
   });
   
- 
+  it("gGoods: testing action TRANFERNFT not transferable", async () => {
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: contract_name,
+              name: "transfernft",
+              authorization: [
+                {
+                  actor: contract_name,
+                  permission: "active",
+                },
+              ],
+              data: {
+                from: "ggoods.acct1",
+                to: "ggoods.acct2",
+                category: "concert1",
+                dgood_ids: [1],
+                memo: "sell by eoscostaruca",
+              },
+            },
+          ],
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }
+      );
+    } catch (err) {
+      let errorMessage = get(err, "json.error.details[0].message");
+      errorMessage &&
+        (errorMessage = errorMessage
+          .replace("assertion failure with message:", "")
+          .trim());
+      assert.equal(
+        "eosio_assert_message_exception",
+        get(err, "json.error.name") || ""
+      );
+      assert.equal(errorMessage, "not transferable");
+    }
+  });
+
+  it("gGoods: testing action CREATE not bunable transferable FT ", async () => {
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: contract_name,
+              name: "create",
+              authorization: [
+                {
+                  actor: contract_name,
+                  permission: "active",
+                },
+              ],
+              data: {
+                issuer: "ggoodsggoods", 
+                rev_partner: "ggoodsggoods",
+                category: "concert2",
+                token_name: "ticket2",
+                fungible: true,
+                burnable: true,
+                sellable: true,
+                transferable: true,
+                rev_split: 0.05,
+                base_uri: "https:/eoscostarica.io",
+                max_issue_days: 0,
+                max_supply: "100 TCKT",
+              },
+            },
+          ],
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }
+      );
+    } catch (err) {
+      console.log("\n action CREATE caught exception: " + err);
+    }
+  });
+
+  it("gGoods: testing action ISSUE to ggoods.acct2 ", async () => {
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: contract_name,
+              name: "issue",
+              authorization: [
+                {
+                  actor: contract_name,
+                  permission: "active",
+                },
+              ],
+              data: {
+                to: "ggoodsggoods",
+                category: "concert2",
+                token_name: "ticket2",
+                quantity: "100 TCKT",
+                relative_uri: "www.eoscostaria.io",
+                memo: "issued by eoscostaruca",
+              },
+            },
+          ],
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }
+      );
+    } catch (err) {
+      console.log("\n action ddd caught exception: " + err);
+    }
+  });
+  
+  it("gGoods: testing action TRANFERFT ", async () => {
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: contract_name,
+              name: "transferft",
+              authorization: [
+                {
+                  actor: contract_name,
+                  permission: "active",
+                },
+              ],
+              data: {
+                from: "ggoodsggoods",
+                to: "ggoods.acct2",
+                category: "concert2",
+                token_name: "ticket2",
+                quantity:"1 TCKT",
+                memo: "sell by eoscostaruca",
+              },
+            },
+          ],
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }
+      );
+    } catch (err) {
+      let errorMessage = get(err, "json.error.details[0].message");
+      errorMessage &&
+        (errorMessage = errorMessage
+          .replace("assertion failure with message:", "")
+          .trim());
+      assert.equal(
+        "eosio_assert_message_exception",
+        get(err, "json.error.name") || ""
+      );
+      assert.equal(errorMessage, "not transferable");
+    }
+  });
+
+  it("gGoods: testing action BURNNFT a not burnable asset ", async () => {
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: contract_name,
+              name: "burnnft",
+              authorization: [
+                {
+                  actor: contract_name,
+                  permission: "active",
+                },
+              ],
+              data: {
+                owner: "ggoods.acct1",
+                dgood_ids: [1],
+              },
+            },
+          ],
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }
+      );
+    } catch (err) {
+      let errorMessage = get(err, "json.error.details[0].message");
+      errorMessage &&
+        (errorMessage = errorMessage
+          .replace("assertion failure with message:", "")
+          .trim());
+      assert.equal(
+        "eosio_assert_message_exception",
+        get(err, "json.error.name") || ""
+      );
+      assert.equal(errorMessage, "Not burnable");
+    }
+  });
+
+  it("gGoods: testing action BURNFT FT  ", async () => {
+    try {
+      const result = await api.transact(
+        {
+          actions: [
+            {
+              account: contract_name,
+              name: "burnft",
+              authorization: [
+                {
+                  actor: "ggoods.acct1",
+                  permission: "active",
+                },
+              ],
+              data: {
+                owner: "ggoods.acct1",
+                category_name_id: 1,
+                quantity: "1 TCKT",
+              },
+            },
+          ],
+        },
+        {
+          blocksBehind: 3,
+          expireSeconds: 30,
+        }
+      );
+    } catch (err) {
+      console.log("\n action burnft caught exception: " + err);
+    }
+  });
+
 });
