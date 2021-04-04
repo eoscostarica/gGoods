@@ -1,4 +1,4 @@
-p align="center">
+<p align="center">
 	<a href="https://ggoods.io">
 		<img height="180" src="../../docs/ggoods-logo.svg" >
 	</a>
