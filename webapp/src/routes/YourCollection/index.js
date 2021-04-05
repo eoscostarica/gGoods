@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
@@ -15,7 +15,12 @@ const useStyles = makeStyles(styles)
 const YourCollection = () => {
   const classes = useStyles()
   const { t } = useTranslation('collectionRoute')
+  const [dataTest, setdataTest] = useState([])
   const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
+
+  useEffect(() => {
+    console.log('TETO', dataTest, setdataTest)
+  }, [])
 
   return (
     <Box className={classes.mainCollectionBox}>

@@ -62,7 +62,9 @@ export default theme => ({
     width: 130,
     zIndex: 0,
     '& img': {
-      marginTop: theme.spacing(0.5)
+      marginTop: theme.spacing(0.5),
+      width: 130,
+      height: 130
     }
   },
   levelLeft1: {
@@ -71,7 +73,9 @@ export default theme => ({
     width: '23%',
     zIndex: 1,
     '& img': {
-      marginTop: theme.spacing(4.5)
+      marginTop: theme.spacing(4.5),
+      width: 160,
+      height: 160
     },
     [theme.breakpoints.up('sm')]: {
       width: 160
@@ -95,7 +99,9 @@ export default theme => ({
       textAlign: 'center'
     },
     '& img': {
-      marginTop: theme.spacing(3)
+      marginTop: theme.spacing(3),
+      width: 200,
+      height: 200
     }
   },
   levelRight1: {
@@ -104,7 +110,9 @@ export default theme => ({
     width: '23%',
     zIndex: 1,
     '& img': {
-      marginTop: theme.spacing(4.5)
+      marginTop: theme.spacing(4.5),
+      width: 160,
+      height: 160
     },
     [theme.breakpoints.up('sm')]: {
       width: 160
@@ -116,7 +124,9 @@ export default theme => ({
     width: 130,
     zIndex: 0,
     '& img': {
-      marginTop: theme.spacing(0.5)
+      marginTop: theme.spacing(0.5),
+      width: 130,
+      height: 130
     }
   },
   box: {
