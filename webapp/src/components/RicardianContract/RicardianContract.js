@@ -13,10 +13,9 @@ const RicardianContract = ({ name, hash, abi, action }) => {
     const [_title, content2] = content1.split('\nsummary: ')
     const title = `# ${_title}`
 
-    const [summary, _icon] = `${content2}`.split('\nicon: ')
-    const icon = _icon ? `![icon](${_icon})` : ''
+    const [summary] = `${content2}`.split('\nicon: ')
 
-    return `${title}\n\n${version}:\n\n${summary}\n\n${icon}`
+    return `${title}\n\n${version}:\n\n${summary}\n\n`
   }
 
   useEffect(() => {
