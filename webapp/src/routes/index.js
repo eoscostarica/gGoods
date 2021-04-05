@@ -27,6 +27,7 @@ const Inventory = lazy(() => import('./Inventory'))
 const SelfieCam = lazy(() => import('./SelfieCam'))
 const TermsOfUse = lazy(() => import('./TermsOfUse'))
 const Memory = lazy(() => import('./Memory'))
+const gGoodsLand = lazy(() => import('./gGoodsLand'))
 
 const routes = [
   {
@@ -112,6 +113,11 @@ const routes = [
   {
     component: Memory,
     path: '/games/memory',
+    exact: true
+  },
+  {
+    component: gGoodsLand,
+    path: '/games/ggoods-land',
     exact: true
   },
   {

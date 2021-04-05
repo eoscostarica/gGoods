@@ -23,6 +23,16 @@
     "reset": "Reset",
     "comingsoon": "Coming soon"
   },
+  "nftsMap": {
+    "placeAgood": "Place a good",
+    "save": "Save",
+    "successfullySaved": "Successfully Saved!",
+    "ggoodName": "Ggood Name:",
+    "organization": "Organization: ",
+    "creationDate": "Creation date:",
+    "searchAgood": "Search a good",
+    "selectGood": "Select good"
+  },
   "signup": {
     "register": "Let's Start!",
     "registerText": "Choose the option that suits you best. ",
@@ -127,6 +137,7 @@
     "/inventory>title": "Inventory | gGoods",
     "/inventory>sidebar": "Inventory",
     "/inventory>heading": "",
+    "/ggoods-land>sidebar": "gGoods Land",
     "/about>title": "Leverage NFTs and ESOIO blockchain to support causes | gGoods",
     "/about>sidebar": "About",
     "/about>heading": "About",
@@ -188,7 +199,7 @@
     "modalTitle": "Donate Now!",
     "modalParagraph1": "Select your preferred payment method to purchase this item. You can choose to increase your donation to further support this cause.",
     "selectedGood": "Selected Good",
-    "amount":"Amount to donate",
+    "amount": "Amount to donate",
     "donationFor": "Donation for",
     "sucessMessage": "Thanks for your donation",
     "emptyMessage": "gGood not exist or no longer available for sale"
@@ -282,8 +293,14 @@
     "successMessage": "Your new custom template it's ready to use"
   },
   "donationSuccesfulRoute": {
-    "title": "Donation Successful!",
-    "paragraph1": "We want to thank you for kindly donating towards this cause. We’re working towards empowering local communities and educating people towards the importance of wildlife preservation. Your funds will be dedicated 100% towards the specific cause listed for the good you just sponsored. "
+    "success": "Donation Succesful!",
+    "title1": "Some words from Ggoods",
+    "paragraph1": "We want to thank you for kindly donating towards this cause. We’re working towards empowering local communities and educating people towards the importance of wildlife preservation. Your funds will be dedicated 100% towards the specific cause listed for the good you just sponsored. ",
+    "title2": "What can I do next?",
+    "lineMessage": "We’re Grateful for any help you can provide!",
+    "option1": "View my Goods",
+    "option2": "Play Games",
+    "option3": "Buy more Goods"
   },
   "memoryRoute": {
     "attempts": "Attempts",

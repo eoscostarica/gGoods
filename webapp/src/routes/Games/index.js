@@ -21,7 +21,7 @@ const GAME_LIST = [
   },
   {
     name: 'Free your NFT!',
-    pathname: '',
+    pathname: 'games/ggoods-land',
     description:
       'Let your NFTs explore the world! By being exposed to new places, people, and cultures, you will develop a wider world view',
     img:
