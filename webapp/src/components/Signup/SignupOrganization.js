@@ -35,7 +35,6 @@ const useStyles = makeStyles(theme => ({
   },
   btnContinue: {
     borderRadius: '50px',
-    backgroundColor: '#4DD5EA',
     width: '70%',
     fontSize: '14px',
     fontWeight: 500,
@@ -43,7 +42,6 @@ const useStyles = makeStyles(theme => ({
     fontStyle: 'normal',
     lineHeight: 1.14,
     letterSpacing: '1px',
-    color: '#ffffff',
     padding: '12px',
     marginTop: 10,
     marginBottom: 10,
@@ -138,7 +136,7 @@ const SignupOrganization = ({
             }
             className={classes.btnContinue}
             variant="contained"
-            color="secondary"
+            color="primary"
             onClick={onSubmit}
           >
             {t('continue')}

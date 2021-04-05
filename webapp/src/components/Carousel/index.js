@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import Typography from '@material-ui/core/Typography'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -9,12 +10,14 @@ import IconButton from '@material-ui/core/IconButton'
 import Box from '@material-ui/core/Box'
 import clsx from 'clsx'
 
+import { mainConfig } from '../../config'
+
 import Item from './Item'
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const Carousel = ({ items = [] }) => {
+const Carousel = ({ items = [], isLoading, title }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [activeItems, setActiveItems] = useState()
@@ -22,10 +25,26 @@ const Carousel = ({ items = [] }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
 
   const generateItems = (activeValue = 0) => {
-    let level
     const carouselItems = []
-    const leftValue = activeValue - (isMobile ? 1 : 2)
-    const rightValue = activeValue + (isMobile ? 2 : 3)
+
+    if (items.length < 3) {
+      carouselItems.push({
+        ...items[activeValue],
+        level: 0
+      })
+      setActiveItems(carouselItems)
+
+      return
+    }
+
+    let level
+    let leftValue = activeValue - (isMobile ? 1 : 2)
+    let rightValue = activeValue + (isMobile ? 2 : 3)
+
+    if (items.length < 5) {
+      leftValue = activeValue - (isMobile ? 1 : 1)
+      rightValue = activeValue + (isMobile ? 2 : 2)
+    }
 
     for (let i = leftValue; i < rightValue; i++) {
       let index = i
@@ -37,7 +56,6 @@ const Carousel = ({ items = [] }) => {
       }
 
       level = activeValue - i
-
       carouselItems.push({
         ...items[index],
         level
@@ -49,57 +67,63 @@ const Carousel = ({ items = [] }) => {
 
   const moveLeft = () => {
     const activeValie = active - 1 < 0 ? items.length - 1 : active - 1
-
     generateItems(activeValie)
     setActive(activeValie)
   }
 
   const moveRight = () => {
     const newActive = (active + 1) % items.length
-
     generateItems(newActive)
     setActive(newActive)
   }
 
   useEffect(() => {
-    generateItems(active)
-  }, [isMobile])
-
-  useEffect(() => {
-    generateItems(active)
+    generateItems(0)
     setActive(0)
-  }, [])
+  }, [isMobile, items])
 
   return (
     <Box className={classes.carousel}>
-      <IconButton
-        className={clsx(classes.arrow, classes.leftArrow)}
-        onClick={moveLeft}
-      >
-        <ArrowBackIosIcon />
-      </IconButton>
-
       <Box className={classes.box}>
-        {(activeItems || []).map(({ id, image, level, backgroundColor }) => (
+        {(activeItems || []).map(({ id, level, metadata }) => (
           <Item
             key={id}
             id={id}
             level={level}
-            image={image}
-            backgroundColor={backgroundColor}
+            image={`${mainConfig.ipfsUrl}/ipfs/${metadata.imageSmall}`}
+            backgroundColor={metadata.backgroundColor}
+            isLoading={isLoading}
+            name={metadata.name}
+            description={metadata.description}
           />
         ))}
       </Box>
-
-      <IconButton className={classes.arrow} onClick={moveRight}>
-        <ArrowForwardIosIcon />
-      </IconButton>
+      <Box className={classes.navigationBox}>
+        <IconButton
+          className={clsx(classes.arrow, classes.leftArrow)}
+          onClick={moveLeft}
+          disabled={isLoading}
+        >
+          <ArrowBackIosIcon />
+        </IconButton>
+        <Typography align="center">{`${items.length} ${title}`}</Typography>
+        <IconButton
+          className={classes.arrow}
+          onClick={moveRight}
+          disabled={isLoading}
+        >
+          <ArrowForwardIosIcon />
+        </IconButton>
+      </Box>
     </Box>
   )
 }
-
 Carousel.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  isLoading: PropTypes.bool,
+  title: PropTypes.string
 }
-
+Carousel.defaultProps = {
+  items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
+}
 export default Carousel

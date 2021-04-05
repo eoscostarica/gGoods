@@ -8,7 +8,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const TemplateList = ({ addToCanvas, zIndex, propertyType, data = [] }) => {
+const TemplateList = ({ addToCanvas, propertyType, data = [] }) => {
   const classes = useStyles()
 
   return (
@@ -17,7 +17,6 @@ const TemplateList = ({ addToCanvas, zIndex, propertyType, data = [] }) => {
         <TemplateListItem
           url={item}
           propertyType={propertyType}
-          zIndex={zIndex}
           addToCanvas={addToCanvas}
           key={Math.random()}
         />
@@ -28,7 +27,6 @@ const TemplateList = ({ addToCanvas, zIndex, propertyType, data = [] }) => {
 
 TemplateList.propTypes = {
   addToCanvas: PropTypes.func,
-  zIndex: PropTypes.any,
   propertyType: PropTypes.any,
   data: PropTypes.array
 }

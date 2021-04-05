@@ -1,7 +1,8 @@
-import base1 from './base/1.png'
-import base2 from './base/2.png'
-import base3 from './base/3.png'
-import base4 from './base/4.png'
+import defaultBase from './base/0.png'
+import base0 from './base/1.png'
+import base1 from './base/2.png'
+import base2 from './base/3.png'
+import base3 from './base/4.png'
 
 import eyes1 from './eyes/1.png'
 import eyes2 from './eyes/2.png'
@@ -27,10 +28,10 @@ import mouth2 from './mouth/2.png'
 import mouth3 from './mouth/3.png'
 import mouth4 from './mouth/4.png'
 
-const baselist = [base1, base2, base3, base4]
+const baselist = [base0, base1, base2, base3]
 const eyeslist = [eyes1, eyes2, eyes3, eyes4]
 const bglist = [bgs1, bgs2, bgs3, bgs4, bgs5, bgs6, bgs7, bgs8, bgs9, bgs10]
 const decolist = [deco1, deco2]
 const mouthlist = [mouth1, mouth2, mouth3, mouth4]
 
-export { decolist, bglist, mouthlist, baselist, eyeslist }
+export { decolist, bglist, mouthlist, baselist, defaultBase, eyeslist }

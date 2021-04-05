@@ -193,7 +193,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   )
   const [activeStep, setActiveStep] = useState(0)
   const [role, setRole] = useState()
-  const [open, setOpen] = useState(false)
+  const [{ showSignupModal: open }, { login, cancelSignup }] = useSharedState()
   const [openAlert, setOpenAlert] = useState(false)
   const [messegaAlert, setMessegaAlert] = useState('false')
   const [maxWidth] = useState('sm')
@@ -206,7 +206,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   const [state] = useSharedState()
 
   const handleOpen = () => {
-    setOpen(!open)
+    cancelSignup()
   }
 
   const handleOpenAlert = () => {
@@ -285,10 +285,8 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
             passwordPlainText: secret
           }
         })
-      } else {
-        setErrorMessage(t('errors.authError'))
-      }
-    }
+      } else setErrorMessage(t('errors.authError'))
+    } else setErrorMessage(t('somethingHappenedWithAuth'))
   }
 
   const handlepreRegisterOrganization = () => {
@@ -412,17 +410,6 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
           {t('register')}
         </Button>
       )}
-      {isModal && !state.user && (
-        <Box className={classes.registerBoxModal}>
-          <Button
-            color="secondary"
-            className={classes.registerTextModal}
-            onClick={handleOpen}
-          >
-            {t('notAccount')}
-          </Button>
-        </Box>
-      )}
       {isSideBar && state.user !== null && (
         <Box className={classes.registerBtnSideBar} onClick={handleOpen}>
           <ContactMailIcon className={classes.iconOption} />
@@ -449,7 +436,14 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       >
         <Box className={classes.dialog}>
           <Box className={classes.closeIcon}>
-            <IconButton aria-label="close" color="inherit" onClick={handleOpen}>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              onClick={() => {
+                handleOpen()
+                login()
+              }}
+            >
               <CloseIcon fontSize="inherit" />
             </IconButton>
           </Box>

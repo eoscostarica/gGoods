@@ -9,18 +9,19 @@
     "name": "Name",
     "type": "Type",
     "description": "Description",
-    "smallImage": "Small Image",
-    "largeImage": "Large Image",
     "confirm": "Confirm",
     "all": "All",
     "email": "Email",
     "account": "Account",
+    "email-account": "Email or Account",
     "password": "Password",
     "continue": "Continue",
     "takeHome": "Take me home",
-    "suggestedDonation": "Suggested Donation",
+    "suggestedDonation": "Minimum Donation",
     "donation": "Donation",
-    "units": "Units"
+    "units": "Units",
+    "reset": "Reset",
+    "comingsoon": "Coming soon"
   },
   "signup": {
     "register": "Let's Start!",
@@ -39,7 +40,7 @@
     "iAccept": "Accept",
     "signupWithGoogle": "Sign up using Google",
     "createAccount": "Create an account",
-    "name": "Name",
+    "name": "Organization Name",
     "address": "Address",
     "addressPlaceholder": "Type your address here",
     "phoneNumber": "Phone Number",
@@ -50,17 +51,17 @@
     "asAOrganization": "As a Organization",
     "about": "About",
     "aboutPlaceholder": "About the Organization",
-    "notAccount": "No account yet? Register here.",
     "emailMessage": {
       "subjectVerificationCode": "gGoods Email Verification",
       "titleVerificationCode": "Email Verification",
       "messageVerificationCode": "Thank you for wanting to be part of the gGoods community, click on the button to verify and validate your account",
       "verifyButton": "Verify"
-    }
+    },
+    "somethingHappenedWithAuth": "Oops! Something happened with the authentication. Please, check again."
   },
   "login": {
     "letsStarted": "Let's get started!",
-    "subtitle": "Login to access your bookmarks and personal preferences.",
+    "subtitle": "Login to purchase items and access your personal collection.",
     "loggedIn": "Keep me logged in",
     "login": "Login",
     "accountDoesntExist": "This account doesn't exist. Please, sign up.",
@@ -68,7 +69,8 @@
     "demoCredentials": "Demo credentials",
     "invalidAccountOrPassword": "Invalid account or password",
     "loginWithGoogle": "Login with Google",
-    "logout": "Logout"
+    "logout": "Logout",
+    "notAccount": "No account yet? Register here."
   },
   "registerOrganization": {
     "accountapprove": "This account has been approved",
@@ -85,7 +87,7 @@
   },
   "credentialsRecovery": {
     "title": "Credentials Recovery",
-    "emailError": "The email entered is not associated with any accoun",
+    "emailError": "The email entered is not associated with any account",
     "changePasswordInstructions": "To change your password, enter the email associated with your account, the current password and the new one",
     "changePassword": "Change Password",
     "currentPassword": "Current password",
@@ -108,16 +110,16 @@
     "/>sidebar": "Home",
     "/>heading": "Welcome",
     "/goods>title": "NFT collectibles that support good causes | gGoods",
-    "/goods>sidebar": "gGoods",
+    "/goods>sidebar": "gGoods Marketplace",
     "/goods>heading": "",
     "/organizations>title": "Communities looking for funding | gGoods",
-    "/organizations>sidebar": "Communities",
+    "/organizations>sidebar": "Organizations",
     "/organizations>heading": "",
     "/your-collection>title": "Your collection | gGoods",
     "/your-collection>sidebar": "Your Collection",
     "/your-collection>heading": "",
     "/games>title": "Apps and games for you to use your NFTs | gGoods",
-    "/games>sidebar": "Games",
+    "/games>sidebar": "Games and Apps",
     "/games>heading": "",
     "/inventory>title": "Inventory | gGoods",
     "/inventory>sidebar": "Inventory",
@@ -130,7 +132,7 @@
     "/help>heading": "Help"
   },
   "footer": {
-    "description": "gGoods is an open source project, check out our repo and join the Discord channel.",
+    "description": "gGoods is an open source project, check out our GitHub and join the Discord channel.",
     "content": "Content",
     "home": "Home",
     "organizations": "Organizations",
@@ -141,11 +143,11 @@
     "follow": "Follow Us"
   },
   "homeRoute": {
-    "welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac viverra nunc, vitae rhoncus metus. Donec placerat ipsum nec ligula lacinia ornare. Cras et felis sit amet libero fermentum faucibus ut id justo. Maecenas vel nibh sed nibh faucibus rutrum. Pellentesque vel nibh molestie, eleifend magna in, eleifend nibh. Praesent elementum libero non ligula viverra feugiat. Morbi blandit massa nec posuere pellentesque. Quisque ac imperdiet tellus. Donec sed lorem sit amet nisl posuere dignissim at a sapien. In tristique et sapien et hendrerit. Nam aliquet quis turpis eu porttitor. Aenean odio augue, lacinia id ipsum at, dignissim sagittis libero. Pellentesque ex justo, tempus et rhoncus vitae, mattis vel justo. Suspendisse pellentesque nisi porttitor est posuere consectetur. Proin ornare orci eleifend, vestibulum massa et, bibendum nulla. Integer rutrum id quam et rhoncus. Nullam pretium pharetra magna in mattis. Nulla et sapien sit amet nibh dictum consectetur a quis dui. Morbi ac vestibulum eros. Ut commodo, dolor in sollicitudin euismod, libero lacus bibendum justo, non lobortis magna tellus vehicula turpis. Maecenas dignissim eget tellus eu molestie. Morbi pellentesque viverra ornare. Vivamus id feugiat nisi. Proin lobortis rhoncus finibus. Proin eu tellus dolor. Suspendisse ac tincidunt neque. In tincidunt ullamcorper lorem. Nulla facilisi."
+    "welcomeMessage": "Lorem ipsum dolor sit amet..."
   },
   "organizationsRoute": {
     "title": "Organizations",
-    "paragraph1": "Communities, NGOs and any other good causes that you might be interested in."
+    "paragraph1": "Communities, NGOs and any other good causes that you might be interested in supporting."
   },
   "organizationRoute": {
     "objectives": "Objectives",
@@ -156,35 +158,37 @@
     "location": "Location",
     "contact": "Contact",
     "ourGoods": "Our Goods",
-    "empty": "Organization without goods"
+    "emptyMessage": "Organization has not created any gGoods"
   },
   "gamesRoute": {
     "title": "Games",
-    "paragraph1": "Created so you can have fun with your goods."
+    "paragraph1": "Created so you can have fun with your digital goods."
   },
   "selfieCam": {
     "title": "Selfie Cam",
-    "subTitle": "Your Goods",
-    "paragraph1": "Select one of your Goods and take a selfie together, then share the image to your social media and spread the word.",
+    "subTitle": "Take a picture with your digital goods",
+    "paragraph1": "Select one of your NFTs and take a selfie together, then share the image to your social media and spread the word.",
     "share": "Share to Social",
     "save": "Save to Device",
     "cancel": "Cancel"
   },
   "goodsRoute": {
-    "title": "Goods",
-    "paragraph1": "Virtual goods designed to help good causes, buy or subscribe to help or just play.",
+    "title": "gGoods",
+    "paragraph1": "Digital goods designed to help good causes, buy or subscribe to help or just play.",
     "filter": "FILTERS",
     "available": " GOODS AVAILABLE"
   },
   "goodRoute": {
     "by": "By",
     "donateNow": "Donate Now",
-    "paragraph1": "We’re Grateful for any help you can provide!",
+    "paragraph1": "We appreciate any help you can provide for our cause!",
     "modalTitle": "Donate Now!",
-    "modalParagraph1": "Select your preferred payment method and buy this good. You can increase your donation to further help this cause.",
+    "modalParagraph1": "Select your preferred payment method to purchase this item. You can choose to increase your donation to further support this cause.",
     "selectedGood": "Selected Good",
     "amount":"Amount to donate",
-    "sucessMessage": "Thanks for your donation"
+    "donationFor": "Donation for",
+    "sucessMessage": "Thanks for your donation",
+    "emptyMessage": "gGood not exist or no longer available for sale"
   },
   "filterGoodsRoute": {
     "title": "Filter items",
@@ -194,18 +198,21 @@
   },
   "collectionRoute": {
     "title": "My collection",
-    "paragraph1": "Goods you’ve bought previously and active subscriptions"
+    "ggoodsCollected": "gGoods Collected",
+    "paragraph1": "gGoods you’ve bought previously and active subscriptions",
+    "emptyMessage": "You don't have any gGoods yet. Visit the marketplace to purchase your favorite items, you will see your collection on this page once your donation is confirmed."
   },
   "inventoryRoute": {
     "title": "Inventory",
-    "paragraph1": "Create templates and publish Goods created by your organization.",
-    "uploadButton": "Upload Pre-made Template",
-    "createButton": "Create a new Template",
-    "emptyTemplate": "No templates or goods have been created yet.",
+    "paragraph1": "Create templates and mint Goods created by your organization.",
+    "uploadButton": "Upload Your Custom Template",
+    "createButton": "Use The Template Maker",
+    "emptyTemplates": "No templates have been created yet.",
+    "emptyGGoods": "No gGoods have been published yet.",
     "templatesTitle": "Templates",
     "templatesParagraph": "Select a template to publish a new set of Goods and make them available on the marketplace.",
-    "goodsTitle": "Published Goods",
-    "goodsParagraph": "Select a Good to go or the bio page or to un-publish it by burning it."
+    "ggoodsTitle": "Published Goods",
+    "ggoodsParagraph": "Select a gGood to see its profile or to unpublish it."
   },
   "publishGood": {
     "title": "Publish Good",
@@ -230,7 +237,7 @@
     "whygGoods": "Why gGoods?",
     "whygGoodsParagraph": "gGoods is an open-source NFT standard that lets organizations create their own NFT to seek funding. Creating an NFT is easy and straightforward, such as creating an avatar or sticker. The NFT represents a cause for the donor to collect",
     "behindgGoogs": "Who’s behind gGoods?",
-    "behindgGoogsParagraph": "gGoods is developed by a group of Costa Rican techies and led by Edenia Labs and EOS Costa Rica. It was our submission to the 2021 Beyond Blockchain EOSIO Hackathon organized by block.one",
+    "behindgGoogsParagraph": "gGoods is developed by a group of Costa Rican techies and led by Edenia Labs and EOS Costa Rica. It was our submission to the 2021 Beyond Blockchain EOSIO Hackathon organized by block.one, Google, Galaxy Interactive and Mythical Games.",
     "aboutHack": "About the hackathon",
     "aboutHackParagraph": "The 2021 Beyond Blockchain EOSIO Hackathon was organized by block.one, a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world.",
     "title2": "About the technology",
@@ -248,20 +255,36 @@
     "whosEDENIALabsParagraph": "Edenia Labs incubates and accelerates projects that deploy technologies in industry 4.0, including artificial intelligence, blockchain, internet of things, drones, and cybersecurity. It is part of Sistemas Edenia Internacional, a company with over 30 years of experience developing innovative technologies."
   },
   "helpRoute": {
-    "title": "Thank you for using our product!",
+    "title": "Thank you for using gGoods!",
     "paragraph": "This project is still work in progress. Please feel free to leave upgrade suggestions, log bugs, or use the code yourself. You can also find us on Telegram or visit our website.",
     "githubEOSCR": "GitHub EOS Costa Rica",
     "telegramChannel": "Telegram Channel",
     "websiteEOSCR": "Website EOS Costa Rica"
   },
   "createTemplateRoute": {
-    "successUploadImage": "Success upload image",
-    "avatarMaker": "Avatar Maker",
-    "myOwnDesign": "My Own Design",
-    "successMessage": "Success transaction:"
+    "paragraph1": "This tool will help you create a simple template that will represent your cause. You can publish as many gGoods as you need with this template.",
+    "paragraph2": "First select a category that fits your cause.",
+    "name": "Name your gGood",
+    "description": "Describe your gGood",
+    "successMessage": "Your template it's ready to use"
+  },
+  "createCustomTemplateRoute": {
+    "paragraph": "You can upload previously created design to represent the cause that you will be crowdfunding. Be sure that you have permission to use these images.",
+    "smallImage": "Pick a small image (150 x 150)",
+    "largeImage": "Pick a large image (1024 x 1024)",
+    "backgroundColor": "Pick a background color",
+    "name": "Name your gGood",
+    "description": "Describe your gGood",
+    "successUploadImage": "Uploaded image",
+    "successMessage": "Your new custom template it's ready to use"
   },
   "donationSuccesfulRoute": {
-    "title": "Donation Succesful!",
+    "title": "Donation Successful!",
     "paragraph1": "We want to thank you for kindly donating towards this cause. We’re working towards empowering local communities and educating people towards the importance of wildlife preservation. Your funds will be dedicated 100% towards the specific cause listed for the good you just sponsored. "
+  },
+  "memoryRoute": {
+    "attempts": "Attempts",
+    "emptyMessage": "You don't have available gGoods yet",
+    "winMessage": "You won!"
   }
 }

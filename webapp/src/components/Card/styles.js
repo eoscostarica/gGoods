@@ -44,7 +44,7 @@ export default theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     padding: theme.spacing(0, 2),
-    '& span': {
+    '& .MuiTypography-body1': {
       fontSize: 14,
       lineHeight: '20px',
       letterSpacing: '0.25px',
@@ -59,8 +59,25 @@ export default theme => ({
       top: 426
     }
   },
+  cardSkeleton: {
+    width: '100%',
+    marginBottom: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      width: 168
+    },
+    '& .MuiCardContent-root': {
+      padding: theme.spacing(2, 1)
+    }
+  },
+  mediaSkeleton: {
+    height: 168
+  },
   cardAvatarRoot: {
-    width: '100%'
+    width: '100%',
+    marginBottom: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      width: 168
+    }
   },
   cardOngMedia: {
     height: 200

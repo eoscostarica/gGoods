@@ -25,7 +25,6 @@ import {
 } from '../../gql'
 import { useSharedState } from '../../context/state.context'
 import LoginWithGoogle from './LoginWithGoogle'
-import Signup from '../../components/Signup'
 
 const useStyles = makeStyles(theme => ({
   alert: {
@@ -88,7 +87,6 @@ const useStyles = makeStyles(theme => ({
   },
   btnLogin: {
     borderRadius: '50px',
-    backgroundColor: '#4DD5EA',
     width: '70%',
     fontSize: '14px',
     fontWeight: 500,
@@ -96,7 +94,6 @@ const useStyles = makeStyles(theme => ({
     fontStyle: 'normal',
     lineHeight: 1.14,
     letterSpacing: '1px',
-    color: '#ffffff',
     padding: '12px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
@@ -109,6 +106,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     marginTop: 30,
     marginBottom: 10
+  },
+  registerBoxModal: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   btnLoginModal: {
     borderRadius: '4px',
@@ -123,6 +126,15 @@ const useStyles = makeStyles(theme => ({
     color: '#121212',
     padding: '10px'
   },
+  registerTextModal: {
+    fontSize: '12px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: 1.33,
+    letterSpacing: '0.4px',
+    color: '#000000'
+  },
   labelOption: {
     color: `${theme.palette.primary.main} !important`,
     marginLeft: theme.spacing(3),
@@ -136,6 +148,9 @@ const useStyles = makeStyles(theme => ({
   registerBtnSideBar: {
     display: 'flex',
     alignItems: 'center'
+  },
+  sampleCredentials: {
+    padding: theme.spacing(3)
   }
 }))
 
@@ -144,7 +159,7 @@ const LoginModal = () => {
   const [user, setUser] = useState({})
   const [
     { showLoginModal: open },
-    { cancelLogin, successLogin }
+    { signup, cancelLogin, successLogin }
   ] = useSharedState()
   const [errorMessage, setErrorMessage] = useState(null)
   const classes = useStyles()
@@ -249,6 +264,7 @@ const LoginModal = () => {
       handleLogin()
     }
   }
+
   return (
     <>
       <Dialog
@@ -304,7 +320,7 @@ const LoginModal = () => {
             <Box>
               <TextField
                 id="account"
-                label={t('email')}
+                label={t('email-account')}
                 variant="outlined"
                 className={classes.inputStyle}
                 onChange={event =>
@@ -343,7 +359,7 @@ const LoginModal = () => {
                 className={classes.btnLogin}
                 disabled={!user.account || !user.secret || loading}
                 variant="contained"
-                color="secondary"
+                color="primary"
                 onClick={handleLogin}
               >
                 {t('login')}
@@ -355,10 +371,41 @@ const LoginModal = () => {
             <Box className={classes.centerBox}>
               <LoginWithGoogle onSubmit={handleLoginWithAuth} />
             </Box>
+            <Box className={classes.registerBox}>
+              <Button
+                color="secondary"
+                className={classes.registerTextModal}
+                onClick={() => {
+                  handleOpen()
+                  signup()
+                }}
+              >
+                {t('notAccount')}
+              </Button>
+            </Box>
+            <Typography variant="h6">Log in with a demo account</Typography>
+            <dl>
+              <dt>
+                <Typography variant="h7">Organization User</Typography>
+              </dt>
+              <dd>
+                <Typography variant="body1">username: animalrescue</Typography>
+              </dd>
+              <dd>
+                <Typography variant="body1">password: organization</Typography>
+              </dd>
+
+              <dt>
+                <Typography variant="h7">Regular User</Typography>
+              </dt>
+              <dd>
+                <Typography variant="body1">username: iamthebestgg</Typography>
+              </dd>
+              <dd>
+                <Typography variant="body1">password: user</Typography>
+              </dd>
+            </dl>
           </form>
-          <Box className={classes.registerBox}>
-            <Signup isModal />
-          </Box>
         </Box>
       </Dialog>
     </>

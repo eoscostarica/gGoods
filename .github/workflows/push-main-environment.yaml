@@ -81,6 +81,8 @@ jobs:
           REACT_APP_IPFS_URL: ${{ secrets.REACT_APP_IPFS_URL }}
           REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
           REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY }}
+          REACT_APP_BLOCK_EXPLORER: ${{ secrets.REACT_APP_BLOCK_EXPLORER }}
+          REACT_APP_OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_OAUTH_GOOGLE_CLIENT_ID }}
 
           # hasura
           HASURA_GRAPHQL_DATABASE_URL: ${{ secrets.HASURA_GRAPHQL_DATABASE_URL }}
@@ -137,9 +139,10 @@ jobs:
           HAPI_DGOODS_ACCOUNT: ${{ secrets.HAPI_DGOODS_ACCOUNT }}
           HAPI_DGOODS_PASSWORD: ${{ secrets.HAPI_DGOODS_PASSWORD }}
           HAPI_DGOODS_TOKEN: ${{ secrets.HAPI_DGOODS_TOKEN }}
-          HAPI_PAYPAL_API: "${secrets.HAPI_PAYPAL_API}"
-          HAPI_PAYPAL_CLIENT: "${secrets.HAPI_PAYPAL_CLIENT}"
-          HAPI_PAYPAL_SECRET: "${secrets.HAPI_PAYPAL_SECRET}"
+          HAPI_DGOODS_CURRENCY: ${{ secrets.HAPI_DGOODS_CURRENCY }}
+          HAPI_PAYPAL_API: "${{ secrets.HAPI_PAYPAL_API }}"
+          HAPI_PAYPAL_CLIENT: "${{ secrets.HAPI_PAYPAL_CLIENT }}"
+          HAPI_PAYPAL_SECRET: "${{ secrets.HAPI_PAYPAL_SECRET }}"
 
           #webapp
           PORT: 80
@@ -157,6 +160,8 @@ jobs:
           REACT_APP_IPFS_URL: ${{ secrets.REACT_APP_IPFS_URL }}
           REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
           REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY }}
+          REACT_APP_BLOCK_EXPLORER: ${{ secrets.REACT_APP_BLOCK_EXPLORER }}
+          REACT_APP_OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_OAUTH_GOOGLE_CLIENT_ID }}
 
       - name: Deploy kubernetes files
         run: |

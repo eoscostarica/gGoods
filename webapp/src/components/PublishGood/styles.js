@@ -18,7 +18,10 @@ export default theme => ({
     marginBottom: theme.spacing(2)
   },
   sectionBoxDouble: {
-    marginBottom: theme.spacing(4)
+    marginBottom: theme.spacing(4),
+    '& .MuiCard-root': {
+      width: '100%'
+    }
   },
   mainButton: {
     borderRadius: '50px',

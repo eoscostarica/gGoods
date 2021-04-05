@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 export const GET_ORGANIZATIONS = gql`
   query {
-    preregister_organization(where: { state: { _eq: "approved" } }) {
+    items: preregister_organization(where: { state: { _eq: "approved" } }) {
       description
       id
       name
@@ -11,9 +11,24 @@ export const GET_ORGANIZATIONS = gql`
   }
 `
 
-export const GET_ORGANIZATION_BY_ID = gql`
+export const GET_FEATURED_ORGANIZATIONS = gql`
+  query {
+    items: preregister_organization(
+      order_by: { created_at: asc }
+      where: { state: { _eq: "approved" } }
+      limit: 3
+    ) {
+      description
+      id
+      name
+      orgInfo
+    }
+  }
+`
+
+export const GET_ORGANIZATIONS_BY_ID = gql`
   query($id: Int!) {
-    preregister_organization(
+    items: preregister_organization(
       where: { _and: { id: { _eq: $id }, state: { _eq: "approved" } } }
     ) {
       address
@@ -27,23 +42,16 @@ export const GET_ORGANIZATION_BY_ID = gql`
   }
 `
 
-export const GET_ORGANIZATION_BY_ACCOUNT = gql`
+export const GET_ORGANIZATIONS_BY_ACCOUNT = gql`
   query($orgInfo: jsonb!) {
-    organizations: preregister_organization(
+    items: preregister_organization(
       where: {
         _and: { orgInfo: { _contains: $orgInfo }, state: { _eq: "approved" } }
       }
     ) {
       id
       name
-    }
-  }
-`
-
-export const GET_ACCOUNT_FROM_ID = gql`
-  query($email: String!) {
-    user(where: { email: { _eq: $email } }) {
-      account
+      orgInfo
     }
   }
 `

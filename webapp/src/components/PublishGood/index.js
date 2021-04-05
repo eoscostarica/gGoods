@@ -21,6 +21,8 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import { CardAvatar } from '../Card'
 import { PUT_ON_SALE_MUTATION } from '../../gql'
 import { useSharedState } from '../../context/state.context'
+import { mainConfig } from '../../config'
+import { getLastChars } from '../../utils'
 
 import styles from './styles'
 
@@ -46,7 +48,11 @@ const PublishGood = ({ open, template, onClose }) => {
 
   const handleSubmit = async () => {
     try {
-      const { data: response } = await putOnSale({
+      const {
+        data: {
+          ggoods: { items: ggoods }
+        }
+      } = await putOnSale({
         variables: {
           ...payload,
           template: template.id,
@@ -57,7 +63,26 @@ const PublishGood = ({ open, template, onClose }) => {
       setPayload(initialValue)
       onClose()
       showMessage({
-        content: `${t('successMessage')} ${response.sale.assets.join(',')}`
+        type: 'success',
+        content: (
+          <>
+            {t('successMessage')}{' '}
+            {ggoods.map((ggood, index) => (
+              <a
+                key={ggood.id}
+                href={mainConfig.blockExplorer.replace(
+                  '{transaction}',
+                  ggood.trxid
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {getLastChars(ggood.trxid)}
+                {index < ggoods.length - 1 ? ', ' : ''}
+              </a>
+            ))}
+          </>
+        )
       })
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
@@ -104,9 +129,9 @@ const PublishGood = ({ open, template, onClose }) => {
           <Grid container justify="center">
             <Grid item xs={6}>
               <CardAvatar
-                name={template?.name}
-                image={template?.image}
-                backgroundColor={template?.backgroundColor}
+                name={template?.metadata?.name}
+                image={template?.metadata?.imageSmall}
+                backgroundColor={template?.metadata?.backgroundColor}
               />
             </Grid>
           </Grid>
