@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Overlay } from 'pigeon-maps'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/styles'
@@ -16,6 +17,7 @@ const useStyles = makeStyles(styles)
 
 const GoodsMap = ({ placeAnewGood, anchors }) => {
   const classes = useStyles()
+  const { t } = useTranslation('nftsMap')
   const [anchorEl, setAnchorEl] = useState(undefined)
   const [center, setCenter] = useState([50.879, 4.6997])
   const [currentClickedGood, setCurrentClickedGood] = useState()
@@ -65,21 +67,21 @@ const GoodsMap = ({ placeAnewGood, anchors }) => {
           }}
         >
           <Typography>
-            <strong>Ggood Name: </strong>
+            <strong>{t('ggoodName')} </strong>
             {currentClickedGood.name}
           </Typography>
           <Typography>
-            <strong>Organization: </strong>Jaguar Rescue Centre
+            <strong>{t('organization')} </strong>Jaguar Rescue Centre
           </Typography>
           <Typography>
-            <strong>Creation date: </strong>
+            <strong>{t('creationDate')} </strong>
             {`${new Date()}`}
           </Typography>
         </Popover>
       )}
       <Grid className={classes.placeGrid} container justify="flex-end">
         <Button variant="contained" color="secondary" onClick={placeAnewGood}>
-          Place a new Good
+          {t('placeAgood')}
         </Button>
       </Grid>
       <Grid container justify="center">
@@ -110,7 +112,7 @@ const GoodsMap = ({ placeAnewGood, anchors }) => {
           renderInput={params => (
             <TextField
               {...params}
-              label="Search a good"
+              label={t('searchAgood')}
               variant="outlined"
               inputProps={{
                 ...params.inputProps,

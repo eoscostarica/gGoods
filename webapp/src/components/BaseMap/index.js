@@ -20,14 +20,13 @@ const LocationPin = ({ text }) => (
 const BaseMap = ({ children, center }) => {
   const classes = useStyles()
 
-  const MAPTILER_ACCESS_TOKEN = mapConfig.apiKey || 'n8BjMZQN4T8h4poptpdx'
+  const MAPTILER_ACCESS_TOKEN = mapConfig.apiKey
   const MAP_ID = 'topo'
 
-  const mapTiler = (x, y, z, dpr) => {
-    return `https://api.maptiler.com/maps/${MAP_ID}/256/${z}/${x}/${y}${
+  const mapTiler = (x, y, z, dpr) =>
+    `${mapConfig.mapBaseUrl}${MAP_ID}/256/${z}/${x}/${y}${
       dpr >= 2 ? '@2x' : ''
     }.png?key=${MAPTILER_ACCESS_TOKEN}`
-  }
 
   return (
     <Grid container justify="center" className={classes.mapContainer}>

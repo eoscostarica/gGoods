@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Draggable } from 'pigeon-maps'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
@@ -19,6 +20,7 @@ const useStyles = makeStyles(styles)
 
 const PlaceYourGoodMap = ({ setAnchors, availableGoods, saveClicked }) => {
   const classes = useStyles()
+  const { t } = useTranslation('nftsMap')
   const [goods, setGoods] = useState(availableGoods)
   const [open, setOpen] = useState(false)
   const [draggables, setDraggables] = useState([])
@@ -68,7 +70,7 @@ const PlaceYourGoodMap = ({ setAnchors, availableGoods, saveClicked }) => {
           onClose={() => setOpen(false)}
           color="primary"
         >
-          Select good
+          {t('selectGood')}
         </Button>
         <SwipeableDrawer
           onOpen={() => setOpen(true)}

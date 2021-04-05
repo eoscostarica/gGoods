@@ -23,6 +23,16 @@
     "reset": "Reset",
     "comingsoon": "Coming soon"
   },
+  "nftsMap": {
+    "placeAgood": "Place a good",
+    "save": "Save",
+    "successfullySaved": "Successfully Saved!",
+    "ggoodName": "Ggood Name:",
+    "organization": "Organization: ",
+    "creationDate": "Creation date:",
+    "searchAgood": "Search a good",
+    "selectGood": "Select good"
+  },
   "signup": {
     "register": "Let's Start!",
     "registerText": "Choose the option that suits you best. ",
