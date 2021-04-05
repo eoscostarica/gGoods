@@ -23,6 +23,16 @@
     "reset": "Reset",
     "comingsoon": "Coming soon"
   },
+  "nftsMap": {
+    "placeAgood": "Place a good",
+    "save": "Save",
+    "successfullySaved": "Successfully Saved!",
+    "ggoodName": "Ggood Name:",
+    "organization": "Organization: ",
+    "creationDate": "Creation date:",
+    "searchAgood": "Search a good",
+    "selectGood": "Select good"
+  },
   "signup": {
     "register": "Let's Start!",
     "registerText": "Choose the option that suits you best. ",
@@ -124,6 +134,7 @@
     "/inventory>title": "Inventory | gGoods",
     "/inventory>sidebar": "Inventory",
     "/inventory>heading": "",
+    "/ggoods-land>sidebar": "gGoods Land",
     "/about>title": "Leverage NFTs and ESOIO blockchain to support causes | gGoods",
     "/about>sidebar": "About",
     "/about>heading": "About",
@@ -185,7 +196,7 @@
     "modalTitle": "Donate Now!",
     "modalParagraph1": "Select your preferred payment method to purchase this item. You can choose to increase your donation to further support this cause.",
     "selectedGood": "Selected Good",
-    "amount":"Amount to donate",
+    "amount": "Amount to donate",
     "donationFor": "Donation for",
     "sucessMessage": "Thanks for your donation",
     "emptyMessage": "gGood not exist or no longer available for sale"

@@ -1,5 +1,41 @@
 - table:
     schema: public
+    name: ggoods_map
+  insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+      - good_id
+      - coordinates
+      - id
+      - user_id
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - user_id
+      - coordinates
+      - good_id
+      filter: {}
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - user_id
+      - coordinates
+      - good_id
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: user
+    permission:
+      filter: {}
+- table:
+    schema: public
     name: history
 - table:
     schema: public

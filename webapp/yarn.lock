@@ -8045,6 +8045,7 @@ fsevents@^1.2.7:
     lint-staged: ^10.5.4
     lodash.shuffle: ^4.2.0
     material-ui-dropzone: ^3.5.0
+    pigeon-maps: ^0.19.5
     polished: ^4.1.1
     prettier: ^2.2.1
     prop-types: ^15.7.2
@@ -13047,6 +13048,15 @@ fsevents@^1.2.7:
   version: 4.0.1
   resolution: "pify@npm:4.0.1"
   checksum: 786486a8c94a7e1980ea56c59dcc05ebf0793740b71df9b9f273e48032e6301c5ecc5cc237c5a9ff45b13db27678b4d71aa37a2777bc11473c1310718b648e98
+  languageName: node
+  linkType: hard
+
+"pigeon-maps@npm:^0.19.5":
+  version: 0.19.5
+  resolution: "pigeon-maps@npm:0.19.5"
+  peerDependencies:
+    react: "*"
+  checksum: 860533cc6a448e783ec0e238e00cbae96af7256354de0c41cc74b1daa03eca3170443b0acdb03f09070377c350086c026c7ead5079c5bf74e735ff69f98b400d
   languageName: node
   linkType: hard
 
