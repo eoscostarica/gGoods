@@ -20,7 +20,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 const initialValue = {
-  category: '',
+  category: 'Animal',
   name: '',
   metadata: {
     type: '2dgameAsset',

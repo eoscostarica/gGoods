@@ -11,7 +11,8 @@ const getUserFromToken = token => {
 
   return {
     account: claims['https://hasura.io/jwt/claims']['x-hasura-user-account'],
-    role: claims['https://hasura.io/jwt/claims']['x-hasura-default-role']
+    role: claims['https://hasura.io/jwt/claims']['x-hasura-default-role'],
+    id: claims['https://hasura.io/jwt/claims']['x-hasura-user-id']
   }
 }
 

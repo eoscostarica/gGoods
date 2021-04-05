@@ -11,6 +11,10 @@
     "browser": true
   },
   "rules": {
+    "promise/always-return": "off",
+    "react/display-name": "off",
+    "prefer-const": "off",
+    "camelcase": "off",
     "complexity": [
       "error",
       {
