@@ -10,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton'
 import Box from '@material-ui/core/Box'
 import clsx from 'clsx'
 
+import { mainConfig } from '../../config'
+
 import Item from './Item'
 import styles from './styles'
 
@@ -71,20 +73,18 @@ const Carousel = ({ items = [], isLoading }) => {
   return (
     <Box className={classes.carousel}>
       <Box className={classes.box}>
-        {(activeItems || []).map(
-          ({ id, image, level, backgroundColor, name, description }) => (
-            <Item
-              key={id}
-              id={id}
-              level={level}
-              image={image}
-              backgroundColor={backgroundColor}
-              isLoading={isLoading}
-              name={name}
-              description={description}
-            />
-          )
-        )}
+        {(activeItems || []).map(({ id, level, metadata }) => (
+          <Item
+            key={id}
+            id={id}
+            level={level}
+            image={`${mainConfig.ipfsUrl}/ipfs/${metadata.imageSmall}`}
+            backgroundColor={metadata.backgroundColor}
+            isLoading={isLoading}
+            name={metadata.name}
+            description={metadata.description}
+          />
+        ))}
       </Box>
       <Box className={classes.navigationBox}>
         <IconButton

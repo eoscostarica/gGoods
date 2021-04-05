@@ -16,15 +16,23 @@ export default theme => ({
     alignItems: 'center',
     marginBottom: theme.spacing(2),
     boxShadow: theme.shadows[3],
-    borderRadius: 8,
-    '& canvas': {
-      borderTopLeftRadius: 8,
-      borderTopRightRadius: 8
+    borderRadius: 8
+  },
+  mainCanvas: {
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    height: 310,
+    width: 310,
+    [theme.breakpoints.up('sm')]: {
+      height: 375,
+      width: 400
     }
   },
   bottomBox: {
     display: 'flex',
-    width: '100%'
+    width: '100%',
+    padding: theme.spacing(1, 2),
+    justifyContent: 'flex-end'
   },
   rootTab: {
     minWidth: 100,
@@ -40,6 +48,7 @@ export default theme => ({
     flexWrap: 'nowrap',
     overflowX: 'scroll',
     [theme.breakpoints.up('sm')]: {
+      justifyContent: 'center',
       flexWrap: 'wrap'
     }
   },
@@ -48,10 +57,6 @@ export default theme => ({
     width: 150,
     height: 150,
     margin: theme.spacing(1),
-    '& img': {
-      width: 150,
-      height: 150
-    },
     '&:hover': {
       cursor: 'pointer'
     }

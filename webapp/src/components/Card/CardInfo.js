@@ -12,7 +12,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const CardInfo = ({ img, primaryText, secondaryText }) => {
+const CardInfo = ({ img, primaryText, secondaryText, onClick }) => {
   const classes = useStyles()
 
   return (
@@ -33,7 +33,7 @@ const CardInfo = ({ img, primaryText, secondaryText }) => {
         <img className={classes.infoImg} src={img} />
       </CardContent>
       <CardActions>
-        <Button size="small" className={classes.btnLearnMore}>
+        <Button size="small" className={classes.btnLearnMore} onClick={onClick}>
           Learn More
         </Button>
       </CardActions>
@@ -44,7 +44,12 @@ const CardInfo = ({ img, primaryText, secondaryText }) => {
 CardInfo.propTypes = {
   img: PropTypes.any,
   primaryText: PropTypes.string,
-  secondaryText: PropTypes.string
+  secondaryText: PropTypes.string,
+  onClick: PropTypes.func
+}
+
+CardInfo.defaultProp = {
+  onClick: () => {}
 }
 
 export default CardInfo

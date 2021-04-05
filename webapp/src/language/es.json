@@ -58,18 +58,18 @@
     "continue": "Continuar"
   },
   "emailMessage": {
-    "subjectApproveAccount": "Ggoods Cuenta Aprobada",
+    "subjectApproveAccount": "gGoods Cuenta Aprobada",
     "titleApproveAccount": "Cuenta Aprobada",
-    "messageApproveAccount": "Su solicitud de registro en Ggoods ha sido aprobada, gracias por ser parte de este proyecto.",
-    "subjectChangePassword": "Ggoods Cambio de Contraseña",
+    "messageApproveAccount": "Su solicitud de registro en gGoods ha sido aprobada, gracias por ser parte de este proyecto.",
+    "subjectChangePassword": "gGoods Cambio de Contraseña",
     "titleChangePassword": "Cambio de Contraseña",
     "messageChangePassword": "Su contraseña ha sido cambiada con éxito, gracias por donar.",
-    "subjectCredentialsRecovery": "Ggoods Recuperación de Credenciales",
+    "subjectCredentialsRecovery": "gGoods Recuperación de Credenciales",
     "titleCredentialsRecovery": "Recuperación de Credenciales",
-    "messageCredentialsRecovery": "Se ha generado una nueva contraseña para su cuenta, con esta ahora podes acceder a Ggoods y continuar donando.",
-    "subjectVerificationCode": "Ggoods Verificación del Email",
+    "messageCredentialsRecovery": "Se ha generado una nueva contraseña para su cuenta, con esta ahora podes acceder a gGoods y continuar donando.",
+    "subjectVerificationCode": "gGoods Verificación del Email",
     "titleVerificationCode": "Verificación del Email",
-    "messageVerificationCode": "Gracias por ser parte de la comunidad de Ggoods, haga clic en el botón para verificar y validar su cuenta.",
+    "messageVerificationCode": "Gracias por ser parte de la comunidad de gGoods, haga clic en el botón para verificar y validar su cuenta.",
     "verifyButton": "Verificar"
   },
   "emailVerification": {

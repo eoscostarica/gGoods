@@ -4,12 +4,14 @@ import * as mainConfig from './main.config'
 import * as mapConfig from './map.config'
 import * as ualConfig from './ual.config'
 import * as oAuthConfig from './oAuth.config'
+import * as paypalConfig from './paypal.config'
 
 export {
-  oAuthConfig,
-  mapConfig,
+  captchaConfig,
   graphqlConfig,
+  mapConfig,
   mainConfig,
-  ualConfig,
-  captchaConfig
+  oAuthConfig,
+  paypalConfig,
+  ualConfig
 }

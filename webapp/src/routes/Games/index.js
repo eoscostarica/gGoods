@@ -15,25 +15,32 @@ const GAME_LIST = [
     name: 'Selfie Cam',
     pathname: '/games/selfie-cam',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat auctor faucibus. Donec sed arcu eu elit gravida',
+      'Select one of your Goods and take a selfie together, then share the image to your social media and spread the word.',
     img:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGLm94nV3FeX81RSgRuKGJ2RDTtqJNblQVWw&usqp=CAU'
   },
   {
-    name: 'Free your Animal',
+    name: 'Free your NFT!',
     pathname: 'games/ggoods-land',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat auctor faucibus. Donec sed arcu eu elit gravida rhoncus id non eu tempor diam maximu',
+      'Let your NFTs explore the world! By being exposed to new places, people, and cultures, you will develop a wider world view',
     img:
       'https://images-na.ssl-images-amazon.com/images/I/71XltR452RL._AC_SL1500_.jpg'
   },
   {
-    name: 'Ggoods Memory',
+    name: 'gGoods Memory',
     pathname: '/games/memory',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat auctor faucibus. Donec sed arcu eu elit gravida rhoncus id non eu tempor diam maximu',
+      'A classic card game in which all of the cards are NFTs! The object of the game is to turn over pairs of matching cards.',
     img:
       'https://h5p.org/sites/default/files/styles/medium-logo/public/logos/memory-game-icon.png?itok=bIQqHE7Y'
+  },
+  {
+    name: 'More Apps Coming Soon',
+    pathname: '/games',
+    description:
+      'gGoods can integrate with countless apps such as games and social media, the open-source community can develop new ideas for the platform.',
+    img: ''
   }
 ]
 

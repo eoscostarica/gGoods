@@ -5,18 +5,16 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid'
-import AppBar from '@material-ui/core/AppBar'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
+import Typography from '@material-ui/core/Typography'
 import { useMutation } from '@apollo/client'
-import { DropzoneArea } from 'material-ui-dropzone'
-import { SketchPicker } from 'react-color'
+import { useHistory } from 'react-router-dom'
 
-import { CREATE_TEMPLATE_MUTATION } from '../../gql'
-import { ipfs, setData } from '../../utils'
+import { ipfs, setData, getLastChars, dataURLtoFile } from '../../utils'
 import { useSharedState } from '../../context/state.context'
 import AvatarMaker from '../../components/AvatarMaker'
-// import { baselist } from '../../images/templates/templatelist'
+import ComboBox from '../../components/ComboBox'
+import { CREATE_TEMPLATE_MUTATION } from '../../gql'
+import { mainConfig } from '../../config'
 
 import styles from './styles'
 
@@ -31,34 +29,32 @@ const initialValue = {
     imageSmall: '',
     imageLarge: '',
     details: {},
-    backgroundColor: '#FFEBC3'
+    backgroundColor: '#CFCFCF'
   }
 }
 
 const CreateTemplate = () => {
   const classes = useStyles()
+  const history = useHistory()
   const { t } = useTranslation('createTemplateRoute')
   const [createTemplate, { loading }] = useMutation(CREATE_TEMPLATE_MUTATION)
   const [, { showMessage }] = useSharedState()
-  const [tab, setTab] = useState(0)
   const [payload, setPayload] = useState()
   const [canvas, setCanvas] = useState()
 
-  const handleFileUpload = field => async files => {
-    if (!files?.length) {
+  const handleFileUpload = async () => {
+    const dataUrl = canvas?.toDataURL({ format: 'png' })
+
+    if (!dataUrl) {
       return
     }
 
-    const formData = new FormData()
-    formData.append('file_name', files[0])
-
     try {
       const { path } = await ipfs.add({
-        content: files[0]
+        content: dataURLtoFile(dataUrl, 'file.png')
       })
 
-      setPayload(prev => setData(prev, field, path))
-      showMessage({ content: `${t('successUploadImage')} ${path}` })
+      return path
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
     }
@@ -69,17 +65,39 @@ const CreateTemplate = () => {
   }
 
   const handleSubmit = async () => {
-    const dataUrl = canvas?.toDataURL({ format: 'png' })
-    console.log(dataUrl)
+    const image = await handleFileUpload()
 
     try {
       const { data } = await createTemplate({
         variables: {
-          ...payload
+          ...payload,
+          metadata: {
+            ...payload.metadata,
+            imageSmall: image,
+            imageLarge: image
+          }
         }
       })
-      setPayload({ ...initialValue })
-      showMessage({ content: `${t('successMessage')} ${data.template.trxid}` })
+      setPayload(initialValue)
+      showMessage({
+        type: 'success',
+        content: (
+          <>
+            {t('successMessage')}{' '}
+            <a
+              href={mainConfig.blockExplorer.replace(
+                '{transaction}',
+                data.template.trxid
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {getLastChars(data.template.trxid)}
+            </a>
+          </>
+        )
+      })
+      history.push('/inventory')
     } catch (error) {
       showMessage({ type: 'error', content: error.message })
     }
@@ -94,27 +112,44 @@ const CreateTemplate = () => {
       <form className={classes.root} noValidate autoComplete="off">
         <Grid container justify="center" alignItems="center" spacing={2}>
           <Grid item xs={12}>
-            <TextField
-              fullWidth
-              disabled={true}
-              value={payload?.metadata?.type || ''}
-              label={t('type')}
-              onChange={handlePayloadChange('metadata.type')}
-            />
+            <Typography variant="body1">{t('paragraph1')}</Typography>
           </Grid>
 
           <Grid item xs={12}>
-            <TextField
+            <Typography variant="body1">{t('paragraph2')}</Typography>
+          </Grid>
+
+          <Grid item xs={12}>
+            <ComboBox
               fullWidth
+              variant="filled"
               value={payload?.category || ''}
               label={t('category')}
-              onChange={handlePayloadChange('category')}
+              onChange={(event, value) =>
+                handlePayloadChange('category')({
+                  target: { value }
+                })
+              }
+              options={mainConfig.categories}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <AvatarMaker
+              onGetDataUrl={setCanvas}
+              color={payload?.metadata?.backgroundColor}
+              onChangeColor={color =>
+                handlePayloadChange('metadata.backgroundColor')({
+                  target: { value: color.hex }
+                })
+              }
             />
           </Grid>
 
           <Grid item xs={12}>
             <TextField
               fullWidth
+              variant="filled"
               value={payload?.name || ''}
               label={t('name')}
               onChange={event => {
@@ -127,6 +162,7 @@ const CreateTemplate = () => {
           <Grid item xs={12}>
             <TextField
               fullWidth
+              variant="filled"
               multiline={true}
               rows={1}
               rowsMax={5}
@@ -135,71 +171,6 @@ const CreateTemplate = () => {
               onChange={handlePayloadChange('metadata.description')}
             />
           </Grid>
-
-          <Grid item xs={12}>
-            <AppBar position="static">
-              <Tabs value={tab} onChange={(event, value) => setTab(value)}>
-                <Tab label={t('avatarMaker')} />
-                <Tab label={t('myOwnDesign')} />
-              </Tabs>
-            </AppBar>
-          </Grid>
-
-          {tab === 0 && (
-            <Grid item xs={12}>
-              <AvatarMaker onGetDataUrl={setCanvas} />
-            </Grid>
-          )}
-
-          {tab === 1 && (
-            <>
-              <Grid item xs={12}>
-                <SketchPicker
-                  className={classes.colorPicker}
-                  color={payload?.metadata?.backgroundColor}
-                  onChangeComplete={color =>
-                    handlePayloadChange('metadata.backgroundColor')({
-                      target: { value: color.hex }
-                    })
-                  }
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <DropzoneArea
-                  filesLimit={1}
-                  showAlerts={false}
-                  onChange={handleFileUpload('metadata.imageSmall')}
-                  acceptedFiles={['image/*']}
-                  dropzoneText={t('smallImage')}
-                  previewGridProps={{
-                    container: {
-                      style: {
-                        backgroundColor: payload?.metadata?.backgroundColor
-                      }
-                    }
-                  }}
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <DropzoneArea
-                  filesLimit={1}
-                  showAlerts={false}
-                  onChange={handleFileUpload('metadata.imageLarge')}
-                  acceptedFiles={['image/*']}
-                  dropzoneText={t('largeImage')}
-                  previewGridProps={{
-                    container: {
-                      style: {
-                        backgroundColor: payload?.metadata?.backgroundColor
-                      }
-                    }
-                  }}
-                />
-              </Grid>
-            </>
-          )}
 
           <Button
             variant="contained"
@@ -212,7 +183,6 @@ const CreateTemplate = () => {
           </Button>
         </Grid>
       </form>
-      {/* <Memory customOptions={baselist} /> */}
     </>
   )
 }

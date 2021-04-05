@@ -11,8 +11,10 @@ ARG react_app_ual_api_host
 ARG react_app_ual_api_port
 ARG react_app_ual_chain_id
 ARG react_app_hasura_url
-ARG map_api_key
+ARG react_map_api_key
 ARG react_app_ipfs_url
+ARG react_app_block_explorer
+ARG react_app_paypal_client_id
 
 ENV WORK_DIR /usr/src/app
 ENV PATH $WORK_DIR/node_modules/.bin:$PATH
@@ -29,7 +31,11 @@ ENV REACT_APP_UAL_API_HOST $react_app_ual_api_host
 ENV REACT_APP_UAL_API_PORT $react_app_ual_api_port
 ENV REACT_APP_UAL_CHAIN_ID $react_app_ual_chain_id
 ENV REACT_APP_HASURA_URL $react_app_hasura_url
-ENV MAP_API_KEY $map_api_key
+ENV REACT_MAP_API_KEY $react_map_api_key
+ENV REACT_APP_IPFS_URL $react_app_ipfs_url
+ENV REACT_APP_BLOCK_EXPLORER $react_app_block_explorer
+ENV REACT_APP_PAYPAL_CLIENT_ID $react_app_paypal_client_id
+
 RUN mkdir -p $WORK_DIR
 
 COPY package.json $WORK_DIR/package.json

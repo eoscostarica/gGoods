@@ -18,6 +18,7 @@ const getUserFromToken = token => {
 
 const initialValue = {
   showLoginModal: false,
+  showSignupModal: false,
   useDarkMode: false,
   user: getUserFromToken(localStorage.getItem('token'))
 }
@@ -78,6 +79,18 @@ const sharedStateReducer = (state, action) => {
         user: getUserFromToken(action.payload)
       }
 
+    case 'signup':
+      return {
+        ...state,
+        showSignupModal: true
+      }
+
+    case 'cancelSignup':
+      return {
+        ...state,
+        showSignupModal: false
+      }
+
     default: {
       throw new Error(`Unsupported action type: ${action.type}`)
     }
@@ -122,6 +135,8 @@ export const useSharedState = () => {
   const logout = () => dispatch({ type: 'logout' })
   const cancelLogin = () => dispatch({ type: 'cancelLogin' })
   const successLogin = payload => dispatch({ type: 'successLogin', payload })
+  const signup = () => dispatch({ type: 'signup' })
+  const cancelSignup = () => dispatch({ type: 'cancelSignup' })
 
   return [
     state,
@@ -129,6 +144,8 @@ export const useSharedState = () => {
       setState,
       showMessage,
       hideMessage,
+      signup,
+      cancelSignup,
       login,
       logout,
       cancelLogin,

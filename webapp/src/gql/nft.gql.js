@@ -20,14 +20,14 @@ export const PUT_ON_SALE_MUTATION = gql`
     $donable: Boolean
     $memo: String
   ) {
-    sale: put_on_sale(
+    ggoods: put_on_sale(
       template: $template
       quantity: $quantity
       amount: $amount
       donable: $donable
       memo: $memo
     ) {
-      assets
+      items: ggoods
     }
   }
 `
@@ -66,13 +66,48 @@ export const TEMPLATES_QUERY = gql`
 
 export const GGOODS_ON_SALE = gql`
   query($seller: String) {
-    items: goods_on_sale(seller: $seller) {
+    items: ggoods_on_sale(seller: $seller) {
       id
+      issuer
+      owner
+      serial
       seller
       amount
       donable
       expiration
-      ggoods
+      metadata
+    }
+  }
+`
+
+export const GGOOD_ON_SALE = gql`
+  query($id: Int!) {
+    item: ggood_on_sale(id: $id) {
+      id
+      issuer
+      owner
+      serial
+      seller
+      amount
+      donable
+      expiration
+      metadata
+    }
+  }
+`
+
+export const GET_FEATURED_GGOODS_ON_SALE = gql`
+  query {
+    items: ggoods_on_sale(limit: 4) {
+      id
+      issuer
+      owner
+      serial
+      seller
+      amount
+      donable
+      expiration
+      metadata
     }
   }
 `
@@ -81,7 +116,7 @@ export const MY_GGOODS = gql`
   query {
     ggoods: my_ggoods {
       id
-      category
+      issuer
       owner
       serial
       metadata
@@ -91,8 +126,8 @@ export const MY_GGOODS = gql`
 
 export const CONFIRM_SALE_WITH_PAYPAL = gql`
   mutation($orderId: String!) {
-    confirm_sale_with_paypal(orderId: $orderId) {
-      success
+    ggoods: confirm_sale_with_paypal(orderId: $orderId) {
+      items: ggoods
     }
   }
 `
