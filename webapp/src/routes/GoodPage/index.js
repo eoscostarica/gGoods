@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { useLazyQuery } from '@apollo/client'
+import { useTranslation } from 'react-i18next'
+import { useParams, useHistory, Link as LinkRouter } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
@@ -7,9 +10,6 @@ import Grid from '@material-ui/core/Grid'
 import Chip from '@material-ui/core/Chip'
 import Hidden from '@material-ui/core/Hidden'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { useLazyQuery } from '@apollo/client'
-import { useTranslation } from 'react-i18next'
-import { useParams, useHistory } from 'react-router-dom'
 
 import { CardAvatar } from '../../components/Card'
 import DonateNow from '../../components/DonateNow'
@@ -79,6 +79,8 @@ const GoodPage = () => {
     setOrganization(organizations.items[0])
   }, [organizations])
 
+  console.log({ organization })
+
   return (
     <Box className={classes.mainBox}>
       {loading && <CircularProgress />}
@@ -94,17 +96,27 @@ const GoodPage = () => {
                   <Typography variant="h5">
                     {ggood?.item?.metadata.name}
                   </Typography>
-                  <Typography variant="caption">
-                    {t('by')} {organization?.name}
-                  </Typography>
+                  <LinkRouter
+                    style={{ textDecoration: 'none' }}
+                    to={{ pathname: `/organization/${organization?.id}` }}
+                  >
+                    <Typography variant="caption">
+                      {t('by')} {organization?.name}
+                    </Typography>
+                  </LinkRouter>
                 </Hidden>
                 <Hidden smDown>
                   <Typography variant="h3">
                     {ggood?.item?.metadata?.name}
                   </Typography>
-                  <Typography variant="h6">
-                    {t('by')} {organization?.name}
-                  </Typography>
+                  <LinkRouter
+                    style={{ textDecoration: 'none' }}
+                    to={{ pathname: `/organization/${organization?.id}` }}
+                  >
+                    <Typography variant="h6">
+                      {t('by')} {organization?.name}
+                    </Typography>
+                  </LinkRouter>
                 </Hidden>
               </Grid>
             </Grid>
