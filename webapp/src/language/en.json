@@ -56,7 +56,8 @@
       "titleVerificationCode": "Email Verification",
       "messageVerificationCode": "Thank you for wanting to be part of the gGoods community, click on the button to verify and validate your account",
       "verifyButton": "Verify"
-    }
+    },
+    "somethingHappenedWithAuth": "Oops! Something happened with the authentication. Please, check again."
   },
   "login": {
     "letsStarted": "Let's get started!",
