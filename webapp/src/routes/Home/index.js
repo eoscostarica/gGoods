@@ -31,7 +31,8 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  arrows: false
+  arrows: false,
+  autoplay: true
 }
 
 const Home = () => {
@@ -59,16 +60,16 @@ const Home = () => {
       <Slider {...settings}>
         <div>
           <CardImage
-            primaryText="Play your heart out"
-            secondaryText="Play games that integrate your NFTs"
-            img={Bg}
+            primaryText="NFTs for good!"
+            secondaryText="Digital goods designed to help good causes"
+            img={Bg1}
           />
         </div>
         <div>
           <CardImage
-            primaryText="NFTs for good!"
-            secondaryText="Digital goods designed to help good causes"
-            img={Bg1}
+            primaryText="Play your heart out"
+            secondaryText="Play games that integrate your NFTs"
+            img={Bg}
           />
         </div>
         <div>
