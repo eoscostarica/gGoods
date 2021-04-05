@@ -24,6 +24,10 @@ Publish the smart contract
 
 ```cleos set contract ggoodsggoods . ggoodsggoods.wasm ggoodsggoods.abi -p ggoodsggoods@active```
 
+Publish the smart contract on the testnet
+----
+cleos -u http://jungle3.cryptolions.io:80 set contract ggoodsggoods . ggoodsggoods.wasm ggoodsggoods.abi -p ggoodsggoods@active
+
 
 dGoods
 ======
