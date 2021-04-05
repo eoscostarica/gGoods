@@ -307,10 +307,8 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
             }
           }
         })
-      } else {
-        setErrorMessage(t('errors.authError'))
-      }
-    }
+      } else setErrorMessage(t('errors.authError'))
+    } else setErrorMessage(t('somethingHappenedWithAuth'))
   }
 
   const handlepreRegisterOrganization = () => {

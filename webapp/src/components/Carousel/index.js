@@ -17,7 +17,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const Carousel = ({ items = [], isLoading }) => {
+const Carousel = ({ items = [], isLoading, title }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [activeItems, setActiveItems] = useState()
@@ -25,10 +25,26 @@ const Carousel = ({ items = [], isLoading }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
 
   const generateItems = (activeValue = 0) => {
-    let level
     const carouselItems = []
-    const leftValue = activeValue - (isMobile ? 1 : 2)
-    const rightValue = activeValue + (isMobile ? 2 : 3)
+
+    if (items.length < 3) {
+      carouselItems.push({
+        ...items[activeValue],
+        level: 0
+      })
+      setActiveItems(carouselItems)
+
+      return
+    }
+
+    let level
+    let leftValue = activeValue - (isMobile ? 1 : 2)
+    let rightValue = activeValue + (isMobile ? 2 : 3)
+
+    if (items.length < 5) {
+      leftValue = activeValue - (isMobile ? 1 : 1)
+      rightValue = activeValue + (isMobile ? 2 : 2)
+    }
 
     for (let i = leftValue; i < rightValue; i++) {
       let index = i
@@ -62,13 +78,9 @@ const Carousel = ({ items = [], isLoading }) => {
   }
 
   useEffect(() => {
-    generateItems(active)
-  }, [isMobile, items])
-
-  useEffect(() => {
-    generateItems(active)
+    generateItems(0)
     setActive(0)
-  }, [])
+  }, [isMobile, items])
 
   return (
     <Box className={classes.carousel}>
@@ -94,7 +106,7 @@ const Carousel = ({ items = [], isLoading }) => {
         >
           <ArrowBackIosIcon />
         </IconButton>
-        <Typography>{`${items.length} GGoods Available`}</Typography>
+        <Typography align="center">{`${items.length} ${title}`}</Typography>
         <IconButton
           className={classes.arrow}
           onClick={moveRight}
@@ -108,7 +120,8 @@ const Carousel = ({ items = [], isLoading }) => {
 }
 Carousel.propTypes = {
   items: PropTypes.array,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  title: PropTypes.string
 }
 Carousel.defaultProps = {
   items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
