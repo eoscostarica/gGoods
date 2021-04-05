@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import { useTranslation } from 'react-i18next'
 
-import { oAuthConfig } from '../../../config/'
+import { oAuthConfig } from '../../../config'
 
 const useStyles = makeStyles(theme => ({
   btnGoogle: {
