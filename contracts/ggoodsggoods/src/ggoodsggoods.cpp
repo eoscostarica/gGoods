@@ -5,9 +5,9 @@
 * @version 1.1.0
 *
 * @section DESCRIPTION
-*  Header file for the declaration of all functions related with the lifeggoodsggoods contract
+*  Header file for the declaration of all functions related with the ggoodsggoods contract
 *
-* Smart contract lifeggoodsggoods, EOSIOHackathon  "Beyond Blockchain"
+* Smart contract ggoodsggoods, EOSIOHackathon  "Beyond Blockchain"
 *
 *    WebSite:        https://eoscostarica.io
 *    GitHub:         https://github.com/eoscostarica/Ggoods

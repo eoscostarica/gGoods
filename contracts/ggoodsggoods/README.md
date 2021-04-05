@@ -1,3 +1,34 @@
+<p align="center">
+	<a href="https://ggoods.io">
+		<img height="180" src="../../docs/ggoods-logo.svg" >
+	</a>
+</p>
+
+# Smart contract ggoodsggoods 
+The follow smart contract is based on  (https://dgoods.org/)
+
+Setup permissions
+---
+
+```cleos set account permission ggoodsggoods active --add-code```
+
+Compile the smart contract
+----
+
+```cd ../contracts/ggoodsggoods```
+
+```eosio-cpp -I include/ src/ggoodsggoods.cpp -o ggoodsggoods.wasm -abigen -R ricardian```
+
+Publish the smart contract
+----
+
+```cleos set contract ggoodsggoods . ggoodsggoods.wasm ggoodsggoods.abi -p ggoodsggoods@active```
+
+Publish the smart contract on the testnet
+----
+cleos -u http://jungle3.cryptolions.io:80 set contract ggoodsggoods . ggoodsggoods.wasm ggoodsggoods.abi -p ggoodsggoods@active
+
+
 dGoods
 ======
 

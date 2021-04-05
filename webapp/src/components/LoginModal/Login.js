@@ -87,7 +87,6 @@ const useStyles = makeStyles(theme => ({
   },
   btnLogin: {
     borderRadius: '50px',
-    backgroundColor: '#4DD5EA',
     width: '70%',
     fontSize: '14px',
     fontWeight: 500,
@@ -95,7 +94,6 @@ const useStyles = makeStyles(theme => ({
     fontStyle: 'normal',
     lineHeight: 1.14,
     letterSpacing: '1px',
-    color: '#ffffff',
     padding: '12px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
@@ -361,7 +359,7 @@ const LoginModal = () => {
                 className={classes.btnLogin}
                 disabled={!user.account || !user.secret || loading}
                 variant="contained"
-                color="secondary"
+                color="primary"
                 onClick={handleLogin}
               >
                 {t('login')}

@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   wrapper: {
-    height: '100%',
+    height: '100vh',
+    overflowY: 'scroll',
     padding: theme.spacing(2, 1, 0, 1),
     '& img': {
       width: 80
