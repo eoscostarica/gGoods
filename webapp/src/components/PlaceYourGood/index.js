@@ -39,14 +39,12 @@ const PlaceYourGoodMap = ({ setAnchors, availableGoods, saveClicked }) => {
     setGoods(prev => prev.filter(el => el.id !== good.id))
   }
 
-  const handleSetDraggable = (coordinates, id) => {
-    // console.log(coordinates)
+  const handleSetDraggable = (coordinates, id) =>
     setDraggables(() =>
       draggables.map(item =>
         item.id === id ? { ...item, coordinates: coordinates } : item
       )
     )
-  }
 
   useEffect(() => {
     if (saveClicked) setAnchors(draggables)
@@ -58,11 +56,9 @@ const PlaceYourGoodMap = ({ setAnchors, availableGoods, saveClicked }) => {
         <Draggable
           key={index}
           anchor={dragg.coordinates}
-          onDragEnd={value => {
-            handleSetDraggable(value, dragg.id)
-          }}
+          onDragEnd={value => handleSetDraggable(value, dragg.id)}
         >
-          <img src={dragg.image} width={100} hceight={95} alt="" />
+          <img src={dragg.image} width={100} hceight={95} alt={dragg.name} />
         </Draggable>
       ))}
       <Grid className={classes.selectGoodGrid} container justify="flex-start">
