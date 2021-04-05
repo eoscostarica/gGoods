@@ -290,8 +290,14 @@
     "successMessage": "Your new custom template it's ready to use"
   },
   "donationSuccesfulRoute": {
-    "title": "Donation Successful!",
-    "paragraph1": "We want to thank you for kindly donating towards this cause. We’re working towards empowering local communities and educating people towards the importance of wildlife preservation. Your funds will be dedicated 100% towards the specific cause listed for the good you just sponsored. "
+    "success": "Donation Succesful!",
+    "title1": "Some words from Ggoods",
+    "paragraph1": "We want to thank you for kindly donating towards this cause. We’re working towards empowering local communities and educating people towards the importance of wildlife preservation. Your funds will be dedicated 100% towards the specific cause listed for the good you just sponsored. ",
+    "title2": "What can I do next?",
+    "lineMessage": "We’re Grateful for any help you can provide!",
+    "option1": "View my Goods",
+    "option2": "Play Games",
+    "option3": "Buy more Goods"
   },
   "memoryRoute": {
     "attempts": "Attempts",
