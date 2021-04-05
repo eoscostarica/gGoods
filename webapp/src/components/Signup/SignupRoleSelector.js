@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
   },
   btn: {
     borderRadius: '50px',
-    backgroundColor: '#4DD5EA',
     width: '60%',
     fontSize: '14px',
     fontWeight: 500,
@@ -23,7 +22,6 @@ const useStyles = makeStyles(theme => ({
     fontStyle: 'normal',
     lineHeight: 1.14,
     letterSpacing: '1px',
-    color: '#ffffff',
     padding: '15px',
     marginBottom: 10,
     [theme.breakpoints.down('md')]: {
@@ -41,7 +39,7 @@ const SignupRoleSelector = ({ onSubmit }) => {
       <Button
         className={classes.btn}
         variant="contained"
-        color="secondary"
+        color="primary"
         onClick={() => {
           onSubmit('user')
         }}
@@ -51,7 +49,7 @@ const SignupRoleSelector = ({ onSubmit }) => {
       <Button
         className={classes.btn}
         variant="contained"
-        color="secondary"
+        color="primary"
         onClick={() => {
           onSubmit('organization')
         }}
