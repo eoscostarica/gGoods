@@ -71,13 +71,17 @@ const createOrganization = async ({
   email,
   emailContent,
   name,
-  secret,
   verification_code
 }) => {
   const role = 'organization'
   const account = await eosUtil.generateRandomAccountName(role.substring(0, 3))
   const { password, transaction } = await eosUtil.createAccount(account)
   const username = account
+
+  const { password: secret } = await userApi.getOnePreRegister({
+    email: { _eq: email }
+  })
+
   const { insert_user_one: user } = await userApi.insert({
     role,
     username,

@@ -27,14 +27,12 @@ export const CREATE_ACCOUNT_ORGANIZATION_MUTATION = gql`
     $email: String!
     $emailContent: jsonb!
     $name: String!
-    $secret: String!
     $verification_code: String!
   ) {
     create_account_organization(
       email: $email
       emailContent: $emailContent
       name: $name
-      secret: $secret
       verification_code: $verification_code
     ) {
       account

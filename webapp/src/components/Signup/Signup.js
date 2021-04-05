@@ -294,27 +294,21 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
     let { invitationCode } = user
     if (invitationCode === undefined || !invitationCode) invitationCode = ' '
 
-    const bcrypt = require('bcryptjs')
-    const saltRounds = 10
-    bcrypt.hash(password, saltRounds, function (err, hash) {
-      if (!err) {
-        preRegisterOrganization({
-          variables: {
-            email,
-            emailContent: {
-              subject: t('emailMessage.subjectVerificationCode'),
-              title: t('emailMessage.titleVerificationCode'),
-              message: t('emailMessage.messageVerificationCode'),
-              button: t('emailMessage.verifyButton')
-            },
-            password: hash,
-            name,
-            address,
-            phone,
-            description,
-            invitation_code: invitationCode
-          }
-        })
+    preRegisterOrganization({
+      variables: {
+        email,
+        emailContent: {
+          subject: t('emailMessage.subjectVerificationCode'),
+          title: t('emailMessage.titleVerificationCode'),
+          message: t('emailMessage.messageVerificationCode'),
+          button: t('emailMessage.verifyButton')
+        },
+        passwordPlainText: password,
+        name,
+        address,
+        phone,
+        description,
+        invitation_code: invitationCode
       }
     })
   }
