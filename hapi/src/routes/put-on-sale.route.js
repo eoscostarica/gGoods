@@ -5,7 +5,8 @@ const { nftService } = require('../services')
 module.exports = {
   method: 'POST',
   path: '/put-on-sale',
-  handler: ({ payload: { input } }) => nftService.putOnSale(input),
+  handler: ({ auth: { credentials }, payload: { input } }) =>
+    nftService.putOnSale(credentials, input),
   options: {
     validate: {
       payload: Joi.object({
@@ -16,8 +17,6 @@ module.exports = {
           donable: Joi.bool().optional()
         }).required()
       }).options({ stripUnknown: true })
-    },
-    // TODO: ENABLED AUTH HERE
-    auth: false
+    }
   }
 }

@@ -5,7 +5,8 @@ const { nftService } = require('../services')
 module.exports = {
   method: 'POST',
   path: '/create-template',
-  handler: ({ payload: { input } }) => nftService.createTemplate(input),
+  handler: ({ auth: { credentials }, payload: { input } }) =>
+    nftService.createTemplate(credentials, input),
   options: {
     validate: {
       payload: Joi.object({
@@ -15,8 +16,6 @@ module.exports = {
           metadata: Joi.object().required()
         }).required()
       }).options({ stripUnknown: true })
-    },
-    // TODO: ENABLED AUTH HERE
-    auth: false
+    }
   }
 }

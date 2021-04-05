@@ -8,14 +8,16 @@ const getUserFromToken = token => {
   if (!token) return
 
   const claims = jwtDecode(token)
+
   return {
-    account: claims.sub,
-    role: claims?.['https://hasura.io/jwt/claims']['x-hasura-default-role']
+    account: claims['https://hasura.io/jwt/claims']['x-hasura-user-account'],
+    role: claims['https://hasura.io/jwt/claims']['x-hasura-default-role']
   }
 }
 
 const initialValue = {
   showLoginModal: false,
+  showSignupModal: false,
   useDarkMode: false,
   user: getUserFromToken(localStorage.getItem('token'))
 }
@@ -24,8 +26,7 @@ const sharedStateReducer = (state, action) => {
   switch (action.type) {
     case 'ual':
       return {
-        ...state,
-        user: action.ual?.activeUser
+        ...state
       }
 
     case 'set': {
@@ -77,6 +78,18 @@ const sharedStateReducer = (state, action) => {
         user: getUserFromToken(action.payload)
       }
 
+    case 'signup':
+      return {
+        ...state,
+        showSignupModal: true
+      }
+
+    case 'cancelSignup':
+      return {
+        ...state,
+        showSignupModal: false
+      }
+
     default: {
       throw new Error(`Unsupported action type: ${action.type}`)
     }
@@ -121,6 +134,8 @@ export const useSharedState = () => {
   const logout = () => dispatch({ type: 'logout' })
   const cancelLogin = () => dispatch({ type: 'cancelLogin' })
   const successLogin = payload => dispatch({ type: 'successLogin', payload })
+  const signup = () => dispatch({ type: 'signup' })
+  const cancelSignup = () => dispatch({ type: 'cancelSignup' })
 
   return [
     state,
@@ -128,6 +143,8 @@ export const useSharedState = () => {
       setState,
       showMessage,
       hideMessage,
+      signup,
+      cancelSignup,
       login,
       logout,
       cancelLogin,

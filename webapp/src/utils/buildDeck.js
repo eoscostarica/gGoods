@@ -1,28 +1,27 @@
 import shuffle from 'lodash.shuffle'
 
-import { bglist } from '../images/templates/templatelist'
-
 const MAX_CARDS_NUMBER = 20
 
-export const buildDeck = options => {
-  let data = []
-  const cards = []
-
-  if (options.length && options.length < 10) {
-    const splitedData = bglist.slice(0, 10 - options.length)
-
-    data = [...options, ...splitedData]
+export const buildDeck = ggoods => {
+  if (!ggoods.length) {
+    return []
   }
 
+  const splitedData = ggoods.slice(0, MAX_CARDS_NUMBER)
+  const cards = [...splitedData, ...splitedData].map(ggood => ({
+    ...ggood,
+    isGuessedRight: false
+  }))
+
   while (cards.length < MAX_CARDS_NUMBER) {
-    const index = Math.floor(Math.random() * data.length)
+    const index = Math.floor(Math.random() * ggoods.length)
     const card = {
-      image: data.splice(index, 1)[0],
-      guessedRight: false
+      ...ggoods[index],
+      isGuessedRight: false
     }
 
     cards.push(card)
-    cards.push({ ...card })
+    cards.push(card)
   }
 
   return shuffle(cards)

@@ -25,7 +25,6 @@ import {
 } from '../../gql'
 import { useSharedState } from '../../context/state.context'
 import LoginWithGoogle from './LoginWithGoogle'
-import Signup from '../../components/Signup'
 
 const useStyles = makeStyles(theme => ({
   alert: {
@@ -110,6 +109,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: 30,
     marginBottom: 10
   },
+  registerBoxModal: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
   btnLoginModal: {
     borderRadius: '4px',
     boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.24)',
@@ -122,6 +127,15 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: '1px',
     color: '#121212',
     padding: '10px'
+  },
+  registerTextModal: {
+    fontSize: '12px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: 1.33,
+    letterSpacing: '0.4px',
+    color: '#000000'
   },
   labelOption: {
     color: `${theme.palette.primary.main} !important`,
@@ -136,15 +150,18 @@ const useStyles = makeStyles(theme => ({
   registerBtnSideBar: {
     display: 'flex',
     alignItems: 'center'
+  },
+  sampleCredentials: {
+    padding: theme.spacing(3)
   }
 }))
 
 const LoginModal = () => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('login')
   const [user, setUser] = useState({})
   const [
     { showLoginModal: open },
-    { cancelLogin, successLogin }
+    { signup, cancelLogin, successLogin }
   ] = useSharedState()
   const [errorMessage, setErrorMessage] = useState(null)
   const classes = useStyles()
@@ -198,11 +215,11 @@ const LoginModal = () => {
             }
           })
         } else {
-          setErrorMessage(t('login.invalidAccountOrPassword'))
+          setErrorMessage(t('invalidAccountOrPassword'))
         }
       })
     } else {
-      setErrorMessage(t('login.invalidAccountOrPassword'))
+      setErrorMessage(t('invalidAccountOrPassword'))
     }
   }
 
@@ -224,15 +241,15 @@ const LoginModal = () => {
                 secret: hash
               }
             })
-          } else setErrorMessage(t('login.invalidAccountOrPassword'))
+          } else setErrorMessage(t('invalidAccountOrPassword'))
         })
-      } else setErrorMessage(t('login.accountDoesntExist'))
-    } else setErrorMessage(t('login.somethingHappenedWithAuth'))
+      } else setErrorMessage(t('accountDoesntExist'))
+    } else setErrorMessage(t('somethingHappenedWithAuth'))
   }
 
   useEffect(() => {
     if (error) {
-      setErrorMessage(error.message.replace('GraphQL error: ', ''))
+      setErrorMessage(error.message)
     }
   }, [error])
 
@@ -249,6 +266,7 @@ const LoginModal = () => {
       handleLogin()
     }
   }
+
   return (
     <>
       <Dialog
@@ -276,10 +294,10 @@ const LoginModal = () => {
           </Box>
           <Box>
             <Typography className={classes.title}>
-              {t('login.letsStarted')}
+              {t('letsStarted')}
             </Typography>
             <Typography className={classes.subTitle}>
-              {t('login.subtitle')}
+              {t('subtitle')}
             </Typography>
           </Box>
           {errorMessage && (
@@ -304,7 +322,7 @@ const LoginModal = () => {
             <Box>
               <TextField
                 id="account"
-                label={t('common.email')}
+                label={t('email-account')}
                 variant="outlined"
                 className={classes.inputStyle}
                 onChange={event =>
@@ -324,7 +342,7 @@ const LoginModal = () => {
               />
               <TextField
                 id="secret"
-                label={t('signup.password')}
+                label={t('password')}
                 type="password"
                 variant="outlined"
                 className={classes.inputStyle}
@@ -335,7 +353,7 @@ const LoginModal = () => {
             <FormControlLabel
               className={classes.formCheckBox}
               control={<Checkbox name="checkLogin" />}
-              label={t('login.loggedIn')}
+              label={t('loggedIn')}
             />
             <Box className={classes.centerBox}>
               <Button
@@ -346,7 +364,7 @@ const LoginModal = () => {
                 color="secondary"
                 onClick={handleLogin}
               >
-                {t('login.login')}
+                {t('login')}
               </Button>
             </Box>
             <Box className={classes.centerBox}>
@@ -355,10 +373,41 @@ const LoginModal = () => {
             <Box className={classes.centerBox}>
               <LoginWithGoogle onSubmit={handleLoginWithAuth} />
             </Box>
+            <Box className={classes.registerBox}>
+              <Button
+                color="secondary"
+                className={classes.registerTextModal}
+                onClick={() => {
+                  handleOpen()
+                  signup()
+                }}
+              >
+                {t('notAccount')}
+              </Button>
+            </Box>
+            <Typography variant="h6">Log in with a demo account</Typography>
+            <dl>
+              <dt>
+                <Typography variant="h7">Organization User</Typography>
+              </dt>
+              <dd>
+                <Typography variant="body1">username: animalrescue</Typography>
+              </dd>
+              <dd>
+                <Typography variant="body1">password: organization</Typography>
+              </dd>
+
+              <dt>
+                <Typography variant="h7">Regular User</Typography>
+              </dt>
+              <dd>
+                <Typography variant="body1">username: iamthebestgg</Typography>
+              </dd>
+              <dd>
+                <Typography variant="body1">password: user</Typography>
+              </dd>
+            </dl>
           </form>
-          <Box className={classes.registerBox}>
-            <Signup isModal />
-          </Box>
         </Box>
       </Dialog>
     </>

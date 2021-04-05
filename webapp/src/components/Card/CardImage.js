@@ -20,7 +20,7 @@ const CardImage = ({ img, primaryText, secondaryText }) => {
         <CardMedia className={classes.cardImageMedia} image={img} />
         <Box className={classes.boxInfoCard}>
           <Typography variant="h5">{primaryText}</Typography>
-          <Typography variant="p">{secondaryText}</Typography>
+          <Typography>{secondaryText}</Typography>
         </Box>
       </CardActionArea>
     </Card>

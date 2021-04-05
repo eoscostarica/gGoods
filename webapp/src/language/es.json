@@ -1,118 +1,97 @@
 {
-  "translations": {
-    "common": {
-      "login": "Ingresar",
-      "signOut": "Salir",
-      "lightMode": "Modo Claro",
-      "darkMode": "Modo Oscuro",
-      "category": "Categoria",
-      "name": "Nombre",
-      "confirm": "Confirmar",
-      "email": "Correo electrónico",
-      "description": "Descripción",
-      "account": "Cuenta"
-    },
-    "homeRoute": {
-      "welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac viverra nunc, vitae rhoncus metus. Donec placerat ipsum nec ligula lacinia ornare. Cras et felis sit amet libero fermentum faucibus ut id justo. Maecenas vel nibh sed nibh faucibus rutrum. Pellentesque vel nibh molestie, eleifend magna in, eleifend nibh. Praesent elementum libero non ligula viverra feugiat. Morbi blandit massa nec posuere pellentesque. Quisque ac imperdiet tellus. Donec sed lorem sit amet nisl posuere dignissim at a sapien. In tristique et sapien et hendrerit. Nam aliquet quis turpis eu porttitor. Aenean odio augue, lacinia id ipsum at, dignissim sagittis libero. Pellentesque ex justo, tempus et rhoncus vitae, mattis vel justo. Suspendisse pellentesque nisi porttitor est posuere consectetur. Proin ornare orci eleifend, vestibulum massa et, bibendum nulla. Integer rutrum id quam et rhoncus. Nullam pretium pharetra magna in mattis. Nulla et sapien sit amet nibh dictum consectetur a quis dui. Morbi ac vestibulum eros. Ut commodo, dolor in sollicitudin euismod, libero lacus bibendum justo, non lobortis magna tellus vehicula turpis. Maecenas dignissim eget tellus eu molestie. Morbi pellentesque viverra ornare. Vivamus id feugiat nisi. Proin lobortis rhoncus finibus. Proin eu tellus dolor. Suspendisse ac tincidunt neque. In tincidunt ullamcorper lorem. Nulla facilisi."
-    },
-    "aboutRoute": {
-      "title": "Este proyecto",
-      "subtitle1": "Ques es?",
-      "paragraph1": "<!-- >",
-      "subtitle2": "Por que es importante?",
-      "paragraph2": "<!-- >",
-      "subtitle3": "De donde vienen los datos?",
-      "paragraph3": "<!-- >"
-    },
-    "helpRoute": {
-      "title": "Gracias por usar nuestro producto!",
-      "paragraph": "Este proyecto aún está en proceso. No dude en dejar sugerencias de actualización, registrar errores o usar el código usted mismo. También puede encontrarnos en Telegram o visitar nuestro sitio web.",
-      "githubEOSCR": "GitHub EOS Costa Rica",
-      "telegramChannel": "Grupo de Telegram",
-      "websiteEOSCR": "Página web EOS Costa Rica"
-    },
-    "signup": {
-      "register": "Registro",
-      "registerText": "Elija la opción que más le convenga. ",
-      "sucessfulPreregistration": "Pre-registro exitoso",
-      "sucessfulRegistration": "Registro exitoso",
-      "createAnewAccount": "Crear una nueva cuenta",
-      "allYouNeed": "Para registrarte, lo único que tienes que poner es tu email y contraseña",
-      "preRegisterAnewAccount": "Pre-registrar una nueva cuenta",
-      "preRegistrationRequirement": "Para poder realizar el pre-registro, debe indicar la siguiente información, necesaria para la aprobación de la Organización",
-      "termsAndConditions": "Términos y condiciones",
-      "termsAndConditionsInfo": "Esta cuenta debe aceptar nuestros términos y condiciones para los contratos inteligentes. Puede revocar el consentimiento en cualquier momento.",
-      "transactionId": "Id transacción",
-      "password": "Contraseña",
-      "confirmPassword": "Confirmar contraseña",
-      "passwordNotMatch": "Las contraseñas no coinciden",
-      "iAccept": "Acepto",
-      "signupWithGoogle": "Registrarse con Google",
-      "createAccount": "Crear cuenta",
-      "name": "Nombre",
-      "address": "Dirección",
-      "addressPlaceholder": "Escribe tu dirección aquí",
-      "phoneNumber": "Número de teléfono",
-      "phoneNumberPlaceholder": "Escribe tu número aquí",
-      "invitationCode": "Código de invitación",
-      "chooseYourLocation": "Escoge tu ubicación",
-      "asAUser": "Como Usuario",
-      "asAOrganization": "Como Organización",
-      "about": "Acerca de",
-      "aboutPlaceholder": "Acerca de la Organización"
-    },
-    "login": {
-      "letsStarted": "¡Empecemos!",
-      "subtitle": "Inicie sesión para acceder a sus marcadores y preferencias personales.",
-      "loggedIn": "Mantenme conectado",
-      "login": "Iniciar sesión",
-      "accountDoesntExist": "Esta cuenta no existe",
-      "somethingHappenedWithAuth": "Un evento inesperado ha ocurrido",
-      "demoCredentials": "Credenciales de prueba",
-      "invalidAccountOrPassword": "Cuenta o contraseña incorrecta",
-      "loginWithGoogle": "Iniciar sesión con Google",
-      "logout": "Cerrar sesión",
-      "notAccount": "¿No tienes cuenta aún? Registrarse aquí."
-    },
-    "miscellaneous": {
-      "continue": "Continuar"
-    },
-    "emailMessage": {
-      "subjectApproveAccount": "Ggoods Cuenta Aprobada",
-      "titleApproveAccount": "Cuenta Aprobada",
-      "messageApproveAccount": "Su solicitud de registro en Ggoods ha sido aprobada, gracias por ser parte de este proyecto.",
-      "subjectChangePassword": "Ggoods Cambio de Contraseña",
-      "titleChangePassword": "Cambio de Contraseña",
-      "messageChangePassword": "Su contraseña ha sido cambiada con éxito, gracias por donar.",
-      "subjectCredentialsRecovery": "Ggoods Recuperación de Credenciales",
-      "titleCredentialsRecovery": "Recuperación de Credenciales",
-      "messageCredentialsRecovery": "Se ha generado una nueva contraseña para su cuenta, con esta ahora podes acceder a Ggoods y continuar donando.",
-      "subjectVerificationCode": "Ggoods Verificación del Email",
-      "titleVerificationCode": "Verificación del Email",
-      "messageVerificationCode": "Gracias por ser parte de la comunidad de Ggoods, haga clic en el botón para verificar y validar su cuenta.",
-      "verifyButton": "Verificar"
-    },
-    "emailVerification": {
-      "emailVerified": "Tu correo ha sido verificado",
-      "somethingHappened": "Ha ocurrido un evento inesperado al tratar de verificar tu email",
-      "takeHome": "Ir al inicio"
-    },
-    "approveAccount": {
-      "accountapprove": "Esta cuenta ha sido aprobada",
-      "somethingHappened": "Algo sucedió al intentar aprobar esta cuenta"
-    },
-    "credentialsRecovery": {
-      "credentialsRecovery": "Recuperación de credenciales",
-      "emailError": "El correo ingresado no esta asociado a ninguna cuenta",
-      "changePasswordInstructions": "Para cambiar su contraseña ingrese el correo asociado a su cuenta, la contraseña la actual y la nueva",
-      "changePassword": "Cambiar contraseña",
-      "currentPassword": "Contraseña actual",
-      "errorPassword": "La contraseña actual no coinside con su correo",
-      "newPassword": "Nueva contraseña",
-      "instructionCredentialsRecovery": "Ingrese el correo asociado a su cuenta para poder recuperarla",
-      "checkYourEmail": "Revisa tu correo",
-      "recovery": "Recuperar"
-    }
+  "common": {
+    "login": "Ingresar",
+    "signOut": "Salir",
+    "lightMode": "Modo Claro",
+    "darkMode": "Modo Oscuro",
+    "category": "Categoria",
+    "name": "Nombre",
+    "confirm": "Confirmar",
+    "email": "Correo electrónico",
+    "description": "Descripción",
+    "account": "Cuenta"
+  },
+  "signup": {
+    "register": "Registro",
+    "registerText": "Elija la opción que más le convenga. ",
+    "sucessfulPreregistration": "Pre-registro exitoso",
+    "sucessfulRegistration": "Registro exitoso",
+    "createAnewAccount": "Crear una nueva cuenta",
+    "allYouNeed": "Para registrarte, lo único que tienes que poner es tu email y contraseña",
+    "preRegisterAnewAccount": "Pre-registrar una nueva cuenta",
+    "preRegistrationRequirement": "Para poder realizar el pre-registro, debe indicar la siguiente información, necesaria para la aprobación de la Organización",
+    "termsAndConditions": "Términos y condiciones",
+    "termsAndConditionsInfo": "Esta cuenta debe aceptar nuestros términos y condiciones para los contratos inteligentes. Puede revocar el consentimiento en cualquier momento.",
+    "transactionId": "Id transacción",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "passwordNotMatch": "Las contraseñas no coinciden",
+    "iAccept": "Acepto",
+    "signupWithGoogle": "Registrarse con Google",
+    "createAccount": "Crear cuenta",
+    "name": "Nombre",
+    "address": "Dirección",
+    "addressPlaceholder": "Escribe tu dirección aquí",
+    "phoneNumber": "Número de teléfono",
+    "phoneNumberPlaceholder": "Escribe tu número aquí",
+    "invitationCode": "Código de invitación",
+    "chooseYourLocation": "Escoge tu ubicación",
+    "asAUser": "Como Usuario",
+    "asAOrganization": "Como Organización",
+    "about": "Acerca de",
+    "aboutPlaceholder": "Acerca de la Organización"
+  },
+  "login": {
+    "letsStarted": "¡Empecemos!",
+    "subtitle": "Inicie sesión para acceder a sus marcadores y preferencias personales.",
+    "loggedIn": "Mantenme conectado",
+    "login": "Iniciar sesión",
+    "accountDoesntExist": "Esta cuenta no existe",
+    "somethingHappenedWithAuth": "Un evento inesperado ha ocurrido",
+    "demoCredentials": "Credenciales de prueba",
+    "invalidAccountOrPassword": "Cuenta o contraseña incorrecta",
+    "loginWithGoogle": "Iniciar sesión con Google",
+    "logout": "Cerrar sesión",
+    "notAccount": "¿No tienes cuenta aún? Registrarse aquí."
+  },
+  "miscellaneous": {
+    "continue": "Continuar"
+  },
+  "emailMessage": {
+    "subjectApproveAccount": "gGoods Cuenta Aprobada",
+    "titleApproveAccount": "Cuenta Aprobada",
+    "messageApproveAccount": "Su solicitud de registro en gGoods ha sido aprobada, gracias por ser parte de este proyecto.",
+    "subjectChangePassword": "gGoods Cambio de Contraseña",
+    "titleChangePassword": "Cambio de Contraseña",
+    "messageChangePassword": "Su contraseña ha sido cambiada con éxito, gracias por donar.",
+    "subjectCredentialsRecovery": "gGoods Recuperación de Credenciales",
+    "titleCredentialsRecovery": "Recuperación de Credenciales",
+    "messageCredentialsRecovery": "Se ha generado una nueva contraseña para su cuenta, con esta ahora podes acceder a gGoods y continuar donando.",
+    "subjectVerificationCode": "gGoods Verificación del Email",
+    "titleVerificationCode": "Verificación del Email",
+    "messageVerificationCode": "Gracias por ser parte de la comunidad de gGoods, haga clic en el botón para verificar y validar su cuenta.",
+    "verifyButton": "Verificar"
+  },
+  "emailVerification": {
+    "emailVerified": "Tu correo ha sido verificado",
+    "somethingHappened": "Ha ocurrido un evento inesperado al tratar de verificar tu email",
+    "takeHome": "Ir al inicio"
+  },
+  "approveAccount": {
+    "accountapprove": "Esta cuenta ha sido aprobada",
+    "somethingHappened": "Algo sucedió al intentar aprobar esta cuenta"
+  },
+  "credentialsRecovery": {
+    "credentialsRecovery": "Recuperación de credenciales",
+    "emailError": "El correo ingresado no esta asociado a ninguna cuenta",
+    "changePasswordInstructions": "Para cambiar su contraseña ingrese el correo asociado a su cuenta, la contraseña la actual y la nueva",
+    "changePassword": "Cambiar contraseña",
+    "currentPassword": "Contraseña actual",
+    "errorPassword": "La contraseña actual no coinside con su correo",
+    "newPassword": "Nueva contraseña",
+    "instructionCredentialsRecovery": "Ingrese el correo asociado a su cuenta para poder recuperarla",
+    "checkYourEmail": "Revisa tu correo",
+    "recovery": "Recuperar"
   },
   "routes": {
     "/>title": "EOSIO Boilerplate",
@@ -160,7 +139,15 @@
   },
   "goodsRoute": {
     "title": "Goods",
-    "paragraph1": "Vitual goods designed to help good causes, buy or suscribe to help or just play."
+    "paragraph1": "Virtual goods designed to help good causes, buy or subscribe to help or just play.",
+    "filter": "FILTERS",
+    "available": " GOODS AVAILABLE"
+  },
+  "filterGoodsRoute": {
+    "title": "Filter items",
+    "bottonTitle": "Filter",
+    "subtitle1": "Author",
+    "subtitle2": "Donation Amount"
   },
   "collectionRoute": {
     "title": "My collection",

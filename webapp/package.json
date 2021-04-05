@@ -2,14 +2,15 @@
   "name": "gGoods",
   "version": "1.0.0",
   "description": "gGoods WebApp",
-  "repository": "https://github.com/eoscostarica/Ggoods.git",
+  "repository": "https://github.com/eoscostarica/gGoods.git",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "eject": "react-scripts eject",
     "lint": "lint-staged",
     "test": "env-cmd -f ../.env react-app-rewired test --env=jsdom",
-    "start:local": "env-cmd -f ../.env react-app-rewired start"
+    "start:local": "env-cmd -f ../.env react-app-rewired start",
+    "lint:all": "eslint src/**/*.js"
   },
   "husky": {
     "hooks": {
@@ -40,7 +41,6 @@
     "core-js": "^3.9.1",
     "date-fns": "^2.19.0",
     "eosjs-api": "^7.0.4",
-    "fabric": "^4.3.1",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.11.0",
     "history": "^5.0.0",
@@ -64,6 +64,7 @@
     "react-html5-camera-photo": "^1.5.4",
     "react-i18next": "^11.8.8",
     "react-is": "^17.0.1",
+    "react-markdown": "^5.0.3",
     "react-paypal-button-v2": "^2.6.3",
     "react-perfect-scrollbar": "^1.5.8",
     "react-rnd": "^10.2.4",

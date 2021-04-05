@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const EmailVerification = () => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('emailVerification')
   const classes = useStyles()
   const [validate, setValidate] = useState(true)
   const { code } = useParams()
@@ -124,12 +124,12 @@ const EmailVerification = () => {
             {loadingVerifyEmail && <CircularProgress />}
             {!loadingVerifyEmail && validate && (
               <Typography className={classes.title}>
-                {t('emailVerification.emailVerified')}
+                {t('emailVerified')}
               </Typography>
             )}
             {!loadingVerifyEmail && !validate && (
               <Typography className={classes.title}>
-                {t('emailVerification.somethingHappened')}
+                {t('somethingHappened')}
               </Typography>
             )}
             {!loadingVerifyEmail && (
@@ -140,7 +140,7 @@ const EmailVerification = () => {
                 to="/"
                 className={classes.btnHome}
               >
-                {t('emailVerification.takeHome')}
+                {t('takeHome')}
               </Button>
             )}
           </Box>

@@ -12,17 +12,7 @@ export const GET_CONTRACT_QUERY = gql`
 
 export const GET_CONTRACTS_QUERY = gql`
   query {
-    consent2life: get_contract(name: "consent2life") {
-      name
-      hash
-      abi
-    }
-    lifebankcode: get_contract(name: "lifebankcode") {
-      name
-      hash
-      abi
-    }
-    lifebankcoin: get_contract(name: "lifebankcoin") {
+    ggoodsggoods: get_contract(name: "ggoodsggoods") {
       name
       hash
       abi

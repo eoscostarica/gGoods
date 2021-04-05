@@ -1,60 +1,61 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { makeStyles } from '@material-ui/styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
+import { useQuery, useLazyQuery } from '@apollo/client'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { useHistory } from 'react-router-dom'
 
 import { CardAvatar } from '../../components/Card'
 import PublishGood from '../../components/PublishGood'
 import PublishGoodInfo from '../../components/PublishGoodInfo'
+import { useSharedState } from '../../context/state.context'
+import { GGOODS_ON_SALE, TEMPLATES_QUERY } from '../../gql'
 
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const templatesList = [
-  {
-    name: 'Lola the Jaguar'
-  }
-]
-
-const goodsList = [
-  {
-    name: 'Lola the Jaguar',
-    donation: '10',
-    units: 10
-  },
-  {
-    name: 'Lola the Jaguar',
-    donation: '10'
-  }
-]
-
 const Inventory = () => {
   const classes = useStyles()
   const { t } = useTranslation('inventoryRoute')
-  const [openModalPublish, setOpenModalPublish] = useState(false)
-  const [openModalPublishInfo, setOpenModalPublishInfo] = useState(false)
+  const history = useHistory()
+  const [selectedTemplate, setSelectedTemplate] = useState()
+  const [selectedGGood, setSelectedGGood] = useState()
+  const [{ user }] = useSharedState()
+  const [loadGGoods, { loading: loadingGGoods, data: ggoods }] = useLazyQuery(
+    GGOODS_ON_SALE,
+    {
+      variables: { seller: user?.account },
+      fetchPolicy: 'network-only'
+    }
+  )
+  const { loading: loadingTemplates, data: templates } = useQuery(
+    TEMPLATES_QUERY,
+    {
+      fetchPolicy: 'network-only'
+    }
+  )
 
-  const handlerPublish = () => {
-    console.log('hola mundo')
-    setOpenModalPublish(true)
+  const handleOnClickGGood = ggood => () => {
+    setSelectedGGood(ggood)
   }
 
-  const handlerViewPublish = () => {
-    console.log('hola mundo')
-    setOpenModalPublishInfo(true)
+  const handleOnClickTemplate = template => () => {
+    setSelectedTemplate(template)
   }
 
-  const handlerCloseModalPublish = () => {
-    setOpenModalPublish(false)
+  const handleOnClose = () => {
+    setSelectedTemplate(null)
+    loadGGoods()
   }
 
-  const handlerCloseModalPublishInfo = () => {
-    setOpenModalPublishInfo(false)
-  }
+  useEffect(() => {
+    loadGGoods()
+  }, [])
 
   return (
     <Box className={classes.mainBox}>
@@ -64,13 +65,15 @@ const Inventory = () => {
         </Typography>
         <Typography variant="body1">{t('paragraph1')}</Typography>
       </Box>
+
       <Box className={classes.sectionBox}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <Button
               variant="contained"
               color="primary"
-              className={classes.MainButton}
+              className={classes.mainButton}
+              onClick={() => history.push('/create-custom-template')}
             >
               {t('uploadButton')}
             </Button>
@@ -79,75 +82,96 @@ const Inventory = () => {
             <Button
               variant="contained"
               color="secondary"
-              className={classes.MainButton}
+              className={classes.mainButton}
+              onClick={() => history.push('/create-template')}
             >
               {t('createButton')}
             </Button>
           </Grid>
         </Grid>
       </Box>
-      {templatesList.length === 0 && goodsList.length === 0 && (
+
+      <Box className={classes.sectionBox}>
         <Box className={classes.sectionBox}>
-          <Typography
-            variant="overline"
-            align="center"
-            className={classes.overlineTag}
-          >
-            {t('emptyTemplate')}
+          <Typography variant="h6" gutterBottom>
+            {t('templatesTitle')} ({templates?.items.length})
           </Typography>
-        </Box>
-      )}
-      {templatesList.length > 0 && (
-        <Box className={classes.sectionBox}>
-          <Box className={classes.sectionBox}>
-            <Typography variant="h6" gutterBottom>
-              {t('templatesTitle')} ({templatesList.length})
-            </Typography>
+          {loadingTemplates && <CircularProgress />}
+          {!loadingTemplates && !!templates?.items?.length && (
             <Typography variant="body1">{t('templatesParagraph')}</Typography>
-          </Box>
-          <Grid container spacing={2}>
-            {templatesList.map(template => (
-              <Grid item xs={6} md={3} lg={2} key={template.name}>
-                <CardAvatar
-                  name={template.name}
-                  publish
-                  handlerPublish={handlerPublish}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      )}
-      {goodsList.length > 0 && (
-        <Box className={classes.sectionBox}>
-          <Box className={classes.sectionBox}>
-            <Typography variant="h6" gutterBottom>
-              {t('goodsTitle')} ({goodsList.length})
+          )}
+          {!loadingTemplates && !templates?.items?.length && (
+            <Typography
+              variant="overline"
+              align="center"
+              className={classes.overlineTag}
+            >
+              {t('emptyTemplates')}
             </Typography>
-            <Typography variant="body1">{t('goodsParagraph')}</Typography>
-          </Box>
+          )}
+        </Box>
+        {templates?.items?.length > 0 && (
           <Grid container spacing={2}>
-            {goodsList.map(goods => (
-              <Grid item xs={6} md={3} lg={2} key={goods.name}>
+            {templates?.items.map(template => (
+              <Grid item xs={6} md={3} lg={2} key={template.id}>
                 <CardAvatar
-                  name={goods.name}
-                  donation={goods.donation}
-                  units={goods.units}
-                  viewPusblish
-                  handlerViewPublish={handlerViewPublish}
+                  name={template.metadata.name}
+                  image={template.metadata.imageSmall}
+                  backgroundColor={template.metadata.backgroundColor}
+                  onClick={handleOnClickTemplate(template)}
                 />
               </Grid>
             ))}
           </Grid>
+        )}
+      </Box>
+
+      <Box className={classes.sectionBox}>
+        <Box className={classes.sectionBox}>
+          <Typography variant="h6" gutterBottom>
+            {t('ggoodsTitle')} ({ggoods?.items.length})
+          </Typography>
+          {loadingGGoods && <CircularProgress />}
+          {!loadingGGoods && !!ggoods?.items?.length && (
+            <Typography variant="body1">{t('ggoodsParagraph')}</Typography>
+          )}
+          {!loadingGGoods && !ggoods?.items?.length && (
+            <Typography
+              variant="overline"
+              align="center"
+              className={classes.overlineTag}
+            >
+              {t('emptyGGoods')}
+            </Typography>
+          )}
         </Box>
-      )}
+        {ggoods?.items?.length > 0 && (
+          <Grid container spacing={2}>
+            {ggoods?.items.map(ggood => (
+              <Grid item xs={6} md={3} lg={2} key={ggood.id}>
+                <CardAvatar
+                  name={ggood.metadata.name}
+                  image={ggood.metadata.imageSmall}
+                  backgroundColor={ggood.metadata.backgroundColor}
+                  donation={ggood.amount}
+                  onClick={handleOnClickGGood(ggood)}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Box>
+
       <PublishGood
-        open={openModalPublish}
-        handlerOpen={handlerCloseModalPublish}
+        open={!!selectedTemplate}
+        onClose={handleOnClose}
+        template={selectedTemplate}
       />
+
       <PublishGoodInfo
-        open={openModalPublishInfo}
-        handlerOpen={handlerCloseModalPublishInfo}
+        open={!!selectedGGood}
+        onClose={() => setSelectedGGood(null)}
+        ggood={selectedGGood}
       />
     </Box>
   )

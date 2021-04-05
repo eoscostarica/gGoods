@@ -10,5 +10,13 @@ export default theme => ({
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(2)
     }
+  },
+  available: {
+    flexGrow: 1,
+    paddingTop: 5
+  },
+  box: {
+    display: 'flex',
+    marginBottom: theme.spacing(1)
   }
 })

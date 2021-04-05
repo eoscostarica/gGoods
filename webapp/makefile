@@ -33,6 +33,9 @@ build-docker: ./Dockerfile
 		--build-arg react_app_ual_api_port="$(REACT_APP_UAL_API_PORT)" \
 		--build-arg react_app_ual_chain_id="$(REACT_APP_UAL_CHAIN_ID)" \
 		--build-arg react_app_hasura_url="$(REACT_APP_HASURA_URL)" \
+		--build-arg react_app_ipfs_url="$(REACT_APP_IPFS_URL)" \
+		--build-arg react_app_paypal_client_id="$(REACT_APP_PAYPAL_CLIENT_ID)" \
+		--build-arg react_app_block_explorer="$(REACT_APP_BLOCK_EXPLORER)" \
 		.
 
 pull-image: ##@devops Pull the latest image from registry for caching
@@ -57,6 +60,9 @@ build-docker-cached: ./Dockerfile
                 --build-arg react_app_ual_api_port="$(REACT_APP_UAL_API_PORT)" \
                 --build-arg react_app_ual_chain_id="$(REACT_APP_UAL_CHAIN_ID)" \
                 --build-arg react_app_hasura_url="$(REACT_APP_HASURA_URL)" \
+								--build-arg react_app_ipfs_url="$(REACT_APP_IPFS_URL)" \
+								--build-arg react_app_paypal_client_id="$(REACT_APP_PAYPAL_CLIENT_ID)" \
+								--build-arg react_app_block_explorer="$(REACT_APP_BLOCK_EXPLORER)" \
 		.
 
 push-image: ##@devops Push the freshly built image and tag with release or latest tag

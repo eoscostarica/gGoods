@@ -1,4 +1,4 @@
-const { hasuraUtils } = require('../utils')
+const { hasuraUtil } = require('../utils')
 
 const INSERT_HISTORY = `
   mutation insert($transaction: history_insert_input!) {
@@ -23,7 +23,7 @@ const GET_ONE = `
 `
 
 const getOne = async (where = {}) => {
-  const { history } = await hasuraUtils.request(GET_ONE, { where })
+  const { history } = await hasuraUtil.request(GET_ONE, { where })
 
   if (history && history.length > 0) {
     return history[0]
@@ -33,7 +33,7 @@ const getOne = async (where = {}) => {
 }
 
 const insert = transaction => {
-  return hasuraUtils.request(INSERT_HISTORY, { transaction })
+  return hasuraUtil.request(INSERT_HISTORY, { transaction })
 }
 
 module.exports = {

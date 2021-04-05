@@ -1,12 +1,12 @@
 const Boom = require('@hapi/boom')
 const { BAD_REQUEST } = require('http-status-codes')
 
-const { eosUtils } = require('../../utils')
+const { eosUtil } = require('../../utils')
 
 module.exports = async ({ payload: { input } }) => {
   try {
-    const { abi = {} } = await eosUtils.getAbi(input.name)
-    const { code_hash: hash = '' } = await eosUtils.getCodeHash(input.name)
+    const { abi = {} } = await eosUtil.getAbi(input.name)
+    const { code_hash: hash = '' } = await eosUtil.getCodeHash(input.name)
 
     return { abi, hash, name: input.name }
   } catch (error) {

@@ -1,28 +1,32 @@
+const confirmSaleWithPaypalRoute = require('./confirm-sale-with-paypal.route')
+const createTemplateRoute = require('./create-template.route')
+const ggoodOnSaleRoute = require('./ggood-on-sale.route')
+const ggoodsOnSaleRoute = require('./ggoods-on-sale.route')
+const healthzRoute = require('./healthz.route')
+const myGGoodsRoute = require('./my-ggoods.route')
+const putOnSaleRoute = require('./put-on-sale.route')
 const createAccountRoute = require('./create-account/create-account.route')
 const createAccountOrganization = require('./create-account-organization/create-account-organization.route')
 const preRegisterOrganization = require('./pre-register-organization/pre-register-organization.route')
 const verifyEmailRouteRoute = require('./verify-email/verify-email.route')
 const loginRoute = require('./login/login.route')
-const createTemplateRoute = require('./create-template.route')
-const healthzRoute = require('./healthz.route')
-const nftOnSaleRoute = require('./nft-on-sale.route')
-const paymentTransactionRoute = require('./payment-transaction-complete.route')
-const putOnSaleRoute = require('./put-on-sale.route')
 const credentialsRecovery = require('./credentials-recovery/credentials-recovery.route')
 const changePassword = require('./change-password/change-password.route')
 const getContract = require('./get-contract/get-contract.route')
 
 module.exports = [
+  confirmSaleWithPaypalRoute,
+  createTemplateRoute,
+  ggoodOnSaleRoute,
+  ggoodsOnSaleRoute,
   healthzRoute,
+  myGGoodsRoute,
+  putOnSaleRoute,
   createAccountRoute,
   createAccountOrganization,
   preRegisterOrganization,
   verifyEmailRouteRoute,
   loginRoute,
-  createTemplateRoute,
-  nftOnSaleRoute,
-  paymentTransactionRoute,
-  putOnSaleRoute,
   credentialsRecovery,
   changePassword,
   getContract

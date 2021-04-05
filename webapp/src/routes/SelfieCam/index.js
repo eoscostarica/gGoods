@@ -2,51 +2,46 @@ import React, { useState, createRef } from 'react'
 import { useScreenshot, createFileName } from 'use-react-screenshot'
 import { useTranslation } from 'react-i18next'
 import { makeStyles } from '@material-ui/styles'
+import { useQuery } from '@apollo/client'
 import { Rnd } from 'react-rnd'
+import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Camera from 'react-html5-camera-photo'
 import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop'
-import Fade from '@material-ui/core/Fade'
 import ShareIcon from '@material-ui/icons/Share'
+import Fade from '@material-ui/core/Fade'
 import DeleteIcon from '@material-ui/icons/Delete'
 import GetAppIcon from '@material-ui/icons/GetApp'
 import 'react-html5-camera-photo/build/css/index.css'
 
-import { CardAvatar } from '../../components/Card'
-import { baselist } from '../../images/templates/templatelist'
-import styles from './styles'
+import { mainConfig } from '../../config'
+import { CardAvatar, CardAvatarSkeleton } from '../../components/Card'
+import { MY_GGOODS } from '../../gql'
+import { getUniqueGGoodsByName } from '../../utils'
 
-const GOODS_LIST = [
-  {
-    name: 'Lola the Jaguar'
-  },
-  {
-    name: 'Jenny Koala'
-  },
-  {
-    name: 'Test the Test'
-  }
-]
+import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const AvartarNFT = () => (
+const AvartarNFT = ({ img }) => (
   <Box
     style={{
       margin: 0,
       height: '100%',
       paddingBottom: '40px',
-      backgroundImage: `url("${baselist[0]}")`,
+      backgroundImage: `url("${mainConfig.ipfsUrl}/ipfs/${img}")`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat'
     }}
   />
 )
 
-AvartarNFT.propTypes = {}
+AvartarNFT.propTypes = {
+  img: PropTypes.string
+}
 
 const SelfieCam = () => {
   const classes = useStyles()
@@ -54,18 +49,19 @@ const SelfieCam = () => {
   const { t } = useTranslation('selfieCam')
   const [selfie, setSelfie] = useState()
   const [open, setOpen] = useState(false)
-  /* eslint-disable no-unused-vars */
-  const [image, takeScreenShot] = useScreenshot({
+  const [ggoodsSelected, setGgoodsSelected] = useState()
+  const { loading, data } = useQuery(MY_GGOODS)
+  const [, takeScreenShot] = useScreenshot({
     type: 'image/jpeg',
     quality: 1.0
   })
-  /* eslint-enable no-unused-vars */
 
   const handleCancel = () => {
     setSelfie(null)
   }
 
-  const handleOpen = () => {
+  const handleOpen = item => {
+    setGgoodsSelected(item.image)
     setOpen(true)
   }
 
@@ -99,12 +95,30 @@ const SelfieCam = () => {
       </Typography>
 
       <Box>
+        {loading && (
+          <Box>
+            <Grid container spacing={2}>
+              <Grid item xs={6} md={3} lg={2}>
+                <CardAvatarSkeleton />
+              </Grid>
+              <Grid item xs={6} md={3} lg={2}>
+                <CardAvatarSkeleton />
+              </Grid>
+              <Grid item xs={6} md={3} lg={2}>
+                <CardAvatarSkeleton />
+              </Grid>
+            </Grid>
+          </Box>
+        )}
+
         <Grid container spacing={2}>
-          {GOODS_LIST.map(game => (
-            <Grid item xs={6} md={3} lg={2} key={game.name}>
+          {getUniqueGGoodsByName(data?.ggoods || []).map((item, index) => (
+            <Grid item xs={6} md={3} lg={2} key={index}>
               <CardAvatar
-                name={game.name}
-                useLink={false}
+                id={item.id}
+                name={item.metadata.name}
+                image={item.metadata.imageSmall}
+                backgroundColor={item.metadata.backgroundColor}
                 onClick={handleOpen}
               />
             </Grid>
@@ -150,7 +164,7 @@ const SelfieCam = () => {
                   minHeight={200}
                   bounds="window"
                 >
-                  <AvartarNFT />
+                  <AvartarNFT img={ggoodsSelected} />
                 </Rnd>
                 <Grid container className={classes.selfieOptionBtn}>
                   <Grid item xs={12} sm={4}>

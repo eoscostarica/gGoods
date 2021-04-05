@@ -26,18 +26,19 @@ import LogoHorizontal from '../../images/logos/ggoods-logo.svg'
 
 import styles from './styles'
 import LoginModal from '../../components/LoginModal'
+import Signup from '../../components/Signup'
 
 const useStyles = makeStyles(styles)
 
 const SwitchThemeModeButton = memo(({ useDarkMode, onSwitch }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation()
 
   return (
     <Button
       startIcon={useDarkMode ? <SunIcon /> : <MoonIcon />}
       onClick={() => onSwitch(!useDarkMode)}
     >
-      {t(useDarkMode ? 'common.lightMode' : 'common.darkMode')}
+      {t(useDarkMode ? 'lightMode' : 'darkMode')}
     </Button>
   )
 })
@@ -111,18 +112,18 @@ UserButton.propTypes = {
 }
 
 const AuthButton = memo(({ user, onLogin, onSignOut }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation()
 
   return (
     <>
       {user && (
         <Button startIcon={<ExitIcon />} onClick={onSignOut}>
-          {t('common.signOut')}
+          {t('signOut')}
         </Button>
       )}
       {!user && (
         <Button startIcon={<FingerprintIcon />} onClick={onLogin}>
-          {t('common.login')}
+          {t('login')}
         </Button>
       )}
     </>
@@ -142,7 +143,7 @@ const Header = memo(({ onDrawerToggle }) => {
   const { t } = useTranslation('routes')
   const history = useHistory()
   const location = useLocation()
-  const { i18n } = useTranslation('translations')
+  const { i18n } = useTranslation()
   const [currentLanguaje, setCurrentLanguaje] = useState()
   const [enableDarkTheme, setEnableDarkTheme] = useState()
   const [enableLanguageSelector, setEnableLanguageSelector] = useState()
@@ -208,6 +209,7 @@ const Header = memo(({ onDrawerToggle }) => {
             />
           )}
           <LoginModal isNavBar />
+          <Signup />
           {enableLanguageSelector && (
             <LanguageButton
               current={currentLanguaje}

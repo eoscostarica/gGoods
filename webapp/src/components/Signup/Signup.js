@@ -185,7 +185,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Signup = ({ isHome, isModal, isSideBar }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('signup')
   const classes = useStyles()
   const [user, setUser] = useReducer(
     (user, newUser) => ({ ...user, ...newUser }),
@@ -193,7 +193,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   )
   const [activeStep, setActiveStep] = useState(0)
   const [role, setRole] = useState()
-  const [open, setOpen] = useState(false)
+  const [{ showSignupModal: open }, { login, cancelSignup }] = useSharedState()
   const [openAlert, setOpenAlert] = useState(false)
   const [messegaAlert, setMessegaAlert] = useState('false')
   const [maxWidth] = useState('sm')
@@ -206,7 +206,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   const [state] = useSharedState()
 
   const handleOpen = () => {
-    setOpen(!open)
+    cancelSignup()
   }
 
   const handleOpenAlert = () => {
@@ -377,7 +377,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   useEffect(() => {
     if (preRegisterOrganizationResult) {
       handleOpen()
-      setMessegaAlert(t('signup.sucessfulPreregistration'))
+      setMessegaAlert(t('sucessfulPreregistration'))
       handleOpenAlert()
     }
   }, [preRegisterOrganizationResult])
@@ -385,7 +385,7 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
   useEffect(() => {
     if (createAccountResult) {
       handleOpen()
-      setMessegaAlert(t('signup.sucessfulRegistration'))
+      setMessegaAlert(t('sucessfulRegistration'))
       handleOpenAlert()
     }
   }, [createAccountResult])
@@ -431,26 +431,15 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
           className={classes.registerBtn}
           onClick={handleOpen}
         >
-          {t('signup.register')}
+          {t('register')}
         </Button>
-      )}
-      {isModal && state.user === null && (
-        <Box className={classes.registerBoxModal}>
-          <Button
-            color="secondary"
-            className={classes.registerTextModal}
-            onClick={handleOpen}
-          >
-            {t('login.notAccount')}
-          </Button>
-        </Box>
       )}
       {isSideBar && state.user !== null && (
         <Box className={classes.registerBtnSideBar} onClick={handleOpen}>
           <ContactMailIcon className={classes.iconOption} />
           <Link to="/">
             <Typography variant="body1" className={classes.labelOption}>
-              {t('signup.register')}
+              {t('register')}
             </Typography>
           </Link>
         </Box>
@@ -471,7 +460,14 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
       >
         <Box className={classes.dialog}>
           <Box className={classes.closeIcon}>
-            <IconButton aria-label="close" color="inherit" onClick={handleOpen}>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              onClick={() => {
+                handleOpen()
+                login()
+              }}
+            >
               <CloseIcon fontSize="inherit" />
             </IconButton>
           </Box>
@@ -487,10 +483,10 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
               {activeStep === 0 && (
                 <>
                   <Typography className={classes.titleRegister}>
-                    {t('signup.register')}
+                    {t('register')}
                   </Typography>
                   <Typography className={classes.text}>
-                    {t('signup.registerText')}
+                    {t('registerText')}
                   </Typography>
                   <SignupRoleSelector onSubmit={handleRoleChange} />
                 </>
@@ -498,10 +494,10 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
               {activeStep === 1 && role === 'user' && (
                 <>
                   <Typography className={classes.titleRegister}>
-                    {t('signup.asAUser')}
+                    {t('asAUser')}
                   </Typography>
                   <Typography className={classes.text}>
-                    {t('signup.allYouNeed')}
+                    {t('allYouNeed')}
                   </Typography>
                   <Suspense fallback={<CircularProgress />}>
                     <SignupUser
@@ -525,10 +521,10 @@ const Signup = ({ isHome, isModal, isSideBar }) => {
               {activeStep === 1 && role === 'organization' && (
                 <>
                   <Typography className={classes.titleRegister}>
-                    {t('signup.asAOrganization')}
+                    {t('asAOrganization')}
                   </Typography>
                   <Typography variant="body1" className={classes.text}>
-                    {t('signup.preRegistrationRequirement')}
+                    {t('preRegistrationRequirement')}
                   </Typography>
                   <Suspense fallback={<CircularProgress />}>
                     <SignupOrganization

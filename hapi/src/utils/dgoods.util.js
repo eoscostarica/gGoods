@@ -151,6 +151,45 @@ const listsalenft = async (
   return transaction
 }
 
+const confirmsale = async (account, password, { newowner, quantity, id }) => {
+  const transaction = await eosUtil.transact(
+    [
+      {
+        authorization: [
+          {
+            actor: account,
+            permission: 'active'
+          },
+          {
+            actor: eosConfig.dgoodsAccount,
+            permission: 'active'
+          }
+        ],
+        account: eosConfig.dgoodsAccount,
+        name: 'confirmsale',
+        data: {
+          batch_id: id,
+          owner: account,
+          newowner,
+          quantity
+        }
+      }
+    ],
+    [
+      {
+        account,
+        password
+      },
+      {
+        account: eosConfig.dgoodsAccount,
+        password: eosConfig.dgoodsPassword
+      }
+    ]
+  )
+
+  return transaction
+}
+
 const asksTableRows = async ({ seller, limit = 100 }) => {
   let filter = {
     limit,
@@ -175,9 +214,43 @@ const asksTableRows = async ({ seller, limit = 100 }) => {
   return rows
 }
 
-const dgoodTableRow = async ({ id, limit = 1 }) => {
-  let filter = {
+const asksTableRowById = async id => {
+  const { rows } = await eosUtil.getTableRows({
+    limit: 1,
+    json: true,
+    code: eosConfig.dgoodsAccount,
+    scope: eosConfig.dgoodsAccount,
+    table: 'asks',
+    lower_bound: id,
+    upper_bound: id
+  })
+
+  return rows?.length ? rows[0] : null
+}
+
+const dgoodTableRowsByOwner = async ({ owner, limit = 100 }) => {
+  if (!owner) {
+    return []
+  }
+
+  const { rows } = await eosUtil.getTableRows({
     limit,
+    json: true,
+    code: eosConfig.dgoodsAccount,
+    scope: eosConfig.dgoodsAccount,
+    table: 'dgood',
+    index_position: 2,
+    key_type: 'name',
+    lower_bound: owner,
+    upper_bound: owner
+  })
+
+  return rows
+}
+
+const dgoodTableRowById = async id => {
+  let filter = {
+    limit: 1,
     json: true,
     code: eosConfig.dgoodsAccount,
     scope: eosConfig.dgoodsAccount,
@@ -197,9 +270,9 @@ const dgoodTableRow = async ({ id, limit = 1 }) => {
   return rows[0]
 }
 
-const dgoodstatsTableRow = async ({ category, name, limit = 1 }) => {
+const dgoodstatsTableRowByCategoryAndName = async ({ category, name }) => {
   let filter = {
-    limit,
+    limit: 1,
     json: true,
     code: eosConfig.dgoodsAccount,
     scope: category,
@@ -223,7 +296,10 @@ module.exports = {
   create,
   issue,
   listsalenft,
+  confirmsale,
   asksTableRows,
-  dgoodTableRow,
-  dgoodstatsTableRow
+  asksTableRowById,
+  dgoodTableRowsByOwner,
+  dgoodTableRowById,
+  dgoodstatsTableRowByCategoryAndName
 }
