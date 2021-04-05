@@ -1,1 +1,0 @@
-CREATE TABLE "public"."ggoods_map"("good_id" varchar NOT NULL, "coordiantes" varchar NOT NULL, "id" serial NOT NULL, "user_id" integer NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON UPDATE no action ON DELETE no action);
