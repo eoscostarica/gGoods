@@ -79,8 +79,6 @@ const GoodPage = () => {
     setOrganization(organizations.items[0])
   }, [organizations])
 
-  console.log({ organization })
-
   return (
     <Box className={classes.mainBox}>
       {loading && <CircularProgress />}
