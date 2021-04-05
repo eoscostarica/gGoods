@@ -85,7 +85,7 @@ type Query {
 type Mutation {
   login (
     account: String!
-    secret: String!
+    passwordPlainText: String!
   ): login_output
 }
 
