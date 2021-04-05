@@ -31,7 +31,11 @@ const YourCollection = () => {
       )}
       {!!data?.ggoods?.length && (
         <Box>
-          <Carousel isLoading={loading} items={data?.ggoods || []} />
+          <Carousel
+            isLoading={loading}
+            items={data?.ggoods || []}
+            title={t('ggoodsCollected')}
+          />
         </Box>
       )}
     </Box>

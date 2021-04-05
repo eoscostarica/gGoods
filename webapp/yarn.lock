@@ -6858,8 +6858,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-jest@npm:^24.1.0":
-  version: 24.3.3
-  resolution: "eslint-plugin-jest@npm:24.3.3"
+  version: 24.3.4
+  resolution: "eslint-plugin-jest@npm:24.3.4"
   dependencies:
     "@typescript-eslint/experimental-utils": ^4.0.1
   peerDependencies:
@@ -6868,7 +6868,7 @@ __metadata:
   peerDependenciesMeta:
     "@typescript-eslint/eslint-plugin":
       optional: true
-  checksum: 1f016d4f0a79ac09dfbf9cf15bdaed831f71317a5eacc4640f34f39e9789127e9b3e59c449e9e20851be9c439a5e8317a6c9d62ca1e1b51e089c69c738596462
+  checksum: 22a5b2a02720849d3dab12ffc49491e739d332258d628c7990d181a48d1b2c03d1dd5406cdc3acc9e4b978910896b38b9abfd2bc1381910a49cc23e593c2f7e3
   languageName: node
   linkType: hard
 
@@ -11055,8 +11055,8 @@ fsevents@^1.2.7:
   linkType: hard
 
 "listr2@npm:^3.2.2":
-  version: 3.4.4
-  resolution: "listr2@npm:3.4.4"
+  version: 3.4.5
+  resolution: "listr2@npm:3.4.5"
   dependencies:
     chalk: ^4.1.0
     cli-truncate: ^2.1.0
@@ -11069,7 +11069,7 @@ fsevents@^1.2.7:
     wrap-ansi: ^7.0.0
   peerDependencies:
     enquirer: ">= 2.3.0 < 3"
-  checksum: a6df59e972f55b93d8ebf7340a57b5fc1d90d07848e8199020fb4c17fddde00938c350aeaa6ab45f159fd748f822d6526e222169acc2023d0ff8db5648686fca
+  checksum: 1a56b30c513be31cfdfcbb363fcd055584d2a4fde92ea9cbd25d5cfc805f9dcdc60a23f0c42d431f34083169bd89fd3aaf93317f02c7efd0d467775d2e379838
   languageName: node
   linkType: hard
 
