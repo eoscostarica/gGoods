@@ -170,3 +170,10 @@ jobs:
         env:
           NAMESPACE: ggoods
           K8S_BUILD_DIR: build_k8s
+
+      - name: Create Release
+        id: create_release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: true
