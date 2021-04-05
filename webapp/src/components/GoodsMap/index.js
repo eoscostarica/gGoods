@@ -44,7 +44,7 @@ const GoodsMap = ({ placeAnewGood, anchors }) => {
             src={anchor.image}
             width={150}
             height={150}
-            alt=""
+            alt={anchor.name}
           />
         </Overlay>
       ))}
@@ -96,7 +96,12 @@ const GoodsMap = ({ placeAnewGood, anchors }) => {
                 justify="flex-start"
               >
                 <span>
-                  <img src={option.img} width={35} height={20} alt="" />
+                  <img
+                    src={option.img}
+                    width={35}
+                    height={20}
+                    alt={option.name}
+                  />
                 </span>
                 <Typography>{option.name}</Typography>
               </Grid>

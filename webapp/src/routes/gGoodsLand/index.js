@@ -29,7 +29,6 @@ const gGoodsLand = () => {
   const [open, setOpen] = useState(false)
   const [ggoods, setGgoods] = useState()
   const [anchors, setAnchors] = useState([])
-  // const [hasAdded, setHasAdded] = useState(false)
   const [saveClicked, setSaveClicked] = useState(false)
   const [state] = useSharedState()
   const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
@@ -40,7 +39,6 @@ const gGoodsLand = () => {
   const [
     saveNftOnTheMap,
     {
-      loading: loadingSaveNftOnTheMap,
       error: errorSaveNftOnTheMap,
       data: { insert_ggoods_map: responseSaveNftOnTheMap } = {}
     }
@@ -114,8 +112,6 @@ const gGoodsLand = () => {
     }
   }, [loading, loadingGetNftOnTheMap])
 
-  useEffect(() => {}, [loadingSaveNftOnTheMap])
-
   useEffect(() => {
     console.log(`An error has ocurred ${errorSaveNftOnTheMap}`)
   }, [errorSaveNftOnTheMap])
@@ -141,12 +137,7 @@ const gGoodsLand = () => {
             <Typography variant="h6" className={classes.title}>
               Place a good
             </Typography>
-            <Button
-              // disabled={!hasAdded}
-              autoFocus
-              color="inherit"
-              onClick={handleSaveButtonClick}
-            >
+            <Button autoFocus color="inherit" onClick={handleSaveButtonClick}>
               save
             </Button>
           </Toolbar>
@@ -159,13 +150,7 @@ const gGoodsLand = () => {
           />
         )}
       </Dialog>
-      <GoodsMap
-        anchors={anchors}
-        placeAnewGood={() => {
-          setOpen(true)
-          // setHasAdded(false)
-        }}
-      />
+      <GoodsMap anchors={anchors} placeAnewGood={() => setOpen(true)} />
     </Grid>
   )
 }
