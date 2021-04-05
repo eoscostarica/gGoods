@@ -28,7 +28,7 @@
 - [About gGoods](#nfts-that-enable-communities-to-raise-funds)
 - [About the technology](#about-the-technology)
 - [How we built gGoods](#how-we-built-ggoods)
-  * [Project Board and Discussions Topics](#project-board-and-discussions-topics)
+  * [Project Board and Discussion Topics](#project-board-and-discussion-topics)
   * [Installation](#installation)
   * [File Structure](#file-structure)
   * [Infrastructure Diagram](#infrastructure-diagram)
@@ -103,7 +103,7 @@ This project features the following tech stack:
 
 We built this project using our own [EOSIO project boilerplate](https://github.com/eoscostarica/full-stack-boilerplate), a highly scalable skeleton including best practices. This fullstack monorepo contains our front end and backend boilerplates.
 
-## Project Board and Discussions Topics 
+## Project Board and Discussion Topics 
 
 Find out more about the following topics on [gitHub discussions](https://github.com/eoscostarica/gGoods/discussions)
 
@@ -221,7 +221,7 @@ MIT © [EOS Costa Rica](https://eoscostarica.io).
 
 Please Read EOS Costa Rica's [Open Source Contributing Guidelines](https://developers.eoscostarica.io/docs/open-source-guidelines).
 
-Please report bugs big and small by [opening an issue](https://github.com/eoscostarica/Ggoodsissues)
+Please report any bugs big and small by [opening an issue](https://github.com/eoscostarica/gGoods/issues/new/choose)
 
 ## Contributors
 

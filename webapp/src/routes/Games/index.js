@@ -28,7 +28,7 @@ const GAME_LIST = [
       'https://images-na.ssl-images-amazon.com/images/I/71XltR452RL._AC_SL1500_.jpg'
   },
   {
-    name: 'Ggoods Memory',
+    name: 'gGoods Memory',
     pathname: '/games/memory',
     description:
       'A classic card game in which all of the cards are NFTs! The object of the game is to turn over pairs of matching cards.',
@@ -40,8 +40,7 @@ const GAME_LIST = [
     pathname: '/games',
     description:
       'gGoods can integrate with countless apps such as games and social media, the open-source community can develop new ideas for the platform.',
-    img:
-      'https://raw.githubusercontent.com/eoscostarica/gGoods/main/webapp/src/images/logos/more-apps-soon.png?token=ABK7HRVGRMGGYEPJCUJOJ43AM7KN6'
+    img: ''
   }
 ]
 

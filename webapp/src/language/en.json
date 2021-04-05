@@ -13,10 +13,11 @@
     "all": "All",
     "email": "Email",
     "account": "Account",
+    "email-account": "Email or Account",
     "password": "Password",
     "continue": "Continue",
     "takeHome": "Take me home",
-    "suggestedDonation": "Suggested Donation",
+    "suggestedDonation": "Minimum Donation",
     "donation": "Donation",
     "units": "Units",
     "reset": "Reset",
@@ -39,7 +40,7 @@
     "iAccept": "Accept",
     "signupWithGoogle": "Sign up using Google",
     "createAccount": "Create an account",
-    "name": "Name",
+    "name": "Organization Name",
     "address": "Address",
     "addressPlaceholder": "Type your address here",
     "phoneNumber": "Phone Number",
@@ -59,7 +60,7 @@
   },
   "login": {
     "letsStarted": "Let's get started!",
-    "subtitle": "Login to access your bookmarks and personal preferences.",
+    "subtitle": "Login to purchase items and access your personal collection.",
     "loggedIn": "Keep me logged in",
     "login": "Login",
     "accountDoesntExist": "This account doesn't exist. Please, sign up.",
@@ -171,17 +172,17 @@
     "cancel": "Cancel"
   },
   "goodsRoute": {
-    "title": "Goods",
-    "paragraph1": "Virtual goods designed to help good causes, buy or subscribe to help or just play.",
+    "title": "gGoods",
+    "paragraph1": "Digital goods designed to help good causes, buy or subscribe to help or just play.",
     "filter": "FILTERS",
     "available": " GOODS AVAILABLE"
   },
   "goodRoute": {
     "by": "By",
     "donateNow": "Donate Now",
-    "paragraph1": "We’re Grateful for any help you can provide!",
+    "paragraph1": "We appreciate any help you can provide for our cause!",
     "modalTitle": "Donate Now!",
-    "modalParagraph1": "Select your preferred payment method and buy this good. You can increase your donation to further help this cause.",
+    "modalParagraph1": "Select your preferred payment method to purchase this item. You can choose to increase your donation to further support this cause.",
     "selectedGood": "Selected Good",
     "amount":"Amount to donate",
     "donationFor": "Donation for",
@@ -197,11 +198,11 @@
   "collectionRoute": {
     "title": "My collection",
     "paragraph1": "gGoods you’ve bought previously and active subscriptions",
-    "emptyMessage": "You don't have gGoods yet"
+    "emptyMessage": "You don't have any gGoods yet. Visit the marketplace to purchase your favorite items, you will see your collection on this page once your donation is confirmed."
   },
   "inventoryRoute": {
     "title": "Inventory",
-    "paragraph1": "Create templates and publish Goods created by your organization.",
+    "paragraph1": "Create templates and mint Goods created by your organization.",
     "uploadButton": "Upload Your Custom Template",
     "createButton": "Use The Template Maker",
     "emptyTemplates": "No templates have been created yet.",
