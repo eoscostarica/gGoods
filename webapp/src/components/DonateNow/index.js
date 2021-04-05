@@ -273,6 +273,27 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
             </Grid>
           </Box>
         )}
+        <Box className={classes.sectionBox}>
+          <Grid container justify="center">
+            <Grid item xs={10}>
+              <dl>
+                <dt>
+                  <Typography variant="subtitle1">
+                    You can pay with a PayPal demo account
+                  </Typography>
+                </dt>
+                <dd>
+                  <Typography variant="body1">
+                    email: sb-piss85762653@personal.example.com
+                  </Typography>
+                </dd>
+                <dd>
+                  <Typography variant="body1">password: +SW$pt8-</Typography>
+                </dd>
+              </dl>
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
     </Dialog>
   )
