@@ -34,13 +34,13 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SignupAccount = ({ account }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation()
   const classes = useStyles()
 
   return (
     <Box className={classes.boxInfo}>
       <Box className={classes.rowBox}>
-        <Typography variant="h6">{t('common.account')}</Typography>
+        <Typography variant="h6">{t('account')}</Typography>
         <Typography variant="body1">
           <Link
             href={`${eosConfig.BLOCK_EXPLORER_URL}account/${account}`}

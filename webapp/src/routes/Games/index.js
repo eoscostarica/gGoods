@@ -21,11 +21,19 @@ const GAME_LIST = [
   },
   {
     name: 'Free your Animal',
-    pathname: '',
+    pathname: 'games/ggoods-land',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat auctor faucibus. Donec sed arcu eu elit gravida rhoncus id non eu tempor diam maximu',
     img:
       'https://images-na.ssl-images-amazon.com/images/I/71XltR452RL._AC_SL1500_.jpg'
+  },
+  {
+    name: 'Ggoods Memory',
+    pathname: '/games/memory',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat auctor faucibus. Donec sed arcu eu elit gravida rhoncus id non eu tempor diam maximu',
+    img:
+      'https://h5p.org/sites/default/files/styles/medium-logo/public/logos/memory-game-icon.png?itok=bIQqHE7Y'
   }
 ]
 

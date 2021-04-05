@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('credentialsRecovery')
   const [user, setUser] = useState({})
   const [errorMessage, setErrorMessage] = useState(null)
   const [success, setSuccess] = useState(false)
@@ -144,8 +144,8 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
           subject: t('emailMessage.subjectCredentialsRecovery'),
           title: t('emailMessage.titleCredentialsRecovery'),
           message: t('emailMessage.messageCredentialsRecovery'),
-          account: t('common.account'),
-          password: t('signup.password')
+          account: t('account'),
+          password: t('password')
         }
       }
     })
@@ -170,8 +170,8 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
   useEffect(() => {
     if (error) {
       if (error.message === `Cannot read property 'account' of undefined`)
-        setErrorMessage(t('credentialsRecovery.emailError'))
-      else setErrorMessage(error.message.replace('GraphQL error: ', ''))
+        setErrorMessage(t('emailError'))
+      else setErrorMessage(error.message)
     }
   }, [error])
 
@@ -180,11 +180,8 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
       if (
         errorChangePassword.message === `Cannot read property 'secret' of null`
       )
-        setErrorMessage(t('credentialsRecovery.emailError'))
-      else
-        setErrorMessage(
-          errorChangePassword.message.replace('GraphQL error: ', '')
-        )
+        setErrorMessage(t('emailError'))
+      else setErrorMessage(errorChangePassword.message)
     }
   }, [errorChangePassword])
 
@@ -231,7 +228,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
             variant="body1"
             className={clsx(classes.labelOption, overrideLabelClass)}
           >
-            {t('credentialsRecovery.credentialsRecovery')}
+            {t('title')}
           </Typography>
         </Link>
       </Box>
@@ -259,17 +256,13 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
             </IconButton>
           </Box>
           <Box className={classes.bodyWrapper}>
-            <Typography variant="h3">
-              {t('credentialsRecovery.credentialsRecovery')}
-            </Typography>
+            <Typography variant="h3">{t('title')}</Typography>
             <form autoComplete="off">
               <Box className={classes.textFieldWrapper}>
-                <Typography>
-                  {t('credentialsRecovery.instructionCredentialsRecovery')}
-                </Typography>
+                <Typography>{t('instructionCredentialsRecovery')}</Typography>
                 <TextField
                   id="email"
-                  label={t('common.email')}
+                  label={t('email')}
                   variant="outlined"
                   InputLabelProps={{
                     shrink: true
@@ -291,19 +284,17 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                   onClick={handleSubmit}
                   className={classes.button}
                 >
-                  {t('credentialsRecovery.recovery')}
+                  {t('recovery')}
                 </Button>
                 {loading && <CircularProgress />}
               </Box>
               <Box
                 className={clsx(classes.textFieldWrapper, classes.marginTopBox)}
               >
-                <Typography>
-                  {t('credentialsRecovery.changePasswordInstructions')}
-                </Typography>
+                <Typography>{t('changePasswordInstructions')}</Typography>
                 <TextField
                   id="currentPassword"
-                  label={t('credentialsRecovery.currentPassword')}
+                  label={t('currentPassword')}
                   variant="outlined"
                   InputLabelProps={{
                     shrink: true
@@ -317,7 +308,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                 />
                 <TextField
                   id="newPassword"
-                  label={t('credentialsRecovery.newPassword')}
+                  label={t('newPassword')}
                   variant="outlined"
                   InputLabelProps={{
                     shrink: true
@@ -341,7 +332,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                   onClick={handleSubmitChangePassword}
                   className={classes.button}
                 >
-                  {t('credentialsRecovery.changePassword')}
+                  {t('changePassword')}
                 </Button>
                 {loadingChangePassword && <CircularProgress />}
               </Box>
@@ -378,7 +369,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                     </IconButton>
                   }
                 >
-                  {t('credentialsRecovery.errorPassword')}
+                  {t('errorPassword')}
                 </Alert>
               )}
               {success && (
@@ -396,7 +387,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                     </IconButton>
                   }
                 >
-                  {t('credentialsRecovery.checkYourEmail')}
+                  {t('checkYourEmail')}
                 </Alert>
               )}
             </form>

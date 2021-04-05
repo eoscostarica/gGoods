@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
 import Box from '@material-ui/core/Box'
+import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Slider from '@ant-design/react-slick'
-import Grid from '@material-ui/core/Grid'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { makeStyles } from '@material-ui/styles'
 
@@ -11,10 +11,12 @@ import { CardImage, CardInfo, CardAvatar } from '../../components/Card'
 import Gift from '../../images/assets/gift.png'
 import Organization from '../../images/assets/organization.png'
 import Help from '../../images/assets/help.png'
-import Bg from '../../images/assets/cardBg.png'
+import Bg from '../../images/assets/cardBg.jpg'
 import Bg1 from '../../images/assets/cardBg1.png'
-import Bg2 from '../../images/assets/cardBg2.png'
-import bgCanvas from '../../images/templates/bgs/1.png'
+import Bg2 from '../../images/assets/cardBg2.jpg'
+import dogShelter from '../../images/assets/dogShelter.svg'
+import animalRescue from '../../images/assets/animalRescue.svg'
+import oceanProtector from '../../images/assets/oceanProtector.svg'
 
 import styles from './styles'
 
@@ -22,25 +24,39 @@ const useStyles = makeStyles(styles)
 
 const GOOD_LIST = [
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   },
   {
-    name: 'Name'
+    name: 'Name',
+    backgroundColor: '#FA9F37',
+    image: 'QmQESvFD9efd9gML4vFagFV5ryZdg8ivEMpSdMU7gKTsNn'
   }
 ]
 
@@ -80,20 +96,20 @@ const Home = () => {
           />
         </div>
       </Slider>
-      <Box className={classes.rowsBox}>
+      <Box className={clsx(classes.rowsBox, classes.firstTitle)}>
         <Typography variant="h5">What can I do?</Typography>
         <Box className={classes.displayInline}>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
-            <Typography variant="p">Join now!</Typography>
+            <Typography>Join now!</Typography>
           </Box>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
-            <Typography variant="p">Browse for Goods</Typography>
+            <Typography>Browse for Goods</Typography>
           </Box>
           <Box className={classes.optionsWrapper}>
             <ArrowForwardIosIcon />
-            <Typography variant="p">Find a cause to help</Typography>
+            <Typography>Find a cause to help</Typography>
           </Box>
         </Box>
       </Box>
@@ -102,19 +118,19 @@ const Home = () => {
         <Box className={classes.displayInline}>
           <Box className={classes.orgWrapper}>
             <img alt="help" src={Help} />
-            <Typography variant="p">
+            <Typography>
               You can help by buying goods created by your choice of cause
             </Typography>
           </Box>
           <Box className={classes.orgWrapper}>
             <img alt="gift" src={Gift} />
-            <Typography variant="p">
+            <Typography>
               Natural rescue organizations create NFT Goods for free.
             </Typography>
           </Box>
           <Box className={classes.orgWrapper}>
             <img alt="organization" src={Organization} />
-            <Typography variant="p">
+            <Typography>
               Organizations can continue to operate and help preserve nature.{' '}
             </Typography>
           </Box>
@@ -124,30 +140,34 @@ const Home = () => {
         <Typography variant="h5">Featured Organizations</Typography>
         <Box className={classes.cardInfoWrapper}>
           <CardInfo
-            primaryText="Local Shelter"
-            secondaryText="Cats and Dogs"
-            img={bgCanvas}
+            primaryText="Ocean Protectors"
+            secondaryText="Sea Wildlife"
+            img={oceanProtector}
           />
           <CardInfo
             primaryText="Animal Reserve"
             secondaryText="Tropicl Forest "
-            img={bgCanvas}
+            img={animalRescue}
           />
           <CardInfo
-            primaryText="Sea Protectors"
-            secondaryText="Marine Life"
-            img={bgCanvas}
+            primaryText="Dog Shelter"
+            secondaryText="Pet Rescue"
+            img={dogShelter}
           />
         </Box>
       </Box>
+      <Box className={classes.rowsBox}>
+        <Typography variant="h5">Featured Goods</Typography>
+      </Box>
       <Box className={classes.rowsBoxWrap}>
-        <Grid container spacing={2}>
-          {GOOD_LIST.map(game => (
-            <Grid item xs={6} md={4} lg={1} key={game.name}>
-              <CardAvatar />
-            </Grid>
-          ))}
-        </Grid>
+        {GOOD_LIST.map((ggood, index) => (
+          <CardAvatar
+            key={`${index}-${ggood.backgroundColor}`}
+            name={ggood.name}
+            image={ggood.image}
+            backgroundColor={ggood.backgroundColor}
+          />
+        ))}
       </Box>
       <Box className={classes.browseGoods}>
         <Button size="small">Browse goods</Button>

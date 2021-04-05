@@ -9,27 +9,23 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import { Map as MapIcon } from 'react-feather'
-
-import gGoodsLand from './gGoodsLand'
-
 const Home = lazy(() => import('./Home'))
 const Organizations = lazy(() => import('./Organizations'))
 const Organization = lazy(() => import('./Organization'))
 const Goods = lazy(() => import('./Goods'))
 const GoodPage = lazy(() => import('./GoodPage'))
+const DonationSuccesful = lazy(() => import('./DonationSuccesful'))
 const Games = lazy(() => import('./Games'))
 const YourCollection = lazy(() => import('./YourCollection'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
-const PutOnSale = lazy(() => import('./PutOnSale'))
 const About = lazy(() => import('./About'))
 const Page404 = lazy(() => import('./Route404'))
 const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
-const Paypal = lazy(() => import('./Paypal'))
-const OurGoods = lazy(() => import('./OurGoods'))
 const Inventory = lazy(() => import('./Inventory'))
 const SelfieCam = lazy(() => import('./SelfieCam'))
+const Memory = lazy(() => import('./Memory'))
+const gGoodsLand = lazy(() => import('./gGoodsLand'))
 
 const routes = [
   {
@@ -58,11 +54,27 @@ const routes = [
     exact: true
   },
   {
+    path: '/good/:id',
+    component: GoodPage
+  },
+  {
+    path: '/donation-succesful',
+    component: DonationSuccesful
+  },
+  {
     name: 'games',
     icon: <GamesIcon />,
     component: Games,
     path: '/games',
     exact: true
+  },
+  {
+    name: 'your-collection',
+    icon: <InsertEmoticonIcon />,
+    component: YourCollection,
+    path: '/your-collection',
+    exact: true,
+    roles: ['user']
   },
   {
     name: 'Inventory',
@@ -73,13 +85,13 @@ const routes = [
     roles: ['organization']
   },
   {
-    name: 'your-collection',
-    icon: <InsertEmoticonIcon />,
-    component: YourCollection,
-    path: '/your-collection',
+    icon: <DashboardIcon />,
+    component: CreateTemplate,
+    path: '/create-template',
     exact: true,
-    roles: ['gamer', 'user']
+    roles: ['organization']
   },
+
   {
     name: 'about',
     icon: <InfoIcon />,
@@ -88,42 +100,18 @@ const routes = [
     exact: true
   },
   {
-    icon: <AppsIcon />,
-    component: Paypal,
-    path: '/paypal-integration',
-    exact: true
-  },
-  {
-    icon: <DashboardIcon />,
-    component: CreateTemplate,
-    path: '/create-template',
-    exact: true
-  },
-  {
-    icon: <DashboardIcon />,
-    component: PutOnSale,
-    path: '/put-on-sale',
-    exact: true
-  },
-  {
-    icon: <DashboardIcon />,
-    component: OurGoods,
-    path: '/our-goods'
-  },
-  {
-    name: 'ggoodsLand',
-    path: '/ggoods-land',
-    icon: <MapIcon />,
-    component: gGoodsLand,
-    exact: true
-  },
-  {
-    path: '/good/:id',
-    component: GoodPage
-  },
-  {
     component: SelfieCam,
     path: '/games/selfie-cam',
+    exact: true
+  },
+  {
+    component: Memory,
+    path: '/games/memory',
+    exact: true
+  },
+  {
+    component: gGoodsLand,
+    path: '/games/ggoods-land',
     exact: true
   },
   {

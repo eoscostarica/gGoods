@@ -25,7 +25,15 @@ const GoodsMap = ({ placeAnewGood, anchors }) => {
   return (
     <BaseMap center={center}>
       {anchors.map((anchor, index) => (
-        <Overlay key={index} anchor={anchor.coordinates} offset={[120, 79]}>
+        <Overlay
+          key={index}
+          anchor={
+            typeof anchor.coordinates === 'string'
+              ? JSON.parse(anchor.coordinates)
+              : anchor.coordinates
+          }
+          offset={[120, 79]}
+        >
           <img
             id={`good-${index}`}
             className={classes.good}
@@ -33,9 +41,9 @@ const GoodsMap = ({ placeAnewGood, anchors }) => {
               setAnchorEl(() => event.target)
               setCurrentClickedGood(anchor)
             }}
-            src={anchor.img}
-            width={240}
-            height={158}
+            src={anchor.image}
+            width={150}
+            height={150}
             alt=""
           />
         </Overlay>

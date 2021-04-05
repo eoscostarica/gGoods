@@ -14,14 +14,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SignupUsername = ({ isValid, loading, user, setField }) => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation()
   const classes = useStyles()
 
   return (
     <TextField
       id="username"
-      label={t('miscellaneous.username')}
-      placeholder={t('miscellaneous.username')}
+      label={t('username')}
+      placeholder={t('username')}
       variant="outlined"
       fullWidth
       InputLabelProps={{
@@ -44,9 +44,9 @@ const SignupUsername = ({ isValid, loading, user, setField }) => {
       }}
       helperText={
         user?.username?.length >= 9 && !isValid && !loading
-          ? t('miscellaneous.invalidrOrTaken')
+          ? t('invalidrOrTaken')
           : !isValid
-          ? t('miscellaneous.youMustEnter')
+          ? t('youMustEnter')
           : ''
       }
       error={!isValid && !loading && user?.username?.length >= 9}

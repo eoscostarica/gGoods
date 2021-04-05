@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import Typography from '@material-ui/core/Typography'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -14,7 +15,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const Carousel = ({ items = [] }) => {
+const Carousel = ({ items = [], isLoading }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [activeItems, setActiveItems] = useState()
@@ -37,9 +38,8 @@ const Carousel = ({ items = [] }) => {
       }
 
       level = activeValue - i
-
       carouselItems.push({
-        id: items[index],
+        ...items[index],
         level
       })
     }
@@ -49,21 +49,19 @@ const Carousel = ({ items = [] }) => {
 
   const moveLeft = () => {
     const activeValie = active - 1 < 0 ? items.length - 1 : active - 1
-
     generateItems(activeValie)
     setActive(activeValie)
   }
 
   const moveRight = () => {
     const newActive = (active + 1) % items.length
-
     generateItems(newActive)
     setActive(newActive)
   }
 
   useEffect(() => {
     generateItems(active)
-  }, [isMobile])
+  }, [isMobile, items])
 
   useEffect(() => {
     generateItems(active)
@@ -72,28 +70,47 @@ const Carousel = ({ items = [] }) => {
 
   return (
     <Box className={classes.carousel}>
-      <IconButton
-        className={clsx(classes.arrow, classes.leftArrow)}
-        onClick={moveLeft}
-      >
-        <ArrowBackIosIcon />
-      </IconButton>
-
       <Box className={classes.box}>
-        {(activeItems || []).map(({ id, level }) => (
-          <Item id={id} level={level} key={id} />
-        ))}
+        {(activeItems || []).map(
+          ({ id, image, level, backgroundColor, name, description }) => (
+            <Item
+              key={id}
+              id={id}
+              level={level}
+              image={image}
+              backgroundColor={backgroundColor}
+              isLoading={isLoading}
+              name={name}
+              description={description}
+            />
+          )
+        )}
       </Box>
-
-      <IconButton className={classes.arrow} onClick={moveRight}>
-        <ArrowForwardIosIcon />
-      </IconButton>
+      <Box className={classes.navigationBox}>
+        <IconButton
+          className={clsx(classes.arrow, classes.leftArrow)}
+          onClick={moveLeft}
+          disabled={isLoading}
+        >
+          <ArrowBackIosIcon />
+        </IconButton>
+        <Typography>{`${items.length} GGoods Available`}</Typography>
+        <IconButton
+          className={classes.arrow}
+          onClick={moveRight}
+          disabled={isLoading}
+        >
+          <ArrowForwardIosIcon />
+        </IconButton>
+      </Box>
     </Box>
   )
 }
-
 Carousel.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  isLoading: PropTypes.bool
 }
-
+Carousel.defaultProps = {
+  items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
+}
 export default Carousel

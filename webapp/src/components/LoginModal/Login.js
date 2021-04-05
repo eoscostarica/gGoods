@@ -140,7 +140,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const LoginModal = () => {
-  const { t } = useTranslation('translations')
+  const { t } = useTranslation('login')
   const [user, setUser] = useState({})
   const [
     { showLoginModal: open },
@@ -184,7 +184,7 @@ const LoginModal = () => {
     setErrorMessage(null)
     const bcrypt = require('bcryptjs')
     const { data } = await getHash({ account: user.account })
-    console.log(data)
+
     if (data.user.length >= 1) {
       const hash = data.user[0].secret
 
@@ -198,11 +198,11 @@ const LoginModal = () => {
             }
           })
         } else {
-          setErrorMessage(t('login.invalidAccountOrPassword'))
+          setErrorMessage(t('invalidAccountOrPassword'))
         }
       })
     } else {
-      setErrorMessage(t('login.invalidAccountOrPassword'))
+      setErrorMessage(t('invalidAccountOrPassword'))
     }
   }
 
@@ -224,15 +224,15 @@ const LoginModal = () => {
                 secret: hash
               }
             })
-          } else setErrorMessage(t('login.invalidAccountOrPassword'))
+          } else setErrorMessage(t('invalidAccountOrPassword'))
         })
-      } else setErrorMessage(t('login.accountDoesntExist'))
-    } else setErrorMessage(t('login.somethingHappenedWithAuth'))
+      } else setErrorMessage(t('accountDoesntExist'))
+    } else setErrorMessage(t('somethingHappenedWithAuth'))
   }
 
   useEffect(() => {
     if (error) {
-      setErrorMessage(error.message.replace('GraphQL error: ', ''))
+      setErrorMessage(error.message)
     }
   }, [error])
 
@@ -276,10 +276,10 @@ const LoginModal = () => {
           </Box>
           <Box>
             <Typography className={classes.title}>
-              {t('login.letsStarted')}
+              {t('letsStarted')}
             </Typography>
             <Typography className={classes.subTitle}>
-              {t('login.subtitle')}
+              {t('subtitle')}
             </Typography>
           </Box>
           {errorMessage && (
@@ -304,7 +304,7 @@ const LoginModal = () => {
             <Box>
               <TextField
                 id="account"
-                label={t('common.email')}
+                label={t('email')}
                 variant="outlined"
                 className={classes.inputStyle}
                 onChange={event =>
@@ -324,7 +324,7 @@ const LoginModal = () => {
               />
               <TextField
                 id="secret"
-                label={t('signup.password')}
+                label={t('password')}
                 type="password"
                 variant="outlined"
                 className={classes.inputStyle}
@@ -335,7 +335,7 @@ const LoginModal = () => {
             <FormControlLabel
               className={classes.formCheckBox}
               control={<Checkbox name="checkLogin" />}
-              label={t('login.loggedIn')}
+              label={t('loggedIn')}
             />
             <Box className={classes.centerBox}>
               <Button
@@ -346,7 +346,7 @@ const LoginModal = () => {
                 color="secondary"
                 onClick={handleLogin}
               >
-                {t('login.login')}
+                {t('login')}
               </Button>
             </Box>
             <Box className={classes.centerBox}>

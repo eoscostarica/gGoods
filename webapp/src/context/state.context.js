@@ -8,9 +8,11 @@ const getUserFromToken = token => {
   if (!token) return
 
   const claims = jwtDecode(token)
+
   return {
-    account: claims.sub,
-    role: claims?.['https://hasura.io/jwt/claims']['x-hasura-default-role']
+    account: claims['https://hasura.io/jwt/claims']['x-hasura-user-account'],
+    role: claims['https://hasura.io/jwt/claims']['x-hasura-default-role'],
+    id: claims['https://hasura.io/jwt/claims']['x-hasura-user-id']
   }
 }
 
@@ -24,8 +26,7 @@ const sharedStateReducer = (state, action) => {
   switch (action.type) {
     case 'ual':
       return {
-        ...state,
-        user: action.ual?.activeUser
+        ...state
       }
 
     case 'set': {

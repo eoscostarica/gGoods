@@ -16,8 +16,7 @@ import { CREATE_TEMPLATE_MUTATION } from '../../gql'
 import { ipfs, setData } from '../../utils'
 import { useSharedState } from '../../context/state.context'
 import AvatarMaker from '../../components/AvatarMaker'
-import Memory from '../../games/Memory'
-import { baselist } from '../../images/templates/templatelist'
+// import { baselist } from '../../images/templates/templatelist'
 
 import styles from './styles'
 
@@ -209,11 +208,11 @@ const CreateTemplate = () => {
             disabled={loading || !payload?.category || !payload?.name}
           >
             {!loading && t('confirm')}
-            {loading && <CircularProgress color="secondary" size={20} />}
+            {loading && <CircularProgress />}
           </Button>
         </Grid>
       </form>
-      <Memory customOptions={baselist} />
+      {/* <Memory customOptions={baselist} /> */}
     </>
   )
 }

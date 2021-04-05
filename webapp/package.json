@@ -9,7 +9,8 @@
     "eject": "react-scripts eject",
     "lint": "lint-staged",
     "test": "env-cmd -f ../.env react-app-rewired test --env=jsdom",
-    "start:local": "env-cmd -f ../.env react-app-rewired start"
+    "start:local": "env-cmd -f ../.env react-app-rewired start",
+    "lint:all": "eslint src/**/*.js"
   },
   "husky": {
     "hooks": {

@@ -41,5 +41,9 @@ export default theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  icon: {
+    fontSize: 40,
+    color: '#000000'
   }
 })

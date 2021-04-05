@@ -2,33 +2,38 @@ actions:
 - name: change_password
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/change-password
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/change-password'
   permissions:
   - role: guest
 - name: check_username
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/check-username
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/check-username'
   permissions:
   - role: guest
+- name: confirm_sale_with_paypal
+  definition:
+    kind: synchronous
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/confirm-sale-with-paypal'
+    forward_client_headers: true
+  permissions:
+  - role: user
 - name: create_account
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/accounts
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/accounts'
   permissions:
-  - role: gamer
   - role: guest
-  - role: organization
 - name: create_account_organization
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/create-account-organization
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/create-account-organization'
   permissions:
   - role: guest
 - name: create_pre_register_organization
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/pre-register
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/pre-register'
   permissions:
   - role: guest
 - name: create_template
@@ -37,11 +42,11 @@ actions:
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/create-template'
     forward_client_headers: true
   permissions:
-  - role: guest
+  - role: organization
 - name: credentials_recovery
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/credentials-recovery
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/credentials-recovery'
   permissions:
   - role: guest
 - name: goods_on_sale
@@ -51,27 +56,32 @@ actions:
     forward_client_headers: true
   permissions:
   - role: guest
+  - role: organization
+  - role: user
 - name: login
   definition:
     kind: synchronous
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/login'
   permissions:
   - role: guest
-- name: payment_transaction_complete
+- name: my_ggoods
   definition:
-    kind: synchronous
-    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/payment-transaction-complete'
+    kind: ""
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/my-ggoods'
+    forward_client_headers: true
+  permissions:
+  - role: user
 - name: put_on_sale
   definition:
     kind: synchronous
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/put-on-sale'
     forward_client_headers: true
   permissions:
-  - role: guest
+  - role: organization
 - name: verify_email
   definition:
     kind: synchronous
-    handler: http://hapi:9090/api/verify-email
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/verify-email'
   permissions:
   - role: guest
   - role: organization
@@ -92,4 +102,6 @@ custom_types:
   - name: GoodsOnSaleOutput
   - name: credentials_recovery_output
   - name: change_password_output
+  - name: my_ggoods_output
+  - name: confirm_sale_with_paypal_output
   scalars: []

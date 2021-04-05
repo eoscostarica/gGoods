@@ -22,10 +22,10 @@ const About = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
             <Typography variant="h6" gutterBottom>
-              {t('whyGgoods')}
+              {t('whygGoods')}
             </Typography>
             <Typography variant="body2" align="justify" paragraph>
-              {t('whyGgoodsParagraph')}
+              {t('whygGoodsParagraph')}
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>

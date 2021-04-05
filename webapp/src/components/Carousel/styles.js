@@ -1,107 +1,265 @@
-export default theme => {
-  const defaultHeight = 80
-  const defaultWidth = 25
-  const level2Height = defaultHeight - 8
-  const level2Width = defaultWidth - 8
-  const level1Height = defaultHeight - 2
-  const level1Width = defaultWidth - 2
-  const level0Height = defaultHeight + 5
-  const level0Width = defaultWidth + 5
-  const level2Bs = '-.1em .1em .2em #212121'
-  const level1Bs = '-.2em .2em .4em #212121'
-  const subLevel2Bs = '.1em .1em .2em #212121'
-  const subLevel1Bs = '.2em .2em .4em #212121'
-  const level0Bs = '0 .4em .8em #212121'
-
-  return {
-    carousel: {
-      height: '100%',
-      width: '100%',
-      margin: 'auto',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between'
+export default theme => ({
+  navigationBox: {
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    justifyContent: 'space-between',
+    '& .MuiTypography-body1': {
+      fontWeight: 'bold',
+      fontSize: 12,
+      lineHeight: '16px',
+      letterSpacing: '1.5px',
+      textTransform: 'uppercase'
     },
-    arrow: {
-      display: 'flex',
+    [theme.breakpoints.up('sm')]: {
       justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 75,
-      width: 15,
-      height: 60,
-      backgroundColor: '#6796E5',
-      cursor: 'pointer',
-      transition: 'all 500ms',
-      marginLeft: 5,
-      color: '#FFFFFF',
-      marginRight: 5,
-      '&:hover': {
-        backgroundColor: '#512DA8',
-        color: '#FFEB3B'
-      },
-      [theme.breakpoints.up('sm')]: {
-        width: 55,
-        height: 55
-      }
-    },
-    item: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      color: 'white',
-      fontSize: 100,
-      transition:
-        'box-shadow 1s, height 250ms, width 250ms, left 1s, margin-top 1s, line-height 250ms, background-color 1s'
-    },
-    levelLeft2: {
-      boxShadow: level2Bs,
-      height: `${level2Height}%`,
-      width: `${level2Width}%`,
-      backgroundColor: '#228291',
-      zIndex: 0
-    },
-    levelLeft1: {
-      boxShadow: level1Bs,
-      height: `${level1Height}%`,
-      width: `${level1Width}%`,
-      backgroundColor: '#6796E5',
-      zIndex: 1
-    },
-    levelCurrent: {
-      boxShadow: level0Bs,
-      height: `${level0Height}%`,
-      backgroundColor: '#4EC9E1',
-      width: '90%',
-      zIndex: 2,
-      [theme.breakpoints.up('sm')]: {
-        width: `${level0Width}%`
-      }
-    },
-    levelRight1: {
-      boxShadow: subLevel1Bs,
-      height: `${level1Height}%`,
-      width: `${level1Width}%`,
-      backgroundColor: '#6796E5',
-      zIndex: 1
-    },
-    levelRight2: {
-      boxShadow: subLevel2Bs,
-      height: `${level2Height}%`,
-      width: `${level2Width}%`,
-      backgroundColor: '#228291',
-      zIndex: 0
-    },
-    box: {
-      height: 500,
-      width: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    leftArrow: {
-      '& .MuiSvgIcon-root': {
-        marginLeft: 7
+      '& .MuiTypography-body1': {
+        margin: theme.spacing(0, 3)
       }
     }
+  },
+  carousel: {
+    height: '100%',
+    width: '100%',
+    margin: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  arrow: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 65,
+    height: 65,
+    cursor: 'pointer',
+    transition: 'all 500ms',
+    marginLeft: 5,
+    marginRight: 5,
+    '&:hover': {
+      cursor: 'pointer'
+    },
+    '& svg': {
+      fontSize: 35
+    }
+  },
+  item: {
+    borderRadius: 5,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    transition:
+      'box-shadow 1s, height 250ms, width 250ms, left 1s, margin-top 1s, line-height 250ms, background-color 1s',
+    '& img': {
+      maxWidth: '100%'
+    }
+  },
+  levelLeft2: {
+    boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
+    height: 160,
+    width: 130,
+    zIndex: 0,
+    '& img': {
+      marginTop: theme.spacing(0.5)
+    }
+  },
+  levelLeft1: {
+    boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
+    height: 240,
+    width: '23%',
+    zIndex: 1,
+    '& img': {
+      marginTop: theme.spacing(4.5)
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 160
+    }
+  },
+  levelCurrent: {
+    boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
+    height: 285,
+    width: 200,
+    zIndex: 2,
+    '& h5': {
+      fontSize: 24,
+      whiteSpace: 'nowrap'
+    },
+    '& .MuiTypography-body1': {
+      fontSize: 14,
+      whiteSpace: 'nowrap',
+      width: '100%',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      textAlign: 'center'
+    },
+    '& img': {
+      marginTop: theme.spacing(3)
+    }
+  },
+  levelRight1: {
+    boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
+    height: 240,
+    width: '23%',
+    zIndex: 1,
+    '& img': {
+      marginTop: theme.spacing(4.5)
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 160
+    }
+  },
+  levelRight2: {
+    boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
+    height: 160,
+    width: 130,
+    zIndex: 0,
+    '& img': {
+      marginTop: theme.spacing(0.5)
+    }
+  },
+  box: {
+    height: 350,
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: theme.spacing(3)
+  },
+  leftArrow: {
+    '& .MuiSvgIcon-root': {
+      marginLeft: 7
+    }
+  },
+  legend: {
+    backgroundColor: theme.palette.background.paper,
+    width: '100%',
+    height: '25%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    borderBottomRightRadius: 5,
+    borderBottomLeftRadius: 5
+  },
+  legendRight1: {
+    paddingBottom: theme.spacing(0.5),
+    '& h5': {
+      fontSize: 18,
+      whiteSpace: 'nowrap',
+      width: '50%'
+    },
+    '& .MuiTypography-body1': {
+      fontSize: 11,
+      whiteSpace: 'nowrap',
+      width: '50%',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden'
+    },
+    [theme.breakpoints.up('sm')]: {
+      '& h5': {
+        width: '100%',
+        textAlign: 'center'
+      },
+      '& .MuiTypography-body1': {
+        width: '100%',
+        textAlign: 'center'
+      }
+    }
+  },
+  legendRight2: {
+    paddingBottom: theme.spacing(0.3),
+    '& h5': {
+      fontSize: 11,
+      whiteSpace: 'nowrap',
+      width: '50%'
+    },
+    '& .MuiTypography-body1': {
+      fontSize: 8,
+      whiteSpace: 'nowrap',
+      width: '50%',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden'
+    },
+    [theme.breakpoints.up('sm')]: {
+      '& h5': {
+        width: '100%',
+        textAlign: 'center'
+      },
+      '& .MuiTypography-body1': {
+        width: '100%',
+        textAlign: 'center'
+      }
+    }
+  },
+  legendLeft1: {
+    paddingBottom: theme.spacing(0.5),
+    alignItems: 'end',
+    '& h5': {
+      fontSize: 18,
+      whiteSpace: 'nowrap',
+      width: '70%',
+      overflow: 'hidden',
+      direction: 'rtl'
+    },
+    '& .MuiTypography-body1': {
+      fontSize: 11,
+      whiteSpace: 'nowrap',
+      width: '70%',
+      overflow: 'hidden',
+      direction: 'rtl',
+      textOverflow: 'ellipsis'
+    },
+    [theme.breakpoints.up('sm')]: {
+      '& h5': {
+        width: '100%',
+        direction: 'ltr',
+        textAlign: 'center'
+      },
+      '& .MuiTypography-body1': {
+        width: '100%',
+        direction: 'ltr',
+        textAlign: 'center'
+      }
+    }
+  },
+  legendLeft2: {
+    paddingBottom: theme.spacing(0.3),
+    alignItems: 'end',
+    '& h5': {
+      fontSize: 11,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      direction: 'rtl'
+    },
+    '& .MuiTypography-body1': {
+      fontSize: 8,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      direction: 'rtl',
+      textOverflow: 'ellipsis'
+    },
+    [theme.breakpoints.up('sm')]: {
+      alignItems: 'center',
+      '& h5': {
+        width: '100%',
+        direction: 'ltr',
+        textAlign: 'center'
+      },
+      '& .MuiTypography-body1': {
+        width: '100%',
+        direction: 'ltr',
+        textAlign: 'center'
+      }
+    }
+  },
+  boxLoading: {
+    height: '100%',
+    width: '100%',
+    margin: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center'
   }
-}
+})

@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react'
+import React, { useState, forwardRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import Grid from '@material-ui/core/Grid'
 import Dialog from '@material-ui/core/Dialog'
@@ -9,12 +9,14 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Slide from '@material-ui/core/Slide'
 import Button from '@material-ui/core/Button'
+import { useQuery, useMutation } from '@apollo/client'
 
+import { GET_NFT_ON_THE_MAP, MY_GGOODS, SAVE_NFT_ON_THE_MAP } from '../../gql'
+import { mainConfig } from '../../config'
 import styles from './styles'
 import PlaceYourGoodMap from '../../components/PlaceYourGood'
 import GoodsMap from '../../components/GoodsMap'
-import Panda from '../../images/assets/panda.svg'
-import Koala from '../../images/assets/koala.svg'
+import { useSharedState } from '../../context/state.context'
 
 const useStyles = makeStyles(styles)
 
@@ -25,16 +27,98 @@ const Transition = forwardRef((props, ref) => {
 const gGoodsLand = () => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
-  const [newAnchor, setNewAnchor] = useState()
-  const [anchors, setAnchors] = useState([
-    { img: Koala, name: 'Lisa the Koala', coordinates: [57.02715, -70.0011] },
-    { img: Panda, name: 'Mark the Panda', coordinates: [9.94323, -84.0541] }
-  ])
+  const [ggoods, setGgoods] = useState()
+  const [anchors, setAnchors] = useState([])
+  // const [hasAdded, setHasAdded] = useState(false)
+  const [saveClicked, setSaveClicked] = useState(false)
+  const [state] = useSharedState()
+  const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
+  const {
+    loading: loadingGetNftOnTheMap,
+    data: { ggoods_map: responseGetNftOnTheMap } = {}
+  } = useQuery(GET_NFT_ON_THE_MAP, { fetchPolicy: 'network-only' })
+  const [
+    saveNftOnTheMap,
+    {
+      loading: loadingSaveNftOnTheMap,
+      error: errorSaveNftOnTheMap,
+      data: { insert_ggoods_map: responseSaveNftOnTheMap } = {}
+    }
+  ] = useMutation(SAVE_NFT_ON_THE_MAP)
 
-  const saveNewAnchor = () => {
-    setAnchors([...anchors, newAnchor])
+  const submitNftsToTheMap = () => {
+    if (anchors.length > 0)
+      saveNftOnTheMap({
+        variables: {
+          objects: prepareDataToUpload(anchors)
+        }
+      })
+  }
+
+  const prepareDataToUpload = data => {
+    return data.map(d => {
+      return {
+        user_id: state.user.id,
+        good_id: d.id,
+        coordinates: JSON.stringify(d.coordinates)
+      }
+    })
+  }
+
+  const handleSetAnchor = value => {
+    if (value.length > 0) setAnchors(prev => [...prev, ...value])
+  }
+
+  const handleSaveButtonClick = () => {
+    setSaveClicked(true)
     setOpen(false)
   }
+
+  useEffect(() => {
+    console.log(responseSaveNftOnTheMap)
+  }, [responseSaveNftOnTheMap])
+
+  useEffect(() => {
+    if (anchors.length && saveClicked) submitNftsToTheMap()
+  }, [saveClicked, anchors])
+
+  useEffect(() => {
+    if (ggoods && responseGetNftOnTheMap)
+      setAnchors(prev => [
+        ...prev,
+        ...ggoods.filter(g =>
+          responseGetNftOnTheMap.some(el => {
+            if (el.good_id === g.id) {
+              g.coordinates = el.coordinates
+              return true
+            }
+            return false
+          })
+        )
+      ])
+  }, [responseGetNftOnTheMap, ggoods])
+
+  useEffect(() => {
+    if (data?.ggoods) {
+      setGgoods(
+        data.ggoods
+          ?.filter(item => !!item?.metadata?.imageSmall)
+          .map(item => ({
+            id: `${item?.id}`,
+            image: `${mainConfig.ipfsUrl}/ipfs/${item?.metadata?.imageSmall}`,
+            backgroundColor: item?.metadata?.backgroundColor,
+            description: item?.metadata?.description,
+            name: item?.metadata?.name
+          }))
+      )
+    }
+  }, [loading, loadingGetNftOnTheMap])
+
+  useEffect(() => {}, [loadingSaveNftOnTheMap])
+
+  useEffect(() => {
+    console.log(`An error has ocurred ${errorSaveNftOnTheMap}`)
+  }, [errorSaveNftOnTheMap])
 
   return (
     <Grid>
@@ -58,18 +142,30 @@ const gGoodsLand = () => {
               Place a good
             </Typography>
             <Button
-              disabled={!newAnchor}
+              // disabled={!hasAdded}
               autoFocus
               color="inherit"
-              onClick={saveNewAnchor}
+              onClick={handleSaveButtonClick}
             >
               save
             </Button>
           </Toolbar>
         </AppBar>
-        <PlaceYourGoodMap setAnchors={anchor => setNewAnchor(anchor)} />
+        {ggoods && (
+          <PlaceYourGoodMap
+            availableGoods={ggoods}
+            setAnchors={handleSetAnchor}
+            saveClicked={saveClicked}
+          />
+        )}
       </Dialog>
-      <GoodsMap anchors={anchors} placeAnewGood={() => setOpen(true)} />
+      <GoodsMap
+        anchors={anchors}
+        placeAnewGood={() => {
+          setOpen(true)
+          // setHasAdded(false)
+        }}
+      />
     </Grid>
   )
 }

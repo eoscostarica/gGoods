@@ -2,7 +2,7 @@ const Boom = require('@hapi/boom')
 const { BAD_REQUEST } = require('http-status-codes')
 const bcrypt = require('bcryptjs')
 
-const { mailUtils } = require('../../utils')
+const { mailUtil } = require('../../utils')
 const { userApi } = require('../../api')
 
 module.exports = async ({ payload: { input } }) => {
@@ -31,7 +31,7 @@ module.exports = async ({ payload: { input } }) => {
       )
 
       if (user)
-        await mailUtils.sendConfirmMessage(
+        await mailUtil.sendConfirmMessage(
           input.email,
           input.emailContent.subject,
           input.emailContent.title,
