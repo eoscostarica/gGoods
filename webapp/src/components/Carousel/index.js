@@ -25,10 +25,26 @@ const Carousel = ({ items = [], isLoading }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
 
   const generateItems = (activeValue = 0) => {
-    let level
     const carouselItems = []
-    const leftValue = activeValue - (isMobile ? 1 : 2)
-    const rightValue = activeValue + (isMobile ? 2 : 3)
+
+    if (items.length < 3) {
+      carouselItems.push({
+        ...items[activeValue],
+        level: 0
+      })
+      setActiveItems(carouselItems)
+
+      return
+    }
+
+    let level
+    let leftValue = activeValue - (isMobile ? 1 : 2)
+    let rightValue = activeValue + (isMobile ? 2 : 3)
+
+    if (items.length < 5) {
+      leftValue = activeValue - (isMobile ? 1 : 1)
+      rightValue = activeValue + (isMobile ? 2 : 2)
+    }
 
     for (let i = leftValue; i < rightValue; i++) {
       let index = i
@@ -62,13 +78,9 @@ const Carousel = ({ items = [], isLoading }) => {
   }
 
   useEffect(() => {
-    generateItems(active)
-  }, [isMobile, items])
-
-  useEffect(() => {
-    generateItems(active)
+    generateItems(0)
     setActive(0)
-  }, [])
+  }, [isMobile, items])
 
   return (
     <Box className={classes.carousel}>
@@ -94,7 +106,7 @@ const Carousel = ({ items = [], isLoading }) => {
         >
           <ArrowBackIosIcon />
         </IconButton>
-        <Typography>{`${items.length} GGoods Available`}</Typography>
+        <Typography align="center">{`${items.length} GGoods Available`}</Typography>
         <IconButton
           className={classes.arrow}
           onClick={moveRight}
