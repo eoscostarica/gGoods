@@ -322,7 +322,7 @@ const LoginModal = () => {
             <Box>
               <TextField
                 id="account"
-                label={t('email')}
+                label={t('email-account')}
                 variant="outlined"
                 className={classes.inputStyle}
                 onChange={event =>
@@ -373,12 +373,22 @@ const LoginModal = () => {
             <Box className={classes.centerBox}>
               <LoginWithGoogle onSubmit={handleLoginWithAuth} />
             </Box>
-            <Typography variant="h5">
-              Log in using a pre-registered demo account
-            </Typography>
+            <Box className={classes.registerBox}>
+              <Button
+                color="secondary"
+                className={classes.registerTextModal}
+                onClick={() => {
+                  handleOpen()
+                  signup()
+                }}
+              >
+                {t('notAccount')}
+              </Button>
+            </Box>
+            <Typography variant="h6">Log in with a demo account</Typography>
             <dl>
               <dt>
-                <Typography variant="h6">Organization User</Typography>
+                <Typography variant="h7">Organization User</Typography>
               </dt>
               <dd>
                 <Typography variant="body1">username: animalrescue</Typography>
@@ -388,7 +398,7 @@ const LoginModal = () => {
               </dd>
 
               <dt>
-                <Typography variant="h6">Regular User</Typography>
+                <Typography variant="h7">Regular User</Typography>
               </dt>
               <dd>
                 <Typography variant="body1">username: iamthebestgg</Typography>
@@ -398,18 +408,6 @@ const LoginModal = () => {
               </dd>
             </dl>
           </form>
-          <Box className={classes.registerBox}>
-            <Button
-              color="secondary"
-              className={classes.registerTextModal}
-              onClick={() => {
-                handleOpen()
-                signup()
-              }}
-            >
-              {t('notAccount')}
-            </Button>
-          </Box>
         </Box>
       </Dialog>
     </>

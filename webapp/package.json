@@ -2,7 +2,7 @@
   "name": "gGoods",
   "version": "1.0.0",
   "description": "gGoods WebApp",
-  "repository": "https://github.com/eoscostarica/Ggoods.git",
+  "repository": "https://github.com/eoscostarica/gGoods.git",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
