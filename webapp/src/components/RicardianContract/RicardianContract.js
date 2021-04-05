@@ -43,7 +43,6 @@ const RicardianContract = ({ name, hash, abi, action }) => {
     const clauses = abi.ricardian_clauses.map(({ body }) =>
       formatRicardianClause(body)
     )
-    console.log('eosConfig.BLOCK_EXPLORER_URL: ', eosConfig.BLOCK_EXPLORER_URL)
 
     const mainTitle = '# Ricardian contract'
     const nameSection = `**Name:** [${name}](${eosConfig.BLOCK_EXPLORER_URL}account/${name}?loadContract=true&tab=Actions)`
