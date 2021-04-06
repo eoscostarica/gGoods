@@ -41,5 +41,9 @@ export default theme => ({
     '&:hover': {
       textDecoration: 'underline'
     }
+  },
+  loading: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 })

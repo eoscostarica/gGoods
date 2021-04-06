@@ -89,7 +89,11 @@ const GoodPage = () => {
 
   return (
     <Box className={classes.mainBox}>
-      {loading && <CircularProgress />}
+      {loading && (
+        <Box className={classes.loading}>
+          <CircularProgress />
+        </Box>
+      )}
       {!loading && !ggood?.item?.id && (
         <Typography variant="body1">{t('emptyMessage')}</Typography>
       )}
