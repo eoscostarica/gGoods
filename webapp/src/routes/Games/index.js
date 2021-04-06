@@ -27,7 +27,7 @@ const GAME_LIST = [
   {
     name: 'Traveling gGoods',
     by: 'EOS Costa Rica',
-    pathname: '',
+    pathname: 'games/ggoods-land',
     description:
       'Let your NFTs explore the world! By being exposed to new places, people, and cultures, you will develop a wider world view',
     img: travelingGoodsPortrait
