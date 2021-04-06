@@ -2,8 +2,8 @@ const { eosConfig } = require('../config')
 
 const eosUtil = require('./eos.util')
 
-const watchAccounts = [eosConfig.dgoodsAccount]
-const watcher = eosConfig.dgoodsAccount
+const watchAccounts = [eosConfig.baseAccount]
+const watcher = eosConfig.baseAccount
 
 async function init() {
   try {
@@ -35,8 +35,8 @@ async function init() {
           ],
           [
             {
-              account: eosConfig.dgoodsAccount,
-              password: eosConfig.dgoodsPassword
+              account: account,
+              password: eosConfig.baseAccountPassword
             }
           ]
         )
