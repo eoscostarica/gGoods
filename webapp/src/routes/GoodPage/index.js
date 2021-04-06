@@ -144,7 +144,7 @@ const GoodPage = () => {
               </Hidden>
               <Grid item xs={12} md={5} className={classes.card}>
                 <CardAvatar
-                  image={ggood?.item?.metadata?.imageSmall}
+                  image={ggood?.item?.metadata?.imageLarge}
                   backgroundColor={ggood?.item?.metadata?.backgroundColor}
                 />
                 <Box className={classes.priceBox}>

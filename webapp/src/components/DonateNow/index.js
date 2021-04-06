@@ -199,7 +199,7 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
               </Typography>
               <CardAvatar
                 name={ggood?.metadata.name}
-                image={ggood?.metadata.imageSmall}
+                image={ggood?.metadata.imageLarge}
                 backgroundColor={ggood?.metadata.backgroundColor}
               />
             </Grid>
