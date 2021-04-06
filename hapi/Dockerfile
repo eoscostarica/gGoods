@@ -1,5 +1,5 @@
 # ---------- Base ----------
-FROM node:12.16.2-alpine
+FROM node:14.2.0 as base
 WORKDIR /app
 
 # ---------- Builder ----------
