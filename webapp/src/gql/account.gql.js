@@ -6,14 +6,14 @@ export const CREATE_ACCOUNT_MUTATION = gql`
     $email: String!
     $emailContent: jsonb!
     $name: String!
-    $secret: String!
+    $passwordPlainText: String!
   ) {
     create_account(
       role: $role
       email: $email
       emailContent: $emailContent
       name: $name
-      secret: $secret
+      passwordPlainText: $passwordPlainText
     ) {
       account
       token
@@ -27,14 +27,12 @@ export const CREATE_ACCOUNT_ORGANIZATION_MUTATION = gql`
     $email: String!
     $emailContent: jsonb!
     $name: String!
-    $secret: String!
     $verification_code: String!
   ) {
     create_account_organization(
       email: $email
       emailContent: $emailContent
       name: $name
-      secret: $secret
       verification_code: $verification_code
     ) {
       account
@@ -61,8 +59,8 @@ export const CHECK_USERNAME_MUTATION = gql`
 `
 
 export const LOGIN_MUTATION = gql`
-  mutation($account: String!, $secret: String!) {
-    login(account: $account, secret: $secret) {
+  mutation($account: String!, $passwordPlainText: String!) {
+    login(account: $account, passwordPlainText: $passwordPlainText) {
       token
     }
   }

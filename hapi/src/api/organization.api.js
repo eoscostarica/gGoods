@@ -3,22 +3,27 @@ const preregisterApi = require('./pre-register.api')
 const verificationCodeApi = require('./verification-code.api')
 const mailApi = require('../utils/mail')
 
+const { bcryptjs } = require('../utils')
+
 const preRegister = async ({
   email,
   emailContent,
   phone,
   address,
   name,
-  password,
+  passwordPlainText,
   description,
   invitation_code
 }) => {
   const { verification_code } = await verificationCodeApi.generate()
   let resultRegister = 'ok'
+
+  const secret = await bcryptjs.hash(passwordPlainText)
+
   try {
     await preregisterApi.insertOrganization({
       email,
-      password,
+      password: secret,
       name,
       address,
       phone,
