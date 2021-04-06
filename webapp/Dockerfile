@@ -44,6 +44,8 @@ ENV REACT_APP_OAUTH_GOOGLE_CLIENT_ID $react_app_oauth_google_client_id
 
 RUN mkdir -p $WORK_DIR
 
+WORKDIR $WORK_DIR
+
 COPY package.json $WORK_DIR/package.json
 COPY yarn.lock $WORK_DIR/yarn.lock
 
