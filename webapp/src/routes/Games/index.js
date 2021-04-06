@@ -42,7 +42,7 @@ const GAME_LIST = [
   },
   {
     name: 'More Apps Coming Soon',
-    by: 'EOS Costa Rica',
+    by: 'EOSIO Community',
     pathname: '/games',
     description:
       'gGoods can integrate with countless apps such as games and social media, the open-source community can develop new ideas for the platform.',
