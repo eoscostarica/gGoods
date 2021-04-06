@@ -21,7 +21,8 @@
     "donation": "Donation",
     "units": "Units",
     "reset": "Reset",
-    "comingsoon": "Coming soon"
+    "comingsoon": "Coming soon",
+    "marketplaceLink":"gGoods Marketplace"
   },
   "nftsMap": {
     "placeAgood": "Place a good",
@@ -200,10 +201,11 @@
   "selfieCam": {
     "title": "Selfie Cam",
     "subTitle": "Take a picture with your digital goods",
-    "paragraph1": "Select one of your NFTs and take a selfie together, then share the image to your social media and spread the word.",
+    "paragraph": "Select one of your NFTs and take a selfie together, then share the image to your social media and spread the word.",
     "share": "Share to Social",
     "save": "Save to Device",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "emptyMessage": "You don't have available gGoods yet to play with Selfie Cam game"
   },
   "goodsRoute": {
     "title": "gGoods",
@@ -233,7 +235,7 @@
   "collectionRoute": {
     "title": "My collection",
     "ggoodsCollected": "gGoods Collected",
-    "paragraph1": "gGoods you’ve bought previously and active subscriptions",
+    "paragraph": "gGoods you’ve bought previously and active subscriptions",
     "emptyMessage": "You don't have any gGoods yet. Visit the marketplace to purchase your favorite items, you will see your collection on this page once your donation is confirmed."
   },
   "inventoryRoute": {
@@ -323,8 +325,14 @@
     "option3": "Buy more Goods"
   },
   "memoryRoute": {
+    "title": "gGoods Memory",
+    "paragraph":"Pick cards until you found out all your gGoods pairs",
     "attempts": "Attempts",
-    "emptyMessage": "You don't have available gGoods yet",
+    "emptyMessage": "You don't have available gGoods yet to play with gGoods Memory game",
     "winMessage": "You won!"
+  },
+  "loginBeforePlayRoute": {
+    "message": "In order to use this app you must first register your account and visit the gGoods marketplace to purchase at least one item. With you donation you will have access to the apps on the platform.",
+    "register": "Register or Login"
   }
 }

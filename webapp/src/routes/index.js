@@ -22,6 +22,7 @@ const CreateCustomTemplate = lazy(() => import('./CreateCustomTemplate'))
 const About = lazy(() => import('./About'))
 const Page404 = lazy(() => import('./Route404'))
 const EmailVerification = lazy(() => import('./EmailVerification'))
+const LoginBeforePlay = lazy(() => import('./LoginBeforePlay'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Inventory = lazy(() => import('./Inventory'))
 const SelfieCam = lazy(() => import('./SelfieCam'))
@@ -108,17 +109,38 @@ const routes = [
   {
     component: SelfieCam,
     path: '/games/selfie-cam',
-    exact: true
+    exact: true,
+    roles: ['user', 'organization']
+  },
+  {
+    component: LoginBeforePlay,
+    path: '/games/selfie-cam',
+    exact: true,
+    roles: ['guest']
   },
   {
     component: Memory,
     path: '/games/memory',
-    exact: true
+    exact: true,
+    roles: ['user', 'organization']
+  },
+  {
+    component: LoginBeforePlay,
+    path: '/games/memory',
+    exact: true,
+    roles: ['guest']
   },
   {
     component: gGoodsLand,
     path: '/games/ggoods-land',
-    exact: true
+    exact: true,
+    roles: ['user', 'organization']
+  },
+  {
+    component: LoginBeforePlay,
+    path: '/games/ggoods-land',
+    exact: true,
+    roles: ['guest']
   },
   {
     component: EmailVerification,

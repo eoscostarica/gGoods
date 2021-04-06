@@ -1,9 +1,9 @@
 export default theme => ({
-  titlePage: {
-    marginBottom: theme.spacing(3)
-  },
-  textPageDescription: {
-    marginBottom: theme.spacing(2)
+  root: {
+    padding: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(2)
+    }
   },
   modal: {
     display: 'flex',
@@ -40,9 +40,6 @@ export default theme => ({
       width: 640,
       height: 480
     }
-  },
-  selfieBox: {
-    padding: theme.spacing(0, 2)
   },
   selfieOptionBtn: {
     marginTop: 284,

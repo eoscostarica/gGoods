@@ -1,4 +1,10 @@
 export default theme => ({
+  root: {
+    padding: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(2)
+    }
+  },
   card: {
     margin: theme.spacing(1)
   },
@@ -40,11 +46,6 @@ export default theme => ({
     justifyContent: 'space-between',
     alignContent: 'center'
   },
-  title: {
-    fontSize: 25,
-    padding: 10,
-    color: '#00'
-  },
   board: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -55,8 +56,5 @@ export default theme => ({
     [theme.breakpoints.up('md')]: {
       maxWidth: 1024
     }
-  },
-  memoryGame: {
-    padding: theme.spacing(2)
   }
 })

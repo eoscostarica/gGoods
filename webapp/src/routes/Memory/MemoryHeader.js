@@ -17,7 +17,7 @@ const Header = ({ t, attempts, onResetGame }) => {
       <Button variant="contained" onClick={onResetGame}>
         {t('reset')}
       </Button>
-      <Typography className={classes.title}>
+      <Typography variant="subtitle1">
         {t('attempts')}: {attempts}
       </Typography>
     </Box>
