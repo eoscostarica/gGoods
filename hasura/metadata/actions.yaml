@@ -53,7 +53,8 @@ actions:
 - name: get_contract
   definition:
     kind: ""
-    handler: http://hapi:9090/api/get-contract
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/get-contract'
+    forward_client_headers: true
   permissions:
   - role: guest
   - role: organization

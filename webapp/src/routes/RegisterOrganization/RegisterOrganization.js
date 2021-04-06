@@ -92,7 +92,6 @@ const RegisterLifebank = () => {
   const handleCreateAccountLifebank = () => {
     if (lifebank) {
       const { name, email } = lifebank
-      const secret = lifebank.password
       createAccountLifebank({
         variables: {
           email,
@@ -102,7 +101,6 @@ const RegisterLifebank = () => {
             message: t('emailMessage.messageApproveAccount')
           },
           name,
-          secret,
           verification_code: lifebank.verification_code
         }
       })

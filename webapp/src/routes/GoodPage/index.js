@@ -13,6 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { CardAvatar } from '../../components/Card'
 import DonateNow from '../../components/DonateNow'
+import { useSharedState } from '../../context/state.context'
 
 import styles from './styles'
 import {
@@ -30,6 +31,7 @@ const GoodPage = () => {
   const [organization, setOrganization] = useState()
   const { t } = useTranslation('goodRoute')
   const { id } = useParams()
+  const [{ user }, { login }] = useSharedState()
   const [loadGGood, { loading, data: ggood }] = useLazyQuery(GGOOD_ON_SALE)
   const [loadOrganizations, { data: organizations }] = useLazyQuery(
     GET_ORGANIZATIONS_BY_ACCOUNT
@@ -45,6 +47,12 @@ const GoodPage = () => {
   }
 
   const buyNFT = () => {
+    if (!user) {
+      login()
+
+      return
+    }
+
     setOpenPayModal(true)
   }
 
@@ -81,7 +89,11 @@ const GoodPage = () => {
 
   return (
     <Box className={classes.mainBox}>
-      {loading && <CircularProgress />}
+      {loading && (
+        <Box className={classes.loading}>
+          <CircularProgress />
+        </Box>
+      )}
       {!loading && !ggood?.item?.id && (
         <Typography variant="body1">{t('emptyMessage')}</Typography>
       )}
@@ -95,7 +107,7 @@ const GoodPage = () => {
                     {ggood?.item?.metadata.name}
                   </Typography>
                   <LinkRouter
-                    style={{ textDecoration: 'none' }}
+                    className={classes.links}
                     to={{ pathname: `/organization/${organization?.id}` }}
                   >
                     <Typography variant="caption">
@@ -108,7 +120,7 @@ const GoodPage = () => {
                     {ggood?.item?.metadata?.name}
                   </Typography>
                   <LinkRouter
-                    style={{ textDecoration: 'none' }}
+                    className={classes.links}
                     to={{ pathname: `/organization/${organization?.id}` }}
                   >
                     <Typography variant="h6">
@@ -136,7 +148,7 @@ const GoodPage = () => {
               </Hidden>
               <Grid item xs={12} md={5} className={classes.card}>
                 <CardAvatar
-                  image={ggood?.item?.metadata?.imageSmall}
+                  image={ggood?.item?.metadata?.imageLarge}
                   backgroundColor={ggood?.item?.metadata?.backgroundColor}
                 />
                 <Box className={classes.priceBox}>

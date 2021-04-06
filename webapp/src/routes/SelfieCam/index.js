@@ -1,5 +1,4 @@
-import React, { useState, createRef } from 'react'
-import { useScreenshot, createFileName } from 'use-react-screenshot'
+import React, { useState, createRef, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { makeStyles } from '@material-ui/styles'
 import { useQuery } from '@apollo/client'
@@ -15,6 +14,9 @@ import ShareIcon from '@material-ui/icons/Share'
 import Fade from '@material-ui/core/Fade'
 import DeleteIcon from '@material-ui/icons/Delete'
 import GetAppIcon from '@material-ui/icons/GetApp'
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import 'react-html5-camera-photo/build/css/index.css'
 
 import { mainConfig } from '../../config'
@@ -33,7 +35,7 @@ const AvartarNFT = ({ img }) => (
       height: '100%',
       paddingBottom: '40px',
       backgroundImage: `url("${mainConfig.ipfsUrl}/ipfs/${img}")`,
-      backgroundSize: 'cover',
+      backgroundSize: '100% 100%',
       backgroundRepeat: 'no-repeat'
     }}
   />
@@ -46,15 +48,54 @@ AvartarNFT.propTypes = {
 const SelfieCam = () => {
   const classes = useStyles()
   const ref = createRef(null)
+  const canvas = useRef()
+  const nftImg = useRef()
   const { t } = useTranslation('selfieCam')
   const [selfie, setSelfie] = useState()
   const [open, setOpen] = useState(false)
   const [ggoodsSelected, setGgoodsSelected] = useState()
-  const { loading, data } = useQuery(MY_GGOODS)
-  const [, takeScreenShot] = useScreenshot({
-    type: 'image/jpeg',
-    quality: 1.0
+  const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
+  const [nftSetting, setNftSetting] = useState({
+    width: 100,
+    height: 100,
+    x: 50,
+    y: 50
   })
+
+  const downloadURI = nftValues => {
+    const ctx = canvas.current.getContext('2d')
+    const background = new Image()
+
+    background.src = selfie
+    background.crossOrigin = 'anonymous'
+
+    const nft = nftImg.current
+
+    nft.crossOrigin = 'anonymous'
+
+    background.onload = () => {
+      ctx.drawImage(background, 0, 0)
+      ctx.drawImage(
+        nft,
+        nftValues.x,
+        nftValues.y,
+        nftValues.width,
+        nftValues.height
+      )
+    }
+  }
+
+  const downloadScreenshot = () => {
+    downloadURI(nftSetting)
+
+    const link = document.createElement('a')
+
+    link.download = 'selfie-cam'
+    link.href = canvas.current.toDataURL()
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
   const handleCancel = () => {
     setSelfie(null)
@@ -73,59 +114,73 @@ const SelfieCam = () => {
     setSelfie(dataUri)
   }
 
-  const download = (image, { name = 'img', extension = 'jpg' } = {}) => {
-    const a = document.createElement('a')
-    a.href = image
-    a.download = createFileName(extension, name)
-    a.click()
+  const handleOnDragStop = (e, d) => {
+    downloadURI({ ...nftSetting, x: d.x, y: d.y })
+    setNftSetting({ ...nftSetting, x: d.x, y: d.y })
   }
 
-  const downloadScreenshot = () => takeScreenShot(ref.current).then(download)
+  const handleOnResizeStop = (e, direction, ref, delta, position) => {
+    const width = ref.style.width.split('px')
+    const height = ref.style.height.split('px')
+    const values = {
+      ...nftSetting,
+      width: parseInt(width[0]),
+      height: parseInt(height[0])
+    }
+
+    downloadURI(values)
+    setNftSetting(values)
+  }
 
   return (
-    <Box className={classes.selfieBox}>
-      <Typography variant="h4" className={classes.titlePage}>
+    <Box className={classes.root}>
+      <Typography variant="h4" gutterBottom>
         {t('title')}
       </Typography>
-      <Typography className={classes.textPageDescription}>
-        {t('paragraph1')}
-      </Typography>
-      <Typography variant="h5" className={classes.titlePage}>
-        {t('subTitle')}
-      </Typography>
-
-      <Box>
-        {loading && (
-          <Box>
-            <Grid container spacing={2}>
-              <Grid item xs={6} md={3} lg={2}>
-                <CardAvatarSkeleton />
-              </Grid>
-              <Grid item xs={6} md={3} lg={2}>
-                <CardAvatarSkeleton />
-              </Grid>
-              <Grid item xs={6} md={3} lg={2}>
-                <CardAvatarSkeleton />
-              </Grid>
+      {loading && (
+        <Box>
+          <Grid container spacing={2}>
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
             </Grid>
-          </Box>
-        )}
-
-        <Grid container spacing={2}>
-          {getUniqueGGoodsByName(data?.ggoods || []).map((item, index) => (
-            <Grid item xs={6} md={3} lg={2} key={index}>
-              <CardAvatar
-                id={item.id}
-                name={item.metadata.name}
-                image={item.metadata.imageSmall}
-                backgroundColor={item.metadata.backgroundColor}
-                onClick={handleOpen}
-              />
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
             </Grid>
-          ))}
-        </Grid>
-      </Box>
-
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
+            </Grid>
+          </Grid>
+        </Box>
+      )}
+      {!loading && !data?.ggoods?.length && (
+        <>
+          <Typography variant="body1" gutterBottom>
+            {t('emptyMessage')}
+          </Typography>
+          <Button component={Link} color="primary" to="/goods">
+            <KeyboardArrowRightIcon />
+            {t('marketplaceLink')}
+          </Button>
+        </>
+      )}
+      {!loading && !!data?.ggoods?.length && (
+        <Typography variant="body1" gutterBottom>
+          {t('paragraph')}
+        </Typography>
+      )}
+      <Grid container spacing={2}>
+        {getUniqueGGoodsByName(data?.ggoods || []).map((item, index) => (
+          <Grid item xs={6} md={3} lg={2} key={index}>
+            <CardAvatar
+              id={item.id}
+              name={item.metadata.name}
+              image={item.metadata.imageSmall}
+              backgroundColor={item.metadata.backgroundColor}
+              onClick={handleOpen}
+            />
+          </Grid>
+        ))}
+      </Grid>
       <Modal
         className={classes.modal}
         open={open}
@@ -143,58 +198,77 @@ const SelfieCam = () => {
                 onTakePhoto={dataUri => {
                   handleTakePhoto(dataUri)
                 }}
+                idealResolution={{ width: 640, height: 480 }}
               />
             )}
             {selfie && (
-              <Box
-                ref={ref}
-                className={classes.picture}
-                style={{
-                  backgroundImage: `url("${selfie}")`
-                }}
-              >
-                <Rnd
-                  default={{
-                    x: 10,
-                    y: 20,
-                    width: 200,
-                    height: 200
+              <>
+                <img
+                  src={
+                    ggoodsSelected &&
+                    `${mainConfig.ipfsUrl}/ipfs/${ggoodsSelected}`
+                  }
+                  className={classes.displayNone}
+                  ref={nftImg}
+                />
+                <canvas
+                  ref={canvas}
+                  width={640}
+                  height={480}
+                  className={classes.displayNone}
+                />
+                <Box
+                  ref={ref}
+                  className={classes.picture}
+                  style={{
+                    backgroundImage: `url("${selfie}")`
                   }}
-                  minWidth={200}
-                  minHeight={200}
-                  bounds="window"
                 >
-                  <AvartarNFT img={ggoodsSelected} />
-                </Rnd>
-                <Grid container className={classes.selfieOptionBtn}>
-                  <Grid item xs={12} sm={4}>
-                    <Box p={2} className={classes.boxButton}>
-                      <ShareIcon />
-                      <Typography>{t('share')}</Typography>
-                    </Box>
+                  <Rnd
+                    default={{
+                      x: 10,
+                      y: 20,
+                      width: 100,
+                      height: 100
+                    }}
+                    minWidth={100}
+                    minHeight={100}
+                    bounds="window"
+                    onDragStop={handleOnDragStop}
+                    onResizeStop={handleOnResizeStop}
+                  >
+                    <AvartarNFT img={ggoodsSelected} />
+                  </Rnd>
+                  <Grid container className={classes.selfieOptionBtn}>
+                    <Grid item xs={12} sm={4}>
+                      <Box p={2} className={classes.boxButton}>
+                        <ShareIcon />
+                        <Typography>{t('share')}</Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                      <Box
+                        p={2}
+                        className={classes.boxButton}
+                        onClick={downloadScreenshot}
+                      >
+                        <GetAppIcon />
+                        <Typography>{t('save')}</Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} sm={4} className={classes.cancelBtn}>
+                      <Box
+                        p={2}
+                        className={classes.boxButton}
+                        onClick={handleCancel}
+                      >
+                        <DeleteIcon />
+                        <Typography>{t('cancel')}</Typography>
+                      </Box>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={4}>
-                    <Box
-                      p={2}
-                      className={classes.boxButton}
-                      onClick={downloadScreenshot}
-                    >
-                      <GetAppIcon />
-                      <Typography>{t('save')}</Typography>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={12} sm={4} className={classes.cancelBtn}>
-                    <Box
-                      p={2}
-                      className={classes.boxButton}
-                      onClick={handleCancel}
-                    >
-                      <DeleteIcon />
-                      <Typography>{t('cancel')}</Typography>
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Box>
+                </Box>
+              </>
             )}
           </div>
         </Fade>

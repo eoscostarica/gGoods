@@ -21,7 +21,8 @@
     "donation": "Donation",
     "units": "Units",
     "reset": "Reset",
-    "comingsoon": "Coming soon"
+    "comingsoon": "Coming soon",
+    "marketplaceLink":"gGoods Marketplace"
   },
   "nftsMap": {
     "placeAgood": "Place a good",
@@ -157,7 +158,26 @@
     "follow": "Follow Us"
   },
   "homeRoute": {
-    "welcomeMessage": "Lorem ipsum dolor sit amet..."
+    "title": "Get Started with gGoods",
+    "card1Title": "NFTs for good!",
+    "card1Description": "Digital goods designed to help good causes",
+    "card2Title": "Play your heart out",
+    "card2Description": "Play games that integrate your NFTs",
+    "card3Title": "App ready NFTs",
+    "card3Description": "Create for your cause and engage with your goods",
+    "joinNow": "Join now!",
+    "browseGGoodsOnSale": "Browse Goods for sale",
+    "findACauseToHelp": "Find a cause to help",
+    "howDoesItWork": "How does it work?",
+    "buyNFTToHelp": "Buy NFTs to support your favorite causes",
+    "collectAndUseNFT": "Collect and use gGoods as in-app items",
+    "helpYourNGO": "Help your NGO or community fundraise",
+    "featuredOrganizations": "Featured Organizations",
+    "featuredGGoods": "Featured gGoods",
+    "featuredGames": "Featured Games",
+    "browseMoreGGoods": "Browse more gGoods",
+    "browseMoreGames": "Browse more Games",
+    "browseMoreOrganizations": "Browse more Organizations"
   },
   "organizationsRoute": {
     "title": "Organizations",
@@ -181,10 +201,11 @@
   "selfieCam": {
     "title": "Selfie Cam",
     "subTitle": "Take a picture with your digital goods",
-    "paragraph1": "Select one of your NFTs and take a selfie together, then share the image to your social media and spread the word.",
+    "paragraph": "Select one of your NFTs and take a selfie together, then share the image to your social media and spread the word.",
     "share": "Share to Social",
     "save": "Save to Device",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "emptyMessage": "You don't have available gGoods yet to play with Selfie Cam game"
   },
   "goodsRoute": {
     "title": "gGoods",
@@ -202,7 +223,8 @@
     "amount": "Amount to donate",
     "donationFor": "Donation for",
     "sucessMessage": "Thanks for your donation",
-    "emptyMessage": "gGood not exist or no longer available for sale"
+    "emptyMessage": "This item does not exist or is no longer available for purchase.",
+    "errorMessage": "You must enter an amount equal or greater than the minimum donation"
   },
   "filterGoodsRoute": {
     "title": "Filter items",
@@ -213,7 +235,7 @@
   "collectionRoute": {
     "title": "My collection",
     "ggoodsCollected": "gGoods Collected",
-    "paragraph1": "gGoods you’ve bought previously and active subscriptions",
+    "paragraph": "gGoods you’ve bought previously and active subscriptions",
     "emptyMessage": "You don't have any gGoods yet. Visit the marketplace to purchase your favorite items, you will see your collection on this page once your donation is confirmed."
   },
   "inventoryRoute": {
@@ -303,8 +325,14 @@
     "option3": "Buy more Goods"
   },
   "memoryRoute": {
+    "title": "gGoods Memory",
+    "paragraph":"Pick cards until you found out all your gGoods pairs",
     "attempts": "Attempts",
-    "emptyMessage": "You don't have available gGoods yet",
+    "emptyMessage": "You don't have available gGoods yet to play with gGoods Memory game",
     "winMessage": "You won!"
+  },
+  "loginBeforePlayRoute": {
+    "message": "In order to use this app you must first register your account and visit the gGoods marketplace to purchase at least one item. With you donation you will have access to the apps on the platform.",
+    "register": "Register or Login"
   }
 }

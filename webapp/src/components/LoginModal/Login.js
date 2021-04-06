@@ -17,17 +17,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import AccountCircle from '@material-ui/icons/AccountCircle'
-
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 
-import {
-  LOGIN_MUTATION,
-  VALIDATE_EMAIL,
-  GET_SECRET_BY_ACCOUNT
-} from '../../gql'
+import { LOGIN_MUTATION, VALIDATE_EMAIL } from '../../gql'
 import { useSharedState } from '../../context/state.context'
 import LoginWithGoogle from './LoginWithGoogle'
 
@@ -171,8 +166,8 @@ const LoginModal = () => {
   const theme = useTheme()
   const [
     loginMutation,
-    { loading, error, data: { login: loginResult } = {} }
-  ] = useMutation(LOGIN_MUTATION, { fetchPolicy: 'no-cache' })
+    { loading, data: { login: loginResult } = {} }
+  ] = useMutation(LOGIN_MUTATION)
 
   const [openSelect, setOpen] = useState(false)
   const [userLogin, setUserLogin] = useState(t('email-account'))
@@ -184,13 +179,6 @@ const LoginModal = () => {
   const { refetch: checkEmail } = useQuery(VALIDATE_EMAIL, {
     variables: {
       email: user.email
-    },
-    skip: true
-  })
-
-  const { refetch: getHash } = useQuery(GET_SECRET_BY_ACCOUNT, {
-    variables: {
-      account: user.email
     },
     skip: true
   })
@@ -233,28 +221,15 @@ const LoginModal = () => {
   }
 
   const handleLogin = async () => {
-    setErrorMessage(null)
-    const bcrypt = require('bcryptjs')
-    const { data } = await getHash({ account: user.account })
-
-    if (data.user.length >= 1) {
-      const hash = data.user[0].secret
-
-      bcrypt.compare(user.secret, hash, function (err, res) {
-        if (!err && res) {
-          setErrorMessage(null)
-          loginMutation({
-            variables: {
-              account: user.account,
-              secret: hash
-            }
-          })
-        } else {
-          setErrorMessage(t('invalidAccountOrPassword'))
+    try {
+      await loginMutation({
+        variables: {
+          account: user.account,
+          passwordPlainText: user.secret
         }
       })
-    } else {
-      setErrorMessage(t('invalidAccountOrPassword'))
+    } catch (err) {
+      setErrorMessage(err.message)
     }
   }
 
@@ -270,33 +245,19 @@ const LoginModal = () => {
       const { data } = await checkEmail({ email })
 
       if (data.user.length === 1) {
-        const bcrypt = require('bcryptjs')
-        const { data } = await getHash({ account: email })
-        const hash = data.user[0].secret
-
-        bcrypt.compare(secret, hash, function (err, res) {
-          if (!err && res) {
-            setErrorMessage(null)
-            loginMutation({
-              variables: {
-                account: email,
-                secret: hash
-              }
-            })
-          } else setErrorMessage(t('invalidAccountOrPassword'))
+        setErrorMessage(null)
+        loginMutation({
+          variables: {
+            account: email,
+            passwordPlainText: secret
+          }
         })
       } else setErrorMessage(t('accountDoesntExist'))
     } else setErrorMessage(t('somethingHappenedWithAuth'))
   }
 
   useEffect(() => {
-    if (error) {
-      setErrorMessage(error.message)
-    }
-  }, [error])
-
-  useEffect(() => {
-    if (loginResult) {
+    if (loginResult && loginResult.token) {
       successLogin(loginResult.token)
       cancelLogin()
     }

@@ -4,7 +4,7 @@ export const CREATE_PRE_REGISTER_ORGANIZATION_MUTATION = gql`
   mutation(
     $email: String!
     $emailContent: jsonb!
-    $password: String!
+    $passwordPlainText: String!
     $name: String!
     $address: String!
     $phone: String!
@@ -14,7 +14,7 @@ export const CREATE_PRE_REGISTER_ORGANIZATION_MUTATION = gql`
     create_pre_register_organization(
       email: $email
       emailContent: $emailContent
-      password: $password
+      passwordPlainText: $passwordPlainText
       name: $name
       address: $address
       phone: $phone
