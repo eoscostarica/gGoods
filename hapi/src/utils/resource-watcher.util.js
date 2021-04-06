@@ -35,10 +35,6 @@ async function init() {
           ],
           [
             {
-              account,
-              password
-            },
-            {
               account: eosConfig.dgoodsAccount,
               password: eosConfig.dgoodsPassword
             }
