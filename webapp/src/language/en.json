@@ -236,6 +236,7 @@
   "collectionRoute": {
     "title": "My collection",
     "ggoodsCollected": "gGoods Collected",
+    "ggoodsBy": "By",
     "paragraph": "gGoods you’ve bought previously and active subscriptions",
     "emptyMessage": "You don't have any gGoods yet. Visit the marketplace to purchase your favorite items, you will see your collection on this page once your donation is confirmed."
   },

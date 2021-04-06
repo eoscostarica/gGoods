@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
+import { Link as LinkRouter } from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
@@ -23,7 +24,8 @@ const ItemContent = ({
   image,
   classes,
   description,
-  name
+  name,
+  pathname
 }) => {
   if (isLoading) {
     return level === 0 ? (
@@ -32,6 +34,17 @@ const ItemContent = ({
       </Box>
     ) : null
   }
+
+  if (level === 0)
+    return (
+      <LinkRouter className={classes.link} to={{ pathname }}>
+        <img src={image} alt="ggood item" />
+        <Box className={clsx(classes.legend, classes[`legend${LEVEL[level]}`])}>
+          <Typography variant="h5">{name}</Typography>
+          <Typography variant="body1">{description}</Typography>
+        </Box>
+      </LinkRouter>
+    )
 
   return (
     <>
@@ -50,7 +63,8 @@ ItemContent.propTypes = {
   isLoading: PropTypes.bool,
   name: PropTypes.string,
   description: PropTypes.string,
-  classes: PropTypes.any
+  classes: PropTypes.any,
+  pathname: PropTypes.string
 }
 
 const Item = ({
@@ -59,7 +73,8 @@ const Item = ({
   backgroundColor,
   isLoading,
   description,
-  name
+  name,
+  pathname
 }) => {
   const classes = useStyles()
 
@@ -75,6 +90,7 @@ const Item = ({
         classes={classes}
         name={name}
         description={description}
+        pathname={pathname}
       />
     </Box>
   )
@@ -86,7 +102,8 @@ Item.propTypes = {
   image: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  pathname: PropTypes.string
 }
 
 export default Item

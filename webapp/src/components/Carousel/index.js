@@ -17,7 +17,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const Carousel = ({ items = [], isLoading, title }) => {
+const Carousel = ({ items = [], isLoading, title, secondaryText }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [activeItems, setActiveItems] = useState()
@@ -85,7 +85,7 @@ const Carousel = ({ items = [], isLoading, title }) => {
   return (
     <Box className={classes.carousel}>
       <Box className={classes.box}>
-        {(activeItems || []).map(({ id, level, metadata }) => (
+        {(activeItems || []).map(({ id, level, metadata, issuer }) => (
           <Item
             key={id}
             id={id}
@@ -94,7 +94,8 @@ const Carousel = ({ items = [], isLoading, title }) => {
             backgroundColor={metadata.backgroundColor}
             isLoading={isLoading}
             name={metadata.name}
-            description={metadata.description}
+            description={`${secondaryText} ${issuer}`}
+            pathname={`/good/${id}`}
           />
         ))}
       </Box>
@@ -121,9 +122,11 @@ const Carousel = ({ items = [], isLoading, title }) => {
 Carousel.propTypes = {
   items: PropTypes.array,
   isLoading: PropTypes.bool,
-  title: PropTypes.string
+  title: PropTypes.string,
+  secondaryText: PropTypes.string
 }
 Carousel.defaultProps = {
-  items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
+  items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
+  secondaryText: 'by'
 }
 export default Carousel

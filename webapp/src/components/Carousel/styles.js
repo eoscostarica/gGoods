@@ -58,7 +58,7 @@ export default theme => ({
   },
   levelLeft2: {
     boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
-    height: 160,
+    height: 172,
     width: 130,
     zIndex: 0,
     '& img': {
@@ -69,7 +69,7 @@ export default theme => ({
   },
   levelLeft1: {
     boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
-    height: 240,
+    height: 250,
     width: '23%',
     zIndex: 1,
     '& img': {
@@ -106,7 +106,7 @@ export default theme => ({
   },
   levelRight1: {
     boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
-    height: 240,
+    height: 250,
     width: '23%',
     zIndex: 1,
     '& img': {
@@ -120,7 +120,7 @@ export default theme => ({
   },
   levelRight2: {
     boxShadow: '-1px 5px 5px 1px rgba(0,0,0,0.55)',
-    height: 160,
+    height: 172,
     width: 130,
     zIndex: 0,
     '& img': {
@@ -145,7 +145,7 @@ export default theme => ({
   legend: {
     backgroundColor: theme.palette.background.paper,
     width: '100%',
-    height: '25%',
+    height: '20%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -271,5 +271,12 @@ export default theme => ({
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center'
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#000000',
+    '&:hover': {
+      cursor: 'pointer'
+    }
   }
 })
