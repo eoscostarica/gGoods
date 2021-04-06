@@ -14,6 +14,17 @@ const GET_ONE = `
   }
 `
 
+const GET_ONE_PRE_REGISTER = `
+  query ($where: preregister_organization_bool_exp) {
+    preregister_organization(where: $where, limit: 1) {
+      id
+      password
+      email
+      name
+    }
+  }
+`
+
 const INSERT = `
   mutation ($user: user_insert_input!) {
     insert_user_one(object: $user) {
@@ -70,6 +81,19 @@ const getOne = async (where = {}) => {
   return null
 }
 
+const getOnePreRegister = async (where = {}) => {
+  const { preregister_organization: preRegister } = await hasuraUtil.request(
+    GET_ONE_PRE_REGISTER,
+    {
+      where
+    }
+  )
+
+  if (preRegister && preRegister.length > 0) return preRegister[0]
+
+  return null
+}
+
 const insert = user => {
   return hasuraUtil.request(INSERT, { user })
 }
@@ -92,6 +116,7 @@ const verifyEmail = where => {
 
 module.exports = {
   getOne,
+  getOnePreRegister,
   insert,
   setEmail,
   setName,

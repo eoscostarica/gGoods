@@ -29,7 +29,7 @@ type Mutation {
     email: String!
     emailContent: jsonb!
     name: String!
-    secret: String!
+    passwordPlainText: String!
   ): create_account_output
 }
 
@@ -39,7 +39,6 @@ type Mutation {
     email: String!
     emailContent: jsonb!
     name: String!
-    secret: String!
     verification_code: String!
   ): create_account_organization_output
 }
@@ -49,7 +48,7 @@ type Mutation {
   create_pre_register_organization (
     email: String!
     emailContent: jsonb!
-    password: String!
+    passwordPlainText: String!
     name: String!
     address: String!
     phone: String!
@@ -101,7 +100,7 @@ type Query {
 type Mutation {
   login (
     account: String!
-    secret: String!
+    passwordPlainText: String!
   ): login_output
 }
 
