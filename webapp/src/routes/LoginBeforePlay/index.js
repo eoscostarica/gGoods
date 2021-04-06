@@ -27,7 +27,7 @@ const LoginBeforePlay = () => {
           onClick={() => history.push('/goods')}
         >
           <KeyboardArrowRightIcon />
-          {t('marketplace')}
+          {t('marketplaceLink')}
         </Button>
       </Box>
     </Box>
