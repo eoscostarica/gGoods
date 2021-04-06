@@ -24,6 +24,9 @@
 	</a>
 </p>
 
+# Watch our video
+[![gGoods - NFT Marketplace](http://img.youtube.com/vi/MhXxKEnAJVc/0.jpg)](http://www.youtube.com/watch?v=MhXxKEnAJVc "gGoods - NFT Marketplace")
+
 # [gGoods.io](https://ggoods.io)
 - [About gGoods](#nfts-that-enable-communities-to-raise-funds)
 - [About the technology](#about-the-technology)
