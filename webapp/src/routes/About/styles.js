@@ -9,9 +9,6 @@ export default theme => ({
     marginBottom: theme.spacing(4)
   },
   video: {
-    height: 300,
-    [theme.breakpoints.up('sm')]: {
-      height: 600
-    }
+    height: 600
   }
 })
