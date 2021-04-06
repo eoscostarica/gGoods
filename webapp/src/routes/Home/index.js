@@ -59,7 +59,7 @@ const Home = () => {
   }
 
   return (
-    <Box>
+    <Box className={classes.root}>
       <Slider {...settings}>
         <div>
           <CardImage
@@ -129,7 +129,7 @@ const Home = () => {
       {!!organizations?.items?.length && (
         <Box className={classes.rowsBox}>
           <Typography variant="h5">{t('featuredOrganizations')}</Typography>
-          <Box className={classes.cardInfoWrapper}>
+          <Box className={clsx(classes.cardsWrapper, classes.infoCardsWrapper)}>
             {organizations?.items?.map(organization => (
               <CardInfo
                 key={organization.id}
@@ -148,11 +148,11 @@ const Home = () => {
         </Box>
       )}
       {!!ggoods?.items?.length && (
-        <>
-          <Box className={classes.rowsBox}>
-            <Typography variant="h5">{t('featuredGGoods')}</Typography>
-          </Box>
-          <Box className={classes.rowsBoxWrap}>
+        <Box className={classes.rowsBox}>
+          <Typography variant="h5">{t('featuredGGoods')}</Typography>
+          <Box
+            className={clsx(classes.cardsWrapper, classes.ggoodCardsWrapper)}
+          >
             {ggoods?.items?.map(ggood => (
               <CardAvatar
                 key={ggood.id}
@@ -168,12 +168,11 @@ const Home = () => {
               {t('browseMoreGGoods')}
             </Button>
           </Box>
-        </>
+        </Box>
       )}
-
       <Box className={classes.rowsBox}>
         <Typography variant="h5">{t('featuredGames')}</Typography>
-        <Box className={classes.cardInfoWrapper}>
+        <Box className={clsx(classes.cardsWrapper, classes.infoCardsWrapper)}>
           {getGames(true).map((game, index) => (
             <CardInfo
               key={index}

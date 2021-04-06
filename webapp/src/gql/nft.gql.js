@@ -98,7 +98,7 @@ export const GGOOD_ON_SALE = gql`
 
 export const GET_FEATURED_GGOODS_ON_SALE = gql`
   query {
-    items: ggoods_on_sale(limit: 4) {
+    items: ggoods_on_sale(limit: 8) {
       id
       issuer
       owner
