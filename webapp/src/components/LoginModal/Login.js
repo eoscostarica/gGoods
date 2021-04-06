@@ -353,13 +353,11 @@ const LoginModal = () => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={'rainforestin'}>rainforestin</MenuItem>
-                  <MenuItem value={'aidsprogramw'}>aidsprogramw</MenuItem>
-                  <MenuItem value={'dogshelter11'}>dogshelter11</MenuItem>
-                  <MenuItem value={'hurrcnrelief'}>hurrcnrelief</MenuItem>
-                  <MenuItem value={'testuser@ggoods.io'}>
-                    testuser@ggoods.io
-                  </MenuItem>
+                  <MenuItem value={'testuser@ggoods.io'}>Test User</MenuItem>
+                  <MenuItem value={'rainforestin'}>Rainforest Org</MenuItem>
+                  <MenuItem value={'aidsprogramw'}>AIDS Program Org</MenuItem>
+                  <MenuItem value={'dogshelter11'}>Dog Shelter Org</MenuItem>
+                  <MenuItem value={'hurrcnrelief'}>Hurricane Org</MenuItem>
                 </Select>
               </FormControl>
               <TextField
