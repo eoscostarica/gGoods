@@ -3,6 +3,7 @@
 		<img height="180" src="./docs/ggoods-logo.svg" >
 	</a>
 </p>
+
 <p align="center">
 	<a href="https://git.io/col">
 		<img src="https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg" alt="Collaborative Etiquette">
@@ -20,6 +21,7 @@
 		<img src="https://img.shields.io/github/forks/eoscostarica/Ggoods?style=social" alt="Forks">
 	</a>
 </p>
+
 # NFTs that enable communities to raise funds 
 
 ### Watch our video
