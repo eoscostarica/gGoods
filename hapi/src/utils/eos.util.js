@@ -221,10 +221,10 @@ module.exports = {
   createAccount,
   generateRandomAccountName,
   getAccount,
-  getBlock,
-  getAbi,
+  getBlock,  
   getCodeHash,
   getCurrencyBalance,
   getTableRows,
-  transact
+  transact,
+  getAbi
 }

@@ -5,6 +5,7 @@ import * as mapConfig from './map.config'
 import * as ualConfig from './ual.config'
 import * as oAuthConfig from './oAuth.config'
 import * as paypalConfig from './paypal.config'
+import * as eosConfig from './eos.config'
 
 export {
   captchaConfig,
@@ -13,5 +14,6 @@ export {
   mainConfig,
   oAuthConfig,
   paypalConfig,
-  ualConfig
+  ualConfig,
+  eosConfig
 }
