@@ -157,7 +157,26 @@
     "follow": "Follow Us"
   },
   "homeRoute": {
-    "welcomeMessage": "Lorem ipsum dolor sit amet..."
+    "title": "Get Started with gGoods",
+    "card1Title": "NFTs for good!",
+    "card1Description": "Digital goods designed to help good causes",
+    "card2Title": "Play your heart out",
+    "card2Description": "Play games that integrate your NFTs",
+    "card3Title": "App ready NFTs",
+    "card3Description": "Create for your cause and engage with your goods",
+    "joinNow": "Join now!",
+    "browseGGoodsOnSale": "Browse Goods for sale",
+    "findACauseToHelp": "Find a cause to help",
+    "howDoesItWork": "How does it work?",
+    "buyNFTToHelp": "Buy NFTs to support your favorite causes",
+    "collectAndUseNFT": "Collect and use gGoods as in-app items",
+    "helpYourNGO": "Help your NGO or community fundraise",
+    "featuredOrganizations": "Featured Organizations",
+    "featuredGGoods": "Featured gGoods",
+    "featuredGames": "Featured Games",
+    "browseMoreGGoods": "Browse more gGoods",
+    "browseMoreGames": "Browse more Games",
+    "browseMoreOrganizations": "Browse more Organizations"
   },
   "organizationsRoute": {
     "title": "Organizations",

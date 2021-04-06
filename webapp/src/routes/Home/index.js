@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import Box from '@material-ui/core/Box'
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Slider from '@ant-design/react-slick'
@@ -21,6 +22,7 @@ import Help from '../../images/assets/help.png'
 import Bg from '../../images/assets/cardBg.jpg'
 import Bg1 from '../../images/assets/cardBg1.png'
 import Bg2 from '../../images/assets/cardBg2.jpg'
+import { getGames } from '../../utils'
 
 import styles from './styles'
 
@@ -38,6 +40,7 @@ const settings = {
 const Home = () => {
   const classes = useStyles()
   const history = useHistory()
+  const { t } = useTranslation('homeRoute')
   const { data: organizations } = useQuery(GET_FEATURED_ORGANIZATIONS, {})
   const { data: ggoods } = useQuery(GET_FEATURED_GGOODS_ON_SALE, {})
   const [state, { login }] = useSharedState()
@@ -60,72 +63,72 @@ const Home = () => {
       <Slider {...settings}>
         <div>
           <CardImage
-            primaryText="NFTs for good!"
-            secondaryText="Digital goods designed to help good causes"
+            primaryText={t('card1Title')}
+            secondaryText={t('card1Description')}
             img={Bg1}
           />
         </div>
         <div>
           <CardImage
-            primaryText="Play your heart out"
-            secondaryText="Play games that integrate your NFTs"
+            primaryText={t('card2Title')}
+            secondaryText={t('card2Description')}
             img={Bg}
           />
         </div>
         <div>
           <CardImage
-            primaryText="App ready NFTs"
-            secondaryText="Create for your cause and engage with your goods"
+            primaryText={t('card3Title')}
+            secondaryText={t('card3Description')}
             img={Bg2}
           />
         </div>
       </Slider>
       <Box className={clsx(classes.rowsBox, classes.firstTitle)}>
-        <Typography variant="h5">Get Started with gGoods</Typography>
+        <Typography variant="h5">{t('title')}</Typography>
         <Box className={classes.displayInline}>
           <Box
             className={classes.optionsWrapper}
             onClick={handleOnClickJoinNow}
           >
             <ArrowForwardIosIcon />
-            <Typography>Join now!</Typography>
+            <Typography>{t('joinNow')}</Typography>
           </Box>
           <Box
             className={classes.optionsWrapper}
             onClick={handleNavigate('/goods')}
           >
             <ArrowForwardIosIcon />
-            <Typography>Browse Goods for sale</Typography>
+            <Typography>{t('browseGGoodsOnSale')}</Typography>
           </Box>
           <Box
             className={classes.optionsWrapper}
             onClick={handleNavigate('/organizations')}
           >
             <ArrowForwardIosIcon />
-            <Typography>Find a cause to help</Typography>
+            <Typography>{t('findACauseToHelp')}</Typography>
           </Box>
         </Box>
       </Box>
       <Box className={classes.rowsBox}>
-        <Typography variant="h5">How does it work?</Typography>
+        <Typography variant="h5">{t('howDoesItWork')}</Typography>
         <Box className={classes.displayInline}>
           <Box className={classes.orgWrapper}>
             <img alt="help" src={Help} />
-            <Typography>Buy NFTs to support your favorite causes</Typography>
+            <Typography>{t('buyNFTToHelp')}</Typography>
           </Box>
           <Box className={classes.orgWrapper}>
             <img alt="organization" src={Organization} />
-            <Typography>Collect and use gGoods as in-app items</Typography>
+            <Typography>{t('collectAndUseNFT')}</Typography>
           </Box>
           <Box className={classes.orgWrapper}>
             <img alt="gift" src={Gift} />
-            <Typography>Help your NGO or community fundraise</Typography>
+            <Typography>{t('helpYourNGO')}</Typography>
           </Box>
         </Box>
       </Box>
       {!!organizations?.items?.length && (
         <Box className={classes.rowsBox}>
-          <Typography variant="h5">Featured Organizations</Typography>
+          <Typography variant="h5">{t('featuredOrganizations')}</Typography>
           <Box className={classes.cardInfoWrapper}>
             {organizations?.items?.map(organization => (
               <CardInfo
@@ -137,12 +140,17 @@ const Home = () => {
               />
             ))}
           </Box>
+          <Box className={classes.browseGoods}>
+            <Button size="small" onClick={handleNavigate('/organizations')}>
+              {t('browseMoreOrganizations')}
+            </Button>
+          </Box>
         </Box>
       )}
       {!!ggoods?.items?.length && (
         <>
           <Box className={classes.rowsBox}>
-            <Typography variant="h5">Featured Goods</Typography>
+            <Typography variant="h5">{t('featuredGGoods')}</Typography>
           </Box>
           <Box className={classes.rowsBoxWrap}>
             {ggoods?.items?.map(ggood => (
@@ -157,11 +165,31 @@ const Home = () => {
           </Box>
           <Box className={classes.browseGoods}>
             <Button size="small" onClick={handleNavigate('/goods')}>
-              Browse goods
+              {t('browseMoreGGoods')}
             </Button>
           </Box>
         </>
       )}
+
+      <Box className={classes.rowsBox}>
+        <Typography variant="h5">{t('featuredGames')}</Typography>
+        <Box className={classes.cardInfoWrapper}>
+          {getGames(true).map((game, index) => (
+            <CardInfo
+              key={index}
+              primaryText={game.name}
+              secondaryText={`${t('by')} ${game.by}`}
+              img={game.img}
+              onClick={handleNavigate(game.pathname)}
+            />
+          ))}
+        </Box>
+        <Box className={classes.browseGoods}>
+          <Button size="small" onClick={handleNavigate('/games')}>
+            {t('browseMoreGames')}
+          </Button>
+        </Box>
+      </Box>
     </Box>
   )
 }
