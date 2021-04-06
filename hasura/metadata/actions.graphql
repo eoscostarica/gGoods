@@ -63,7 +63,7 @@ type Mutation {
     category: String!
     name: String!
     metadata: jsonb!
-  ): CreateTemplateOutput
+  ): create_template_output
 }
 
 
@@ -76,9 +76,24 @@ type Mutation {
 
 
 type Query {
-  goods_on_sale (
+  get_contract (
+    name: String!
+  ): get_contract_output
+}
+
+
+type Query {
+  ggood_on_sale (
+    id: Int
+  ): ggood_on_sale_output
+}
+
+
+type Query {
+  ggoods_on_sale (
     seller: String
-  ): [GoodsOnSaleOutput]
+    limit: Int
+  ): [ggoods_on_sale_output]
 }
 
 
@@ -91,7 +106,9 @@ type Mutation {
 
 
 type Query {
-  my_ggoods : [my_ggoods_output]
+  my_ggoods (
+    limit: Int
+  ): [my_ggoods_output]
 }
 
 
@@ -102,7 +119,7 @@ type Mutation {
     amount: Float!
     donable: Boolean
     memo: String
-  ): PutOnSaleOutput
+  ): put_on_sale_output
 }
 
 
@@ -147,23 +164,6 @@ type payment_transaction_complete_output {
   return_status : Boolean!
 }
 
-type CreateTemplateOutput {
-  trxid : String!
-}
-
-type PutOnSaleOutput {
-  assets : [String]
-}
-
-type GoodsOnSaleOutput {
-  id : String!
-  seller : String!
-  amount : String!
-  donable : Boolean!
-  expiration : String!
-  ggoods : jsonb
-}
-
 type credentials_recovery_output {
   success : Boolean!
 }
@@ -174,13 +174,51 @@ type change_password_output {
 
 type my_ggoods_output {
   id : Int!
-  category : String!
+  issuer : String!
   owner : String!
-  serial : Int
-  metadata : jsonb
+  serial : Int!
+  metadata : jsonb!
 }
 
 type confirm_sale_with_paypal_output {
-  success : Boolean!
+  ggoods : jsonb
+}
+
+type ggoods_on_sale_output {
+  id : Int!
+  issuer : String!
+  owner : String!
+  seller : String!
+  serial : String!
+  amount : String!
+  donable : Boolean!
+  expiration : String!
+  metadata : jsonb!
+}
+
+type ggood_on_sale_output {
+  id : Int
+  issuer : String
+  owner : String
+  seller : String
+  serial : String
+  amount : String
+  donable : Boolean
+  expiration : String
+  metadata : jsonb
+}
+
+type put_on_sale_output {
+  ggoods : jsonb
+}
+
+type create_template_output {
+  trxid : String!
+}
+
+type get_contract_output {
+  name : String!
+  hash : String!
+  abi : jsonb!
 }
 

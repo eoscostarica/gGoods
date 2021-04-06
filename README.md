@@ -96,12 +96,16 @@ This project features the following tech stack:
 - **[IPFS](https://ipfs.io/)** 
 - **[React JS](https://reactjs.org/)**
 - **[Material UI](https://material-ui.com/)**
-- **[hasura](https://hasura.io) GraphQL engine**
-- **[hapi](https://hapi.dev/)** (HTTP API)
+- **[hasura](https://hasura.io)** GraphQL engine
+- **[hapi](https://hapi.dev/)** NodeJS HTTP API
 
 **EOSCR Boilerplate**
 
 We built this project using our own [EOSIO project boilerplate](https://github.com/eoscostarica/full-stack-boilerplate), a highly scalable skeleton including best practices. This fullstack monorepo contains our front end and backend boilerplates.
+
+**UX Design**
+
+We use Figma as an application for collaborative design projects in teams, where we create the [gGoods](https://www.figma.com/file/y7WiHHBXtvFULGoMoTOKRn/gGoods-Material-UI?node-id=60015%3A0) prototype to improve the user experience.
 
 ## Project Board and Discussion Topics 
 
@@ -185,29 +189,33 @@ We built gGood taking into consideration scalability and high availability of th
 
 We forked the dGoogds token standard smart contracts form https://github.com/MythicalGames/dgoods 
 
-The smart contract used by gGoods is deployed on the jungle3 testnet as [**`ggoodsggoods`**](https://jungle3.bloks.io/account/ggoodsggoods).
+The smart contract used by gGoods is deployed on the jungle3 testnet as [**`ggoodsggoods`**](https://jungle3.bloks.io/account/ggoodsggoods). 
+[Here](https://github.com/eoscostarica/gGoods/blob/main/contracts/ggoodsggoods) you can find its source code, additionally as part of quality assurance [here](https://github.com/eoscostarica/gGoods/tree/main/contracts/tests) you will find our [tests](https://github.com/eoscostarica/gGoods/tree/main/contracts/tests)
 
 ### EOSIO KEOSD Wallet Service
 
 gGoods allows for users to purchase NFTs using traditional payment and authentication methods such as Google. We believe this provides the best user experience and lowers barriers for adoption. To accomplish this we are using the native EOSIO KEOS wallet service to store user's private keys and sign transactions for them. We plan to enable client side wallets soon.
 
-### Web Application
+### ReactJS Web Application
 
-This FullStack Template uses [React.js](https://reactjs.org) as a Frontend Library which together with other tools like [Apollo Client](https://www.apollographql.com/docs/react/), [GraphQL](https://graphql.org/) and [Material UI](https://material-ui.com/) brings a robust solution for building Single Page Applications out of the box.
+This project uses [React.js](https://reactjs.org) as a Frontend Library which together with other tools like [Apollo Client](https://www.apollographql.com/docs/react/), [GraphQL](https://graphql.org/) and [Material UI](https://material-ui.com/) brings a robust solution for building Single Page Applications out of the box.
 
-### Hasura GraphQL Server
+### Hasura GraphQL Engine
 
 [Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allows us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
 Hasura also enables custom REST handling capabilities with the possibility to integrate a custom REST server, that way we can extend the base CRUD functionalities and build custom business logic.
 
-### Hapi REST Server
+### HTTP API Service - hAPI
 
-We need to handle REST custom requests coming from the Hasura GraphQL server. For this, we use [hapi.dev](https://hapi.dev/), which is a simple and easy-to-use backend framework.
+We use an internal HTTP API to handle custom business logic coming from the Hasura GraphQL server. We chose to use [hapi.dev](https://hapi.dev/) for this, which is a simple and easy-to-use Node JS backend framework.
 
 ### Interplanetary File System - IPFS
 
 We use IPFS to store the assets that are displayed in the Web Application. IPFS is a decentralized storage that uses blockchain technology to provide auditability and availability of the assets. IPFS can be configured to setup your own node and validate the data, but this time we are using the public IPFS access, i.e. public endpoints.
 
+## Release Management Process
+
+- [Create a new release](docs/create-a-release.md)
 
 # Version
 

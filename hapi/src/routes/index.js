@@ -12,6 +12,7 @@ const verifyEmailRouteRoute = require('./verify-email/verify-email.route')
 const loginRoute = require('./login/login.route')
 const credentialsRecovery = require('./credentials-recovery/credentials-recovery.route')
 const changePassword = require('./change-password/change-password.route')
+const getContract = require('./get-contract/get-contract.route')
 
 module.exports = [
   confirmSaleWithPaypalRoute,
@@ -27,5 +28,6 @@ module.exports = [
   verifyEmailRouteRoute,
   loginRoute,
   credentialsRecovery,
-  changePassword
+  changePassword,
+  getContract
 ]

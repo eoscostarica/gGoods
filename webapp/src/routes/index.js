@@ -5,6 +5,7 @@ import PublicIcon from '@material-ui/icons/Public'
 import GamesIcon from '@material-ui/icons/Games'
 import InfoIcon from '@material-ui/icons/Info'
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
@@ -24,7 +25,9 @@ const EmailVerification = lazy(() => import('./EmailVerification'))
 const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
 const Inventory = lazy(() => import('./Inventory'))
 const SelfieCam = lazy(() => import('./SelfieCam'))
+const TermsOfUse = lazy(() => import('./TermsOfUse'))
 const Memory = lazy(() => import('./Memory'))
+const gGoodsLand = lazy(() => import('./gGoodsLand'))
 
 const routes = [
   {
@@ -113,6 +116,11 @@ const routes = [
     exact: true
   },
   {
+    component: gGoodsLand,
+    path: '/games/ggoods-land',
+    exact: true
+  },
+  {
     component: EmailVerification,
     path: '/verification/:code',
     exact: true
@@ -120,6 +128,13 @@ const routes = [
   {
     component: RegisterOrganization,
     path: '/register-organization/:code',
+    exact: true
+  },
+  {
+    name: 'terms-of-use',
+    icon: <LibraryBooksIcon />,
+    component: TermsOfUse,
+    path: '/terms-of-use',
     exact: true
   },
   {

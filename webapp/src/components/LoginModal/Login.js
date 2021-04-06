@@ -348,22 +348,36 @@ const LoginModal = () => {
             <Typography variant="h6">Log in with a demo account</Typography>
             <dl>
               <dt>
-                <Typography variant="h7">Organization User</Typography>
+                <Typography variant="subtitle1">Organization</Typography>
               </dt>
               <dd>
-                <Typography variant="body1">username: animalrescue</Typography>
+                <Typography variant="body1">username: rainforestin</Typography>
+                <Typography variant="body1">password: organization</Typography>
+                <hr />
+              </dd>
+
+              <dd>
+                <Typography variant="body1">username: aidsprogramw</Typography>
+                <Typography variant="body1">password: organization</Typography>
+                <hr />
               </dd>
               <dd>
+                <Typography variant="body1">username: dogshelter11</Typography>
+                <Typography variant="body1">password: organization</Typography>
+                <hr />
+              </dd>
+              <dd>
+                <Typography variant="body1">username: hurrcnrelief</Typography>
                 <Typography variant="body1">password: organization</Typography>
               </dd>
 
               <dt>
-                <Typography variant="h7">Regular User</Typography>
+                <Typography variant="subtitle1">Regular user</Typography>
               </dt>
               <dd>
-                <Typography variant="body1">username: iamthebestgg</Typography>
-              </dd>
-              <dd>
+                <Typography variant="body1">
+                  username: testuser@ggoods.io
+                </Typography>
                 <Typography variant="body1">password: user</Typography>
               </dd>
             </dl>

@@ -16,7 +16,7 @@ export const GET_FEATURED_ORGANIZATIONS = gql`
     items: preregister_organization(
       order_by: { created_at: asc }
       where: { state: { _eq: "approved" } }
-      limit: 3
+      limit: 4
     ) {
       description
       id

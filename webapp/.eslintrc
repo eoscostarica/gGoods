@@ -11,6 +11,7 @@
     "browser": true
   },
   "rules": {
+    "promise/always-return": "off",
     "complexity": [
       "error",
       {
