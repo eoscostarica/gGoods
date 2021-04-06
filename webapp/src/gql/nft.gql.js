@@ -32,6 +32,27 @@ export const PUT_ON_SALE_MUTATION = gql`
   }
 `
 
+export const SAVE_NFT_ON_THE_MAP = gql`
+  mutation insert_ggoods_map($objects: [ggoods_map_insert_input!]!) {
+    insert_ggoods_map(objects: $objects) {
+      returning {
+        id
+      }
+    }
+  }
+`
+
+export const GET_NFT_ON_THE_MAP = gql`
+  query {
+    ggoods_map {
+      good_id
+      id
+      user_id
+      coordinates
+    }
+  }
+`
+
 export const TEMPLATES_QUERY = gql`
   query templates {
     items: template {
