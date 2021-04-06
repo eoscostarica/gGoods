@@ -77,6 +77,13 @@ type Mutation {
 
 
 type Query {
+  get_contract (
+    name: String!
+  ): get_contract_output
+}
+
+
+type Query {
   ggood_on_sale (
     id: Int
   ): ggood_on_sale_output
@@ -208,5 +215,11 @@ type put_on_sale_output {
 
 type create_template_output {
   trxid : String!
+}
+
+type get_contract_output {
+  name : String!
+  hash : String!
+  abi : jsonb!
 }
 

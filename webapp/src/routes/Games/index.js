@@ -6,6 +6,11 @@ import { makeStyles } from '@material-ui/styles'
 import Grid from '@material-ui/core/Grid'
 
 import { CardGame } from '../../components/Card'
+import selfieCamPortrait from '../../images/assets/selfiecam-portrait.jpg'
+import travelingGoodsPortrait from '../../images/assets/travelingGoods-portrait.jpg'
+import comingSoonPortrait from '../../images/assets/comingSoon.jpg'
+import memoryPortrait from '../../images/assets/memory-portrait.jpg'
+
 import styles from './styles'
 
 const useStyles = makeStyles(styles)
@@ -13,34 +18,35 @@ const useStyles = makeStyles(styles)
 const GAME_LIST = [
   {
     name: 'Selfie Cam',
+    by: 'EOS Costa Rica',
     pathname: '/games/selfie-cam',
     description:
       'Select one of your Goods and take a selfie together, then share the image to your social media and spread the word.',
-    img:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGLm94nV3FeX81RSgRuKGJ2RDTtqJNblQVWw&usqp=CAU'
+    img: selfieCamPortrait
   },
   {
-    name: 'Free your NFT!',
+    name: 'Traveling gGoods',
+    by: 'EOS Costa Rica',
     pathname: 'games/ggoods-land',
     description:
       'Let your NFTs explore the world! By being exposed to new places, people, and cultures, you will develop a wider world view',
-    img:
-      'https://images-na.ssl-images-amazon.com/images/I/71XltR452RL._AC_SL1500_.jpg'
+    img: travelingGoodsPortrait
   },
   {
     name: 'gGoods Memory',
+    by: 'EOS Costa Rica',
     pathname: '/games/memory',
     description:
       'A classic card game in which all of the cards are NFTs! The object of the game is to turn over pairs of matching cards.',
-    img:
-      'https://h5p.org/sites/default/files/styles/medium-logo/public/logos/memory-game-icon.png?itok=bIQqHE7Y'
+    img: memoryPortrait
   },
   {
     name: 'More Apps Coming Soon',
+    by: 'EOS Costa Rica',
     pathname: '/games',
     description:
       'gGoods can integrate with countless apps such as games and social media, the open-source community can develop new ideas for the platform.',
-    img: ''
+    img: comingSoonPortrait
   }
 ]
 
@@ -62,6 +68,7 @@ const Games = () => {
             <Grid item xs={12} md={6} lg={3} key={game.name}>
               <CardGame
                 name={game.name}
+                by={game.by}
                 category={game.category}
                 description={game.description}
                 img={game.img}

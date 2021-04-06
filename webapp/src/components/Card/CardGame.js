@@ -15,7 +15,7 @@ import styles from './styles'
 
 const useStyles = makeStyles(styles)
 
-const CardGame = ({ name, description, img, pathname }) => {
+const CardGame = ({ name, by, description, img, pathname }) => {
   const classes = useStyles()
 
   return (
@@ -29,12 +29,17 @@ const CardGame = ({ name, description, img, pathname }) => {
           />
           <CardContent>
             <Typography
-              className={classes.cardOngTitle}
+              className={classes.cardgameTitle}
               variant="h5"
               component="h2"
             >
               {name}
             </Typography>
+            {by && (
+              <Typography variant="h4" className={classes.cardOngCategory}>
+                by {by}
+              </Typography>
+            )}
             <Box className={classes.cardOngDescriptionBox}>
               <Typography variant="body2" color="textSecondary" component="p">
                 {description}
@@ -52,6 +57,7 @@ const CardGame = ({ name, description, img, pathname }) => {
 
 CardGame.propTypes = {
   name: PropTypes.string,
+  by: PropTypes.string,
   description: PropTypes.string,
   img: PropTypes.string,
   pathname: PropTypes.string

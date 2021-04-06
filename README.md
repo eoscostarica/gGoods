@@ -185,7 +185,8 @@ We built gGood taking into consideration scalability and high availability of th
 
 We forked the dGoogds token standard smart contracts form https://github.com/MythicalGames/dgoods 
 
-The smart contract used by gGoods is deployed on the jungle3 testnet as [**`ggoodsggoods`**](https://jungle3.bloks.io/account/ggoodsggoods).
+The smart contract used by gGoods is deployed on the jungle3 testnet as [**`ggoodsggoods`**](https://jungle3.bloks.io/account/ggoodsggoods). 
+[Here](https://github.com/eoscostarica/gGoods/blob/main/contracts/ggoodsggoods) you can find its source code, additionally as part of quality assurance [here](https://github.com/eoscostarica/gGoods/tree/main/contracts/tests) you will find our [tests](https://github.com/eoscostarica/gGoods/tree/main/contracts/tests)
 
 ### EOSIO KEOSD Wallet Service
 
@@ -208,6 +209,9 @@ We need to handle REST custom requests coming from the Hasura GraphQL server. Fo
 
 We use IPFS to store the assets that are displayed in the Web Application. IPFS is a decentralized storage that uses blockchain technology to provide auditability and availability of the assets. IPFS can be configured to setup your own node and validate the data, but this time we are using the public IPFS access, i.e. public endpoints.
 
+## Release Management Process
+
+- [Create a new release](docs/create-a-release.md)
 
 # Version
 
