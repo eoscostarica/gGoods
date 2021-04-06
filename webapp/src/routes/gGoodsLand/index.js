@@ -23,9 +23,11 @@ import { useSharedState } from '../../context/state.context'
 
 const useStyles = makeStyles(styles)
 
-const Transition = forwardRef((props, ref) => {
-  return <Slide direction="up" ref={ref} {...props} />
-})
+/* eslint-disable */
+const Transition = forwardRef((props, ref) => (
+  <Slide direction="up" ref={ref} {...props} />
+))
+/* eslint-enable */
 
 const gGoodsLand = () => {
   const classes = useStyles()

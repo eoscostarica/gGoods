@@ -13,6 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 import { CardAvatar } from '../../components/Card'
 import DonateNow from '../../components/DonateNow'
+import { useSharedState } from '../../context/state.context'
 
 import styles from './styles'
 import {
@@ -30,6 +31,7 @@ const GoodPage = () => {
   const [organization, setOrganization] = useState()
   const { t } = useTranslation('goodRoute')
   const { id } = useParams()
+  const [{ user }, { login }] = useSharedState()
   const [loadGGood, { loading, data: ggood }] = useLazyQuery(GGOOD_ON_SALE)
   const [loadOrganizations, { data: organizations }] = useLazyQuery(
     GET_ORGANIZATIONS_BY_ACCOUNT
@@ -45,6 +47,12 @@ const GoodPage = () => {
   }
 
   const buyNFT = () => {
+    if (!user) {
+      login()
+
+      return
+    }
+
     setOpenPayModal(true)
   }
 

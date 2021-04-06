@@ -1,9 +1,9 @@
 export default theme => ({
-  titlePage: {
-    marginBottom: theme.spacing(3)
-  },
-  textPageDescription: {
-    marginBottom: theme.spacing(2)
+  root: {
+    padding: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(2)
+    }
   },
   modal: {
     display: 'flex',
@@ -41,9 +41,6 @@ export default theme => ({
       height: 480
     }
   },
-  selfieBox: {
-    padding: theme.spacing(0, 2)
-  },
   selfieOptionBtn: {
     marginTop: 284,
     backgroundColor: theme.palette.background.paper,
@@ -70,5 +67,8 @@ export default theme => ({
       alignItems: 'center',
       letterSpacing: '0.44px'
     }
+  },
+  displayNone: {
+    display: 'none'
   }
 })

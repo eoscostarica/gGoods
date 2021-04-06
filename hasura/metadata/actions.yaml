@@ -50,6 +50,15 @@ actions:
     handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/credentials-recovery'
   permissions:
   - role: guest
+- name: get_contract
+  definition:
+    kind: ""
+    handler: '{{HASURA_GRAPHQL_ACTION_BASE_URL}}/api/get-contract'
+    forward_client_headers: true
+  permissions:
+  - role: guest
+  - role: organization
+  - role: user
 - name: ggood_on_sale
   definition:
     kind: ""
@@ -116,4 +125,5 @@ custom_types:
   - name: ggood_on_sale_output
   - name: put_on_sale_output
   - name: create_template_output
+  - name: get_contract_output
   scalars: []

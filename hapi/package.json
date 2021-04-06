@@ -20,6 +20,7 @@
     "@babel/code-frame": "^7.12.13",
     "@hapi/boom": "^9.0.0",
     "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.0",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "eosjs": "^20.0.3",

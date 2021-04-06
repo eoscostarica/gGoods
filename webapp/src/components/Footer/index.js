@@ -43,7 +43,7 @@ const Footer = () => {
         </List>
         <Typography className={classes.legend}>
           gGoods is an open source project, check out our repo and join the
-          Discord channel.
+          Telegram channel.
         </Typography>
         <List className={classes.iconsList}>
           <ListItem className={classes.listItem}>

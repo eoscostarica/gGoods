@@ -5,6 +5,9 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useQuery } from '@apollo/client'
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 
 import styles from './styles'
 import { MY_GGOODS } from '../../gql'
@@ -18,25 +21,33 @@ const YourCollection = () => {
   const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
 
   return (
-    <Box className={classes.mainCollectionBox}>
+    <Box className={classes.root}>
       <Typography variant="h4" gutterBottom>
         {t('title')}
       </Typography>
       {loading && <CircularProgress />}
       {!loading && !data?.ggoods?.length && (
-        <Typography variant="body1">{t('emptyMessage')}</Typography>
+        <>
+          <Typography variant="body1" gutterBottom>
+            {t('emptyMessage')}
+          </Typography>
+          <Button component={Link} color="primary" to="/goods">
+            <KeyboardArrowRightIcon />
+            {t('marketplaceLink')}
+          </Button>
+        </>
       )}
       {!loading && !!data?.ggoods?.length && (
-        <Typography variant="body1">{t('paragraph1')}</Typography>
+        <Typography variant="body1" gutterBottom>
+          {t('paragraph')}
+        </Typography>
       )}
       {!!data?.ggoods?.length && (
-        <Box>
-          <Carousel
-            isLoading={loading}
-            items={data?.ggoods || []}
-            title={t('ggoodsCollected')}
-          />
-        </Box>
+        <Carousel
+          isLoading={loading}
+          items={data?.ggoods || []}
+          title={t('ggoodsCollected')}
+        />
       )}
     </Box>
   )
