@@ -202,7 +202,7 @@
     "amount": "Amount to donate",
     "donationFor": "Donation for",
     "sucessMessage": "Thanks for your donation",
-    "emptyMessage": "gGood not exist or no longer available for sale"
+    "emptyMessage": "This item does not exist or is no longer available for purchase."
   },
   "filterGoodsRoute": {
     "title": "Filter items",

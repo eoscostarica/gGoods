@@ -132,7 +132,7 @@ const Home = () => {
                 key={organization.id}
                 primaryText={organization.name}
                 secondaryText={organization.orgInfo?.category}
-                img={organization.orgInfo?.logo}
+                img={organization.orgInfo?.image}
                 onClick={handleNavigate(`organization/${organization.id}`)}
               />
             ))}

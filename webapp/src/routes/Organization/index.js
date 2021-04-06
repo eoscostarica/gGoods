@@ -88,18 +88,10 @@ const Organization = () => {
             </Box>
             <Box className={classes.sectionBox}>
               <Typography noWrap gutterBottom variant="h6">
-                {t('objectives')}
+                {t('description')}
               </Typography>
               <Typography variant="body1">
-                {organization.orgInfo.objectives}
-              </Typography>
-            </Box>
-            <Box className={classes.sectionBox}>
-              <Typography noWrap gutterBottom variant="h6">
-                {t('history')}
-              </Typography>
-              <Typography variant="body1">
-                {organization.orgInfo.history}
+                {organization.description}
               </Typography>
             </Box>
             <Box className={classes.sectionBox}>
