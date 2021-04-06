@@ -7,5 +7,11 @@ export default theme => ({
   },
   sectionBox: {
     marginBottom: theme.spacing(4)
+  },
+  video: {
+    height: 300,
+    [theme.breakpoints.up('sm')]: {
+      height: 600
+    }
   }
 })
