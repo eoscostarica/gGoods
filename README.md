@@ -1,12 +1,4 @@
 <p align="center">
-	<a href="https://ggoods.io">
-		<img height="180" src="./docs/ggoods-logo.svg" >
-	</a>
-</p>
-
-# NFTs that enable communities to raise funds
-
-<p align="center">
 	<a href="https://git.io/col">
 		<img src="https://img.shields.io/badge/%E2%9C%93-collaborative_etiquette-brightgreen.svg" alt="Collaborative Etiquette">
 	</a>
@@ -24,7 +16,15 @@
 	</a>
 </p>
 
-# Watch our video
+<p align="center">
+	<a href="https://ggoods.io">
+		<img height="180" src="./docs/ggoods-logo.svg" >
+	</a>
+</p>
+
+# NFTs that enable communities to raise funds 
+
+### Watch our video
 [![gGoods - NFT Marketplace](http://img.youtube.com/vi/MhXxKEnAJVc/0.jpg)](http://www.youtube.com/watch?v=MhXxKEnAJVc "gGoods - NFT Marketplace")
 
 # [gGoods.io](https://ggoods.io)
