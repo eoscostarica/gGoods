@@ -96,8 +96,8 @@ This project features the following tech stack:
 - **[IPFS](https://ipfs.io/)** 
 - **[React JS](https://reactjs.org/)**
 - **[Material UI](https://material-ui.com/)**
-- **[hasura](https://hasura.io) GraphQL engine**
-- **[hapi](https://hapi.dev/)** (HTTP API)
+- **[hasura](https://hasura.io)** GraphQL engine
+- **[hapi](https://hapi.dev/)** NodeJS HTTP API
 
 **EOSCR Boilerplate**
 
@@ -196,18 +196,18 @@ The smart contract used by gGoods is deployed on the jungle3 testnet as [**`ggoo
 
 gGoods allows for users to purchase NFTs using traditional payment and authentication methods such as Google. We believe this provides the best user experience and lowers barriers for adoption. To accomplish this we are using the native EOSIO KEOS wallet service to store user's private keys and sign transactions for them. We plan to enable client side wallets soon.
 
-### Web Application
+### ReactJS Web Application
 
-This FullStack Template uses [React.js](https://reactjs.org) as a Frontend Library which together with other tools like [Apollo Client](https://www.apollographql.com/docs/react/), [GraphQL](https://graphql.org/) and [Material UI](https://material-ui.com/) brings a robust solution for building Single Page Applications out of the box.
+This project uses [React.js](https://reactjs.org) as a Frontend Library which together with other tools like [Apollo Client](https://www.apollographql.com/docs/react/), [GraphQL](https://graphql.org/) and [Material UI](https://material-ui.com/) brings a robust solution for building Single Page Applications out of the box.
 
-### Hasura GraphQL Server
+### Hasura GraphQL Engine
 
 [Hasura](https://hasura.io/) technology maps a [PostgreSQL](https://www.postgresql.org/) database and provides a reliable and easy-to-use API. This allows us to focus on critical features of our projects, delegating mechanic CRUD (Create, Read, Update, Delete) operations.
 Hasura also enables custom REST handling capabilities with the possibility to integrate a custom REST server, that way we can extend the base CRUD functionalities and build custom business logic.
 
-### Hapi REST Server
+### HTTP API Service - hAPI
 
-We need to handle REST custom requests coming from the Hasura GraphQL server. For this, we use [hapi.dev](https://hapi.dev/), which is a simple and easy-to-use backend framework.
+We use an internal HTTP API to handle custom business logic coming from the Hasura GraphQL server. We chose to use [hapi.dev](https://hapi.dev/) for this, which is a simple and easy-to-use Node JS backend framework.
 
 ### Interplanetary File System - IPFS
 
