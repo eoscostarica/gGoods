@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -14,7 +13,6 @@ import Alert from '@material-ui/lab/Alert'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Dialog from '@material-ui/core/Dialog'
-import LockIcon from '@material-ui/icons/Lock'
 import { useTranslation } from 'react-i18next'
 
 import { CREDENTIALS_RECOVERY, CHANGE_PASSWORD } from '../../gql'
@@ -47,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center'
   },
   labelOption: {
-    color: theme.palette.primary.main,
+    color: theme.palette.info.main,
     marginLeft: theme.spacing(3),
     fontSize: 14,
     cursor: 'pointer'
@@ -68,8 +66,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     marginTop: '6%',
-    borderRadius: '50px',
-    backgroundColor: '#4DD5EA',
+    backgroundColor: theme.palette.primary.main,
     width: '100%',
     height: '40px',
     fontSize: '14px',
@@ -135,21 +132,25 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
     setUser({ ...user, [field]: value })
   }
 
-  const handleSubmit = () => {
-    setErrorMessage(null)
-    credentialsRecovery({
-      variables: {
-        email: user.email,
-        emailContent: {
-          subject: t('emailMessage.subjectCredentialsRecovery'),
-          title: t('emailMessage.titleCredentialsRecovery'),
-          message: t('emailMessage.messageCredentialsRecovery'),
-          account: t('account'),
-          password: t('password')
+  const handleSubmit = async () => {
+    try {
+      setErrorMessage(null)
+      await credentialsRecovery({
+        variables: {
+          email: user.email,
+          emailContent: {
+            subject: t('emailMessage.subjectCredentialsRecovery'),
+            title: t('emailMessage.titleCredentialsRecovery'),
+            message: t('emailMessage.messageCredentialsRecovery'),
+            account: t('account'),
+            password: t('password')
+          }
         }
-      }
-    })
-    setValidEmailFormat(false)
+      })
+      setValidEmailFormat(false)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleSubmitChangePassword = () => {
@@ -222,15 +223,14 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
         className={clsx(classes.loginBtn, overrideBoxClass)}
         onClick={handleOpen}
       >
-        <LockIcon className={classes.iconOption} />
-        <Link to="/">
+        <Button to="/">
           <Typography
             variant="body1"
             className={clsx(classes.labelOption, overrideLabelClass)}
           >
             {t('title')}
           </Typography>
-        </Link>
+        </Button>
       </Box>
       <Dialog
         aria-labelledby="transition-modal-title"
@@ -280,7 +280,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                 <Button
                   disabled={!validEmailFormat || loading}
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   onClick={handleSubmit}
                   className={classes.button}
                 >
@@ -328,7 +328,7 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
                     loadingChangePassword
                   }
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   onClick={handleSubmitChangePassword}
                   className={classes.button}
                 >

@@ -22,7 +22,7 @@ module.exports = async ({ payload: { input } }) => {
       encripTempSecret
     )
 
-    if (user) {
+    if (user.update_user.returning.length > 0) {
       await mailUtil.sendCredentialsRecovery(
         input.email,
         user.update_user.returning[0].account,
@@ -33,6 +33,8 @@ module.exports = async ({ payload: { input } }) => {
         input.emailContent.account,
         input.emailContent.password
       )
+    } else {
+      throw new Error('The email entered is not associated with any account')
     }
 
     return {
@@ -40,6 +42,8 @@ module.exports = async ({ payload: { input } }) => {
     }
   } catch (error) {
     console.log(error)
-    return Boom.boomify(error, { statusCode: BAD_REQUEST })
+    throw new Boom.Boom(error.message, {
+      statusCode: BAD_REQUEST
+    })
   }
 }

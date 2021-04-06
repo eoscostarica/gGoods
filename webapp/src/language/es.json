@@ -52,7 +52,8 @@
     "invalidAccountOrPassword": "Cuenta o contraseña incorrecta",
     "loginWithGoogle": "Iniciar sesión con Google",
     "logout": "Cerrar sesión",
-    "notAccount": "¿No tienes cuenta aún? Registrarse aquí."
+    "notAccount": "Registrarse aquí",
+    "noAccountYet": "¿No tienes cuenta aún?"
   },
   "miscellaneous": {
     "continue": "Continuar"

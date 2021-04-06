@@ -14,7 +14,6 @@ const useStyles = makeStyles(theme => ({
     width: '100%'
   },
   btn: {
-    borderRadius: '50px',
     width: '60%',
     fontSize: '14px',
     fontWeight: 500,
