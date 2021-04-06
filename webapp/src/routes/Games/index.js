@@ -9,6 +9,7 @@ import { CardGame } from '../../components/Card'
 import selfieCamPortrait from '../../images/assets/selfiecam-portrait.jpg'
 import travelingGoodsPortrait from '../../images/assets/travelingGoods-portrait.jpg'
 import comingSoonPortrait from '../../images/assets/comingSoon.jpg'
+import memoryPortrait from '../../images/assets/memory-portrait.jpg'
 
 import styles from './styles'
 
@@ -37,8 +38,7 @@ const GAME_LIST = [
     pathname: '/games/memory',
     description:
       'A classic card game in which all of the cards are NFTs! The object of the game is to turn over pairs of matching cards.',
-    img:
-      'https://h5p.org/sites/default/files/styles/medium-logo/public/logos/memory-game-icon.png?itok=bIQqHE7Y'
+    img: memoryPortrait
   },
   {
     name: 'More Apps Coming Soon',
