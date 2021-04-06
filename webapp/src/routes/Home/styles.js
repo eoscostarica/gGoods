@@ -1,4 +1,7 @@
 export default theme => ({
+  root: {
+    marginBottom: theme.spacing(2)
+  },
   displayInline: {
     display: 'flex',
     flexDirection: 'column',
@@ -13,21 +16,6 @@ export default theme => ({
   },
   firstTitle: {
     marginTop: theme.spacing(3)
-  },
-  rowsBoxWrap: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    '& .MuiCard-root': {
-      marginRight: theme.spacing(1)
-    },
-    [theme.breakpoints.up('sm')]: {
-      justifyContent: 'flex-start',
-      '& .MuiCard-root': {
-        marginRight: theme.spacing(2)
-      }
-    }
   },
   optionsWrapper: {
     margin: theme.spacing(2),
@@ -79,7 +67,6 @@ export default theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    padding: theme.spacing(2),
     '& button': {
       color: theme.palette.primary.main,
       fontStyle: 'normal',
@@ -89,25 +76,44 @@ export default theme => ({
       letterSpacing: '1px'
     }
   },
-  cardInfoWrapper: {
+  cardsWrapper: {
     display: 'flex',
-    flexDirection: 'column',
-    marginTop: theme.spacing(1),
+    padding: `${theme.spacing(1)}px 0`,
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    '& .MuiCard-root': {
+      marginRight: theme.spacing(1),
+      marginBottom: theme.spacing(1)
+    },
     [theme.breakpoints.up('sm')]: {
-      flexWrap: 'wrap',
-      flexDirection: 'row',
-      '& .MuiCard-root': {
-        width: '48%',
-        marginRight: theme.spacing(1)
-      }
+      flexWrap: 'nowrap',
+      overflow: 'scroll'
+    }
+  },
+  ggoodCardsWrapper: {
+    '& .MuiCard-root': {
+      width: '45%'
     },
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       '& .MuiCard-root': {
-        width: 288
+        width: 136,
+        minWidth: 136
       }
-    },
+    }
+  },
+  infoCardsWrapper: {
     '& img': {
       borderRadius: 50
+    },
+    '& .MuiCard-root': {
+      width: '100%'
+    },
+    [theme.breakpoints.up('sm')]: {
+      '& .MuiCard-root': {
+        width: 288,
+        minWidth: 288
+      }
     }
   }
 })
