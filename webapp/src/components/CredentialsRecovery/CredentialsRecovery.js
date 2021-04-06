@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     marginTop: '6%',
-    backgroundColor: '#1565C0',
+    backgroundColor: theme.palette.primary.main,
     width: '100%',
     height: '40px',
     fontSize: '14px',
@@ -132,21 +132,25 @@ const CredentialsRecovery = ({ overrideBoxClass, overrideLabelClass }) => {
     setUser({ ...user, [field]: value })
   }
 
-  const handleSubmit = () => {
-    setErrorMessage(null)
-    credentialsRecovery({
-      variables: {
-        email: user.email,
-        emailContent: {
-          subject: t('emailMessage.subjectCredentialsRecovery'),
-          title: t('emailMessage.titleCredentialsRecovery'),
-          message: t('emailMessage.messageCredentialsRecovery'),
-          account: t('account'),
-          password: t('password')
+  const handleSubmit = async () => {
+    try {
+      setErrorMessage(null)
+      await credentialsRecovery({
+        variables: {
+          email: user.email,
+          emailContent: {
+            subject: t('emailMessage.subjectCredentialsRecovery'),
+            title: t('emailMessage.titleCredentialsRecovery'),
+            message: t('emailMessage.messageCredentialsRecovery'),
+            account: t('account'),
+            password: t('password')
+          }
         }
-      }
-    })
-    setValidEmailFormat(false)
+      })
+      setValidEmailFormat(false)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleSubmitChangePassword = () => {

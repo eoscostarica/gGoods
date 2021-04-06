@@ -129,7 +129,7 @@ const useStyles = makeStyles(theme => ({
     fontStyle: 'normal',
     lineHeight: 1.33,
     letterSpacing: '0.4px',
-    color: '#1565c0'
+    color: theme.palette.primary.main
   },
   labelOption: {
     color: `${theme.palette.info.main} !important`,
@@ -352,7 +352,7 @@ const LoginModal = () => {
             <br />
             <Box className={classes.centerBox}>
               <Typography className={classes.noAccountYetText}>
-                No account yet?
+                {t('noAccountYet')}
               </Typography>
             </Box>
             <Box className={classes.centerBox}>
