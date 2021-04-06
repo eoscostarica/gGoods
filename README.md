@@ -103,6 +103,10 @@ This project features the following tech stack:
 
 We built this project using our own [EOSIO project boilerplate](https://github.com/eoscostarica/full-stack-boilerplate), a highly scalable skeleton including best practices. This fullstack monorepo contains our front end and backend boilerplates.
 
+**UX Design**
+
+We use Figma as an application for collaborative design projects in teams, where we create the [gGoods](https://www.figma.com/file/y7WiHHBXtvFULGoMoTOKRn/gGoods-Material-UI?node-id=60015%3A0) prototype to improve the user experience.
+
 ## Project Board and Discussion Topics 
 
 Find out more about the following topics on [gitHub discussions](https://github.com/eoscostarica/gGoods/discussions)
