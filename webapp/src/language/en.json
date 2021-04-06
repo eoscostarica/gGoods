@@ -81,7 +81,7 @@
     "invalidAccountOrPassword": "Invalid account or password",
     "loginWithGoogle": "Login with Google",
     "logout": "Logout",
-    "notAccount": "No account yet? Register here."
+    "notAccount": "Register here"
   },
   "registerOrganization": {
     "accountapprove": "This account has been approved",

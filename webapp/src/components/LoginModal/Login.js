@@ -25,6 +25,7 @@ import {
 } from '../../gql'
 import { useSharedState } from '../../context/state.context'
 import LoginWithGoogle from './LoginWithGoogle'
+import CredentialsRecovery from '../CredentialsRecovery'
 
 const useStyles = makeStyles(theme => ({
   alert: {
@@ -86,7 +87,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   btnLogin: {
-    borderRadius: '50px',
     width: '70%',
     fontSize: '14px',
     fontWeight: 500,
@@ -127,19 +127,20 @@ const useStyles = makeStyles(theme => ({
     padding: '10px'
   },
   registerTextModal: {
-    fontSize: '12px',
-    fontWeight: 'normal',
+    fontSize: '14px',
+    fontWeight: 'bold',
     fontStretch: 'normal',
     fontStyle: 'normal',
     lineHeight: 1.33,
     letterSpacing: '0.4px',
-    color: '#000000'
+    color: '#1565c0'
   },
   labelOption: {
-    color: `${theme.palette.primary.main} !important`,
+    color: `${theme.palette.info.main} !important`,
+    fontWeight: 'bold',
     marginLeft: theme.spacing(3),
     fontSize: 14,
-    textTransform: 'capitalize'
+    textTransform: 'uppercase'
   },
   iconOption: {
     color: 'rgba(0, 0, 0, 0.54)',
@@ -151,6 +152,15 @@ const useStyles = makeStyles(theme => ({
   },
   sampleCredentials: {
     padding: theme.spacing(3)
+  },
+  noAccountYetText: {
+    fontSize: '12px',
+    fontWeight: 'normal',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: 1.33,
+    letterSpacing: '0.4px',
+    color: 'rgba(0, 0, 0, 0.6)'
   }
 }))
 
@@ -371,7 +381,19 @@ const LoginModal = () => {
             <Box className={classes.centerBox}>
               <LoginWithGoogle onSubmit={handleLoginWithAuth} />
             </Box>
-            <Box className={classes.registerBox}>
+            <Box className={classes.centerBox}>
+              <CredentialsRecovery
+                overrideBoxClass={classes.optionLink}
+                overrideLabelClass={classes.labelOption}
+              />
+            </Box>
+            <br />
+            <Box className={classes.centerBox}>
+              <Typography className={classes.noAccountYetText}>
+                No account yet?
+              </Typography>
+            </Box>
+            <Box className={classes.centerBox}>
               <Button
                 color="secondary"
                 className={classes.registerTextModal}
@@ -383,6 +405,8 @@ const LoginModal = () => {
                 {t('notAccount')}
               </Button>
             </Box>
+            <br />
+            <br />
             <Typography variant="h6">Log in with a demo account</Typography>
             <dl>
               <dt>
@@ -408,7 +432,7 @@ const LoginModal = () => {
                 <Typography variant="body1">username: hurrcnrelief</Typography>
                 <Typography variant="body1">password: organization</Typography>
               </dd>
-
+              <br />
               <dt>
                 <Typography variant="subtitle1">Regular user</Typography>
               </dt>
