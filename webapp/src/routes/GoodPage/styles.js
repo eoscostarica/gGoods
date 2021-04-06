@@ -34,5 +34,16 @@ export default theme => ({
     '& .MuiCardActions-root': {
       padding: 0
     }
+  },
+  links: {
+    color: '#000000',
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline'
+    }
+  },
+  loading: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 })

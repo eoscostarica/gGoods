@@ -89,7 +89,11 @@ const GoodPage = () => {
 
   return (
     <Box className={classes.mainBox}>
-      {loading && <CircularProgress />}
+      {loading && (
+        <Box className={classes.loading}>
+          <CircularProgress />
+        </Box>
+      )}
       {!loading && !ggood?.item?.id && (
         <Typography variant="body1">{t('emptyMessage')}</Typography>
       )}
@@ -103,7 +107,7 @@ const GoodPage = () => {
                     {ggood?.item?.metadata.name}
                   </Typography>
                   <LinkRouter
-                    style={{ textDecoration: 'none' }}
+                    className={classes.links}
                     to={{ pathname: `/organization/${organization?.id}` }}
                   >
                     <Typography variant="caption">
@@ -116,7 +120,7 @@ const GoodPage = () => {
                     {ggood?.item?.metadata?.name}
                   </Typography>
                   <LinkRouter
-                    style={{ textDecoration: 'none' }}
+                    className={classes.links}
                     to={{ pathname: `/organization/${organization?.id}` }}
                   >
                     <Typography variant="h6">
@@ -144,7 +148,7 @@ const GoodPage = () => {
               </Hidden>
               <Grid item xs={12} md={5} className={classes.card}>
                 <CardAvatar
-                  image={ggood?.item?.metadata?.imageSmall}
+                  image={ggood?.item?.metadata?.imageLarge}
                   backgroundColor={ggood?.item?.metadata?.backgroundColor}
                 />
                 <Box className={classes.priceBox}>
