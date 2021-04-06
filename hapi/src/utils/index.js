@@ -7,5 +7,6 @@ module.exports = {
   jwtUtil: require('./jwt.util'),
   mailUtil: require('./mail'),
   paypalUtil: require('./paypal.util'),
-  walletUtil: require('./wallet.util')
+  walletUtil: require('./wallet.util'),
+  bcryptjs: require('./bcryptjs.util')
 }
