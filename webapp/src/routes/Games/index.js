@@ -25,14 +25,9 @@ const GAME_LIST = [
     img: selfieCamPortrait
   },
   {
-<<<<<<< HEAD
     name: 'Traveling gGoods',
     by: 'EOS Costa Rica',
     pathname: '',
-=======
-    name: 'Free your NFT!',
-    pathname: 'games/ggoods-land',
->>>>>>> main
     description:
       'Let your NFTs explore the world! By being exposed to new places, people, and cultures, you will develop a wider world view',
     img: travelingGoodsPortrait
