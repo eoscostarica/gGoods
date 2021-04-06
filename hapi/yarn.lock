@@ -269,7 +269,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/joi@npm:17.x.x":
+"@hapi/joi@npm:17.x.x, @hapi/joi@npm:^17.1.0":
   version: 17.1.1
   resolution: "@hapi/joi@npm:17.1.1"
   dependencies:
@@ -2610,6 +2610,7 @@ fsevents@~2.3.1:
     "@babel/code-frame": ^7.12.13
     "@hapi/boom": ^9.0.0
     "@hapi/hapi": ^19.1.1
+    "@hapi/joi": ^17.1.0
     axios: ^0.19.2
     bcryptjs: ^2.4.3
     env-cmd: ^10.1.0
