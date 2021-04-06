@@ -70,5 +70,8 @@ export default theme => ({
       alignItems: 'center',
       letterSpacing: '0.44px'
     }
+  },
+  displayNone: {
+    display: 'none'
   }
 })
