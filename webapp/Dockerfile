@@ -16,8 +16,8 @@ ARG react_app_ipfs_url
 ARG react_app_block_explorer
 ARG react_app_block_explorer_url
 ARG react_app_paypal_client_id
-ARG $react_app_oauth_google_client_id
-ARG $react_app_map_base_url
+ARG react_app_oauth_google_client_id
+ARG react_app_map_base_url
 
 ENV WORK_DIR /usr/src/app
 ENV PATH $WORK_DIR/node_modules/.bin:$PATH

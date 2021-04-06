@@ -35,11 +35,11 @@ build-docker: ./Dockerfile
 		--build-arg react_app_hasura_url="$(REACT_APP_HASURA_URL)" \
 		--build-arg react_app_ipfs_url="$(REACT_APP_IPFS_URL)" \
 		--build-arg react_app_paypal_client_id="$(REACT_APP_PAYPAL_CLIENT_ID)" \
-		--build-arg react_app_block_explorer="$(REACT_APP_MAP_BASE_URL)" \
-		--build-arg react_app_block_explorer="$(REACT_APP_MAP_API_KEY)" \
+		--build-arg react_app_map_base_url="$(REACT_APP_MAP_BASE_URL)" \
+		--build-arg react_app_map_api_key="$(REACT_APP_MAP_API_KEY)" \
 		--build-arg react_app_block_explorer="$(REACT_APP_BLOCK_EXPLORER)" \
-		--build-arg react_app_block_explorer="$(REACT_APP_BLOCK_EXPLORER_URL)" \
-		--build-arg react_app_block_explorer="$(REACT_APP_OAUTH_GOOGLE_CLIENT_ID)" \
+		--build-arg react_app_block_explorer_url="$(REACT_APP_BLOCK_EXPLORER_URL)" \
+		--build-arg react_app_oauth_client_id="$(REACT_APP_OAUTH_GOOGLE_CLIENT_ID)" \
 		.
 
 pull-image: ##@devops Pull the latest image from registry for caching
@@ -66,11 +66,11 @@ build-docker-cached: ./Dockerfile
 		--build-arg react_app_hasura_url="$(REACT_APP_HASURA_URL)" \
 		--build-arg react_app_ipfs_url="$(REACT_APP_IPFS_URL)" \
 		--build-arg react_app_paypal_client_id="$(REACT_APP_PAYPAL_CLIENT_ID)" \
-		--build-arg react_app_block_explorer="$(REACT_APP_MAP_BASE_URL)" \
-		--build-arg react_app_block_explorer="$(REACT_APP_MAP_API_KEY)" \
+		--build-arg react_app_map_base_url="$(REACT_APP_MAP_BASE_URL)" \
+		--build-arg react_app_map_api_key="$(REACT_APP_MAP_API_KEY)" \
 		--build-arg react_app_block_explorer="$(REACT_APP_BLOCK_EXPLORER)" \
-		--build-arg react_app_block_explorer="$(REACT_APP_BLOCK_EXPLORER_URL)" \
-		--build-arg react_app_block_explorer="$(REACT_APP_OAUTH_GOOGLE_CLIENT_ID)" \
+		--build-arg react_app_block_explorer_url="$(REACT_APP_BLOCK_EXPLORER_URL)" \
+		--build-arg react_app_oauth_client_id="$(REACT_APP_OAUTH_GOOGLE_CLIENT_ID)" \
 		.
 
 push-image: ##@devops Push the freshly built image and tag with release or latest tag
