@@ -326,5 +326,10 @@
     "attempts": "Attempts",
     "emptyMessage": "You don't have available gGoods yet",
     "winMessage": "You won!"
+  },
+  "loginBeforePlayRoute": {
+    "message": "In order to use this app you must first register your account and visit the gGoods marketplace to purchase at least one item. With you donation you will have access to the apps on the platform.",
+    "marketplace":"gGoods Marketplace",
+    "register": "Register or Login"
   }
 }
