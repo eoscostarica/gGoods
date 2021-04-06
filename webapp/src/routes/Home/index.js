@@ -22,6 +22,7 @@ import Help from '../../images/assets/help.png'
 import Bg from '../../images/assets/cardBg.jpg'
 import Bg1 from '../../images/assets/cardBg1.png'
 import Bg2 from '../../images/assets/cardBg2.jpg'
+import { getGames } from '../../utils'
 
 import styles from './styles'
 

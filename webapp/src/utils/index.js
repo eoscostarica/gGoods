@@ -1,6 +1,7 @@
 export * from './data-url-to-file'
 export * from './eosapi'
 export * from './format-with-thousand-separator'
+export * from './get-games'
 export * from './get-last-chars'
 export * from './get-unique-ggoods-by-name'
 export * from './ipfs'
