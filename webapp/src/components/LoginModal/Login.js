@@ -414,7 +414,7 @@ const LoginModal = () => {
               </dt>
               <dd>
                 <Typography variant="body1">
-                  username: mike@gmail.com
+                  username: testuser@ggoods.io
                 </Typography>
                 <Typography variant="body1">password: user</Typography>
               </dd>
