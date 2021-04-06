@@ -14,6 +14,9 @@ import ShareIcon from '@material-ui/icons/Share'
 import Fade from '@material-ui/core/Fade'
 import DeleteIcon from '@material-ui/icons/Delete'
 import GetAppIcon from '@material-ui/icons/GetApp'
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 import 'react-html5-camera-photo/build/css/index.css'
 
 import { mainConfig } from '../../config'
@@ -51,7 +54,7 @@ const SelfieCam = () => {
   const [selfie, setSelfie] = useState()
   const [open, setOpen] = useState(false)
   const [ggoodsSelected, setGgoodsSelected] = useState()
-  const { loading, data } = useQuery(MY_GGOODS)
+  const { loading, data } = useQuery(MY_GGOODS, { fetchPolicy: 'network-only' })
   const [nftSetting, setNftSetting] = useState({
     width: 100,
     height: 100,
@@ -130,49 +133,54 @@ const SelfieCam = () => {
   }
 
   return (
-    <Box className={classes.selfieBox}>
-      <Typography variant="h4" className={classes.titlePage}>
+    <Box className={classes.root}>
+      <Typography variant="h4" gutterBottom>
         {t('title')}
       </Typography>
-      <Typography className={classes.textPageDescription}>
-        {t('paragraph1')}
-      </Typography>
-      <Typography variant="h5" className={classes.titlePage}>
-        {t('subTitle')}
-      </Typography>
-
-      <Box>
-        {loading && (
-          <Box>
-            <Grid container spacing={2}>
-              <Grid item xs={6} md={3} lg={2}>
-                <CardAvatarSkeleton />
-              </Grid>
-              <Grid item xs={6} md={3} lg={2}>
-                <CardAvatarSkeleton />
-              </Grid>
-              <Grid item xs={6} md={3} lg={2}>
-                <CardAvatarSkeleton />
-              </Grid>
+      {loading && (
+        <Box>
+          <Grid container spacing={2}>
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
             </Grid>
-          </Box>
-        )}
-
-        <Grid container spacing={2}>
-          {getUniqueGGoodsByName(data?.ggoods || []).map((item, index) => (
-            <Grid item xs={6} md={3} lg={2} key={index}>
-              <CardAvatar
-                id={item.id}
-                name={item.metadata.name}
-                image={item.metadata.imageSmall}
-                backgroundColor={item.metadata.backgroundColor}
-                onClick={handleOpen}
-              />
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
             </Grid>
-          ))}
-        </Grid>
-      </Box>
-
+            <Grid item xs={6} md={3} lg={2}>
+              <CardAvatarSkeleton />
+            </Grid>
+          </Grid>
+        </Box>
+      )}
+      {!loading && !data?.ggoods?.length && (
+        <>
+          <Typography variant="body1" gutterBottom>
+            {t('emptyMessage')}
+          </Typography>
+          <Button component={Link} color="primary" to="/goods">
+            <KeyboardArrowRightIcon />
+            {t('marketplaceLink')}
+          </Button>
+        </>
+      )}
+      {!loading && !!data?.ggoods?.length && (
+        <Typography variant="body1" gutterBottom>
+          {t('paragraph')}
+        </Typography>
+      )}
+      <Grid container spacing={2}>
+        {getUniqueGGoodsByName(data?.ggoods || []).map((item, index) => (
+          <Grid item xs={6} md={3} lg={2} key={index}>
+            <CardAvatar
+              id={item.id}
+              name={item.metadata.name}
+              image={item.metadata.imageSmall}
+              backgroundColor={item.metadata.backgroundColor}
+              onClick={handleOpen}
+            />
+          </Grid>
+        ))}
+      </Grid>
       <Modal
         className={classes.modal}
         open={open}
