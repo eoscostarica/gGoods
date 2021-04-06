@@ -1,15 +1,212 @@
 type Mutation {
+  change_password (
+    email: String!
+    emailContent: jsonb!
+    currentPassword: String!
+    newPassword: String!
+  ): change_password_output
+}
+
+
+type Mutation {
+  check_username (
+    role: String!
+    username: String!
+  ): check_username_output
+}
+
+
+type Mutation {
+  confirm_sale_with_paypal (
+    orderId: String!
+  ): confirm_sale_with_paypal_output
+}
+
+
+type Mutation {
+  create_account (
+    role: String!
+    email: String!
+    emailContent: jsonb!
+    name: String!
+    secret: String!
+  ): create_account_output
+}
+
+
+type Mutation {
+  create_account_organization (
+    email: String!
+    emailContent: jsonb!
+    name: String!
+    secret: String!
+    verification_code: String!
+  ): create_account_organization_output
+}
+
+
+type Mutation {
+  create_pre_register_organization (
+    email: String!
+    emailContent: jsonb!
+    password: String!
+    name: String!
+    address: String!
+    phone: String!
+    description: String!
+    invitation_code: String!
+  ): create_pre_register_organization_output
+}
+
+
+type Mutation {
   create_template (
     category: String!
     name: String!
     metadata: jsonb!
-  ): CreateTemplateOutput
+  ): create_template_output
+}
+
+
+type Mutation {
+  credentials_recovery (
+    email: String!
+    emailContent: jsonb!
+  ): credentials_recovery_output
+}
+
+
+type Query {
+  ggood_on_sale (
+    id: Int
+  ): ggood_on_sale_output
+}
+
+
+type Query {
+  ggoods_on_sale (
+    seller: String
+    limit: Int
+  ): [ggoods_on_sale_output]
+}
+
+
+type Mutation {
+  login (
+    account: String!
+    secret: String!
+  ): login_output
+}
+
+
+type Query {
+  my_ggoods (
+    limit: Int
+  ): [my_ggoods_output]
+}
+
+
+type Mutation {
+  put_on_sale (
+    template: uuid!
+    quantity: Int!
+    amount: Float!
+    donable: Boolean
+    memo: String
+  ): put_on_sale_output
+}
+
+
+type Mutation {
+  verify_email (
+    code: String!
+  ): verify_email_output
 }
 
 
 
 
-type CreateTemplateOutput {
+type check_username_output {
+  is_valid : Boolean!
+}
+
+type create_account_output {
+  account : String!
+  transaction_id : String!
+  token : String!
+}
+
+type create_pre_register_organization_output {
+  resultRegister : String!
+}
+
+type create_account_organization_output {
+  account : String!
+  transaction_id : String!
+  token : String!
+}
+
+type login_output {
+  token : String!
+}
+
+type verify_email_output {
+  is_verified : Boolean!
+}
+
+type payment_transaction_complete_output {
+  return_status : Boolean!
+}
+
+type credentials_recovery_output {
+  success : Boolean!
+}
+
+type change_password_output {
+  success : Boolean!
+}
+
+type my_ggoods_output {
+  id : Int!
+  issuer : String!
+  owner : String!
+  serial : Int!
+  metadata : jsonb!
+}
+
+type confirm_sale_with_paypal_output {
+  ggoods : jsonb
+}
+
+type ggoods_on_sale_output {
+  id : Int!
+  issuer : String!
+  owner : String!
+  seller : String!
+  serial : String!
+  amount : String!
+  donable : Boolean!
+  expiration : String!
+  metadata : jsonb!
+}
+
+type ggood_on_sale_output {
+  id : Int
+  issuer : String
+  owner : String
+  seller : String
+  serial : String
+  amount : String
+  donable : Boolean
+  expiration : String
+  metadata : jsonb
+}
+
+type put_on_sale_output {
+  ggoods : jsonb
+}
+
+type create_template_output {
   trxid : String!
 }
 

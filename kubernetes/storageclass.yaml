@@ -1,14 +1,13 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: dashboard-storage
-  labels:
-    version: ${VERSION}
-parameters:
-  fromBackup: ""
-  numberOfReplicas: "1"
-  staleReplicaTimeout: "2880"
-provisioner: ${STORAGE_PROVISIONER}
-reclaimPolicy: Retain
+  name: ggoods-storage
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: "true"
+provisioner: kubernetes.io/gce-pd
 volumeBindingMode: WaitForFirstConsumer
+parameters:
+  type: pd-standard
+  fsType: ext4
+reclaimPolicy: Retain
 allowVolumeExpansion: true

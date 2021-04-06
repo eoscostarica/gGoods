@@ -1,39 +1,102 @@
 import React, { lazy } from 'react'
-
-import {
-  Grid as GridIcon,
-  Info as InfoIcon,
-  HelpCircle as HelpIcon,
-  GitMerge as GitMergeIcon,
-  GitHub as GitHubIcon,
-  Send as TelegramIcon
-} from 'react-feather'
-
-import { mainConfig } from '../config'
+import AppsIcon from '@material-ui/icons/Apps'
+import HomeIcon from '@material-ui/icons/Home'
+import PublicIcon from '@material-ui/icons/Public'
+import GamesIcon from '@material-ui/icons/Games'
+import InfoIcon from '@material-ui/icons/Info'
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 const Home = lazy(() => import('./Home'))
+const Organizations = lazy(() => import('./Organizations'))
+const Organization = lazy(() => import('./Organization'))
+const Goods = lazy(() => import('./Goods'))
+const GoodPage = lazy(() => import('./GoodPage'))
+const DonationSuccesful = lazy(() => import('./DonationSuccesful'))
+const Games = lazy(() => import('./Games'))
+const YourCollection = lazy(() => import('./YourCollection'))
 const CreateTemplate = lazy(() => import('./CreateTemplate'))
+const CreateCustomTemplate = lazy(() => import('./CreateCustomTemplate'))
 const About = lazy(() => import('./About'))
-const Help = lazy(() => import('./Help'))
 const Page404 = lazy(() => import('./Route404'))
+const EmailVerification = lazy(() => import('./EmailVerification'))
+const RegisterOrganization = lazy(() => import('./RegisterOrganization'))
+const Inventory = lazy(() => import('./Inventory'))
+const SelfieCam = lazy(() => import('./SelfieCam'))
+const Memory = lazy(() => import('./Memory'))
+const gGoodsLand = lazy(() => import('./gGoodsLand'))
 
 const routes = [
   {
     name: 'home',
-    icon: <GridIcon />,
+    icon: <HomeIcon />,
     component: Home,
     path: '/',
     exact: true
   },
   {
-    name: 'createTemplate',
-    icon: <GridIcon />,
-    component: CreateTemplate,
-    path: '/create-template',
+    path: '/organization/:id',
+    component: Organization
+  },
+  {
+    name: 'gGoods',
+    icon: <AppsIcon />,
+    component: Goods,
+    path: '/goods',
     exact: true
   },
   {
-    header: 'docs',
+    path: '/good/:id',
+    component: GoodPage
+  },
+  {
+    path: '/donation-succesful',
+    component: DonationSuccesful
+  },
+  {
+    name: 'games',
+    icon: <GamesIcon />,
+    component: Games,
+    path: '/games',
+    exact: true
+  },
+  {
+    name: 'your-collection',
+    icon: <InsertEmoticonIcon />,
+    component: YourCollection,
+    path: '/your-collection',
+    exact: true,
+    roles: ['user']
+  },
+  {
+    name: 'Inventory',
+    icon: <InsertEmoticonIcon />,
+    component: Inventory,
+    path: '/inventory',
+    exact: true,
+    roles: ['organization']
+  },
+  {
+    component: CreateTemplate,
+    path: '/create-template',
+    exact: true,
+    roles: ['organization']
+  },
+  {
+    component: CreateCustomTemplate,
+    path: '/create-custom-template',
+    exact: true,
+    roles: ['organization']
+  },
+  {
+    name: 'organizations',
+    icon: <PublicIcon />,
+    component: Organizations,
+    path: '/organizations',
+    exact: true
+  },
+  {
     name: 'about',
     icon: <InfoIcon />,
     component: About,
@@ -41,31 +104,32 @@ const routes = [
     exact: true
   },
   {
-    name: 'help',
-    icon: <HelpIcon />,
-    component: Help,
-    path: '/help',
+    component: SelfieCam,
+    path: '/games/selfie-cam',
     exact: true
   },
   {
-    name: 'changelog',
-    badge: mainConfig.appVersion,
-    path: 'https://github.com/eoscostarica/Ggoods/tags',
-    icon: <GitMergeIcon />,
+    component: Memory,
+    path: '/games/memory',
     exact: true
   },
   {
-    header: 'community',
-    name: 'github',
-    path: 'https://github.com/eoscostarica/Ggoods',
-    icon: <GitHubIcon />
+    component: gGoodsLand,
+    path: '/games/ggoods-land',
+    exact: true
   },
   {
-    name: 'telegram',
-    path: 'https://t.me/eoscr',
-    icon: <TelegramIcon />
+    component: EmailVerification,
+    path: '/verification/:code',
+    exact: true
   },
   {
+    component: RegisterOrganization,
+    path: '/register-organization/:code',
+    exact: true
+  },
+  {
+    path: '/not-found',
     component: Page404
   }
 ]

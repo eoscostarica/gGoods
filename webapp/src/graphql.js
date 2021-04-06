@@ -8,13 +8,10 @@ import {
 } from '@apollo/client'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { WebSocketLink } from '@apollo/client/link/ws'
-
 import { graphqlConfig } from './config'
-
 const httpLink = new HttpLink({
   uri: graphqlConfig.url
 })
-
 const wsLink = new WebSocketLink({
   uri: graphqlConfig.url.replace(/^http?/, 'ws').replace(/^https?/, 'wss'),
   options: {
@@ -22,11 +19,9 @@ const wsLink = new WebSocketLink({
     reconnect: true
   }
 })
-
 const splitLink = split(
   ({ query }) => {
     const definition = getMainDefinition(query)
-
     return (
       definition.kind === 'OperationDefinition' &&
       definition.operation === 'subscription'
@@ -37,14 +32,20 @@ const splitLink = split(
 )
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  operation.setContext(({ headers = {} }) => ({
-    headers: {
-      ...headers,
-      Authorization: localStorage.getItem('token')
-        ? `Bearer ${localStorage.getItem('token')}`
-        : 'pasa'
+  operation.setContext(({ headers = {} }) => {
+    if (!localStorage.getItem('token')) {
+      return {
+        headers
+      }
     }
-  }))
+
+    return {
+      headers: {
+        ...headers,
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+  })
 
   return forward(operation)
 })

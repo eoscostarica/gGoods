@@ -17,7 +17,7 @@ spec:
     - '*.ggoods.io'
     secretName: tls-secret
   rules:
-  - host: ${ENVIRONMENT_PREFIX}.ggoods.io
+  - host: ggoods.io
     http:
       paths:
         - path: /
@@ -42,7 +42,7 @@ spec:
   tls:
   - hosts:
     - graphql.ggoods.io
-    - '*graphql.ggoods.io'
+    - '*.graphql.ggoods.io'
     secretName: tls-secret
   rules:
   - host: graphql.ggoods.io

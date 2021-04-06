@@ -1,6 +1,168 @@
 - table:
     schema: public
+    name: ggoods_map
+  insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+      - good_id
+      - coordinates
+      - id
+      - user_id
+      backend_only: false
+  select_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - user_id
+      - coordinates
+      - good_id
+      filter: {}
+  update_permissions:
+  - role: user
+    permission:
+      columns:
+      - id
+      - user_id
+      - coordinates
+      - good_id
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: user
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: history
+- table:
+    schema: public
+    name: preregister_organization
+  object_relationships:
+  - name: getAccount
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: user
+        column_mapping:
+          email: email
+  select_permissions:
+  - role: guest
+    permission:
+      columns:
+      - address
+      - created_at
+      - description
+      - email
+      - email_verified
+      - id
+      - invitation_code
+      - name
+      - orgInfo
+      - password
+      - phone
+      - state
+      - updated_at
+      - verification_code
+      filter: {}
+  - role: organization
+    permission:
+      columns:
+      - address
+      - created_at
+      - description
+      - email
+      - email_verified
+      - id
+      - invitation_code
+      - name
+      - orgInfo
+      - password
+      - phone
+      - state
+      - updated_at
+      - verification_code
+      filter: {}
+  - role: user
+    permission:
+      columns:
+      - address
+      - created_at
+      - description
+      - email
+      - email_verified
+      - id
+      - invitation_code
+      - name
+      - orgInfo
+      - password
+      - phone
+      - state
+      - updated_at
+      - verification_code
+      filter: {}
+  update_permissions:
+  - role: guest
+    permission:
+      columns:
+      - email_verified
+      - state
+      filter: {}
+      check: null
+- table:
+    schema: public
     name: template
+  select_permissions:
+  - role: organization
+    permission:
+      columns:
+      - id
+      - account
+      - category
+      - name
+      - metadata
+      - created_at
+      - updated_at
+      filter:
+        account:
+          _eq: X-Hasura-User-Account
+- table:
+    schema: public
+    name: user
+  insert_permissions:
+  - role: guest
+    permission:
+      check: {}
+      columns:
+      - account
+      - created_at
+      - email
+      - email_verified
+      - id
+      - name
+      - role
+      - secret
+      - updated_at
+      - username
+      - verification_code
+      backend_only: false
+  select_permissions:
+  - role: guest
+    permission:
+      columns:
+      - account
+      - email
+      - email_verified
+      - id
+      - name
+      - role
+      - secret
+      - username
+      - verification_code
+      filter: {}
 - table:
     schema: public
     name: vault

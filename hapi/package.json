@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
     "watch": "nodemon --enable-source-maps src/index.js",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "lint:all": "eslint src/**/*.js"
   },
   "husky": {
     "hooks": {
@@ -16,15 +17,22 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/code-frame": "^7.12.13",
     "@hapi/boom": "^9.0.0",
     "@hapi/hapi": "^19.1.1",
     "axios": "^0.19.2",
-    "eosjs": "^21.0.3",
+    "bcryptjs": "^2.4.3",
+    "eosjs": "^20.0.3",
     "eosjs-api": "^7.0.4",
     "graphql-request": "^1.8.2",
+    "hapi-auth-jwt2": "^10.2.0",
     "http-status-codes": "^1.4.0",
+    "ipfs-http-client": "^49.0.4",
     "joi": "^17.4.0",
-    "node-fetch": "^2.6.1"
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.5.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

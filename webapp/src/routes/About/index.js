@@ -14,38 +14,95 @@ const About = () => {
   const { t } = useTranslation('aboutRoute')
 
   return (
-    <Box>
-      <Grid container direction="column">
-        <Grid item xs>
-          <Grid container direction="column">
-            <Typography variant="h3" className={classes.title}>
-              {t('title')}
+    <Box className={classes.mainBox}>
+      <Box className={classes.sectionBox}>
+        <Typography variant="h3" gutterBottom>
+          {t('title1')}
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
+              {t('whygGoods')}
             </Typography>
-            <Typography variant="h4">{t('subtitle1')}</Typography>
             <Typography variant="body2" align="justify" paragraph>
-              {t('paragraph1')}
+              {t('whygGoodsParagraph')}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
+              {t('behindgGoogs')}
+            </Typography>
+            <Typography variant="body2" align="justify" paragraph>
+              {t('behindgGoogsParagraph')}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
+              {t('aboutHack')}
+            </Typography>
+            <Typography variant="body2" align="justify" paragraph>
+              {t('aboutHackParagraph')}
             </Typography>
           </Grid>
         </Grid>
-
-        <Grid item xs>
-          <Grid container direction="column">
-            <Typography variant="h4">{t('subtitle2')}</Typography>
+      </Box>
+      <Box className={classes.sectionBox}>
+        <Typography variant="h3" gutterBottom>
+          {t('title2')}
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
+              {t('whatIsblockchain')}
+            </Typography>
             <Typography variant="body2" align="justify" paragraph>
-              {t('paragraph2')}
+              {t('whatIsblockchainParagraph')}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
+              {t('whatIsEOSIO')}
+            </Typography>
+            <Typography variant="body2" align="justify" paragraph>
+              {t('whatIsEOSIOParagraph')}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
+              {t('whatAreNFT')}
+            </Typography>
+            <Typography variant="body2" align="justify" paragraph>
+              {t('whatAreNFTParagraph')}
             </Typography>
           </Grid>
         </Grid>
-
-        <Grid item xs>
-          <Grid container direction="column">
-            <Typography variant="h4">{t('subtitle3')}</Typography>
+      </Box>
+      <Box className={classes.sectionBox}>
+        <Typography variant="h3" gutterBottom>
+          {t('title3')}
+        </Typography>
+        <Typography variant="body2" align="justify" paragraph>
+          {t('title3Description')}
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Typography variant="h6" gutterBottom>
+              {t('whosEOSCR')}
+            </Typography>
             <Typography variant="body2" align="justify" paragraph>
-              {t('paragraph3')}
+              {t('whosEOSCRParagraph')}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Typography variant="h6" gutterBottom>
+              {t('whosEDENIALabs')}
+            </Typography>
+            <Typography variant="body2" align="justify" paragraph>
+              {t('whosEDENIALabsParagraph')}
             </Typography>
           </Grid>
         </Grid>
-      </Grid>
+      </Box>
     </Box>
   )
 }

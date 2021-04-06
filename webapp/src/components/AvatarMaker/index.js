@@ -1,19 +1,19 @@
 import React, { memo, useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import Box from '@material-ui/core/Box'
-import { fabric } from 'fabric'
+import { SketchPicker } from 'react-color'
 import { makeStyles } from '@material-ui/styles'
+import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 
-import FabricCanvas from './FabricCanvas'
+import PreviewCanvas from './PreviewCanvas'
 import TemplateList from './TemplateList'
 import {
   decolist,
-  bglist,
   mouthlist,
   baselist,
+  defaultBase,
   eyeslist
 } from '../../images/templates/templatelist'
 
@@ -28,68 +28,73 @@ const a11yProps = index => {
   }
 }
 
-const TabPanel = ({ children, value, index }) => (
-  <div
+const TabPanel = ({ children, value, index, classes }) => (
+  <Box
     role="tabpanel"
     hidden={value !== index}
     id={`full-width-tabpanel-${index}`}
     aria-labelledby={`full-width-tab-${index}`}
   >
-    {value === index && <Box p={3}>{children}</Box>}
-  </div>
+    {value === index && children}
+  </Box>
 )
 
 TabPanel.propTypes = {
   children: PropTypes.object,
   value: PropTypes.any,
-  index: PropTypes.number
+  index: PropTypes.number,
+  classes: PropTypes.any
 }
 
-const AvatarMaker = ({ onGetDataUrl }) => {
+const AvatarMaker = ({ onGetDataUrl, color, onChangeColor }) => {
   const classes = useStyles()
-  const [activeProperty, setActiveProperty] = useState(null)
+  const [activeProperty, setActiveProperty] = useState()
   const [value, setValue] = useState()
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
-  const addToCanvas = (imgElement, propertyType, zIndex) => {
-    const imgInstance = new fabric.Image(imgElement, {
-      width: 400,
-      height: 400,
-      the_type: propertyType,
-      zIndex
+  const resetAvatarCreator = () =>
+    setActiveProperty({
+      base: defaultBase
     })
 
-    setActiveProperty(imgInstance)
+  const addToCanvas = (name, url) => {
+    setActiveProperty({ ...activeProperty, [name]: url })
   }
 
   useEffect(() => {
     setValue(0)
+    setActiveProperty({
+      base: defaultBase
+    })
   }, [])
 
   return (
-    <Box className={classes.mainBox}>
+    <Box className={classes.boxAvatar}>
       <Grid>
-        <FabricCanvas
+        <PreviewCanvas
+          backgroundColor={color}
           activeProperty={activeProperty}
           onGetDataUrl={onGetDataUrl}
+          onResetCanvas={resetAvatarCreator}
         />
       </Grid>
       <Grid>
         <Tabs
           value={value || 0}
           onChange={handleChange}
-          indicatorColor="primary"
           textColor="primary"
-          variant="fullWidth"
-          aria-label="full width tabs example"
+          classes={{
+            flexContainer: classes.flexContainer,
+            indicator: classes.tabIndicator
+          }}
         >
           <Tab
             label="Base"
             classes={{
-              fullWidth: classes.borderTabs,
+              root: classes.rootTab,
               selected: classes.tabSelected
             }}
             {...a11yProps(0)}
@@ -97,7 +102,7 @@ const AvatarMaker = ({ onGetDataUrl }) => {
           <Tab
             label="Eyes"
             classes={{
-              fullWidth: classes.borderTabs,
+              root: classes.rootTab,
               selected: classes.tabSelected
             }}
             {...a11yProps(1)}
@@ -105,7 +110,7 @@ const AvatarMaker = ({ onGetDataUrl }) => {
           <Tab
             label="Mouth"
             classes={{
-              fullWidth: classes.borderTabs,
+              root: classes.rootTab,
               selected: classes.tabSelected
             }}
             {...a11yProps(2)}
@@ -113,7 +118,7 @@ const AvatarMaker = ({ onGetDataUrl }) => {
           <Tab
             label="Deco"
             classes={{
-              fullWidth: classes.borderTabs,
+              root: classes.rootTab,
               selected: classes.tabSelected
             }}
             {...a11yProps(3)}
@@ -121,51 +126,45 @@ const AvatarMaker = ({ onGetDataUrl }) => {
           <Tab
             label="Background"
             classes={{
-              fullWidth: classes.borderTabs,
+              root: classes.rootTab,
               selected: classes.tabSelected
             }}
             {...a11yProps(4)}
           />
         </Tabs>
-
-        <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={0} classes={classes}>
           <TemplateList
             data={baselist}
             propertyType="base"
-            zIndex={0}
             addToCanvas={addToCanvas}
           />
         </TabPanel>
-        <TabPanel value={value} index={1}>
+        <TabPanel value={value} index={1} classes={classes}>
           <TemplateList
             data={eyeslist}
             propertyType="eyes"
-            zIndex={2}
             addToCanvas={addToCanvas}
           />
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel value={value} index={2} classes={classes}>
           <TemplateList
             data={mouthlist}
             propertyType="mouth"
-            zIndex={2}
             addToCanvas={addToCanvas}
           />
         </TabPanel>
-        <TabPanel value={value} index={3}>
+        <TabPanel value={value} index={3} classes={classes}>
           <TemplateList
             data={decolist}
             propertyType="deco"
-            zIndex={2}
             addToCanvas={addToCanvas}
           />
         </TabPanel>
-        <TabPanel value={value} index={4}>
-          <TemplateList
-            data={bglist}
-            propertyType="bg"
-            zIndex={2}
-            addToCanvas={addToCanvas}
+        <TabPanel value={value} index={4} classes={classes}>
+          <SketchPicker
+            className={classes.colorPicker}
+            color={color}
+            onChangeComplete={onChangeColor}
           />
         </TabPanel>
       </Grid>
@@ -174,7 +173,9 @@ const AvatarMaker = ({ onGetDataUrl }) => {
 }
 
 AvatarMaker.propTypes = {
-  onGetDataUrl: PropTypes.func
+  onGetDataUrl: PropTypes.func,
+  color: PropTypes.string,
+  onChangeColor: PropTypes.func
 }
 
 AvatarMaker.defaultProp = {

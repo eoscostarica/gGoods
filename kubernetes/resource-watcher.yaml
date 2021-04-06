@@ -14,5 +14,5 @@ spec:
               args:
                 - /bin/sh
                 - -c
-                - /usr/bin/node /opt/application/src/utils/resource-watcher.util.js;
+                - node /app/src/utils/resource-watcher.util.js;
           restartPolicy: Never

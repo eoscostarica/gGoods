@@ -1,9 +1,9 @@
 export default {
   primary: {
-    main: '#4DD5EA'
+    main: '#1565C0'
   },
   secondary: {
-    main: '#ED5951'
+    main: '#4CAF50'
   },
   info: {
     main: '#424242'

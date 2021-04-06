@@ -1,0 +1,1 @@
+CREATE TABLE "public"."history"("transaction_id" Text NOT NULL, "processed" jsonb NOT NULL, "created_at" timestamp NOT NULL DEFAULT now(), "updated_at" timestamp NOT NULL DEFAULT now(), PRIMARY KEY ("transaction_id") , UNIQUE ("transaction_id"));

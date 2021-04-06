@@ -1,11 +1,11 @@
 # ---------- Base ----------
-FROM node:14.2.0 as base
+FROM node:12.16.2-alpine
 WORKDIR /app
 
 # ---------- Builder ----------
 FROM base AS builder
 COPY package.json yarn.lock ./
-RUN yarn --ignore-optional --frozen-lockfile
+RUN yarn --ignore-optional
 COPY ./src ./src
 
 # ---------- Release ----------

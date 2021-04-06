@@ -3,16 +3,111 @@
     "login": "Ingresar",
     "signOut": "Salir",
     "lightMode": "Modo Claro",
-    "darkMode": "Modo Oscuro"
+    "darkMode": "Modo Oscuro",
+    "category": "Categoria",
+    "name": "Nombre",
+    "confirm": "Confirmar",
+    "email": "Correo electrónico",
+    "description": "Descripción",
+    "account": "Cuenta"
+  },
+  "signup": {
+    "register": "Registro",
+    "registerText": "Elija la opción que más le convenga. ",
+    "sucessfulPreregistration": "Pre-registro exitoso",
+    "sucessfulRegistration": "Registro exitoso",
+    "createAnewAccount": "Crear una nueva cuenta",
+    "allYouNeed": "Para registrarte, lo único que tienes que poner es tu email y contraseña",
+    "preRegisterAnewAccount": "Pre-registrar una nueva cuenta",
+    "preRegistrationRequirement": "Para poder realizar el pre-registro, debe indicar la siguiente información, necesaria para la aprobación de la Organización",
+    "termsAndConditions": "Términos y condiciones",
+    "termsAndConditionsInfo": "Esta cuenta debe aceptar nuestros términos y condiciones para los contratos inteligentes. Puede revocar el consentimiento en cualquier momento.",
+    "transactionId": "Id transacción",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "passwordNotMatch": "Las contraseñas no coinciden",
+    "iAccept": "Acepto",
+    "signupWithGoogle": "Registrarse con Google",
+    "createAccount": "Crear cuenta",
+    "name": "Nombre",
+    "address": "Dirección",
+    "addressPlaceholder": "Escribe tu dirección aquí",
+    "phoneNumber": "Número de teléfono",
+    "phoneNumberPlaceholder": "Escribe tu número aquí",
+    "invitationCode": "Código de invitación",
+    "chooseYourLocation": "Escoge tu ubicación",
+    "asAUser": "Como Usuario",
+    "asAOrganization": "Como Organización",
+    "about": "Acerca de",
+    "aboutPlaceholder": "Acerca de la Organización"
+  },
+  "login": {
+    "letsStarted": "¡Empecemos!",
+    "subtitle": "Inicie sesión para acceder a sus marcadores y preferencias personales.",
+    "loggedIn": "Mantenme conectado",
+    "login": "Iniciar sesión",
+    "accountDoesntExist": "Esta cuenta no existe",
+    "somethingHappenedWithAuth": "Un evento inesperado ha ocurrido",
+    "demoCredentials": "Credenciales de prueba",
+    "invalidAccountOrPassword": "Cuenta o contraseña incorrecta",
+    "loginWithGoogle": "Iniciar sesión con Google",
+    "logout": "Cerrar sesión",
+    "notAccount": "¿No tienes cuenta aún? Registrarse aquí."
+  },
+  "miscellaneous": {
+    "continue": "Continuar"
+  },
+  "emailMessage": {
+    "subjectApproveAccount": "gGoods Cuenta Aprobada",
+    "titleApproveAccount": "Cuenta Aprobada",
+    "messageApproveAccount": "Su solicitud de registro en gGoods ha sido aprobada, gracias por ser parte de este proyecto.",
+    "subjectChangePassword": "gGoods Cambio de Contraseña",
+    "titleChangePassword": "Cambio de Contraseña",
+    "messageChangePassword": "Su contraseña ha sido cambiada con éxito, gracias por donar.",
+    "subjectCredentialsRecovery": "gGoods Recuperación de Credenciales",
+    "titleCredentialsRecovery": "Recuperación de Credenciales",
+    "messageCredentialsRecovery": "Se ha generado una nueva contraseña para su cuenta, con esta ahora podes acceder a gGoods y continuar donando.",
+    "subjectVerificationCode": "gGoods Verificación del Email",
+    "titleVerificationCode": "Verificación del Email",
+    "messageVerificationCode": "Gracias por ser parte de la comunidad de gGoods, haga clic en el botón para verificar y validar su cuenta.",
+    "verifyButton": "Verificar"
+  },
+  "emailVerification": {
+    "emailVerified": "Tu correo ha sido verificado",
+    "somethingHappened": "Ha ocurrido un evento inesperado al tratar de verificar tu email",
+    "takeHome": "Ir al inicio"
+  },
+  "approveAccount": {
+    "accountapprove": "Esta cuenta ha sido aprobada",
+    "somethingHappened": "Algo sucedió al intentar aprobar esta cuenta"
+  },
+  "credentialsRecovery": {
+    "credentialsRecovery": "Recuperación de credenciales",
+    "emailError": "El correo ingresado no esta asociado a ninguna cuenta",
+    "changePasswordInstructions": "Para cambiar su contraseña ingrese el correo asociado a su cuenta, la contraseña la actual y la nueva",
+    "changePassword": "Cambiar contraseña",
+    "currentPassword": "Contraseña actual",
+    "errorPassword": "La contraseña actual no coinside con su correo",
+    "newPassword": "Nueva contraseña",
+    "instructionCredentialsRecovery": "Ingrese el correo asociado a su cuenta para poder recuperarla",
+    "checkYourEmail": "Revisa tu correo",
+    "recovery": "Recuperar"
   },
   "routes": {
-    "/>title": "GGoods",
+    "/>title": "EOSIO Boilerplate",
     "/>sidebar": "Inicio",
     "/>heading": "Inicio",
-    "/about>title": "Acerca de | GGoods",
+    "/organizations>title": "Organizaciones | GGOODS",
+    "/organizations>sidebar": "Organizaciones",
+    "/organizations>heading": "Organizaciones",
+    "/your-collection>title": "Mi colección | GGOODS",
+    "/your-collection>sidebar": "Mi colección",
+    "/your-collection>heading": "Mi colección",
+    "/about>title": "Acerca de | EOSIO Boilerplate",
+    "/ggoods-land>sidebar": "Mapa gGood",
     "/about>sidebar": "Acerca de",
     "/about>heading": "Acerca de",
-    "/help>title": "Ayuda | GGoods",
+    "/help>title": "Ayuda | EOSIO Boilerplate",
     "/help>sidebar": "Ayuda",
     "/help>heading": "Ayuda",
     "docs": "Documentación",
@@ -21,17 +116,65 @@
     "github": "Repositorio de Github",
     "telegram": "Grupo en Telegram"
   },
+  "footer": {
+    "description": "gGoods is an open source project, check out our repo and join the Discord channel.",
+    "content": "Contenido",
+    "home": "Inicio",
+    "organizations": "Organziaciones",
+    "goods": "Goods",
+    "games": "Juegos",
+    "myCollection": "Mi Colección",
+    "about": "Acerca de",
+    "follow": "Síguenos"
+  },
   "homeRoute": {
     "welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac viverra nunc, vitae rhoncus metus. Donec placerat ipsum nec ligula lacinia ornare. Cras et felis sit amet libero fermentum faucibus ut id justo. Maecenas vel nibh sed nibh faucibus rutrum. Pellentesque vel nibh molestie, eleifend magna in, eleifend nibh. Praesent elementum libero non ligula viverra feugiat. Morbi blandit massa nec posuere pellentesque. Quisque ac imperdiet tellus. Donec sed lorem sit amet nisl posuere dignissim at a sapien. In tristique et sapien et hendrerit. Nam aliquet quis turpis eu porttitor. Aenean odio augue, lacinia id ipsum at, dignissim sagittis libero. Pellentesque ex justo, tempus et rhoncus vitae, mattis vel justo. Suspendisse pellentesque nisi porttitor est posuere consectetur. Proin ornare orci eleifend, vestibulum massa et, bibendum nulla. Integer rutrum id quam et rhoncus. Nullam pretium pharetra magna in mattis. Nulla et sapien sit amet nibh dictum consectetur a quis dui. Morbi ac vestibulum eros. Ut commodo, dolor in sollicitudin euismod, libero lacus bibendum justo, non lobortis magna tellus vehicula turpis. Maecenas dignissim eget tellus eu molestie. Morbi pellentesque viverra ornare. Vivamus id feugiat nisi. Proin lobortis rhoncus finibus. Proin eu tellus dolor. Suspendisse ac tincidunt neque. In tincidunt ullamcorper lorem. Nulla facilisi."
   },
+  "organizationsRoute": {
+    "title": "Organizations",
+    "paragraph1": "Animal rescues, shelters and any other good cause that you might be interested in."
+  },
+  "gamesRoute": {
+    "title": "Games",
+    "paragraph1": "Created so you can play with your goods, this games ...."
+  },
+  "goodsRoute": {
+    "title": "Goods",
+    "paragraph1": "Virtual goods designed to help good causes, buy or subscribe to help or just play.",
+    "filter": "FILTERS",
+    "available": " GOODS AVAILABLE"
+  },
+  "filterGoodsRoute": {
+    "title": "Filter items",
+    "bottonTitle": "Filter",
+    "subtitle1": "Author",
+    "subtitle2": "Donation Amount"
+  },
+  "collectionRoute": {
+    "title": "My collection",
+    "paragraph1": "Goods you’ve bought previously and active subscriptions"
+  },
   "aboutRoute": {
-    "title": "Este proyecto",
-    "subtitle1": "Ques es?",
-    "paragraph1": "<!-- >",
-    "subtitle2": "Por que es importante?",
-    "paragraph2": "<!-- >",
-    "subtitle3": "De donde vienen los datos?",
-    "paragraph3": "<!-- >"
+    "title1": "About gGoods",
+    "whyGgoods": "Why gGoods?",
+    "whyGgoodsParagraph": "gGoods is an open-source NFT standard that lets organizations create their own NFT to seek funding. Creating an NFT is easy and straightforward, such as creating an avatar or sticker. The NFT represents a cause for the donor to collect",
+    "behindgGoogs": "Who’s behind gGoods?",
+    "behindgGoogsParagraph": "gGoods is developed by a group of Costa Rican techies and led by Edenia Labs and EOS Costa Rica. It was our submission to the 2021 Beyond Blockchain EOSIO Hackathon organized by block.one",
+    "aboutHack": "About the hackathon",
+    "aboutHackParagraph": "The 2021 Beyond Blockchain EOSIO Hackathon was organized by block.one, a leading technology company that launched the EOSIO blockchain protocol, to encourage teams to develop a solution that could bring positive change at scale to communities around the world.",
+    "title2": "About the technology",
+    "whatIsblockchain": "What is blockchain?",
+    "whatIsblockchainParagraph": "We deploy EOSIO blockchain technology to create gGoods. A blockchain is a decentralized ledger that registers transactions within a network of various computers or nodes. Once a transaction is validated by the network and registered in the chain, it remains immutable and cannot be altered or hacked, improving transparency and trust. Read more",
+    "whatIsEOSIO": "What is EOSIO?",
+    "whatIsEOSIOParagraph": "Block.one launched the EOSIO blockchain protocol in 2018 as an open-source technology to help solve real-world problems. EOSIO offers scalability, flexibility, and a developerfriendly tech that uses the C++ language to program smart contracts.",
+    "whatAreNFT": "What are NFTs?",
+    "whatAreNFTParagraph": "NFTs or non-fungible tokens are unique, rare, and indivisible cryptographic digital assets representing collectibles, digital artwork, tickets to an event, or in-game items. In gaming, NFTs enable users to collect assets that they can use as in-game items or trade with their peers.",
+    "title3": "About the team",
+    "title3Description": "gGoods was developed by a group of techies that wish to leverage NFTs and blockchain technology to impact the way people support causes. EOS Costa Rica and Edenia Labs lead the team. See who’s in the team in the Devpost profile.",
+    "whosEOSCR": "Who’s EOS Costa Rica",
+    "whosEOSCRParagraph": "EOS Costa Rica develops blockchainbased enterprise solutions and opensource projects by deploying the EOSIO  protocol. The company also develops and manages blockchain infrastructure and nodes. Moreover, the team offers educational resources and training in blockchain topics for executives and new developers",
+    "whosEDENIALabs": "Who’s Edenia Labs",
+    "whosEDENIALabsParagraph": "Edenia Labs incubates and accelerates projects that deploy technologies in industry 4.0, including artificial intelligence, blockchain, internet of things, drones, and cybersecurity. It is part of Sistemas Edenia Internacional, a company with over 30 years of experience developing innovative technologies."
   },
   "helpRoute": {
     "title": "Gracias por usar nuestro producto!",

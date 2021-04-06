@@ -2,6 +2,7 @@ const Hapi = require('@hapi/hapi')
 
 const { serverConfig } = require('./config')
 const routes = require('./routes')
+const { jwtUtil } = require('./utils')
 
 const init = async () => {
   const server = Hapi.server({
@@ -14,6 +15,7 @@ const init = async () => {
   })
 
   server.route(routes)
+  await jwtUtil.registerAuthStrategy(server)
   await server.start()
   console.log(`🚀 Server ready at ${server.info.uri}`)
   server.table().forEach(route => console.log(`${route.method}\t${route.path}`))
