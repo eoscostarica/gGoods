@@ -49,7 +49,11 @@ const Footer = () => {
           <ListItem className={classes.listItem}>
             <ListItemText
               primary={
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://eoscostarica.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img src={EOSCRLogo} alt="eoscr logo" />
                 </a>
               }

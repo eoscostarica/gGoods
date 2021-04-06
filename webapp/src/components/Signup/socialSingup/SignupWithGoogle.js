@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
     border: 'solid 1px #e0e0e0',
     display: 'flex',
     backgroundColor: 'white',
-    borderRadius: '50px',
     width: '70%',
     fontSize: '14px',
     fontWeight: 500,

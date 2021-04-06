@@ -14,7 +14,7 @@ export default theme => ({
     height: 80
   },
   btnLearnMore: {
-    color: '#1565C0',
+    color: theme.palette.primary.main,
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 14,

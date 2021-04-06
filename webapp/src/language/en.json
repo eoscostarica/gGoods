@@ -22,7 +22,7 @@
     "units": "Units",
     "reset": "Reset",
     "comingsoon": "Coming soon",
-    "marketplaceLink":"gGoods Marketplace"
+    "marketplaceLink": "gGoods Marketplace"
   },
   "nftsMap": {
     "placeAgood": "Place a good",
@@ -81,7 +81,8 @@
     "invalidAccountOrPassword": "Invalid account or password",
     "loginWithGoogle": "Login with Google",
     "logout": "Logout",
-    "notAccount": "No account yet? Register here."
+    "notAccount": "Register here",
+    "noAccountYet": "No account yet?"
   },
   "registerOrganization": {
     "accountapprove": "This account has been approved",
@@ -326,7 +327,7 @@
   },
   "memoryRoute": {
     "title": "gGoods Memory",
-    "paragraph":"Pick cards until you found out all your gGoods pairs",
+    "paragraph": "Pick cards until you found out all your gGoods pairs",
     "attempts": "Attempts",
     "emptyMessage": "You don't have available gGoods yet to play with gGoods Memory game",
     "winMessage": "You won!"
