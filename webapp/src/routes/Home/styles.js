@@ -87,6 +87,7 @@ export default theme => ({
       marginBottom: theme.spacing(1)
     },
     [theme.breakpoints.up('sm')]: {
+      justifyContent: 'start',
       flexWrap: 'nowrap',
       overflow: 'scroll'
     }
