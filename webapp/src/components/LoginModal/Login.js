@@ -334,7 +334,9 @@ const LoginModal = () => {
           <form autoComplete="off">
             <Box>
               <FormControl className={classes.inputStyle}>
-                <InputLabel id="select-label">Select Test User</InputLabel>
+                <InputLabel id="select-label">
+                  Select a Pre-Registered Demo User
+                </InputLabel>
                 <Select
                   labelId="select-label"
                   id="open-select"
@@ -351,7 +353,7 @@ const LoginModal = () => {
                   }
                 >
                   <MenuItem value="">
-                    <em>None</em>
+                    <em>none</em>
                   </MenuItem>
                   <MenuItem value={'testuser@ggoods.io'}>Test User</MenuItem>
                   <MenuItem value={'rainforestin'}>Rainforest Org</MenuItem>
