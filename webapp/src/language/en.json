@@ -202,7 +202,8 @@
     "amount": "Amount to donate",
     "donationFor": "Donation for",
     "sucessMessage": "Thanks for your donation",
-    "emptyMessage": "This item does not exist or is no longer available for purchase."
+    "emptyMessage": "This item does not exist or is no longer available for purchase.",
+    "errorMessage": "You must enter an amount equal or greater than the minimum donation"
   },
   "filterGoodsRoute": {
     "title": "Filter items",

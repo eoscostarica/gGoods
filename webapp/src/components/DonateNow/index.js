@@ -11,10 +11,8 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Backdrop from '@material-ui/core/Backdrop'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
+import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
-import FilledInput from '@material-ui/core/FilledInput'
 import Button from '@material-ui/core/Button'
 import { PayPalButton } from 'react-paypal-button-v2'
 import { useMutation } from '@apollo/client'
@@ -39,6 +37,7 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
   const history = useHistory()
   const [, { showMessage }] = useSharedState()
   const [amount, setAmount] = useState()
+  const [minimumAmount, setMinimumAmount] = useState()
   const [confirmSaleWithPaypal, { loading }] = useMutation(
     CONFIRM_SALE_WITH_PAYPAL
   )
@@ -138,9 +137,12 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
   }
 
   const handleOnChangeAmount = event => {
-    const [amount] = (ggood?.amount || '').split(' ')
+    if (isNaN(event.target.value)) {
+      return
+    }
 
-    if (parseFloat(event.target.value || 0) < parseFloat(amount)) {
+    const [, decimalValue] = event.target.value.split('.')
+    if (decimalValue?.length > 2) {
       return
     }
 
@@ -149,7 +151,8 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
 
   useEffect(() => {
     const [amount] = (ggood?.amount || '').split(' ')
-    setAmount(amount)
+    setMinimumAmount(parseFloat(amount))
+    setAmount(parseFloat(amount))
   }, [ggood])
 
   return (
@@ -220,24 +223,26 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
                 />
               </Box>
               {!!ggood?.donable && (
-                <FormControl fullWidth variant="filled">
-                  <InputLabel htmlFor="filled-adornment-amount">
-                    {t('amount')}
-                  </InputLabel>
-                  <FilledInput
-                    value={amount || ''}
-                    onChange={handleOnChangeAmount}
-                    startAdornment={
+                <TextField
+                  fullWidth
+                  variant="filled"
+                  value={amount || ''}
+                  label={t('amount')}
+                  error={amount < minimumAmount}
+                  helperText={amount < minimumAmount ? t('errorMessage') : ''}
+                  onChange={handleOnChangeAmount}
+                  InputProps={{
+                    startAdornment: (
                       <InputAdornment position="start">$</InputAdornment>
-                    }
-                  />
-                </FormControl>
+                    )
+                  }}
+                />
               )}
             </Grid>
           </Grid>
         </Box>
         {loading && <CircularProgress />}
-        {!loading && (
+        {!loading && amount >= minimumAmount && (
           <Box className={classes.sectionBox}>
             <Grid container justify="center">
               <Grid item xs={10}>
@@ -256,6 +261,7 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
                   EOS WALLET
                 </Button>
                 <PayPalButton
+                  style={{ display: 'none' }}
                   options={{
                     clientId: paypalConfig.clientId
                   }}
@@ -267,6 +273,27 @@ const DonateNow = ({ open, handlerOpen, organization, ggood }) => {
             </Grid>
           </Box>
         )}
+        <Box className={classes.sectionBox}>
+          <Grid container justify="center">
+            <Grid item xs={10}>
+              <dl>
+                <dt>
+                  <Typography variant="subtitle1">
+                    You can pay with a PayPal demo account
+                  </Typography>
+                </dt>
+                <dd>
+                  <Typography variant="body1">
+                    email: sb-piss85762653@personal.example.com
+                  </Typography>
+                </dd>
+                <dd>
+                  <Typography variant="body1">password: +SW$pt8-</Typography>
+                </dd>
+              </dl>
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
     </Dialog>
   )
