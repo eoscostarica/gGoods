@@ -82,7 +82,10 @@ jobs:
           REACT_APP_PAYPAL_CLIENT_ID: ${{ secrets.REACT_APP_PAYPAL_CLIENT_ID }}
           REACT_CAPTCHA_KEY: ${{ secrets.REACT_CAPTCHA_KEY }}
           REACT_APP_BLOCK_EXPLORER: ${{ secrets.REACT_APP_BLOCK_EXPLORER }}
+          REACT_APP_BLOCK_EXPLORER_URL: https://jungle3.bloks.io/
           REACT_APP_OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_OAUTH_GOOGLE_CLIENT_ID }}
+          REACT_APP_MAP_API_KEY: ${{ secrets.REACT_APP_MAP_API_KEY }}
+          REACT_APP_MAP_BASE_URL: ${{ secrets.REACT_APP_MAP_BASE_URL }}
 
           # hasura
           HASURA_GRAPHQL_DATABASE_URL: ${{ secrets.HASURA_GRAPHQL_DATABASE_URL }}
