@@ -47,6 +47,7 @@ const YourCollection = () => {
           isLoading={loading}
           items={data?.ggoods || []}
           title={t('ggoodsCollected')}
+          secondaryText={t('ggoodsBy')}
         />
       )}
     </Box>
