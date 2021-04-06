@@ -269,7 +269,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/joi@npm:17.x.x":
+"@hapi/joi@npm:17.x.x, @hapi/joi@npm:^17.1.0":
   version: 17.1.1
   resolution: "@hapi/joi@npm:17.1.1"
   dependencies:
@@ -323,13 +323,13 @@ __metadata:
   linkType: hard
 
 "@hapi/podium@npm:4.x.x":
-  version: 4.1.1
-  resolution: "@hapi/podium@npm:4.1.1"
+  version: 4.1.2
+  resolution: "@hapi/podium@npm:4.1.2"
   dependencies:
     "@hapi/hoek": 9.x.x
     "@hapi/teamwork": 5.x.x
     "@hapi/validate": 1.x.x
-  checksum: 95935633a0dbd982ef3e9802a9c0a239d58ca3d5f124432c97bd44302d3ce4d04087a5b6a34b50941a5d2e3315741a26f9d5112a5848d6c84de90e81d713302a
+  checksum: c21ebfc4e113f1234eb89a863fea07ec267783c361955bb1b97f67047117f676b2f3b8d6ec61aeb42682d5ec37fd76343769fa738faa17dad4755634784fffb0
   languageName: node
   linkType: hard
 
@@ -585,14 +585,14 @@ __metadata:
   linkType: hard
 
 "ajv@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "ajv@npm:8.0.1"
+  version: 8.0.2
+  resolution: "ajv@npm:8.0.2"
   dependencies:
     fast-deep-equal: ^3.1.1
     json-schema-traverse: ^1.0.0
     require-from-string: ^2.0.2
     uri-js: ^4.2.2
-  checksum: 6ec271f8a4e2d938d5a28f21e927b31bec16c72e05cac68d21c53d71ec2c9360d504db529e5e891c11cc2939c9fdf922bece8a4500b0cfb0877bdd6acfef3949
+  checksum: e91e21e2512fdad58d4891057ed9a221e704f98003cefd846543c82859c50dc09a94be8bf727c39def45f3fcc8b983e51d82ef9646f6af805bf3ede2817175d7
   languageName: node
   linkType: hard
 
@@ -2610,6 +2610,7 @@ fsevents@~2.3.1:
     "@babel/code-frame": ^7.12.13
     "@hapi/boom": ^9.0.0
     "@hapi/hapi": ^19.1.1
+    "@hapi/joi": ^17.1.0
     axios: ^0.19.2
     bcryptjs: ^2.4.3
     env-cmd: ^10.1.0
@@ -3855,8 +3856,8 @@ fsevents@~2.3.1:
   linkType: hard
 
 "listr2@npm:^3.2.2":
-  version: 3.4.3
-  resolution: "listr2@npm:3.4.3"
+  version: 3.4.4
+  resolution: "listr2@npm:3.4.4"
   dependencies:
     chalk: ^4.1.0
     cli-truncate: ^2.1.0
@@ -3864,12 +3865,12 @@ fsevents@~2.3.1:
     indent-string: ^4.0.0
     log-update: ^4.0.0
     p-map: ^4.0.0
-    rxjs: ^6.6.6
+    rxjs: ^6.6.7
     through: ^2.3.8
     wrap-ansi: ^7.0.0
   peerDependencies:
     enquirer: ">= 2.3.0 < 3"
-  checksum: e5c2a8561c2abafb439d858a0e815c5385aefb6de1cd6c66470f7846691b80fef7e89e6f83a7035e4a9e9cb35bf375d3dfe3d8da35c563d2fb3f428054452972
+  checksum: a6df59e972f55b93d8ebf7340a57b5fc1d90d07848e8199020fb4c17fddde00938c350aeaa6ab45f159fd748f822d6526e222169acc2023d0ff8db5648686fca
   languageName: node
   linkType: hard
 
@@ -5400,7 +5401,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^6.6.6":
+"rxjs@npm:^6.6.7":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
@@ -5913,8 +5914,8 @@ fsevents@~2.3.1:
   linkType: hard
 
 "table@npm:^6.0.4":
-  version: 6.0.8
-  resolution: "table@npm:6.0.8"
+  version: 6.0.9
+  resolution: "table@npm:6.0.9"
   dependencies:
     ajv: ^8.0.1
     is-boolean-object: ^1.1.0
@@ -5925,7 +5926,7 @@ fsevents@~2.3.1:
     lodash.truncate: ^4.4.2
     slice-ansi: ^4.0.0
     string-width: ^4.2.0
-  checksum: 411ddc99521bd1f64eb87bae13c7127128525c2be3c9e64dea2318aa90cb7780670a0247a8c1338f239fd4f1e8b9a7ef9931ce800e508aa554546c92b6c6ba91
+  checksum: 7591f29ac667a5cf33d9564b5775f1778b1b0a346dadcedd190420c87c295c2f618520669ab10f906d017283f4f2ae1821382028845909ce88ce78d895572bc0
   languageName: node
   linkType: hard
 
@@ -6281,14 +6282,14 @@ fsevents@~2.3.1:
   linkType: hard
 
 "web-encoding@npm:^1.0.2, web-encoding@npm:^1.0.6, web-encoding@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "web-encoding@npm:1.1.0"
+  version: 1.1.3
+  resolution: "web-encoding@npm:1.1.3"
   dependencies:
     "@zxing/text-encoding": 0.9.0
   dependenciesMeta:
     "@zxing/text-encoding":
       optional: true
-  checksum: e8c6a1422b8e85eb2b6f2d6e93c7b58d691eb98af2e4cb3f462750da95bb0f899cc2c433d71d6aaa45f959153a114341f676553b764da7c047f9040ce6d475f8
+  checksum: 9e81fd9fa5d19380ef1a36e415b508035f0be78f58f50b4e68731d2cf4bd1eed82ac44bb8a2a0225342f6edbed1acde3f57b9747bfd11e1c9840b2f80ce5f553
   languageName: node
   linkType: hard
 
