@@ -105,6 +105,9 @@ export default theme => ({
       '& .MuiCard-root': {
         width: 288
       }
+    },
+    '& img': {
+      borderRadius: 50
     }
   }
 })
