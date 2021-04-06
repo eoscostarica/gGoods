@@ -18,6 +18,11 @@ import Checkbox from '@material-ui/core/Checkbox'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+
 import {
   LOGIN_MUTATION,
   VALIDATE_EMAIL,
@@ -169,6 +174,9 @@ const LoginModal = () => {
     { loading, error, data: { login: loginResult } = {} }
   ] = useMutation(LOGIN_MUTATION, { fetchPolicy: 'no-cache' })
 
+  const [openSelect, setOpen] = useState(false)
+  const [userLogin, setUserLogin] = useState(t('email-account'))
+  const [password, setPassword] = useState(t('password'))
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true
   })
@@ -193,6 +201,35 @@ const LoginModal = () => {
 
   const handleSetField = (field, value) => {
     setUser({ ...user, [field]: value })
+  }
+  const handleSetFieldSelector = (field, value) => {
+    setUserLogin(value)
+    switch (value) {
+      case 'rainforestin':
+        setUser({ ...user, secret: 'organization', [field]: value })
+        setPassword('organization')
+        break
+      case 'aidsprogramw':
+        setUser({ ...user, secret: 'organization', [field]: value })
+        setPassword('organization')
+        break
+      case 'dogshelter11':
+        setUser({ ...user, secret: 'organization', [field]: value })
+        setPassword('organization')
+        break
+      case 'hurrcnrelief':
+        setUser({ ...user, secret: 'organization', [field]: value })
+        setPassword('organization')
+        break
+      case 'testuser@ggoods.io':
+        setUser({ ...user, secret: 'user', [field]: value })
+        setPassword('user')
+        break
+      default:
+        setPassword('Password')
+        setUserLogin('Email or Account')
+        setUser([])
+    }
   }
 
   const handleLogin = async () => {
@@ -221,6 +258,13 @@ const LoginModal = () => {
     }
   }
 
+  const handleCloseSelect = () => {
+    setOpen(false)
+  }
+
+  const handleOpenSelect = () => {
+    setOpen(true)
+  }
   const handleLoginWithAuth = async (status, email, secret) => {
     if (status) {
       const { data } = await checkEmail({ email })
@@ -318,9 +362,38 @@ const LoginModal = () => {
           )}
           <form autoComplete="off">
             <Box>
+              <FormControl className={classes.inputStyle}>
+                <InputLabel id="select-label">Select Test User</InputLabel>
+                <Select
+                  labelId="select-label"
+                  id="open-select"
+                  open={openSelect}
+                  onClose={handleCloseSelect}
+                  onOpen={handleOpenSelect}
+                  value={userLogin}
+                  onKeyPress={event => executeLogin(event)}
+                  onChange={event =>
+                    handleSetFieldSelector(
+                      'account',
+                      event.target.value.toLowerCase().replace(/\s/g, '')
+                    )
+                  }
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={'rainforestin'}>rainforestin</MenuItem>
+                  <MenuItem value={'aidsprogramw'}>aidsprogramw</MenuItem>
+                  <MenuItem value={'dogshelter11'}>dogshelter11</MenuItem>
+                  <MenuItem value={'hurrcnrelief'}>hurrcnrelief</MenuItem>
+                  <MenuItem value={'testuser@ggoods.io'}>
+                    testuser@ggoods.io
+                  </MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 id="account"
-                label={t('email-account')}
+                label={userLogin}
                 variant="outlined"
                 className={classes.inputStyle}
                 onChange={event =>
@@ -340,7 +413,7 @@ const LoginModal = () => {
               />
               <TextField
                 id="secret"
-                label={t('password')}
+                label={password}
                 type="password"
                 variant="outlined"
                 className={classes.inputStyle}
@@ -383,28 +456,6 @@ const LoginModal = () => {
                 {t('notAccount')}
               </Button>
             </Box>
-            <Typography variant="h6">Log in with a demo account</Typography>
-            <dl>
-              <dt>
-                <Typography variant="h7">Organization User</Typography>
-              </dt>
-              <dd>
-                <Typography variant="body1">username: animalrescue</Typography>
-              </dd>
-              <dd>
-                <Typography variant="body1">password: organization</Typography>
-              </dd>
-
-              <dt>
-                <Typography variant="h7">Regular User</Typography>
-              </dt>
-              <dd>
-                <Typography variant="body1">username: iamthebestgg</Typography>
-              </dd>
-              <dd>
-                <Typography variant="body1">password: user</Typography>
-              </dd>
-            </dl>
           </form>
         </Box>
       </Dialog>
