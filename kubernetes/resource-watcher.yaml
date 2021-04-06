@@ -2,6 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: resource-watcher
+  namespace: ggoods
 spec:
   schedule: '*/1 * * * *'
   jobTemplate:
@@ -9,10 +10,14 @@ spec:
       template:
         spec:
           containers:
-            - name: ggoods-hapi-cronjob
-              image: ${DOCKER_REGISTRY}/${IMAGE_NAME_HAPI}:${VERSION}
+            - name: 'ggoods-hapi-cronjob'
+              image: ${DOCKER_REGISTRY}/${IMAGE_NAME_HAPI}:latest
+              imagePullPolicy: 'Always'
               args:
                 - /bin/sh
                 - -c
                 - node /app/src/utils/resource-watcher.util.js;
+              envFrom:
+                - configMapRef:
+                    name: ggoods-hapi-config
           restartPolicy: Never
