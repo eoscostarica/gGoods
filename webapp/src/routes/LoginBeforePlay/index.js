@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import Box from '@material-ui/core/Box'
+import { makeStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { useTranslation } from 'react-i18next'
@@ -8,15 +9,20 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight'
 
 import { useSharedState } from '../../context/state.context'
 
+import styles from './styles'
+
+const useStyles = makeStyles(styles)
+
 const LoginBeforePlay = () => {
   const { t } = useTranslation('loginBeforePlayRoute')
+  const classes = useStyles()
   const history = useHistory()
   const [, { login }] = useSharedState()
 
   return (
     <Box p={2}>
       <Typography>{t('message')}</Typography>
-      <Box p={2} display="flex" justifyContent="space-evenly">
+      <Box className={classes.linkWrapper}>
         <Button variant="text" color="primary" onClick={login}>
           <KeyboardArrowRightIcon />
           {t('register')}
