@@ -38,7 +38,7 @@ spec:
         name: postgres
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: ggo-storage
+        storageClassName: ggoods-storage
         resources:
           requests:
             storage: 100Gi
