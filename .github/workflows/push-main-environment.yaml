@@ -20,12 +20,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      # Setup gcloud CLI
-      - uses: google-github-actions/setup-gcloud@v0.2.0
-        with:
-          service_account_key: ${{ secrets.GKE_SA_KEY }}
-          project_id: ${{ secrets.GKE_PROJECT }}
-
       - name: Setup Docker
         uses: docker-practice/actions-setup-docker@0.0.1
 
@@ -34,13 +28,6 @@ jobs:
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login \
             --username ${{ secrets.DOCKER_HUB_USER }} \
             --password-stdin
-
-      # Get the GKE credentials so we can deploy to the cluster
-      - uses: google-github-actions/get-gke-credentials@v0.2.1
-        with:
-          cluster_name: ${{ env.GKE_CLUSTER }}
-          location: ${{ env.GKE_ZONE }}
-          credentials: ${{ secrets.GKE_SA_KEY }}
 
       - name: Install node module dependencies
         run: |
@@ -168,9 +155,10 @@ jobs:
           REACT_APP_OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_OAUTH_GOOGLE_CLIENT_ID }}
 
       - name: Deploy kubernetes files
-        run: |
-          make \
-            deploy-kubernetes
+        uses: steebchen/kubectl@master
         env:
+          KUBE_CONFIG_DATA: ${{ secrets.DEV_KUBE_CONFIG }}
           NAMESPACE: ggoods
           K8S_BUILD_DIR: build_k8s
+        with:
+          args: version && make deploy-kubernetes
