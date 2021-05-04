@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: ggoods-postgres
+    version: ${VERSION}
+  name: ggoods-postgres
+spec:
+  serviceName: ggoods-postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ggoods-postgres
+      version: ${VERSION}
+  template:
+    metadata:
+      labels:
+        app: ggoods-postgres
+        version: ${VERSION}
+    spec:
+      imagePullSecrets:
+          - name: regcred
+      containers:
+      - image: postgres:11.5-alpine
+        imagePullPolicy: "Always"
+        name: ggoods-postgres
+        envFrom:
+        - configMapRef:
+            name: ggoods-postgres-config
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgres
+          subPath: postgres
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: dashboard-storage
+        resources:
+          requests:
+            storage: 100Gi 
