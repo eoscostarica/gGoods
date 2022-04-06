@@ -61,7 +61,7 @@ jobs:
           REACT_APP_FOOTER_LINKS: '[]'
           REACT_APP_UAL_APP_NAME: gGoods
           REACT_APP_UAL_API_PROTOCOL: https
-          REACT_APP_UAL_API_HOST: jungle.eosio.cr
+          REACT_APP_UAL_API_HOST: jungle.edenia.cloud
           REACT_APP_UAL_API_PORT: 443
           REACT_APP_UAL_CHAIN_ID: 2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840
           REACT_APP_HASURA_URL: https://graphql.ggoods.io/v1/graphql
@@ -110,7 +110,7 @@ jobs:
           # hapi
           HAPI_SERVER_PORT: 9090
           HAPI_SERVER_ADDRESS: ${{ secrets.HAPI_SERVER_ADDRESS }}
-          HAPI_EOS_API_ENDPOINT: http://jungle.eosio.cr
+          HAPI_EOS_API_ENDPOINT: http://jungle.edenia.cloud
           HAPI_EOS_API_CHAIN_ID: 2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840
           HAPI_EOS_BASE_ACCOUNT: ${{ secrets.HAPI_EOS_BASE_ACCOUNT }}
           HAPI_EOS_BASE_ACCOUNT_PASSWORD: ${{ secrets.HAPI_EOS_BASE_ACCOUNT_PASSWORD }}
@@ -143,7 +143,7 @@ jobs:
           REACT_APP_FOOTER_LINKS: '[]'
           REACT_APP_UAL_APP_NAME: gGoods
           REACT_APP_UAL_API_PROTOCOL: https
-          REACT_APP_UAL_API_HOST: jungle.eosio.cr
+          REACT_APP_UAL_API_HOST: jungle.edenia.cloud
           REACT_APP_UAL_API_PORT: 443
           REACT_APP_UAL_CHAIN_ID: 2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840
           REACT_APP_HASURA_URL: ${{ secrets.REACT_APP_HASURA_URL }}
